@@ -1,0 +1,56 @@
+
+
+.background {
+  display: flex;
+  flex-direction:row;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  background-image: url("../../Components/images/back.jpg");
+  background-size: cover;
+  justify-content: center;
+  height: 87vh;
+}
+
+.detailContainer {
+  width: 30%;
+  justify-content: center;
+  font-family: Poppins;
+  background-color: white;
+  border-radius: 5%;
+  margin:  4rem 0;
+}
+
+
+.detailContainer h1 {
+  font-weight: 700;
+}
+
+.detailContainer h2 {
+  font-weight: 500;
+}
+
+.detailContainer p {
+  font-weight: 700;
+}
+
+.detailContainer img {
+  width: 5rem;
+}
+
+.background button {
+
+  border-radius: 0.5rem;
+  transition-duration: 0.1s;
+  font-family: Poppins;
+  background-color: rgba(163, 11, 163);
+  color: white ;
+  opacity: 95%;
+  border-color: transparent;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 7rem;
+
+
+
+} 
