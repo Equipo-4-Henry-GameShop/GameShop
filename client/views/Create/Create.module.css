@@ -1,0 +1,261 @@
+.background {
+align-content: center;
+text-align: center;
+
+background-image: url('../../Components/images/back.jpg');
+background-size:cover;
+}
+
+.createCountainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins;
+
+    
+}
+
+.createCountainer a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+  font-family: Poppins;
+}
+
+.create{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2%;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 50%;
+    height: 50%;
+    font-size: 100%;
+
+
+
+}
+.title{
+    font-family: Poppins;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.691);
+    color: rgb(58, 57, 57);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    padding: 0;
+  
+    text-decoration: none;}
+
+
+.createCountainer button{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: rgba(206, 167, 13);
+    border: none;
+    color: #ffffff;
+    text-align: center;
+
+    transition: all 0.5s;
+    cursor: pointer;
+
+    font-family: Poppins;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+
+  
+.createCountainer button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+
+.createCountainer button{
+    font-family: Poppins;
+    margin-top: 10%;
+}
+
+
+
+.component{
+    display: flex;
+    align-items: center;
+    padding-top: 10%;
+    font-weight: 700;
+
+    flex-direction: column;
+}
+
+
+.component select{
+    width: 90%;
+    justify-content: center;
+    text-align: center;
+}
+
+.component button{
+    border-radius: 0.5rem;
+    transition-duration: 0.1s;
+    font-family: Poppins;
+    background-color: rgba(163, 11, 163);
+    color: white ;
+    opacity: 95%;
+    border-color: transparent;;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.componentbutton{
+    border-radius: 0.5rem;
+    transition-duration: 0.1s;
+    font-family: Poppins;
+    background-color: rgba(163, 11, 163);
+    color: white ;
+    opacity: 95%;
+    border-color: transparent;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+
+.component button:hover{
+    font-family: Poppins;
+    background-color:white;
+    color: gray;
+    font-weight: 700;
+
+}
+
+span{
+    font-size: 0.8rem;
+    text-align: center;
+    color: red;
+}
+
+
+
+.submit{
+    background-color: white;
+    align-items: center;
+    margin: 2rem;
+
+
+}
+
+
+.cardConteiner{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid rgb(199, 199, 199);
+    background-color: rgb(233, 233, 233);
+    width: 70%;
+
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin: 1% 1% 1% 1%;
+    border-radius: 2rem;
+    padding: 3%;
+
+    cursor: default;
+    transition: all 400ms ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+
+    
+}
+.info{
+    display: flex;
+
+    align-items: center;
+    height: 10rem;
+
+}
+
+.cardsAdds div {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+    overflow: hidden;
+
+
+}
+
+.cardsAdds img {
+    height: 120%;
+    margin-left: 30%;
+    width: 5rem;
+
+}
+
+.cardsAdds button {
+    display: flex;
+
+    bottom: 5%;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+}
+
+
+
+.conteinerImg{
+
+
+    width: auto;
+
+    align-items: center;
+
+}
+img{
+
+    width: 100%;
+    border-radius: 1rem;
+
+}
+
+.info h1{
+
+    font-size: 100%;
+    text-align: center;
+    font-weight: 700;
+    
+    
+
+}
+
+.info p{
+    font: 5rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 5%;
+    text-align: center;
+}
+
+
+
+.card:hover{
+    background-color: white;
+    box-shadow: 5px 5px 20px gray;
+    transform: translateY(-3%);
+}
+
+.x{
+    justify-items: top ;
+}
