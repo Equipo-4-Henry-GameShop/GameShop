@@ -1,13 +1,13 @@
 import { Link } from "expo-router";
-import {Text, View} from "react-native";
-import {FC} from "react"
+import { Text, View } from "react-native";
+import { FC } from "react";
 
-////Acá podemos pasar como props los datos del usuarios para que este 
+////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
 
 
 
-const PanelUser : FC = () => {
+const MyPosts : FC = () => {
     return (
       <View>
         <View>
