@@ -3,7 +3,7 @@ import counterSlice from './gameSlice';
 
 const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer,
+    myReducer: counterSlice.reducer,
   },
 });
 
