@@ -1,4 +1,4 @@
-const videogames=[
+export const videogames=[
 	{
 		"id": 3498,
 		"nombre": "Grand Theft Auto V",
