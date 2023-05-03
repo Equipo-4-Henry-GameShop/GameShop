@@ -4,6 +4,7 @@ import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import CardDet from './CardDet';
+import Carrousel from './Carrousel';
 const Tab = createBottomTabNavigator();
 
 const WorldScreen = (props: any) => {
@@ -13,36 +14,27 @@ const WorldScreen = (props: any) => {
     </View>
   );
 };
-const Info= (props: any) => {
+const TabInfo= (props: any) => {
   // console.log("props Detail", props.videogame)
   return (
     <>
-    <CardDet
-        videogame= {props.videogame}
-    />
-    {/* <View style={styles.container}>
-          <Text style={styles.title}>{route.params.nombre}</Text>
-          <View style={styles.imageContenedor}>
-            { route.params.imagen ? <Image source={{uri:route.params.imagen}} style={styles.image}/> 
-                        : <Image source={require('../../assets/Unknown.jpg')} /> 
-                    } 
-         </View>
-        
-    <Text style={styles.text}>This is {route.params.nombre}'s profile</Text>
-    <Text style={styles.text}>Rating {route.params.rating}</Text> 
-     <Text>esto es detail con props {props.videogame.nombre}</Text> 
-    <Button
-      title='Update Title'
-      onPress={() => navigation.setOptions({ title: route.params.phrase || 'Avengers'})}
-      /> 
-    </View> */}
+    <CardDet  videogame= {props.videogame} />
   </>
+  )
+}
+
+const TabCarrousel= (props: any) => {
+  // console.log("props.videogame.screnshoots", props)
+  return (
+    <>
+     <Carrousel data= {props.data}  />
+    </>
   )
   
 }
 const DetailScreen = ({route}:{route:any},{ navigation}:{navigation: any}) => {
   // export default function DetailScreen () {
-    // console.log("videogame --->", route.params.videogame)
+    // console.log("videogame en Details--->screnshoots", route.params.videogame.screnshoots)
     return (
       <Tab.Navigator
       initialRouteName="Info"
@@ -58,17 +50,18 @@ const DetailScreen = ({route}:{route:any},{ navigation}:{navigation: any}) => {
           )
         }}
       >
-        {props => <Info {...props} videogame= {route.params.videogame} />}
+        {props => <TabInfo {...props} videogame= {route.params.videogame} />}
       </Tab.Screen>
+
       <Tab.Screen 
-        name="ScreenShots" 
+        name="ScreenShoots" 
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="images-outline" color={color} size={size} />
           )
         }}>
 
-        {props => <WorldScreen {...props} name="Screeens" />}
+        {props => <TabCarrousel {...props} data={route.params.videogame.screnshoots} />}
       </Tab.Screen>
       <Tab.Screen 
         name="Extra" 

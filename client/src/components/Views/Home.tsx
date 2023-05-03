@@ -394,9 +394,11 @@ const arreglo2=[{
 
 const HomeScreen =({ navigation}:{navigation: any}, {route}:{route:any})=>{
   const vGames=useSelector((state)=>state.videogamesState)
+  // console.log("vgames de  selector", vGames);
+  
   const dispatch= useDispatch();
   useEffect(()=>{
-    console.log("entro aqui?")
+    // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
 
@@ -410,7 +412,7 @@ const HomeScreen =({ navigation}:{navigation: any}, {route}:{route:any})=>{
     sections={[
       {
         title: 'Videojuegos Parte 1', 
-        data: arreglo2.map( (el)=> {
+        data: vGames.videoGames.map( (el)=> {
                   return (
                     {
                       key: `${el.id}`, 
