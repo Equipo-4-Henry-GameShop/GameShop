@@ -417,13 +417,13 @@ const HomeScreen =({ navigation}:{navigation: any}, {route}:{route:any})=>{
                       img: {uri:el.image }, 
                       nombre:el.nombre ,
                       fecLan: el.fecLan,
-                      screenshots: el.screnshoots,
+                      screnshoots: el.screnshoots,
                       informacion: 'ipsom lupsum',
                       rating: el.rating,
                       generos: el.genres,
                       tiendas: el.tiendas,
                       etiquetas: el.etiquetas,
-                      imagen: el.image
+                      
                     }
                   )})
       },
@@ -442,11 +442,13 @@ const HomeScreen =({ navigation}:{navigation: any}, {route}:{route:any})=>{
               onPress={() =>
               // navigation.navigate('Detail', { name: item.nombre , id: item.key })
               
-              navigation.navigate('Detail', { videogame: item , 
-                                              nombre:item.nombre, 
-                                            rating: item.rating,
-                                        screeshots: item.screenshots,
-                                            imagen: item.imagen})
+              navigation.navigate('Detail', { 
+                                             videogame: item , 
+                                            //   nombre:item.nombre, 
+                                            // // rating: item.rating,
+                                            // // screnshoots: item.screnshoots,
+                                            // imagen: item.imagen
+                                          })
               }
               /> 
           </View>
