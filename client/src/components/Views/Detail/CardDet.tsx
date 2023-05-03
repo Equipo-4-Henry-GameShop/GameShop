@@ -1,4 +1,4 @@
-import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
+import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
 
 import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
@@ -19,6 +19,24 @@ let videogametype: {
 }
 const Card = (videogame:typeof videogametype) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
+    function estrellitas(index:number) {
+        // console.log("entro una estreilla");
+        return <Image source={require('../../../assets/star.png')} key={index} style={{width: '7%', height: '100%'}}/>
+    }  
+   
+    //con esta fraccion de codigo redondeo el valor de rating y creo n estrellas de dibujo
+    let starArr = [];
+    let starcount=videogame.videogame.length ===0  
+             ?  "undefined" 
+             : videogame.videogame.rating
+    starcount=Math.round(starcount)
+    // console.log("conteo de estrellas ", starcount)
+    for (let index = 0; index < starcount; index++) {
+        starArr.push(estrellitas(index))
+      }      
+
+
+
     return (
         <View style={styles.container}>
              <Text style={styles.title}>{videogame.videogame.nombre}</Text>
@@ -30,8 +48,11 @@ const Card = (videogame:typeof videogametype) => {
                         } 
              </View>
             
-        
-        <Text style={styles.text}>Rating {videogame.videogame.rating}</Text>
+        <Text style={styles.text}>Fecha de Lanzamiento: {videogame.videogame.fecLan}</Text>
+        <Text style={styles.text}>Rating: {videogame.videogame.rating}</Text>
+        <View style={styles.estrella}>
+            {starArr}
+        </View>
   
         </View>
     );
@@ -56,7 +77,7 @@ const Card = (videogame:typeof videogametype) => {
     },
     text: {
         color: color_blanco,
-        fontSize: 30,
+        fontSize: 20,
         fontWeight:'700',
       },
     separator: {
@@ -115,6 +136,18 @@ const Card = (videogame:typeof videogametype) => {
       alignItems: 'center',
       // justifyContent: ,
     },
+    estrella:{
+   
+        flexDirection:'row',
+        height:25,
+     
+        gap:0,
+        margin:5,
+        alignItems:'center',
+        alignContent: 'center',
+    //    backgroundColor:color_gris,
+       padding:1
+    }
    
   });
   
