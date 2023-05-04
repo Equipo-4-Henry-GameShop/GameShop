@@ -5,17 +5,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import CardDet from './CardDet';
 import Carrousel from './Carrousel';
+import CardExtra from './CardExtra';
 const Tab = createBottomTabNavigator();
 
-const WorldScreen = (props: any) => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>This is a {props.name}!</Text>
-    </View>
-  );
-};
-const TabInfo= (props: any) => {
-  // console.log("props Detail", props.videogame)
+const TabInfo= (props) => {
+  
   return (
     <>
     <CardDet  videogame= {props.videogame} />
@@ -23,7 +17,7 @@ const TabInfo= (props: any) => {
   )
 }
 
-const TabCarrousel= (props: any) => {
+const TabCarrousel= (props) => {
   // console.log("props.videogame.screnshoots", props)
   return (
     <>
@@ -32,10 +26,21 @@ const TabCarrousel= (props: any) => {
   )
   
 }
-const DetailScreen = ({route}:{route:any},{ navigation}:{navigation: any}) => {
+
+const TabExtra= (props) => {
+  // console.log("props TabExtra", props.videogame)
+  return (
+    <>
+     <CardExtra videogame= {props.videogame}  />
+    </>
+  )
+  
+}
+const DetailScreen = ({route,navigation}) => {
   // export default function DetailScreen () {
-    // console.log("videogame en Details--->screnshoots", route.params.videogame.screnshoots)
+    // console.log("videogame en DEtail", route.params)
     return (
+     
       <Tab.Navigator
       initialRouteName="Info"
       screenOptions={{
@@ -71,7 +76,7 @@ const DetailScreen = ({route}:{route:any},{ navigation}:{navigation: any}) => {
           )
         }}
       >
-        {props => <WorldScreen {...props} name="Nidavellir" />}
+          {props => <TabExtra {...props} videogame= {route.params.videogame} />}
       </Tab.Screen>
       
     </Tab.Navigator>

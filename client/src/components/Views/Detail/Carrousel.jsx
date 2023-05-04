@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import {View,Text,StyleSheet, FlatList,Image,Dimensions,SafeAreaView,Animated} from 'react-native'
-
+import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 import {LinearGradient} from "expo-linear-gradient";
 //npm i expo-linear-gradient
 
@@ -12,7 +12,7 @@ const espacio=10;
 const espacio_lateral=(width-contenedor)/2;
 const altura_backDrop= height* 0.5;
 
-function BackDrop(scrollX:number){
+function BackDrop(scrollX){
 // console.log("data en BrackDrop -->", scrollX.scrollX)
 //nota le envio dos variables pero solo me la reconoce en la primera props
   return (
@@ -22,7 +22,7 @@ function BackDrop(scrollX:number){
                 StyleSheet.absoluteFillObject)  
               }
     >
-      {scrollX.info.map((imagen :string,index :number)=>{
+      {scrollX.info.map((imagen ,index )=>{
         // console.log("esto esta dentro de scroll X info",imagen)
         const inputRange=[
           (index - 1) * contenedor,
@@ -45,7 +45,7 @@ function BackDrop(scrollX:number){
                         position: "absolute",
                         top:0,//estaba en cero
                         opacity,
-                        borderColor: 'white',
+                        borderColor: color_blanco,
                         
                       }]}
             />
@@ -59,7 +59,7 @@ function BackDrop(scrollX:number){
     </View>    
 )}
 
-export default function Carrousel(data :string) {
+export default function Carrousel(data) {
 // console.log("Data-->",data.data)
 
   const scrollX= React.useRef(new Animated.Value(0)).current;
@@ -73,7 +73,7 @@ export default function Carrousel(data :string) {
           [{nativeEvent: { contentOffset:{x:scrollX }}}],
           {useNativeDriver :true}
         )}
-        data={data.data.map( (el:string,index:number)=> {
+        data={data.data.map( (el,index)=> {
         // console.log("estes es el map de imagenes",el)
             return (
               {
@@ -111,14 +111,14 @@ export default function Carrousel(data :string) {
               <Animated.View style={{
                 marginHorizontal: espacio,
                 borderRadius:34,
-                backgroundColor: "#fff",
+                backgroundColor: color_blanco,
                 alignItems: "center",
                 transform: [{translateY}]
                 }}>
                 <Image source={{uri:item.img}} 
                         style={styles.posterImage}
                         />
-                <Text style={styles.name}>({item.key})</Text>
+                <Text style={styles.name}>Captura({item.key})</Text>
                </Animated.View> 
             </View> 
             )
@@ -133,7 +133,7 @@ export default function Carrousel(data :string) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: color_blanco,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
     
   },
   name:{
-    color:'red'
+    color:'red',
+    fontWeight: 'bold'
   }
 });
