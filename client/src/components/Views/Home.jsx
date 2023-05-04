@@ -1,13 +1,10 @@
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
 
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react'
 import {getvideoGames} from "../../redux/videogamesActions"
-
-
-
 
 const HomeScreen =({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
@@ -15,12 +12,11 @@ const HomeScreen =({ navigation, route})=>{
   
   const dispatch= useDispatch();
   useEffect(()=>{
-    console.log("entro aqui?")
+    
     dispatch(getvideoGames()) ;
   },[])
 
 
-  
 
   return (
     <View  style={styles.container}>
@@ -43,7 +39,7 @@ const HomeScreen =({ navigation, route})=>{
                       tiendas: el.tiendas,
                       etiquetas: el.etiquetas,
                       plataformas: el.plataformas,
-                      precio: Math.random() * (60 - 25)
+                      precio: (Math.random() * (100 - 45)).toFixed(2)
                     }
                   )})
       },
@@ -56,21 +52,16 @@ const HomeScreen =({ navigation, route})=>{
             { item.img ? <Image source={item.img} style={styles.image}/> 
                       : <Image source={require('../../assets/Unknown.jpg')} /> 
             }
-            <Button 
-              
-              title={"Ver Detalle"}
-              onPress={() =>
-              // navigation.navigate('Detail', { name: item.nombre , id: item.key })
-              
-              navigation.navigate('Detail', { 
-                                             videogame: item , 
-                                            //   nombre:item.nombre, 
-                                            // // rating: item.rating,
-                                            // // screnshoots: item.screnshoots,
-                                            // imagen: item.imagen
-                                          })
-              }
-              /> 
+             <TouchableOpacity onPress={() =>
+                  navigation.navigate('Detail', {videogame: item ,  })
+                }
+                
+            >     
+              <View style={styles.button}>
+                <Text style={styles.buttonText}>Ver Detalle</Text>
+              </View>
+            </TouchableOpacity>
+           
           </View>
           </>
           }
@@ -86,13 +77,13 @@ const styles = StyleSheet.create({
 
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: color_negro,
+    backgroundColor: color_blanco,
     alignItems: 'center',
     width: '100%',
   },
   
   title: {
-    color: color_naranja,
+    color: color_azul,
     fontSize:30,
     fontWeight:'700',
     alignItems: 'center',
@@ -105,44 +96,41 @@ const styles = StyleSheet.create({
     color: color_blanco
   },
    h2: {
-    color: '#FAE042',
+    color: color_azul,
     fontSize: 18,
     marginTop: 8,
     textAlign: 'center',
     alignItems: 'center',
+    fontWeight:'600'
   },
   button: {
     marginBottom: 30,
     width: 250,
+    height: 40,
     alignItems: 'center',
-    backgroundColor: color_verdeNeon,
-    borderRadius:8,
-
+    backgroundColor: color_azul,
+    
+    borderBottomEndRadius:8,
+    borderBottomStartRadius:8,
+    
   },
   buttonText: {
     textAlign: 'center',
-    padding: 20,
-    fontSize:40,
-  
-    color: color_negro,
+    padding: 2,
+    fontSize:20,
+    fontWeight:'bold',
+    color: color_blanco,
 
   },
   image: {
     width: 250,
     height: 300,
     justifyContent: 'center',
-    borderRadius: 8,
+    // borderTopEndRadius:8,
+    // borderTopStartRadius:8,
+    
   },
-  buttonContainer: {
-    backgroundColor: color_negro,
-    height:'100%',
-    width: '100%',
-    borderRadius: 5,
-    padding: 2,
-    margin: 2,
-    alignItems: 'center',
-    // justifyContent: ,
-  },
+
  
 });
 

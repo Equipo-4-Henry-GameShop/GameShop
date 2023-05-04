@@ -34,6 +34,7 @@ const Card = (videogame) => {
                         } 
              </View>
             
+        <Text style={styles.text}>Precio: {videogame.videogame.precio}</Text>
         <Text style={styles.text}>Fecha de Lanzamiento: {videogame.videogame.fecLan}</Text>
         <Text style={styles.text}>Rating: {videogame.videogame.rating}</Text>
         <View style={styles.estrella}>
