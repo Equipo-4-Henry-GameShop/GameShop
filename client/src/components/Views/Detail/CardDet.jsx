@@ -2,24 +2,10 @@ import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
 
 import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
-let videogametype: {
-    key: string;
-    img: {
-        uri: string;
-    };
-    nombre: string;
-    fecLan: string;
-    screenshots: string[];
-    informacion: string;
-    rating: number;
-    generos: string[];
-    tiendas: string[];
-    etiquetas: string[];
-    
-}
-const Card = (videogame:typeof videogametype) => {
+
+const Card = (videogame) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
-    function estrellitas(index:number) {
+    function estrellitas(index) {
         // console.log("entro una estreilla");
         return <Image source={require('../../../assets/star.png')} key={index} style={{width: '7%', height: '100%'}}/>
     }  
@@ -62,7 +48,7 @@ const Card = (videogame:typeof videogametype) => {
   
       flex: 1,
       justifyContent: 'space-between',
-      backgroundColor: color_crema,
+      backgroundColor: color_naranja,
       alignItems: 'center',
       width: '100%',
       height: '100%',

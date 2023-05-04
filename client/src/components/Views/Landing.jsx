@@ -5,7 +5,7 @@ import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} fro
 // import { Text, View, } from '../components/Themed';
 import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
 
-const Landing =({ navigation}:{navigation: any}, {route}:{route:any})=>{
+const Landing =({ navigation, route})=>{
     return (
       <View style={styles.container}>
         <Text style={styles.title}>GameShop</Text>
