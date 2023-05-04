@@ -1,6 +1,6 @@
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
 
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from './src/constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from './src/constants/Colors'
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -30,11 +30,12 @@ export default function App() {
                 options={{ 
                   title: 'Bienvenido Jugadoraso',
                   headerStyle: {
-                    backgroundColor: color_naranja,
+                    backgroundColor: color_azul,
                   },
                   headerTintColor: color_blanco,
                   headerTitleStyle: {
                     fontWeight: 'bold',
+                    fontSize:25
                   }
                 }}
        />
@@ -42,10 +43,32 @@ export default function App() {
                 name="Home" 
                 component={Home} 
                 initialParams={{ fromChild: 'Initial' }} 
+                options={{ 
+                  title: 'Home',
+                  headerStyle: {
+                    backgroundColor: color_azul,
+                  },
+                  headerTintColor: color_blanco,
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize:25
+                  }
+                }}
        />
         <Stack.Screen 
           name='Detail'
           component={Detail} 
+          options={{ 
+            title: 'Detail',
+            headerStyle: {
+              backgroundColor: color_azul,
+            },
+            headerTintColor: color_blanco,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize:25
+            }
+          }}
           // options={({ route }) => ({ title: route.params.name }: any)}
         />
         

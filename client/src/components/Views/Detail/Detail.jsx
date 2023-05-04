@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList,FlatList} from 'react-native';
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+import {color_blanco, color_azul, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import CardDet from './CardDet';
@@ -42,13 +42,22 @@ const DetailScreen = ({route,navigation}) => {
     return (
      
       <Tab.Navigator
-      initialRouteName="Info"
+      initialRouteName="Información"
+      
       screenOptions={{
-        "tabBarActiveTintColor": "darkred"
+        "tabBarActiveTintColor": "darkred",
+        headerStyle: {
+          backgroundColor: color_blanco,
+        },
+        headerTintColor: color_azul,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize:25,
+        }
       }}
     >
        <Tab.Screen 
-        name="Info" 
+        name="Información" 
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="information-circle-outline" color={color} size={size} />
@@ -59,7 +68,7 @@ const DetailScreen = ({route,navigation}) => {
       </Tab.Screen>
 
       <Tab.Screen 
-        name="ScreenShoots" 
+        name="Capturas de Pantalla" 
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="images-outline" color={color} size={size} />
