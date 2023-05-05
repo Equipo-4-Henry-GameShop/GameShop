@@ -1,13 +1,16 @@
-import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
-
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+import { StyleSheet ,Image, Text, View, Button,SectionList, ActivityIndicator} from 'react-native';
+// import {Image} from 'react-native-elements'
+import {color_blanco, color_azul, color_gris, color_naranja, color_naranja_claro, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 
 const Card = (videogame) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
     function estrellitas(index) {
         // console.log("entro una estreilla");
-        return <Image source={require('../../../assets/star.png')} key={index} style={{width: '7%', height: '100%'}}/>
+        return <Image source={require('../../../assets/star.png')} 
+                      key={index} style={{width: '7%', height: '100%'}}
+                      // PlaceholderContent={<ActivityIndicator color={color_azul}/>}
+                      />
     }  
    
     //con esta fraccion de codigo redondeo el valor de rating y creo n estrellas de dibujo
@@ -29,14 +32,17 @@ const Card = (videogame) => {
              <Text style={styles.text}>{videogame.videogame.informacion}</Text>              
                
               <View style={styles.imageContenedor}>
-                { videogame.videogame.img ? <Image source={videogame.videogame.img} style={styles.image}/> 
-                            : <Image source={require('../../../assets/Unknown.jpg')} /> 
+                { videogame.videogame.img ? <Image source={videogame.videogame.img} 
+                                                  style={styles.image}
+                                                  // PlaceholderContent={<ActivityIndicator color={color_azul}/>}
+                                                  /> 
+                                          : <Image source={require('../../../assets/Unknown.jpg')} /> 
                         } 
              </View>
             
-        <Text style={styles.text}>Precio: {videogame.videogame.precio}</Text>
-        <Text style={styles.text}>Fecha de Lanzamiento: {videogame.videogame.fecLan}</Text>
-        <Text style={styles.text}>Rating: {videogame.videogame.rating}</Text>
+        <Text style={styles.txtprecio}>$ {videogame.videogame.precio}</Text>
+        <Text style={styles.txtfeclan}>Lanzamiento: {videogame.videogame.fecLan}</Text>
+        <Text style={styles.txxtRat}>Rating: {videogame.videogame.rating}</Text>
         <View style={styles.estrella}>
             {starArr}
         </View>
@@ -49,51 +55,26 @@ const Card = (videogame) => {
   
       flex: 1,
       justifyContent: 'space-between',
-      backgroundColor: color_naranja,
+      backgroundColor: color_gris,
       alignItems: 'center',
       width: '100%',
       height: '100%',
     },
     
     title: {
-      color: color_blanco,
+      color: color_rojoNeon,
       fontSize: 25,
       fontWeight:'700',
       alignItems: 'center',
       alignContent: 'center',
     },
     text: {
-        color: color_blanco,
-        fontSize: 20,
+        color: color_negro,
+        fontSize: 15,
         fontWeight:'700',
+        textAlign: 'justify'
       },
-    separator: {
-      marginVertical: 30,
-      height: 5,
-      width: '80%',
-      color: color_blanco
-    },
-     h2: {
-      color: '#FAE042',
-      fontSize: 18,
-      marginTop: 8,
-    },
-    button: {
-      marginBottom: 30,
-      width: 250,
-      alignItems: 'center',
-      backgroundColor: color_verdeNeon,
-      borderRadius:8,
-  
-    },
-    buttonText: {
-      textAlign: 'center',
-      padding: 20,
-      fontSize:40,
-    
-      color: color_negro,
-  
-    },
+      
     image: {
         flex:1,
       width: '100%',
@@ -106,23 +87,14 @@ const Card = (videogame) => {
     imageContenedor: {
         // flex:1,
         width: '75%',
-        height: '55%',
+        height: '45%',
         justifyContent: 'flex-start',
         alignContent: 'center',
         // backgroundColor: color_negro,
         padding:0,
-        marginTop:20,
+        marginTop:10,
       },
-    buttonContainer: {
-      backgroundColor: color_negro,
-      height:'100%',
-      width: '100%',
-      borderRadius: 5,
-      padding: 2,
-      margin: 2,
-      alignItems: 'center',
-      // justifyContent: ,
-    },
+    
     estrella:{
    
         flexDirection:'row',
@@ -134,6 +106,24 @@ const Card = (videogame) => {
         alignContent: 'center',
     //    backgroundColor:color_gris,
        padding:1
+    },
+    txtfeclan:{
+      color: color_naranja_claro,
+      fontSize: 20,
+      fontWeight:'bold',
+      textAlign: 'justify'
+    },
+    txtprecio:{
+      color: color_naranja_claro,
+      fontSize: 35,
+      fontWeight:'bold',
+      textAlign: 'justify'
+    },
+    txxtRat:{
+      color: color_naranja_claro,
+      fontSize: 20,
+      fontWeight:'bold',
+      textAlign: 'justify'
     }
    
   });

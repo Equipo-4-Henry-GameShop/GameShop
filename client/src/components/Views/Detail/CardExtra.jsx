@@ -1,6 +1,6 @@
 import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 
 const CardExtra = (videogame) => {
@@ -68,14 +68,14 @@ const CardExtra = (videogame) => {
   
       flex: 1,
       justifyContent: 'space-between',
-      backgroundColor: color_naranja,
+      backgroundColor: color_gris,
       alignItems: 'center',
       width: '100%',
       height: '100%',
     },
     
     title: {
-      color: color_blanco,
+      color: color_rojoNeon,
       fontSize: 25,
       fontWeight:'700',
       alignItems: 'center',
@@ -84,7 +84,7 @@ const CardExtra = (videogame) => {
       fontWeight: '800'
     },
     text: {
-        color: color_negro,
+        color: color_azul,
       fontSize: 18,
       marginTop: 8,
       fontWeight: '800'
