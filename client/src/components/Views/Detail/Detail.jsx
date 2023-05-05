@@ -38,7 +38,7 @@ const TabExtra= (props) => {
 }
 const DetailScreen = ({route,navigation}) => {
   // export default function DetailScreen () {
-    // console.log("videogame en DEtail", route.params)
+    // console.log("videogame en DEtail")
     return (
      
       <Tab.Navigator

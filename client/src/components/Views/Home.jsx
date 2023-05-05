@@ -1,10 +1,11 @@
-import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
-
+import { StyleSheet ,TouchableOpacity, Text, View, SectionList, ActivityIndicator} from 'react-native';
+import {Image} from 'react-native-elements'
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react'
 import {getvideoGames} from "../../redux/videogamesActions"
+import CardHome from '../Extras/CardHome';
 
 const HomeScreen =({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
@@ -24,7 +25,7 @@ const HomeScreen =({ navigation, route})=>{
     // <SectionList 
     sections={[
       {
-        title: 'Videojuegos Parte 1', 
+        // title: 'Videojuegos Parte 1', 
         data: vGames.videoGames.map( (el)=> {
                   return (
                     {
@@ -33,7 +34,7 @@ const HomeScreen =({ navigation, route})=>{
                       nombre:el.nombre ,
                       fecLan: el.fecLan,
                       screnshoots: el.screnshoots,
-                      informacion: 'ipsom lupsum',
+                      informacion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit risus et felis malesuada, in interdum turpis lacinia. Donec gravida tincidunt mollis. Donec luctus est non iaculis ultricies. In bibendum turpis et odio mollis, ac tincidunt dui efficitur. Vivamus iaculis a eros nec congue. Donec neque metus, blandit condimentum velit nec, eleifend scelerisque tellus. Vestibulum sed pretium dui, quis bibendum dui.',
                       rating: el.rating,
                       generos: el.genres,
                       tiendas: el.tiendas,
@@ -46,25 +47,11 @@ const HomeScreen =({ navigation, route})=>{
      
     ]}
     renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
-      <>
-          <View>
-            <Text style={styles.h2}>{item.nombre}</Text>
-            { item.img ? <Image source={item.img} style={styles.image}/> 
-                      : <Image source={require('../../assets/Unknown.jpg')} /> 
-            }
-             <TouchableOpacity onPress={() =>
-                  navigation.navigate('Detail', {videogame: item ,  })
-                }
-                
-            >     
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Ver Detalle</Text>
-              </View>
-            </TouchableOpacity>
-           
-          </View>
-          </>
-          }
+      <>  
+          <CardHome data={item} navigation={navigation}/>
+          
+      </>
+    }
     renderSectionHeader={({section}) => <Text style={styles.title}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
           // keyExtractor={(item, index) => index}
     />
