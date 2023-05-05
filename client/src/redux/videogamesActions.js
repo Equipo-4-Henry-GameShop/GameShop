@@ -1,6 +1,7 @@
-import {getAllVideogames, addUser} from "./videogamesSlice";
+import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage} from "./videogamesSlice";
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
+
 export const  getvideoGames = () =>(dispatch)=>{
        // axios("http://localhost:3001/videogames")
     //notax ahora no usamos data de api o servidor para no tener problemas de nombre de campos
@@ -16,4 +17,23 @@ fetch("https://jsonplaceholder.typicode.com/users/2")
     .then((res) =>res.json())
     .then((data)=> dispatch(addUser(data)))
     .catch((error)=> console.log(error))
+}
+
+export const setNxtPage=()=>{
+    return  function(dispatch){
+           dispatch(setNextPage())
+    }
+}
+
+export const setPrvPage=()=>{
+    return  function(dispatch){
+           dispatch(setPrevPage())
+    }
+}
+
+export const setMxPage=(maximo)=>{
+    
+    return  function(dispatch){
+           dispatch(setMaxPage(maximo))
+    }
 }
