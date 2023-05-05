@@ -59,30 +59,34 @@ export default function CardHome(data) {
 
 const styles = StyleSheet.create({
   container: {
-   flexDirection:'row',
-    // justifyContent: 'space-between',
-     backgroundColor: color_blanco,
-    // alignItems: 'center',
-     width: '98%',
-     margin: 10,
+    // borderColor: color_rojoNeon,
+    // borderWidth: 1,
+
+
+    flexDirection:'row',
+    backgroundColor: color_blanco,
+    alignItems: 'center',
+    width: '98%',
+    margin: 4,
   },
   viewImageContainer: {
-    // alignItems: 'center',
+    alignItems: 'center',
     // flex:1
     width: '50%',
-    marginRight: 15 
-    , 
+    marginRight: 10 , 
+    marginLeft:1
   },
   viewInforContainer: {
     // alignItems: ',
     // flex:4,
-    width: '40%',
+    marginLeft: 5,
+    width: '45%',
   },
   viewEstrellas: {
     flexDirection : 'row'
   },
   image: {
-    width: 200,
+    width: 174,
     height: 200,
     borderRadius:8,   
   },
@@ -96,7 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   Precio :{
-    padding:15,
+    padding:10,
     fontSize: 30,
     color: color_rojoNeon,
     fontWeight: 'bold',
