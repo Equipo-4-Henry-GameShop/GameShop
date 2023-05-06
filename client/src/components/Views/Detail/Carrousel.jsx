@@ -38,7 +38,7 @@ function BackDrop(scrollX){
         return(
             <Animated.Image source={{uri: imagen}} 
                       key={index}
-                      blurRadius={1}//esto le quita nitidez a la imagen de fondo
+                      // blurRadius={1}//esto le quita nitidez a la imagen de fondo
                       style={[{
                         height:altura_backDrop,
                         width,
