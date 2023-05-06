@@ -8,7 +8,7 @@ const initialState={
     flag_prev:false,
     videoGame:[],
     pagina:1,
-    porPagina:10,
+    porPagina:12,
     input:1,
     maximo:0,
     msgerror:"NULL",
@@ -26,10 +26,10 @@ export const videogamesSlice= createSlice({
             state.videoGame=action.payload
         },
         setNextPage: (state,action)=>{
-            state.pagina=pagina +1 
+            state.pagina=state.pagina +1 
         },
         setPrevPage: (state,action)=>{
-            state.pagina=pagina -1
+            state.pagina=state.pagina -1
         },
         setMaxPage : (state,action)=>{
             state.pagina=action.payload

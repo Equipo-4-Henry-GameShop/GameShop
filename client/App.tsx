@@ -8,8 +8,6 @@ import Home from './src/components/Views/Home'
 import Detail from './src/components/Views/Detail/Detail'
 import Landing from './src/components/Views/Landing'
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import store from './src/redux/store'
 

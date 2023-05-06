@@ -1,10 +1,10 @@
 import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator} from 'react-native';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react'
-import {getvideoGames} from "../../redux/videogamesActions"
+import {getvideoGames, setNxtPage,setPrvPage} from "../../redux/videogamesActions"
 import CardHome from '../Extras/CardHome';
 
 
@@ -21,17 +21,35 @@ const HomeScreen =({ navigation, route})=>{
     dispatch(getvideoGames()) ;
   },[])
 
-  // console.log("por Pagina", vGames.porPagina),
-  // console.log("pagina",pagina);
+  const NextPage=()=>{
+    if(maximo===pagina){
+      alert("Ya se encuentra ubicado en la ultima pagina")
+      return
+    }
+      dispatch(setNxtPage())
+  }
+  const PrevPage=()=>{
+      if(pagina===1) {
+        alert("Ya se encuentra ubicado en la Primera pagina")
+        return
+      }
+      dispatch(setPrvPage())
+  }
   return (
     <View  style={styles.container}>
       <View style={styles.Navback}>
-          <Button
-          // onPress={onPressLearnMore}
+          {/* <Button
+          onPress={PrevPage}
           title="<"
+
           color= {color_azul}
           
-        />
+        /> */}
+        <TouchableOpacity onPress={PrevPage}>
+          < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
+          {/* <ion-icon name="chevron-back-circle-sharp"></ion-icon> */}
+        </TouchableOpacity>
+        
       </View>
       <View style={styles.List}>
         <SectionList
@@ -73,11 +91,10 @@ const HomeScreen =({ navigation, route})=>{
         
       </View>
       <View style={styles.NavNext}>
-        <Button
-            // onPress={onPressLearnMore}
-            title=">"
-            color= {color_azul}
-          />
+      <TouchableOpacity onPress={NextPage}>
+          < MaterialCommunityIcons name="chevron-forward-circle-sharp" size={30}/>
+          
+        </TouchableOpacity>
       </View>
     </View>
     );
@@ -90,15 +107,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: color_blanco,
     alignItems: 'center',
-    width: '100%',
+    width: '99%',
     flexDirection: 'row',
   },
   Navback:{
-    width: '5%',
+    width: '6%',
       // backgroundColor: color_crema,
   },
   List:{
-    width: '90%',
+    width: '89%',
     height: '100%',
     // backgroundColor: color_azul,
     alignContent: 'center',
@@ -106,7 +123,7 @@ const styles = StyleSheet.create({
 
   },
   NavNext:{
-    width: '5%',
+    width: '6%',
     // backgroundColor: color_neon,
   },
   cabecera:{
@@ -114,9 +131,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: color_azul,
     fontWeight: 'bold',
-    fontSize:20,
-    
-    textAlign: 'center'
+    fontSize:25,
+    // fontFamily: 'Black Ops One',
+    textAlign: 'center',
 
   }
   ,

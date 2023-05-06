@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {Image} from 'react-native-elements'
-import { color_rojoNeon,color_azul, color_blanco } from '../../constants/Colors'
+import { color_rojoNeon,color_azul, color_blanco, color_rojo } from '../../constants/Colors'
 import {size} from 'lodash'
 
 
@@ -59,25 +59,27 @@ export default function CardHome(data) {
 
 const styles = StyleSheet.create({
   container: {
-    // borderColor: color_rojoNeon,
+    // borderColor: color_rojo,
     // borderWidth: 1,
 
 
     flexDirection:'row',
     backgroundColor: color_blanco,
     alignItems: 'center',
-    width: '98%',
-    margin: 4,
+    width: '100%',
+    
+    marginBottom: 4,
+    marginTop:4 ,
   },
   viewImageContainer: {
     alignItems: 'center',
     // flex:1
     width: '50%',
-    marginRight: 10 , 
-    marginLeft:1
+    // marginRight: 10 , 
+    marginLeft:8
   },
   viewInforContainer: {
-    // alignItems: ',
+    
     // flex:4,
     marginLeft: 5,
     width: '45%',
