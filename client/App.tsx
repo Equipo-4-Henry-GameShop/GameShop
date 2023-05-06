@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/components/Views/Home'
 import Detail from './src/components/Views/Detail/Detail'
 import Landing from './src/components/Views/Landing'
+import Create from './src/components/Views/Create/CreateUser';
 
 import { Provider } from 'react-redux'
 import store from './src/redux/store'
@@ -58,6 +59,22 @@ export default function App() {
           component={Detail} 
           options={{ 
             title: 'Detail',
+            headerStyle: {
+              backgroundColor: color_azul,
+            },
+            headerTintColor: color_blanco,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize:25
+            }
+          }}
+          // options={({ route }) => ({ title: route.params.name }: any)}
+        />
+                <Stack.Screen 
+          name='Create'
+          component={Create} 
+          options={{ 
+            title: 'Create',
             headerStyle: {
               backgroundColor: color_azul,
             },
