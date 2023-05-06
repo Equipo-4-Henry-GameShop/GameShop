@@ -10,6 +10,7 @@ export const color_blanco='#FFFFFF';
 export const color_gris='#D9D9D9';
 export const color_neon='#E630D3';
 export const color_rojo='red';
+export const color_azul='#4528F4';
 
 export default {
   light: {
