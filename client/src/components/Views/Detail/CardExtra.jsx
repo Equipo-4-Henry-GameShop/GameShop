@@ -5,9 +5,12 @@ import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_
 
 const CardExtra = (videogame) => {
     
-    // console.log("extra car", videogame.videogame)
+    console.log("extra requerimientos", videogame.videogame.requerimientos)
     return (
         <View  style={styles.container}>
+          <Text> Requerimientos Minimos</Text>
+          {/* <Text>{videogame.videogame.requerimientos}</Text> */}
+
          <SectionList
         // <SectionList 
         sections={[
@@ -27,22 +30,23 @@ const CardExtra = (videogame) => {
                      }
                     )})
           },
-          {
-            title: 'Etiquetas', 
-            data: videogame.videogame.etiquetas.map( (el)=> {
-                     return (  {
-                        key: `${el}`,      nombre:el,
-                     }
-                    )})
+           {
+            title: 'Requerimientos', 
+            data: videogame.videogame.requerimientos
+            // .map( (el)=> {
+                    //  return (  {
+                    //     key: `${el}`,      nombre:el,
+                    //  }
+                    // )})
           },
-          {
-            title: 'Tiendas Virtuales', 
-            data: videogame.videogame.tiendas.map( (el)=> {
-                     return (  {
-                        key: `${el}`,      nombre:el,
-                     }
-                    )})
-          },
+          // {
+          //   title: 'Tiendas Virtuales', 
+          //   data: videogame.videogame.tiendas.map( (el)=> {
+          //            return (  {
+          //               key: `${el}`,      nombre:el,
+          //            }
+          //           )})
+          // },
          
         ]}
         renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
