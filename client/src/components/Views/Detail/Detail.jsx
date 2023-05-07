@@ -74,8 +74,8 @@ const DetailScreen = ({route,navigation}) => {
             <MaterialCommunityIcons name="images-outline" color={color} size={size} />
           )
         }}>
-
-        {props => <TabCarrousel {...props} data={route.params.videogame.screnshoots} />}
+                          {/* //=> navigation:{navigation} route:{route}       */}
+        {props => <TabCarrousel {...props} data={route.params.videogame.screenshoots} />}
       </Tab.Screen>
       <Tab.Screen 
         name="Extra" 
