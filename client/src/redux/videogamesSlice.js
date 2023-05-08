@@ -19,8 +19,15 @@ export const videogamesSlice= createSlice({
     initialState,
     reducers:{//noc xq pero aqui es plural
         getAllVideogames: (state,action)=>{
-            
+            // console.log("lo q llega a reducer",action.payload)
+
             state.videoGames= action.payload;
+        },
+        getVideogamesbyName: (state,action)=>{
+            state.videoGames= action.payload;
+        },
+        setPrevVideoGame: (state,action)=>{
+            state.videoGames_Prev= action.payload;
         },
         getVideogamebyId: (state,action)=>{
             state.videoGame=action.payload
@@ -38,5 +45,6 @@ export const videogamesSlice= createSlice({
     }
 })
 
-export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setPrevPage,setMaxPage}=videogamesSlice.actions
+export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame}=videogamesSlice.actions
 export default videogamesSlice.reducer

@@ -1,11 +1,12 @@
-import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator} from 'react-native';
+import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator, Alert,Image} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
-import { useEffect } from 'react'
-import {getvideoGames, setNxtPage,setPrvPage} from "../../redux/videogamesActions"
+import { useEffect ,useState} from 'react'
+import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName} from "../../redux/videogamesActions"
 import CardHome from '../Extras/CardHome';
+import { Searchbar } from 'react-native-paper';
 
 
 const HomeScreen =({ navigation, route})=>{
@@ -13,11 +14,11 @@ const HomeScreen =({ navigation, route})=>{
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
-  // console.log(porPagina)
+  const [searchQuery, setSearchQuery] = useState('');
   
   const dispatch= useDispatch();
   useEffect(()=>{
-    
+    // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
 
@@ -35,28 +36,43 @@ const HomeScreen =({ navigation, route})=>{
       }
       dispatch(setPrvPage())
   }
+  const onChangeSearch = (query) => {
+    // console.log("caracter en home", query)
+    setSearchQuery(query);
+    dispatch(getvGamebyName(query))
+  }
+  const onCloseSearch = () => {
+    // console.log("limpiando valores de busqueda");
+    dispatch(getvideoGames()) ;
+  }
   return (
     <View  style={styles.container}>
       <View style={styles.Navback}>
-          {/* <Button
-          onPress={PrevPage}
-          title="<"
-
-          color= {color_azul}
-          
-        /> */}
-        <TouchableOpacity onPress={PrevPage}>
-          < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
-          {/* <ion-icon name="chevron-back-circle-sharp"></ion-icon> */}
-        </TouchableOpacity>
+            <TouchableOpacity onPress={PrevPage}>
+               < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
+            </TouchableOpacity> 
+            
+              <Image source={require('../../assets/Unknown.jpg')} />
+            
         
       </View>
       <View style={styles.List}>
+        <Searchbar
+        autoFocus={true}
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        onClearIconPress={onCloseSearch}
+        value={searchQuery}
+        inputStyle={styles.SearchbarText}
+        style={styles.Searchbarfondo}
+        iconColor={color_blanco}
+      />
         <SectionList
-        // <SectionList 
+         // // //  , 
         sections={[
           {
-            title: `Pagina  ${pagina} de  ${maximo}`, 
+            title: `Pagina  ${pagina} de ${maximo}` ,
+           
             data : vGames.videoGames.slice(
                       (pagina-1)*porPagina,
                       (pagina-1)*porPagina+porPagina)
@@ -65,16 +81,26 @@ const HomeScreen =({ navigation, route})=>{
                     return ({
                                     key: `${el.id}`, 
                                     img: {uri:el.image }, 
-                                    nombre:el.nombre ,
-                                    fecLan: el.fecLan,
-                                    screnshoots: el.screnshoots,
+                                    nombre:el.name ,
+                                    fecLan: el.released,
+                                    // screnshoots: el.screnshoots,
+                                    screenshoots:[
+                                      "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
+                                      "https://media.rawg.io/media/screenshots/a7c/a7c43871a54bed6573a6a429451564ef.jpg",
+                                      "https://media.rawg.io/media/screenshots/cf4/cf4367daf6a1e33684bf19adb02d16d6.jpg",
+                                      "https://media.rawg.io/media/screenshots/f95/f9518b1d99210c0cae21fc09e95b4e31.jpg",
+                                      "https://media.rawg.io/media/screenshots/a5c/a5c95ea539c87d5f538763e16e18fb99.jpg",
+                                      "https://media.rawg.io/media/screenshots/a7e/a7e990bc574f4d34e03b5926361d1ee7.jpg",
+                                      "https://media.rawg.io/media/screenshots/592/592e2501d8734b802b2a34fee2df59fa.jpg"
+                                    ],
                                     informacion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit risus et felis malesuada, in interdum turpis lacinia. Donec gravida tincidunt mollis. Donec luctus est non iaculis ultricies. In bibendum turpis et odio mollis, ac tincidunt dui efficitur. Vivamus iaculis a eros nec congue. Donec neque metus, blandit condimentum velit nec, eleifend scelerisque tellus. Vestibulum sed pretium dui, quis bibendum dui.',
                                     rating: el.rating,
-                                    generos: el.genres,
+                                    generos: el.genre,
                                     tiendas: el.tiendas,
                                     etiquetas: el.etiquetas,
-                                    plataformas: el.plataformas,
-                                    precio: (Math.random() * (100 - 45)).toFixed(2)
+                                    plataformas: el.platforms,
+                                    precio: (Math.random() * (100 - 45)).toFixed(2),
+                                    requerimientos:el.requeriments_en.map(el=>el)
                                   })
                     })   
           },
@@ -109,6 +135,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '99%',
     flexDirection: 'row',
+  },
+  SearchbarText:{
+    color: color_naranja,
+    fontSize: 25,
+    fontWeight: 'bold',
+    
+  },
+  Searchbarfondo:{
+    margin:5, 
+    backgroundColor: color_negro,
+    height:50,
   },
   Navback:{
     width: '6%',

@@ -32,7 +32,7 @@ export default function CardHome(data) {
                 { data.data.img ? <Image 
                                 source={data.data.img} 
                                 style={styles.image}
-                                PlaceholderContent={<ActivityIndicator color={color_azul}/>}
+                                PlaceholderContent={<ActivityIndicator color={color_azul} size={"large"}/>}
                               /> 
                           : <Image source={require('../../assets/Unknown.jpg')} /> 
                 }

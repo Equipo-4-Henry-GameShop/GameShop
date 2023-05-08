@@ -1,7 +1,7 @@
 export const videogames=[
 	{
 		"id": 3498,
-		"nombre": "Grand Theft Auto V",
+		"name": "Grand Theft Auto V",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 5",
@@ -13,7 +13,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-		"fecLan": "2013-09-17",
+		"released": "2013-09-17",
 		"rating": 4.47,
 		"genres": [
 			"Action",
@@ -60,7 +60,7 @@ export const videogames=[
 	},
 	{
 		"id": 3328,
-		"nombre": "The Witcher 3: Wild Hunt",
+		"name": "The Witcher 3: Wild Hunt",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox Series S/X",
@@ -71,7 +71,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg",
-		"fecLan": "2015-05-18",
+		"released": "2015-05-18",
 		"rating": 4.66,
 		"genres": [
 			"Action",
@@ -120,7 +120,7 @@ export const videogames=[
 	},
 	{
 		"id": 4200,
-		"nombre": "Portal 2",
+		"name": "Portal 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -131,7 +131,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-		"fecLan": "2011-04-18",
+		"released": "2011-04-18",
 		"rating": 4.62,
 		"genres": [
 			"Shooter",
@@ -183,7 +183,7 @@ export const videogames=[
 	},
 	{
 		"id": 5286,
-		"nombre": "Tomb Raider (2013)",
+		"name": "Tomb Raider (2013)",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -194,7 +194,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg",
-		"fecLan": "2013-03-05",
+		"released": "2013-03-05",
 		"rating": 4.05,
 		"genres": [
 			"Action",
@@ -240,7 +240,7 @@ export const videogames=[
 	},
 	{
 		"id": 4291,
-		"nombre": "Counter-Strike: Global Offensive",
+		"name": "Counter-Strike: Global Offensive",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -248,7 +248,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
-		"fecLan": "2012-08-21",
+		"released": "2012-08-21",
 		"rating": 3.56,
 		"genres": [
 			"Action",
@@ -298,7 +298,7 @@ export const videogames=[
 	},
 	{
 		"id": 13536,
-		"nombre": "Portal",
+		"name": "Portal",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -310,7 +310,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/7fa/7fa0b586293c5861ee32490e953a4996.jpg",
-		"fecLan": "2007-10-09",
+		"released": "2007-10-09",
 		"rating": 4.51,
 		"genres": [
 			"Adventure",
@@ -356,7 +356,7 @@ export const videogames=[
 	},
 	{
 		"id": 12020,
-		"nombre": "Left 4 Dead 2",
+		"name": "Left 4 Dead 2",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -365,7 +365,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/d58/d588947d4286e7b5e0e12e1bea7d9844.jpg",
-		"fecLan": "2009-11-17",
+		"released": "2009-11-17",
 		"rating": 4.09,
 		"genres": [
 			"Action",
@@ -418,7 +418,7 @@ export const videogames=[
 	},
 	{
 		"id": 5679,
-		"nombre": "The Elder Scrolls V: Skyrim",
+		"name": "The Elder Scrolls V: Skyrim",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -427,7 +427,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-		"fecLan": "2011-11-11",
+		"released": "2011-11-11",
 		"rating": 4.42,
 		"genres": [
 			"Action",
@@ -478,7 +478,7 @@ export const videogames=[
 	},
 	{
 		"id": 4062,
-		"nombre": "BioShock Infinite",
+		"name": "BioShock Infinite",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -490,7 +490,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/fc1/fc1307a2774506b5bd65d7e8424664a7.jpg",
-		"fecLan": "2013-03-26",
+		"released": "2013-03-26",
 		"rating": 4.39,
 		"genres": [
 			"Action",
@@ -541,7 +541,7 @@ export const videogames=[
 	},
 	{
 		"id": 28,
-		"nombre": "Red Dead Redemption 2",
+		"name": "Red Dead Redemption 2",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -549,7 +549,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg",
-		"fecLan": "2018-10-26",
+		"released": "2018-10-26",
 		"rating": 4.59,
 		"genres": [
 			"Action",
@@ -609,7 +609,7 @@ export const videogames=[
 	},
 	{
 		"id": 3439,
-		"nombre": "Life is Strange",
+		"name": "Life is Strange",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -623,7 +623,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
-		"fecLan": "2015-01-29",
+		"released": "2015-01-29",
 		"rating": 4.11,
 		"genres": [
 			"Adventure"
@@ -676,7 +676,7 @@ export const videogames=[
 	},
 	{
 		"id": 802,
-		"nombre": "Borderlands 2",
+		"name": "Borderlands 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -688,7 +688,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/49c/49c3dfa4ce2f6f140cc4825868e858cb.jpg",
-		"fecLan": "2012-09-18",
+		"released": "2012-09-18",
 		"rating": 4.02,
 		"genres": [
 			"Action",
@@ -740,7 +740,7 @@ export const videogames=[
 	},
 	{
 		"id": 13537,
-		"nombre": "Half-Life 2",
+		"name": "Half-Life 2",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -751,7 +751,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/b8c/b8c243eaa0fbac8115e0cdccac3f91dc.jpg",
-		"fecLan": "2004-11-16",
+		"released": "2004-11-16",
 		"rating": 4.49,
 		"genres": [
 			"Action",
@@ -799,7 +799,7 @@ export const videogames=[
 	},
 	{
 		"id": 4286,
-		"nombre": "BioShock",
+		"name": "BioShock",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -808,7 +808,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/bc0/bc06a29ceac58652b684deefe7d56099.jpg",
-		"fecLan": "2007-08-21",
+		"released": "2007-08-21",
 		"rating": 4.36,
 		"genres": [
 			"Action",
@@ -854,7 +854,7 @@ export const videogames=[
 	},
 	{
 		"id": 1030,
-		"nombre": "Limbo",
+		"name": "Limbo",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -870,7 +870,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg",
-		"fecLan": "2010-07-21",
+		"released": "2010-07-21",
 		"rating": 4.15,
 		"genres": [
 			"Adventure",
@@ -920,14 +920,14 @@ export const videogames=[
 	},
 	{
 		"id": 58175,
-		"nombre": "God of War (2018)",
+		"name": "God of War (2018)",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg",
-		"fecLan": "2018-04-20",
+		"released": "2018-04-20",
 		"rating": 4.59,
 		"genres": [
 			"Action",
@@ -981,7 +981,7 @@ export const videogames=[
 	},
 	{
 		"id": 32,
-		"nombre": "Destiny 2",
+		"name": "Destiny 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -992,7 +992,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/34b/34b1f1850a1c06fd971bc6ab3ac0ce0e.jpg",
-		"fecLan": "2017-09-06",
+		"released": "2017-09-06",
 		"rating": 3.55,
 		"genres": [
 			"Action",
@@ -1064,7 +1064,7 @@ export const videogames=[
 	},
 	{
 		"id": 3070,
-		"nombre": "Fallout 4",
+		"name": "Fallout 4",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -1072,7 +1072,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/d82/d82990b9c67ba0d2d09d4e6fa88885a7.jpg",
-		"fecLan": "2015-11-09",
+		"released": "2015-11-09",
 		"rating": 3.79,
 		"genres": [
 			"Action",
@@ -1117,7 +1117,7 @@ export const videogames=[
 	},
 	{
 		"id": 2454,
-		"nombre": "DOOM (2016)",
+		"name": "DOOM (2016)",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -1126,7 +1126,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/c4b/c4b0cab189e73432de3a250d8cf1c84e.jpg",
-		"fecLan": "2016-05-13",
+		"released": "2016-05-13",
 		"rating": 4.38,
 		"genres": [
 			"Action",
@@ -1173,7 +1173,7 @@ export const videogames=[
 	},
 	{
 		"id": 11859,
-		"nombre": "Team Fortress 2",
+		"name": "Team Fortress 2",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -1181,7 +1181,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg",
-		"fecLan": "2007-10-10",
+		"released": "2007-10-10",
 		"rating": 3.67,
 		"genres": [
 			"Action",
@@ -1235,7 +1235,7 @@ export const videogames=[
 	},
 	{
 		"id": 3939,
-		"nombre": "PAYDAY 2",
+		"name": "PAYDAY 2",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -1243,7 +1243,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg",
-		"fecLan": "2013-08-13",
+		"released": "2013-08-13",
 		"rating": 3.51,
 		"genres": [
 			"Action",
@@ -1290,14 +1290,14 @@ export const videogames=[
 	},
 	{
 		"id": 278,
-		"nombre": "Horizon Zero Dawn",
+		"name": "Horizon Zero Dawn",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/b7d/b7d3f1715fa8381a4e780173a197a615.jpg",
-		"fecLan": "2017-02-28",
+		"released": "2017-02-28",
 		"rating": 4.31,
 		"genres": [
 			"Action",
@@ -1349,7 +1349,7 @@ export const videogames=[
 	},
 	{
 		"id": 4459,
-		"nombre": "Grand Theft Auto IV",
+		"name": "Grand Theft Auto IV",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -1358,7 +1358,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/4a0/4a0a1316102366260e6f38fd2a9cfdce.jpg",
-		"fecLan": "2008-04-29",
+		"released": "2008-04-29",
 		"rating": 4.25,
 		"genres": [
 			"Action",
@@ -1404,7 +1404,7 @@ export const videogames=[
 	},
 	{
 		"id": 3272,
-		"nombre": "Rocket League",
+		"name": "Rocket League",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -1415,7 +1415,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg",
-		"fecLan": "2015-07-07",
+		"released": "2015-07-07",
 		"rating": 3.95,
 		"genres": [
 			"Sports",
@@ -1469,7 +1469,7 @@ export const videogames=[
 	},
 	{
 		"id": 41494,
-		"nombre": "Cyberpunk 2077",
+		"name": "Cyberpunk 2077",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -1479,7 +1479,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg",
-		"fecLan": "2020-12-10",
+		"released": "2020-12-10",
 		"rating": 4.11,
 		"genres": [
 			"Action",
@@ -1540,7 +1540,7 @@ export const videogames=[
 	},
 	{
 		"id": 10213,
-		"nombre": "Dota 2",
+		"name": "Dota 2",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -1548,7 +1548,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/6fc/6fcf4cd3b17c288821388e6085bb0fc9.jpg",
-		"fecLan": "2013-07-09",
+		"released": "2013-07-09",
 		"rating": 3.06,
 		"genres": [
 			"Action",
@@ -1595,7 +1595,7 @@ export const videogames=[
 	},
 	{
 		"id": 422,
-		"nombre": "Terraria",
+		"name": "Terraria",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -1613,7 +1613,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/f46/f466571d536f2e3ea9e815ad17177501.jpg",
-		"fecLan": "2011-05-16",
+		"released": "2011-05-16",
 		"rating": 4.05,
 		"genres": [
 			"Action",
@@ -1668,7 +1668,7 @@ export const videogames=[
 	},
 	{
 		"id": 766,
-		"nombre": "Warframe",
+		"name": "Warframe",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox Series S/X",
@@ -1679,7 +1679,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/f87/f87457e8347484033cb34cde6101d08d.jpg",
-		"fecLan": "2013-03-25",
+		"released": "2013-03-25",
 		"rating": 3.42,
 		"genres": [
 			"Action",
@@ -1731,14 +1731,14 @@ export const videogames=[
 	},
 	{
 		"id": 29028,
-		"nombre": "Metro 2033",
+		"name": "Metro 2033",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/120/1201a40e4364557b124392ee50317b99.jpg",
-		"fecLan": "2010-03-16",
+		"released": "2010-03-16",
 		"rating": 3.93,
 		"genres": [
 			"Action",
@@ -1783,7 +1783,7 @@ export const videogames=[
 	},
 	{
 		"id": 3192,
-		"nombre": "Metal Gear Solid V: The Phantom Pain",
+		"name": "Metal Gear Solid V: The Phantom Pain",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -1793,7 +1793,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/490/49016e06ae2103881ff6373248843069.jpg",
-		"fecLan": "2015-09-01",
+		"released": "2015-09-01",
 		"rating": 4.15,
 		"genres": [
 			"Action",
@@ -1843,7 +1843,7 @@ export const videogames=[
 	},
 	{
 		"id": 7689,
-		"nombre": "Rise of the Tomb Raider",
+		"name": "Rise of the Tomb Raider",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -1852,7 +1852,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/b45/b45575f34285f2c4479c9a5f719d972e.jpg",
-		"fecLan": "2015-11-10",
+		"released": "2015-11-10",
 		"rating": 4.04,
 		"genres": [
 			"Action"
@@ -1900,7 +1900,7 @@ export const videogames=[
 	},
 	{
 		"id": 3287,
-		"nombre": "Batman: Arkham Knight",
+		"name": "Batman: Arkham Knight",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -1908,7 +1908,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/310/3106b0e012271c5ffb16497b070be739.jpg",
-		"fecLan": "2015-06-23",
+		"released": "2015-06-23",
 		"rating": 4.24,
 		"genres": [
 			"Action"
@@ -1955,7 +1955,7 @@ export const videogames=[
 	},
 	{
 		"id": 23027,
-		"nombre": "The Walking Dead: Season 1",
+		"name": "The Walking Dead: Season 1",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -1970,7 +1970,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/8d6/8d69eb6c32ed6acfd75f82d532144993.jpg",
-		"fecLan": "2012-04-23",
+		"released": "2012-04-23",
 		"rating": 4.33,
 		"genres": [
 			"Action",
@@ -2021,7 +2021,7 @@ export const videogames=[
 	},
 	{
 		"id": 16944,
-		"nombre": "The Witcher 2: Assassins of Kings Enhanced Edition",
+		"name": "The Witcher 2: Assassins of Kings Enhanced Edition",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -2029,7 +2029,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/6cd/6cd653e0aaef5ff8bbd295bf4bcb12eb.jpg",
-		"fecLan": "2012-04-16",
+		"released": "2012-04-16",
 		"rating": 4.17,
 		"genres": [
 			"RPG"
@@ -2078,7 +2078,7 @@ export const videogames=[
 	},
 	{
 		"id": 19103,
-		"nombre": "Half-Life 2: Lost Coast",
+		"name": "Half-Life 2: Lost Coast",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -2086,7 +2086,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/b7b/b7b8381707152afc7d91f5d95de70e39.jpg",
-		"fecLan": "2005-10-27",
+		"released": "2005-10-27",
 		"rating": 3.45,
 		"genres": [
 			"Action"
@@ -2125,7 +2125,7 @@ export const videogames=[
 	},
 	{
 		"id": 416,
-		"nombre": "Grand Theft Auto: San Andreas",
+		"name": "Grand Theft Auto: San Andreas",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -2140,7 +2140,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg",
-		"fecLan": "2004-10-26",
+		"released": "2004-10-26",
 		"rating": 4.51,
 		"genres": [
 			"Action",
@@ -2191,7 +2191,7 @@ export const videogames=[
 	},
 	{
 		"id": 11973,
-		"nombre": "Middle-earth: Shadow of Mordor",
+		"name": "Middle-earth: Shadow of Mordor",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -2203,7 +2203,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/d1a/d1a2e99ade53494c6330a0ed945fe823.jpg",
-		"fecLan": "2014-09-30",
+		"released": "2014-09-30",
 		"rating": 3.89,
 		"genres": [
 			"Action",
@@ -2257,14 +2257,14 @@ export const videogames=[
 	},
 	{
 		"id": 17822,
-		"nombre": "The Witcher: Enhanced Edition Director's Cut",
+		"name": "The Witcher: Enhanced Edition Director's Cut",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/ee3/ee3e10193aafc3230ba1cae426967d10.jpg",
-		"fecLan": "2008-09-16",
+		"released": "2008-09-16",
 		"rating": 4.07,
 		"genres": [
 			"Action",
@@ -2308,7 +2308,7 @@ export const videogames=[
 	},
 	{
 		"id": 4427,
-		"nombre": "BioShock 2",
+		"name": "BioShock 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -2320,7 +2320,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg",
-		"fecLan": "2010-02-09",
+		"released": "2010-02-09",
 		"rating": 4.07,
 		"genres": [
 			"Action",
@@ -2367,7 +2367,7 @@ export const videogames=[
 	},
 	{
 		"id": 19710,
-		"nombre": "Half-Life 2: Episode One",
+		"name": "Half-Life 2: Episode One",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -2377,7 +2377,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/7a2/7a2500ee8b2c0e1ff268bb4479463dea.jpg",
-		"fecLan": "2006-06-01",
+		"released": "2006-06-01",
 		"rating": 4.38,
 		"genres": [
 			"Action",
@@ -2424,7 +2424,7 @@ export const videogames=[
 	},
 	{
 		"id": 10340,
-		"nombre": "Crusader Kings II",
+		"name": "Crusader Kings II",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -2432,7 +2432,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/c22/c22d804ac753c72f2617b3708a625dec.jpg",
-		"fecLan": "2012-02-14",
+		"released": "2012-02-14",
 		"rating": 3.59,
 		"genres": [
 			"Strategy",
@@ -2476,7 +2476,7 @@ export const videogames=[
 	},
 	{
 		"id": 3876,
-		"nombre": "Deus Ex: Human Revolution - Director's Cut",
+		"name": "Deus Ex: Human Revolution - Director's Cut",
 		"descripcion": "",
 		"plataformas": [
 			"Wii U",
@@ -2486,7 +2486,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/a12/a12f806432cb385bc286f0935c49cd14.jpg",
-		"fecLan": "2013-10-22",
+		"released": "2013-10-22",
 		"rating": 4.3,
 		"genres": [
 			"Action",
@@ -2544,7 +2544,7 @@ export const videogames=[
 	},
 	{
 		"id": 3853,
-		"nombre": "Trine 2: Complete Story",
+		"name": "Trine 2: Complete Story",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -2554,7 +2554,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/screenshots/c97/c97b943741f5fbc936fe054d9d58851d.jpg",
-		"fecLan": "2013-06-05",
+		"released": "2013-06-05",
 		"rating": 3.71,
 		"genres": [
 			"Action",
@@ -2607,7 +2607,7 @@ export const videogames=[
 	},
 	{
 		"id": 13461,
-		"nombre": "Resident Evil 5",
+		"name": "Resident Evil 5",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -2618,7 +2618,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/974/974342a3959981a17bdbbff2fd7f97b0.jpg",
-		"fecLan": "2009-03-03",
+		"released": "2009-03-03",
 		"rating": 3.81,
 		"genres": [
 			"Action",
@@ -2653,7 +2653,7 @@ export const videogames=[
 	},
 	{
 		"id": 4527,
-		"nombre": "Call of Duty: Modern Warfare 2",
+		"name": "Call of Duty: Modern Warfare 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -2663,7 +2663,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/9af/9af24c1886e2c7b52a4a2c65aa874638.jpg",
-		"fecLan": "2009-11-10",
+		"released": "2009-11-10",
 		"rating": 4.26,
 		"genres": [
 			"Action",
@@ -2710,7 +2710,7 @@ export const videogames=[
 	},
 	{
 		"id": 1256,
-		"nombre": "XCOM 2",
+		"name": "XCOM 2",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -2720,7 +2720,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/9bf/9bfac18ff678f41a4674250fa0e04a52.jpg",
-		"fecLan": "2016-02-04",
+		"released": "2016-02-04",
 		"rating": 4.09,
 		"genres": [
 			"RPG",
@@ -2773,7 +2773,7 @@ export const videogames=[
 	},
 	{
 		"id": 13305,
-		"nombre": "Assassin’s Creed III",
+		"name": "Assassin’s Creed III",
 		"descripcion": "",
 		"plataformas": [
 			"Wii U",
@@ -2784,7 +2784,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/275/2759da6fcaa8f81f21800926168c85f6.jpg",
-		"fecLan": "2012-10-30",
+		"released": "2012-10-30",
 		"rating": 3.74,
 		"genres": [
 			"Action"
@@ -2829,7 +2829,7 @@ export const videogames=[
 	},
 	{
 		"id": 4599,
-		"nombre": "Saints Row 2",
+		"name": "Saints Row 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -2839,7 +2839,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/10d/10d19e52e5e8415d16a4d344fe711874.jpg",
-		"fecLan": "2008-10-14",
+		"released": "2008-10-14",
 		"rating": 3.56,
 		"genres": [
 			"Action",
@@ -2887,7 +2887,7 @@ export const videogames=[
 	},
 	{
 		"id": 12024,
-		"nombre": "Insurgency",
+		"name": "Insurgency",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -2895,7 +2895,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/1a1/1a17e9b6286edb7e1f1e510110ccb0c0.jpg",
-		"fecLan": "2014-01-22",
+		"released": "2014-01-22",
 		"rating": 3.41,
 		"genres": [
 			"Action",
@@ -2942,7 +2942,7 @@ export const videogames=[
 	},
 	{
 		"id": 9830,
-		"nombre": "Brawlhalla",
+		"name": "Brawlhalla",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -2954,7 +2954,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/35b/35b47c4d85cd6e08f3e2ca43ea5ce7bb.jpg",
-		"fecLan": "2014-04-30",
+		"released": "2014-04-30",
 		"rating": 3.22,
 		"genres": [
 			"Action",
@@ -3005,14 +3005,14 @@ export const videogames=[
 	},
 	{
 		"id": 11435,
-		"nombre": "Viscera Cleanup Detail: Shadow Warrior",
+		"name": "Viscera Cleanup Detail: Shadow Warrior",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/screenshots/f2f/f2f3c93d6153da7aee590f3ab8ccd803.jpg",
-		"fecLan": "2013-09-26",
+		"released": "2013-09-26",
 		"rating": 2.58,
 		"genres": [
 			"Action",
@@ -3053,7 +3053,7 @@ export const videogames=[
 	},
 	{
 		"id": 58777,
-		"nombre": "DOOM Eternal",
+		"name": "DOOM Eternal",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -3063,7 +3063,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/3ea/3ea3c9bbd940b6cb7f2139e42d3d443f.jpg",
-		"fecLan": "2020-03-20",
+		"released": "2020-03-20",
 		"rating": 4.37,
 		"genres": [
 			"Action",
@@ -3106,7 +3106,7 @@ export const videogames=[
 	},
 	{
 		"id": 4544,
-		"nombre": "Red Dead Redemption",
+		"name": "Red Dead Redemption",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -3114,7 +3114,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/686/686909717c3aa01518bc42ae2bf4259e.jpg",
-		"fecLan": "2010-05-18",
+		"released": "2010-05-18",
 		"rating": 4.43,
 		"genres": [
 			"Action",
@@ -3146,7 +3146,7 @@ export const videogames=[
 	},
 	{
 		"id": 58751,
-		"nombre": "Halo Infinite",
+		"name": "Halo Infinite",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -3154,7 +3154,7 @@ export const videogames=[
 			"Xbox Series S/X"
 		],
 		"image": "https://media.rawg.io/media/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg",
-		"fecLan": "2021-12-08",
+		"released": "2021-12-08",
 		"rating": 3.7,
 		"genres": [
 			"Action",
@@ -3217,7 +3217,7 @@ export const videogames=[
 	},
 	{
 		"id": 17959,
-		"nombre": "Ori and the Blind Forest: Definitive Edition",
+		"name": "Ori and the Blind Forest: Definitive Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -3226,7 +3226,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/04a/04a7e7e185fb51493bdcbe1693a8b3dc.jpg",
-		"fecLan": "2016-04-27",
+		"released": "2016-04-27",
 		"rating": 4.43,
 		"genres": [
 			"Adventure",
@@ -3271,7 +3271,7 @@ export const videogames=[
 	},
 	{
 		"id": 3168,
-		"nombre": "SOMA",
+		"name": "SOMA",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -3281,7 +3281,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/149/149bbed9d90dc09328ba79bbacfda3c8.jpg",
-		"fecLan": "2015-09-21",
+		"released": "2015-09-21",
 		"rating": 4.16,
 		"genres": [
 			"Action",
@@ -3330,7 +3330,7 @@ export const videogames=[
 	},
 	{
 		"id": 10560,
-		"nombre": "Total War: SHOGUN 2",
+		"name": "Total War: SHOGUN 2",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -3338,7 +3338,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/be9/be9cf02720c9326e11d0fda14518554f.jpg",
-		"fecLan": "2011-03-14",
+		"released": "2011-03-14",
 		"rating": 3.59,
 		"genres": [
 			"Strategy"
@@ -3385,7 +3385,7 @@ export const videogames=[
 	},
 	{
 		"id": 952,
-		"nombre": "Shadowrun Returns",
+		"name": "Shadowrun Returns",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -3395,7 +3395,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/d4b/d4bcd78873edd9992d93aff9cc8db0c8.jpg",
-		"fecLan": "2013-07-24",
+		"released": "2013-07-24",
 		"rating": 3.5,
 		"genres": [
 			"RPG",
@@ -3442,7 +3442,7 @@ export const videogames=[
 	},
 	{
 		"id": 18613,
-		"nombre": "Counter-Strike: Condition Zero",
+		"name": "Counter-Strike: Condition Zero",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -3450,7 +3450,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/8bd/8bd24e3c15354a9555bb1437fe555a69.jpg",
-		"fecLan": "2004-03-01",
+		"released": "2004-03-01",
 		"rating": 3.15,
 		"genres": [
 			"Action"
@@ -3490,7 +3490,7 @@ export const videogames=[
 	},
 	{
 		"id": 13268,
-		"nombre": "Amnesia: A Machine for Pigs",
+		"name": "Amnesia: A Machine for Pigs",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -3498,7 +3498,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/d9f/d9f982e042df6263684ba1fdea3efc1c.jpg",
-		"fecLan": "2013-09-09",
+		"released": "2013-09-09",
 		"rating": 3.24,
 		"genres": [
 			"Action",
@@ -3544,7 +3544,7 @@ export const videogames=[
 	},
 	{
 		"id": 3766,
-		"nombre": "Thief",
+		"name": "Thief",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -3555,7 +3555,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/59a/59a3ebcba3d08c51532c6ca877aff256.jpg",
-		"fecLan": "2014-02-25",
+		"released": "2014-02-25",
 		"rating": 3.26,
 		"genres": [
 			"Action",
@@ -3604,7 +3604,7 @@ export const videogames=[
 	},
 	{
 		"id": 10061,
-		"nombre": "Watch Dogs 2",
+		"name": "Watch Dogs 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -3612,7 +3612,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/f52/f52cf6ba08089cd5f1a9c8f7fcc93d1f.jpg",
-		"fecLan": "2016-11-28",
+		"released": "2016-11-28",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -3659,7 +3659,7 @@ export const videogames=[
 	},
 	{
 		"id": 906,
-		"nombre": "Call of Duty: Black Ops III",
+		"name": "Call of Duty: Black Ops III",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -3669,7 +3669,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/fd6/fd6a1eecd3ec0f875f1924f3656b7dd9.jpg",
-		"fecLan": "2015-11-06",
+		"released": "2015-11-06",
 		"rating": 3.25,
 		"genres": [
 			"Action",
@@ -3720,14 +3720,14 @@ export const videogames=[
 	},
 	{
 		"id": 51325,
-		"nombre": "The Last of Us Part II",
+		"name": "The Last of Us Part II",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/909/909974d1c7863c2027241e265fe7011f.jpg",
-		"fecLan": "2020-06-19",
+		"released": "2020-06-19",
 		"rating": 4.41,
 		"genres": [
 			"Action",
@@ -3764,7 +3764,7 @@ export const videogames=[
 	},
 	{
 		"id": 3740,
-		"nombre": "FEZ",
+		"name": "FEZ",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -3778,7 +3778,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/4cb/4cb855e8ef1578415a928e53c9f51867.png",
-		"fecLan": "2012-04-13",
+		"released": "2012-04-13",
 		"rating": 3.99,
 		"genres": [
 			"Action",
@@ -3833,7 +3833,7 @@ export const videogames=[
 	},
 	{
 		"id": 432,
-		"nombre": "Grand Theft Auto III",
+		"name": "Grand Theft Auto III",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -3846,7 +3846,7 @@ export const videogames=[
 			"Xbox"
 		],
 		"image": "https://media.rawg.io/media/games/5fa/5fae5fec3c943179e09da67a4427d68f.jpg",
-		"fecLan": "2001-10-22",
+		"released": "2001-10-22",
 		"rating": 4.16,
 		"genres": [
 			"Action",
@@ -3892,7 +3892,7 @@ export const videogames=[
 	},
 	{
 		"id": 28492,
-		"nombre": "Dead Island",
+		"name": "Dead Island",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -3900,7 +3900,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/56e/56ed40948bebaf1968234aa6e3c74771.jpg",
-		"fecLan": "2011-09-06",
+		"released": "2011-09-06",
 		"rating": 3.47,
 		"genres": [
 			"Action",
@@ -3931,7 +3931,7 @@ export const videogames=[
 	},
 	{
 		"id": 28202,
-		"nombre": "Wolfenstein II: The New Colossus",
+		"name": "Wolfenstein II: The New Colossus",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -3940,7 +3940,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/a0e/a0ef08621301a1eab5e04fa5c96978fa.jpeg",
-		"fecLan": "2017-10-25",
+		"released": "2017-10-25",
 		"rating": 4.09,
 		"genres": [
 			"Action",
@@ -3990,14 +3990,14 @@ export const videogames=[
 	},
 	{
 		"id": 18272,
-		"nombre": "Magicka",
+		"name": "Magicka",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/c7a/c7a71a0531a9518236d99d0d60abe447.jpg",
-		"fecLan": "2011-01-25",
+		"released": "2011-01-25",
 		"rating": 3.81,
 		"genres": [
 			"Action",
@@ -4043,7 +4043,7 @@ export const videogames=[
 	},
 	{
 		"id": 3474,
-		"nombre": "Lara Croft and the Temple of Osiris",
+		"name": "Lara Croft and the Temple of Osiris",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -4051,7 +4051,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/1fb/1fb1c5f7a71d771f440b27ce7f71e7eb.jpg",
-		"fecLan": "2014-12-08",
+		"released": "2014-12-08",
 		"rating": 3.11,
 		"genres": [
 			"Action",
@@ -4098,7 +4098,7 @@ export const videogames=[
 	},
 	{
 		"id": 262382,
-		"nombre": "Disco Elysium",
+		"name": "Disco Elysium",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -4110,7 +4110,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/840/8408ad3811289a6a5830cae60fb0b62a.jpg",
-		"fecLan": "2019-10-14",
+		"released": "2019-10-14",
 		"rating": 4.43,
 		"genres": [
 			"Adventure",
@@ -4145,7 +4145,7 @@ export const videogames=[
 	},
 	{
 		"id": 10548,
-		"nombre": "Darksiders Warmastered Edition",
+		"name": "Darksiders Warmastered Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -4155,7 +4155,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/1f1/1f1888e1308959dfd3be4c144a81d19c.jpg",
-		"fecLan": "2016-11-29",
+		"released": "2016-11-29",
 		"rating": 3.68,
 		"genres": [
 			"Action",
@@ -4201,7 +4201,7 @@ export const videogames=[
 	},
 	{
 		"id": 19590,
-		"nombre": "Ori and the Blind Forest",
+		"name": "Ori and the Blind Forest",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -4209,7 +4209,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/f8c/f8c6a262ead4c16b47e1219310210eb3.jpg",
-		"fecLan": "2015-03-10",
+		"released": "2015-03-10",
 		"rating": 4.4,
 		"genres": [
 			"Adventure",
@@ -4253,7 +4253,7 @@ export const videogames=[
 	},
 	{
 		"id": 17352,
-		"nombre": "Killing Floor",
+		"name": "Killing Floor",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -4261,7 +4261,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/806/8060a7663364ac23e15480728938d6f3.jpg",
-		"fecLan": "2009-05-14",
+		"released": "2009-05-14",
 		"rating": 3.44,
 		"genres": [
 			"Action"
@@ -4311,7 +4311,7 @@ export const videogames=[
 	},
 	{
 		"id": 1090,
-		"nombre": "This War of Mine",
+		"name": "This War of Mine",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -4323,7 +4323,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/283/283e7e600366b0da7021883d27159b27.jpg",
-		"fecLan": "2014-11-14",
+		"released": "2014-11-14",
 		"rating": 4.06,
 		"genres": [
 			"Adventure",
@@ -4373,14 +4373,14 @@ export const videogames=[
 	},
 	{
 		"id": 3990,
-		"nombre": "The Last Of Us",
+		"name": "The Last Of Us",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/a5a/a5a7fb8d9cb8063a8b42ee002b410db6.jpg",
-		"fecLan": "2013-06-14",
+		"released": "2013-06-14",
 		"rating": 4.58,
 		"genres": [
 			"Action",
@@ -4405,7 +4405,7 @@ export const videogames=[
 	},
 	{
 		"id": 356714,
-		"nombre": "Among Us",
+		"name": "Among Us",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -4415,7 +4415,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/e74/e74458058b35e01c1ae3feeb39a3f724.jpg",
-		"fecLan": "2018-07-25",
+		"released": "2018-07-25",
 		"rating": 3.85,
 		"genres": [
 			"Action",
@@ -4459,14 +4459,14 @@ export const videogames=[
 	},
 	{
 		"id": 5703,
-		"nombre": "Uncharted 3: Drake's Deception",
+		"name": "Uncharted 3: Drake's Deception",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/589/589fc47c5ae34160d65c4682e21fed66.jpg",
-		"fecLan": "2011-11-01",
+		"released": "2011-11-01",
 		"rating": 4.37,
 		"genres": [
 			"Action",
@@ -4493,7 +4493,7 @@ export const videogames=[
 	},
 	{
 		"id": 865,
-		"nombre": "Call of Duty: Black Ops",
+		"name": "Call of Duty: Black Ops",
 		"descripcion": "",
 		"plataformas": [
 			"iOS",
@@ -4506,7 +4506,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/410/41033a495ce8f7fd4b0934bdb975f12a.jpg",
-		"fecLan": "2010-11-09",
+		"released": "2010-11-09",
 		"rating": 4.03,
 		"genres": [
 			"Action",
@@ -4555,7 +4555,7 @@ export const videogames=[
 	},
 	{
 		"id": 4639,
-		"nombre": "Dragon Age: Origins",
+		"name": "Dragon Age: Origins",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -4565,7 +4565,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/dc0/dc0926d3f84ffbcc00968fe8a6f0aed3.jpg",
-		"fecLan": "2009-11-03",
+		"released": "2009-11-03",
 		"rating": 4.4,
 		"genres": [
 			"RPG"
@@ -4609,7 +4609,7 @@ export const videogames=[
 	},
 	{
 		"id": 3757,
-		"nombre": "South Park: The Stick of Truth",
+		"name": "South Park: The Stick of Truth",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -4620,7 +4620,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/8ca/8ca40b562a755d6a0e30d48e6c74b178.jpg",
-		"fecLan": "2014-03-04",
+		"released": "2014-03-04",
 		"rating": 4.22,
 		"genres": [
 			"Adventure",
@@ -4669,7 +4669,7 @@ export const videogames=[
 	},
 	{
 		"id": 1358,
-		"nombre": "Papers, Please",
+		"name": "Papers, Please",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -4680,7 +4680,7 @@ export const videogames=[
 			"PS Vita"
 		],
 		"image": "https://media.rawg.io/media/games/6d3/6d33014a4ed48a19c30a77ead5a0f62e.jpg",
-		"fecLan": "2013-08-08",
+		"released": "2013-08-08",
 		"rating": 4.37,
 		"genres": [
 			"Simulation",
@@ -4733,7 +4733,7 @@ export const videogames=[
 	},
 	{
 		"id": 2572,
-		"nombre": "DiRT Rally",
+		"name": "DiRT Rally",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -4743,7 +4743,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/78d/78dfae12fb8c5b16cd78648553071e0a.jpg",
-		"fecLan": "2015-12-07",
+		"released": "2015-12-07",
 		"rating": 3.69,
 		"genres": [
 			"Simulation",
@@ -4795,7 +4795,7 @@ export const videogames=[
 	},
 	{
 		"id": 3771,
-		"nombre": "Rayman Legends",
+		"name": "Rayman Legends",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -4808,7 +4808,7 @@ export const videogames=[
 			"PS Vita"
 		],
 		"image": "https://media.rawg.io/media/games/85c/85c8ae70e7cdf0105f06ef6bdce63b8b.jpg",
-		"fecLan": "2013-08-29",
+		"released": "2013-08-29",
 		"rating": 4.16,
 		"genres": [
 			"Platformer"
@@ -4856,7 +4856,7 @@ export const videogames=[
 	},
 	{
 		"id": 28172,
-		"nombre": "Kingdom Come: Deliverance",
+		"name": "Kingdom Come: Deliverance",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -4864,7 +4864,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/d8f/d8f3b28fc747ed6f92943cdd33fb91b5.jpeg",
-		"fecLan": "2018-02-13",
+		"released": "2018-02-13",
 		"rating": 4.03,
 		"genres": [
 			"Action",
@@ -4915,13 +4915,13 @@ export const videogames=[
 	},
 	{
 		"id": 43877,
-		"nombre": "Quake Champions",
+		"name": "Quake Champions",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/fba/fbae1bcfae1feffda6a11fbc1c939420.jpg",
-		"fecLan": "2017-08-22",
+		"released": "2017-08-22",
 		"rating": 3.26,
 		"genres": [
 			"Action",
@@ -4959,7 +4959,7 @@ export const videogames=[
 	},
 	{
 		"id": 3015,
-		"nombre": "Chivalry: Medieval Warfare",
+		"name": "Chivalry: Medieval Warfare",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -4971,7 +4971,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/7f0/7f021d4a3577ac9d591a628a431fc2e5.jpg",
-		"fecLan": "2012-10-16",
+		"released": "2012-10-16",
 		"rating": 3.4,
 		"genres": [
 			"Action",
@@ -5021,7 +5021,7 @@ export const videogames=[
 	},
 	{
 		"id": 10297,
-		"nombre": "Sid Meier’s Civilization VI",
+		"name": "Sid Meier’s Civilization VI",
 		"descripcion": "",
 		"plataformas": [
 			"iOS",
@@ -5033,7 +5033,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/997/997ab4d67e96fb20a4092383477d4463.jpg",
-		"fecLan": "2016-10-20",
+		"released": "2016-10-20",
 		"rating": 4.16,
 		"genres": [
 			"Strategy",
@@ -5082,7 +5082,7 @@ export const videogames=[
 	},
 	{
 		"id": 4013,
-		"nombre": "Call of Juarez: Gunslinger",
+		"name": "Call of Juarez: Gunslinger",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -5092,7 +5092,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/a86/a86ce0afaf2d5ec2b0f048989f01795e.jpg",
-		"fecLan": "2013-05-14",
+		"released": "2013-05-14",
 		"rating": 3.81,
 		"genres": [
 			"Action",
@@ -5141,7 +5141,7 @@ export const videogames=[
 	},
 	{
 		"id": 8146,
-		"nombre": "Assassin's Creed Unity",
+		"name": "Assassin's Creed Unity",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -5149,7 +5149,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/59f/59fc1c5de1d29cb9234741c97d250150.jpg",
-		"fecLan": "2014-11-11",
+		"released": "2014-11-11",
 		"rating": 3.6,
 		"genres": [
 			"Action"
@@ -5193,7 +5193,7 @@ export const videogames=[
 	},
 	{
 		"id": 11726,
-		"nombre": "Dead Cells",
+		"name": "Dead Cells",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -5205,7 +5205,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/f90/f90ee1a4239247a822771c40488e68c5.jpg",
-		"fecLan": "2018-08-07",
+		"released": "2018-08-07",
 		"rating": 4.25,
 		"genres": [
 			"Action",
@@ -5257,7 +5257,7 @@ export const videogames=[
 	},
 	{
 		"id": 3932,
-		"nombre": "The Bureau: XCOM Declassified",
+		"name": "The Bureau: XCOM Declassified",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -5266,7 +5266,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/5cc/5cc765484c6df567ed9207c1781b88cb.jpg",
-		"fecLan": "2013-08-20",
+		"released": "2013-08-20",
 		"rating": 3.02,
 		"genres": [
 			"Action",
@@ -5309,7 +5309,7 @@ export const videogames=[
 	},
 	{
 		"id": 4954,
-		"nombre": "Castle Crashers",
+		"name": "Castle Crashers",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -5319,7 +5319,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/d1a/d1a1202a378607b6c635c8f18ace95dd.jpg",
-		"fecLan": "2008-08-27",
+		"released": "2008-08-27",
 		"rating": 3.9,
 		"genres": [
 			"Action",
@@ -5371,14 +5371,14 @@ export const videogames=[
 	},
 	{
 		"id": 857,
-		"nombre": "Halo: The Master Chief Collection",
+		"name": "Halo: The Master Chief Collection",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/c24/c24f4434882ae9c2c8d9d38de82cb7a5.jpg",
-		"fecLan": "2014-11-11",
+		"released": "2014-11-11",
 		"rating": 4.25,
 		"genres": [
 			"Action",
@@ -5423,7 +5423,7 @@ export const videogames=[
 	},
 	{
 		"id": 15859,
-		"nombre": "Star Wars: Knights of the Old Republic",
+		"name": "Star Wars: Knights of the Old Republic",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -5436,7 +5436,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/6e0/6e0c19bb111bd4fa20cf0eb72a049519.jpg",
-		"fecLan": "2003-07-15",
+		"released": "2003-07-15",
 		"rating": 4.39,
 		"genres": [
 			"Action",
@@ -5486,14 +5486,14 @@ export const videogames=[
 	},
 	{
 		"id": 19384,
-		"nombre": "The Binding of Isaac",
+		"name": "The Binding of Isaac",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/cef/cefedf18016cbab466861eb698daf988.jpg",
-		"fecLan": "2011-09-28",
+		"released": "2011-09-28",
 		"rating": 3.9,
 		"genres": [
 			"Action",
@@ -5537,7 +5537,7 @@ export const videogames=[
 	},
 	{
 		"id": 56184,
-		"nombre": "Resident Evil 4 (2005)",
+		"name": "Resident Evil 4 (2005)",
 		"descripcion": "",
 		"plataformas": [
 			"GameCube",
@@ -5548,7 +5548,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/fee/fee0100afd87b52bfbd33e26689fa26c.jpg",
-		"fecLan": "2005-01-11",
+		"released": "2005-01-11",
 		"rating": 4.39,
 		"genres": [
 			"Action",
@@ -5602,7 +5602,7 @@ export const videogames=[
 	},
 	{
 		"id": 18241,
-		"nombre": "DmC: Devil May Cry",
+		"name": "DmC: Devil May Cry",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -5612,7 +5612,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/295/295eb868c241e6ad32ac033b8e6a2ede.jpg",
-		"fecLan": "2013-01-15",
+		"released": "2013-01-15",
 		"rating": 4.02,
 		"genres": [
 			"Action",
@@ -5663,7 +5663,7 @@ export const videogames=[
 	},
 	{
 		"id": 4550,
-		"nombre": "Dead Space 2",
+		"name": "Dead Space 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -5672,7 +5672,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/ae1/ae1518c3dc1e847344661905fd2a8d16.jpg",
-		"fecLan": "2011-01-25",
+		"released": "2011-01-25",
 		"rating": 4.36,
 		"genres": [
 			"Action",
@@ -5718,7 +5718,7 @@ export const videogames=[
 	},
 	{
 		"id": 1244,
-		"nombre": "Darkest Dungeon",
+		"name": "Darkest Dungeon",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -5730,7 +5730,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/fd9/fd92f105dcd6491bc5d61135033d1f19.jpg",
-		"fecLan": "2016-01-18",
+		"released": "2016-01-18",
 		"rating": 4.2,
 		"genres": [
 			"RPG",
@@ -5786,7 +5786,7 @@ export const videogames=[
 	},
 	{
 		"id": 9475,
-		"nombre": "Don't Starve",
+		"name": "Don't Starve",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -5799,7 +5799,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/f3e/f3eec35c6218dcfd93a537751e6bfa61.jpg",
-		"fecLan": "2013-04-22",
+		"released": "2013-04-22",
 		"rating": 3.86,
 		"genres": [
 			"Indie"
@@ -5845,7 +5845,7 @@ export const videogames=[
 	},
 	{
 		"id": 28623,
-		"nombre": "Batman: Arkham City",
+		"name": "Batman: Arkham City",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -5857,7 +5857,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/b5a/b5a1226bfd971284a735a4a0969086b3.jpg",
-		"fecLan": "2011-10-18",
+		"released": "2011-10-18",
 		"rating": 4.42,
 		"genres": [
 			"Action",
@@ -5890,7 +5890,7 @@ export const videogames=[
 	},
 	{
 		"id": 10419,
-		"nombre": "Subnautica",
+		"name": "Subnautica",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -5902,7 +5902,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/739/73990e3ec9f43a9e8ecafe207fa4f368.jpg",
-		"fecLan": "2018-01-23",
+		"released": "2018-01-23",
 		"rating": 4.24,
 		"genres": [
 			"Adventure",
@@ -5961,7 +5961,7 @@ export const videogames=[
 	},
 	{
 		"id": 5562,
-		"nombre": "Fallout 3",
+		"name": "Fallout 3",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -5970,7 +5970,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/5a4/5a4e70bb8a862829dbaa398aa5f66afc.jpg",
-		"fecLan": "2008-10-28",
+		"released": "2008-10-28",
 		"rating": 4.09,
 		"genres": [
 			"Shooter",
@@ -6015,7 +6015,7 @@ export const videogames=[
 	},
 	{
 		"id": 19542,
-		"nombre": "Half-Life: Blue Shift",
+		"name": "Half-Life: Blue Shift",
 		"descripcion": "",
 		"plataformas": [
 			"Dreamcast",
@@ -6024,7 +6024,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/4cb/4cb463b5588adc672124fb041f09e91c.jpg",
-		"fecLan": "2001-06-01",
+		"released": "2001-06-01",
 		"rating": 3.72,
 		"genres": [
 			"Action"
@@ -6058,7 +6058,7 @@ export const videogames=[
 	},
 	{
 		"id": 21265,
-		"nombre": "Half-Life: Opposing Force",
+		"name": "Half-Life: Opposing Force",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -6066,7 +6066,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/110/1106ebafac87cc573161f1f4f16e84cf.jpeg",
-		"fecLan": "1999-11-01",
+		"released": "1999-11-01",
 		"rating": 3.85,
 		"genres": [
 			"Action"
@@ -6104,14 +6104,14 @@ export const videogames=[
 	},
 	{
 		"id": 6617,
-		"nombre": "Quantum Break",
+		"name": "Quantum Break",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/a28/a289e23b4d4d84f26ab59125e3be4483.jpg",
-		"fecLan": "2016-04-05",
+		"released": "2016-04-05",
 		"rating": 3.92,
 		"genres": [
 			"Action",
@@ -6156,7 +6156,7 @@ export const videogames=[
 	},
 	{
 		"id": 559,
-		"nombre": "Fallout Shelter",
+		"name": "Fallout Shelter",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -6167,7 +6167,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/a91/a911f0a91991469e398fa70091507a5b.jpg",
-		"fecLan": "2015-06-15",
+		"released": "2015-06-15",
 		"rating": 3.43,
 		"genres": [
 			"RPG",
@@ -6218,7 +6218,7 @@ export const videogames=[
 	},
 	{
 		"id": 3486,
-		"nombre": "Syberia",
+		"name": "Syberia",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -6231,7 +6231,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/852/8522935d8ab27b610a254b52de0da212.jpg",
-		"fecLan": "2002-05-28",
+		"released": "2002-05-28",
 		"rating": 3.94,
 		"genres": [
 			"Adventure",
@@ -6282,7 +6282,7 @@ export const videogames=[
 	},
 	{
 		"id": 10073,
-		"nombre": "Divinity: Original Sin 2",
+		"name": "Divinity: Original Sin 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -6291,7 +6291,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/424/424facd40f4eb1f2794fe4b4bb28a277.jpg",
-		"fecLan": "2017-09-14",
+		"released": "2017-09-14",
 		"rating": 4.41,
 		"genres": [
 			"RPG",
@@ -6344,7 +6344,7 @@ export const videogames=[
 	},
 	{
 		"id": 1774,
-		"nombre": "Grim Fandango Remastered",
+		"name": "Grim Fandango Remastered",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -6358,7 +6358,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/df2/df20fd77db56ae7b0a26a7ff4baa9ccc.jpg",
-		"fecLan": "2015-01-26",
+		"released": "2015-01-26",
 		"rating": 4,
 		"genres": [
 			"Adventure",
@@ -6409,7 +6409,7 @@ export const videogames=[
 	},
 	{
 		"id": 22571,
-		"nombre": "Black Desert Online",
+		"name": "Black Desert Online",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -6417,7 +6417,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/651/651ae84f2d5e36206aad90976a453329.jpg",
-		"fecLan": "2014-12-01",
+		"released": "2014-12-01",
 		"rating": 2.99,
 		"genres": [
 			"Action",
@@ -6470,7 +6470,7 @@ export const videogames=[
 	},
 	{
 		"id": 59359,
-		"nombre": "A Plague Tale: Innocence",
+		"name": "A Plague Tale: Innocence",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -6481,7 +6481,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/b4a/b4adf80c36e267b35acc3497ed2af19c.jpg",
-		"fecLan": "2019-05-13",
+		"released": "2019-05-13",
 		"rating": 4.15,
 		"genres": [
 			"Action",
@@ -6520,7 +6520,7 @@ export const videogames=[
 	},
 	{
 		"id": 3028,
-		"nombre": "Beyond: Two Souls",
+		"name": "Beyond: Two Souls",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -6528,7 +6528,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/07a/07a74470a2618fd71945db0619602baf.jpg",
-		"fecLan": "2013-10-08",
+		"released": "2013-10-08",
 		"rating": 3.78,
 		"genres": [
 			"Action",
@@ -6583,7 +6583,7 @@ export const videogames=[
 	},
 	{
 		"id": 1169,
-		"nombre": "Mafia III",
+		"name": "Mafia III",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -6592,7 +6592,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/a34/a348e613424260bc7e034fb6031c762e.jpg",
-		"fecLan": "2016-10-06",
+		"released": "2016-10-06",
 		"rating": 3.14,
 		"genres": [
 			"Action",
@@ -6641,7 +6641,7 @@ export const videogames=[
 	},
 	{
 		"id": 3842,
-		"nombre": "Battlefield 4",
+		"name": "Battlefield 4",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -6651,7 +6651,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/ac7/ac7b8327343da12c971cfc418f390a11.jpg",
-		"fecLan": "2013-10-29",
+		"released": "2013-10-29",
 		"rating": 3.94,
 		"genres": [
 			"Action",
@@ -6699,7 +6699,7 @@ export const videogames=[
 	},
 	{
 		"id": 42,
-		"nombre": "What Remains of Edith Finch",
+		"name": "What Remains of Edith Finch",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -6709,7 +6709,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/34e/34e100b1f648de99f32d477065f04653.jpg",
-		"fecLan": "2017-04-23",
+		"released": "2017-04-23",
 		"rating": 4.4,
 		"genres": [
 			"Adventure",
@@ -6756,7 +6756,7 @@ export const videogames=[
 	},
 	{
 		"id": 21924,
-		"nombre": "Call of Duty: WWII",
+		"name": "Call of Duty: WWII",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -6764,7 +6764,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/1e5/1e5e33b88be978f451196a751424a72e.jpg",
-		"fecLan": "2017-11-03",
+		"released": "2017-11-03",
 		"rating": 3.52,
 		"genres": [
 			"Action",
@@ -6819,7 +6819,7 @@ export const videogames=[
 	},
 	{
 		"id": 1959,
-		"nombre": "Goat Simulator",
+		"name": "Goat Simulator",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -6833,7 +6833,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/a44/a444a7628bdb49b24d06a7672f805814.jpg",
-		"fecLan": "2014-04-01",
+		"released": "2014-04-01",
 		"rating": 3.17,
 		"genres": [
 			"Action",
@@ -6889,7 +6889,7 @@ export const videogames=[
 	},
 	{
 		"id": 17126,
-		"nombre": "Torchlight II",
+		"name": "Torchlight II",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -6900,7 +6900,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/c06/c06d88c35785c8003147cb53c84af033.jpg",
-		"fecLan": "2012-09-20",
+		"released": "2012-09-20",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -6954,7 +6954,7 @@ export const videogames=[
 	},
 	{
 		"id": 19365,
-		"nombre": "Homefront",
+		"name": "Homefront",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -6962,7 +6962,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/657/657574cd437df9102f511b3be095b0ea.jpg",
-		"fecLan": "2011-03-15",
+		"released": "2011-03-15",
 		"rating": 2.94,
 		"genres": [
 			"Action",
@@ -6999,7 +6999,7 @@ export const videogames=[
 	},
 	{
 		"id": 17875,
-		"nombre": "Guacamelee! Super Turbo Championship Edition",
+		"name": "Guacamelee! Super Turbo Championship Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -7010,7 +7010,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/fc8/fc838d98c9b944e6a15176eabf40bee8.jpg",
-		"fecLan": "2014-07-01",
+		"released": "2014-07-01",
 		"rating": 3.56,
 		"genres": [
 			"Action",
@@ -7062,7 +7062,7 @@ export const videogames=[
 	},
 	{
 		"id": 326243,
-		"nombre": "Elden Ring",
+		"name": "Elden Ring",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7072,7 +7072,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/5ec/5ecac5cb026ec26a56efcc546364e348.jpg",
-		"fecLan": "2022-02-25",
+		"released": "2022-02-25",
 		"rating": 4.4,
 		"genres": [
 			"Action",
@@ -7122,7 +7122,7 @@ export const videogames=[
 	},
 	{
 		"id": 2873,
-		"nombre": "The Witness",
+		"name": "The Witness",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7133,7 +7133,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/screenshots/9d2/9d22689a1c2a7ced9d1690e0c5c66871.jpg",
-		"fecLan": "2016-01-25",
+		"released": "2016-01-25",
 		"rating": 4.01,
 		"genres": [
 			"Adventure",
@@ -7188,13 +7188,13 @@ export const videogames=[
 	},
 	{
 		"id": 2553,
-		"nombre": "Ratchet & Clank (2016)",
+		"name": "Ratchet & Clank (2016)",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/d30/d30ef0c7dd4878161b1f781e297ae6a0.jpg",
-		"fecLan": "2016-04-12",
+		"released": "2016-04-12",
 		"rating": 4.05,
 		"genres": [
 			"Action",
@@ -7222,7 +7222,7 @@ export const videogames=[
 	},
 	{
 		"id": 58755,
-		"nombre": "Devil May Cry 5",
+		"name": "Devil May Cry 5",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -7230,7 +7230,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/9fb/9fbf956a16249def7625ab5dc3d09515.jpg",
-		"fecLan": "2019-03-08",
+		"released": "2019-03-08",
 		"rating": 4.24,
 		"genres": [
 			"Action"
@@ -7270,7 +7270,7 @@ export const videogames=[
 	},
 	{
 		"id": 3892,
-		"nombre": "Sniper Elite V2",
+		"name": "Sniper Elite V2",
 		"descripcion": "",
 		"plataformas": [
 			"Wii U",
@@ -7280,7 +7280,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/03d/03d17d237f9541b67a13f9425ced4ca4.jpg",
-		"fecLan": "2012-05-01",
+		"released": "2012-05-01",
 		"rating": 3.4,
 		"genres": [
 			"Action",
@@ -7329,7 +7329,7 @@ export const videogames=[
 	},
 	{
 		"id": 2733,
-		"nombre": "Broforce",
+		"name": "Broforce",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -7339,7 +7339,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/9cc/9cc11e2e81403186c7fa9c00c143d6e4.jpg",
-		"fecLan": "2015-10-15",
+		"released": "2015-10-15",
 		"rating": 4.01,
 		"genres": [
 			"Action",
@@ -7385,7 +7385,7 @@ export const videogames=[
 	},
 	{
 		"id": 7819,
-		"nombre": "SUPERHOT",
+		"name": "SUPERHOT",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -7397,7 +7397,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/screenshots/ad4/ad445a12ee46543d4d117f3893041ebf.jpg",
-		"fecLan": "2016-02-24",
+		"released": "2016-02-24",
 		"rating": 4.21,
 		"genres": [
 			"Action",
@@ -7451,7 +7451,7 @@ export const videogames=[
 	},
 	{
 		"id": 14348,
-		"nombre": "Dying Light: The Following - Enhanced Edition",
+		"name": "Dying Light: The Following - Enhanced Edition",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -7461,7 +7461,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/c11/c11a0b92b4c28f2e0db489f430142653.jpg",
-		"fecLan": "2015-01-26",
+		"released": "2015-01-26",
 		"rating": 4.15,
 		"genres": [
 			"Action",
@@ -7510,7 +7510,7 @@ export const videogames=[
 	},
 	{
 		"id": 492,
-		"nombre": "Yakuza 0",
+		"name": "Yakuza 0",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -7519,7 +7519,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/ca1/ca16da30f86d8f4d36261de45fb35430.jpg",
-		"fecLan": "2015-03-12",
+		"released": "2015-03-12",
 		"rating": 4.37,
 		"genres": [
 			"Action",
@@ -7571,7 +7571,7 @@ export const videogames=[
 	},
 	{
 		"id": 16112,
-		"nombre": "Sleeping Dogs: Definitive Edition",
+		"name": "Sleeping Dogs: Definitive Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -7580,7 +7580,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/bd7/bd7cfccfececba1ec2b97a120a40373f.jpg",
-		"fecLan": "2014-10-08",
+		"released": "2014-10-08",
 		"rating": 4.13,
 		"genres": [
 			"Action",
@@ -7624,7 +7624,7 @@ export const videogames=[
 	},
 	{
 		"id": 624,
-		"nombre": "FTL: Faster Than Light",
+		"name": "FTL: Faster Than Light",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7633,7 +7633,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/5f4/5f4780690dbf04900cbac5f05b9305f3.jpg",
-		"fecLan": "2012-09-14",
+		"released": "2012-09-14",
 		"rating": 4.26,
 		"genres": [
 			"Strategy",
@@ -7677,13 +7677,13 @@ export const videogames=[
 	},
 	{
 		"id": 3631,
-		"nombre": "inFAMOUS Second Son",
+		"name": "inFAMOUS Second Son",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/be2/be239d5eb4d0bf02bf722aff51e694ad.jpg",
-		"fecLan": "2014-03-21",
+		"released": "2014-03-21",
 		"rating": 3.9,
 		"genres": [
 			"Action"
@@ -7708,7 +7708,7 @@ export const videogames=[
 	},
 	{
 		"id": 16113,
-		"nombre": "Sleeping Dogs",
+		"name": "Sleeping Dogs",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7716,7 +7716,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/3d9/3d9bac98d79bcd2d445f829e8d6be902.jpg",
-		"fecLan": "2012-08-14",
+		"released": "2012-08-14",
 		"rating": 4.13,
 		"genres": [
 			"Action",
@@ -7757,7 +7757,7 @@ export const videogames=[
 	},
 	{
 		"id": 11276,
-		"nombre": "Call of Duty: Modern Warfare 3",
+		"name": "Call of Duty: Modern Warfare 3",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7769,7 +7769,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/e9c/e9c042d14515eb3ff7cb4db9fe78e435.jpg",
-		"fecLan": "2011-11-08",
+		"released": "2011-11-08",
 		"rating": 3.76,
 		"genres": [
 			"Action",
@@ -7815,7 +7815,7 @@ export const videogames=[
 	},
 	{
 		"id": 28559,
-		"nombre": "Dragon Age: Inquisition",
+		"name": "Dragon Age: Inquisition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -7825,7 +7825,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/260/26023c855f1769a93411d6a7ea084632.jpeg",
-		"fecLan": "2014-11-18",
+		"released": "2014-11-18",
 		"rating": 3.79,
 		"genres": [
 			"Action",
@@ -7882,7 +7882,7 @@ export const videogames=[
 	},
 	{
 		"id": 15834,
-		"nombre": "The Walking Dead: Season 2",
+		"name": "The Walking Dead: Season 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -7897,7 +7897,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/471/4712c9ac591f556f553556b864a7e92b.jpg",
-		"fecLan": "2013-12-16",
+		"released": "2013-12-16",
 		"rating": 4.03,
 		"genres": [
 			"Action",
@@ -7948,7 +7948,7 @@ export const videogames=[
 	},
 	{
 		"id": 4440,
-		"nombre": "Deus Ex: Human Revolution",
+		"name": "Deus Ex: Human Revolution",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -7958,7 +7958,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/81e/81e6c6819d4322caf375b6735c3043ec.jpg",
-		"fecLan": "2011-08-22",
+		"released": "2011-08-22",
 		"rating": 4.36,
 		"genres": [
 			"Action",
@@ -7987,7 +7987,7 @@ export const videogames=[
 	},
 	{
 		"id": 2728,
-		"nombre": "Tom Clancy’s The Division",
+		"name": "Tom Clancy’s The Division",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -7995,7 +7995,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/c73/c73c4ffebfe968ba0982a56c2b5020ef.jpg",
-		"fecLan": "2016-03-07",
+		"released": "2016-03-07",
 		"rating": 3.7,
 		"genres": [
 			"Action",
@@ -8039,7 +8039,7 @@ export const videogames=[
 	},
 	{
 		"id": 2623,
-		"nombre": "Resident Evil 6",
+		"name": "Resident Evil 6",
 		"descripcion": "",
 		"plataformas": [
 			"Web",
@@ -8051,7 +8051,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/f6f/f6f39c5b56413f7f4513b25989a1b747.jpg",
-		"fecLan": "2012-10-02",
+		"released": "2012-10-02",
 		"rating": 3.42,
 		"genres": [
 			"Action",
@@ -8103,14 +8103,14 @@ export const videogames=[
 	},
 	{
 		"id": 29338,
-		"nombre": "Days Gone",
+		"name": "Days Gone",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/a79/a79d2fc90c4dbf07a8580b19600fd61d.jpg",
-		"fecLan": "2019-04-26",
+		"released": "2019-04-26",
 		"rating": 3.93,
 		"genres": [
 			"Action",
@@ -8167,7 +8167,7 @@ export const videogames=[
 	},
 	{
 		"id": 3408,
-		"nombre": "Hotline Miami 2: Wrong Number",
+		"name": "Hotline Miami 2: Wrong Number",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -8181,7 +8181,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/003/0031c0067559d41df19cf98ad87e02aa.jpg",
-		"fecLan": "2015-03-09",
+		"released": "2015-03-09",
 		"rating": 4.27,
 		"genres": [
 			"Action",
@@ -8233,7 +8233,7 @@ export const videogames=[
 	},
 	{
 		"id": 5159,
-		"nombre": "Resident Evil 2 (1998)",
+		"name": "Resident Evil 2 (1998)",
 		"descripcion": "",
 		"plataformas": [
 			"Dreamcast",
@@ -8243,7 +8243,7 @@ export const videogames=[
 			"PlayStation"
 		],
 		"image": "https://media.rawg.io/media/games/d64/d646810b629081cc12aec49ed9f49441.jpg",
-		"fecLan": "1998-01-21",
+		"released": "1998-01-21",
 		"rating": 4.33,
 		"genres": [
 			"Action",
@@ -8278,7 +8278,7 @@ export const videogames=[
 	},
 	{
 		"id": 274762,
-		"nombre": "The Outer Worlds",
+		"name": "The Outer Worlds",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -8287,7 +8287,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/704/704f831d2d132e9614931f1c4eab9e86.jpg",
-		"fecLan": "2019-10-25",
+		"released": "2019-10-25",
 		"rating": 3.88,
 		"genres": [
 			"Action",
@@ -8330,7 +8330,7 @@ export const videogames=[
 	},
 	{
 		"id": 16209,
-		"nombre": "Kingdom: Classic",
+		"name": "Kingdom: Classic",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -8338,7 +8338,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/e40/e40cc9d1957b0a0ed7e389834457b524.jpg",
-		"fecLan": "2015-09-21",
+		"released": "2015-09-21",
 		"rating": 3.38,
 		"genres": [
 			"Strategy",
@@ -8381,7 +8381,7 @@ export const videogames=[
 	},
 	{
 		"id": 58753,
-		"nombre": "Forza Horizon 4",
+		"name": "Forza Horizon 4",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox Series S/X",
@@ -8389,7 +8389,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/786/7863e587bac630de82fca50d799236a9.jpg",
-		"fecLan": "2018-10-02",
+		"released": "2018-10-02",
 		"rating": 4.37,
 		"genres": [
 			"Racing",
@@ -8445,7 +8445,7 @@ export const videogames=[
 	},
 	{
 		"id": 16343,
-		"nombre": "A Story About My Uncle",
+		"name": "A Story About My Uncle",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -8453,7 +8453,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/37a/37a9536e92cf8fe3b60045aa75dbd41f.jpg",
-		"fecLan": "2014-05-27",
+		"released": "2014-05-27",
 		"rating": 3.16,
 		"genres": [
 			"Adventure",
@@ -8501,14 +8501,14 @@ export const videogames=[
 	},
 	{
 		"id": 3209,
-		"nombre": "Until Dawn",
+		"name": "Until Dawn",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/d64/d6443375f9971152866ea76bff97d6d6.jpg",
-		"fecLan": "2015-08-25",
+		"released": "2015-08-25",
 		"rating": 4.1,
 		"genres": [
 			"Action",
@@ -8534,7 +8534,7 @@ export const videogames=[
 	},
 	{
 		"id": 4101,
-		"nombre": "Bayonetta",
+		"name": "Bayonetta",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -8546,7 +8546,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/bee/bee483efadcf9d7e657e52184316a34e.jpg",
-		"fecLan": "2009-06-23",
+		"released": "2009-06-23",
 		"rating": 4.3,
 		"genres": [
 			"Action",
@@ -8596,7 +8596,7 @@ export const videogames=[
 	},
 	{
 		"id": 13194,
-		"nombre": "To the Moon",
+		"name": "To the Moon",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -8607,7 +8607,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/fae/faebf3c8cbf30db3f46bfbecf6ada3d6.jpg",
-		"fecLan": "2011-01-10",
+		"released": "2011-01-10",
 		"rating": 4.28,
 		"genres": [
 			"Adventure",
@@ -8659,7 +8659,7 @@ export const videogames=[
 	},
 	{
 		"id": 18336,
-		"nombre": "Alan Wake's American Nightmare",
+		"name": "Alan Wake's American Nightmare",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -8667,7 +8667,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/0b3/0b34647c42271600399b93d19b10f1aa.jpg",
-		"fecLan": "2012-02-22",
+		"released": "2012-02-22",
 		"rating": 3.4,
 		"genres": [
 			"Action",
@@ -8712,14 +8712,14 @@ export const videogames=[
 	},
 	{
 		"id": 4573,
-		"nombre": "PAYDAY The Heist",
+		"name": "PAYDAY The Heist",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/546/546cf59a24b0ae308e311a07611ca22f.jpg",
-		"fecLan": "2011-10-18",
+		"released": "2011-10-18",
 		"rating": 3.32,
 		"genres": [
 			"Action",
@@ -8763,7 +8763,7 @@ export const videogames=[
 	},
 	{
 		"id": 750,
-		"nombre": "FINAL FANTASY XV",
+		"name": "FINAL FANTASY XV",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -8771,7 +8771,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/2ee/2eeed8524931b4fae1e4a40d0e5443b5.jpg",
-		"fecLan": "2016-11-29",
+		"released": "2016-11-29",
 		"rating": 3.88,
 		"genres": [
 			"RPG"
@@ -8804,7 +8804,7 @@ export const videogames=[
 	},
 	{
 		"id": 28199,
-		"nombre": "Ori and the Will of the Wisps",
+		"name": "Ori and the Will of the Wisps",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -8813,7 +8813,7 @@ export const videogames=[
 			"Xbox Series S/X"
 		],
 		"image": "https://media.rawg.io/media/games/718/71891d2484a592d871e91dc826707e1c.jpg",
-		"fecLan": "2020-03-10",
+		"released": "2020-03-10",
 		"rating": 4.47,
 		"genres": [
 			"Action",
@@ -8859,7 +8859,7 @@ export const videogames=[
 	},
 	{
 		"id": 2115,
-		"nombre": "Overcooked",
+		"name": "Overcooked",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -8868,7 +8868,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/270/270b412b66688081497b3d70c100b208.jpg",
-		"fecLan": "2016-08-01",
+		"released": "2016-08-01",
 		"rating": 4.08,
 		"genres": [
 			"Simulation",
@@ -8916,7 +8916,7 @@ export const videogames=[
 	},
 	{
 		"id": 4123,
-		"nombre": "Batman: Arkham Asylum",
+		"name": "Batman: Arkham Asylum",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -8927,7 +8927,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/d56/d564ee964eb3c17892b3b35dd607f836.jpg",
-		"fecLan": "2009-08-25",
+		"released": "2009-08-25",
 		"rating": 4.42,
 		"genres": [
 			"Action",
@@ -8958,7 +8958,7 @@ export const videogames=[
 	},
 	{
 		"id": 14446,
-		"nombre": "Call of Duty: Black Ops II",
+		"name": "Call of Duty: Black Ops II",
 		"descripcion": "",
 		"plataformas": [
 			"Wii U",
@@ -8968,7 +8968,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/8ee/8eed88e297441ef9202b5d1d35d7d86f.jpg",
-		"fecLan": "2012-11-13",
+		"released": "2012-11-13",
 		"rating": 3.95,
 		"genres": [
 			"Action",
@@ -9022,7 +9022,7 @@ export const videogames=[
 	},
 	{
 		"id": 12756,
-		"nombre": "Warhammer 40,000: Space Marine",
+		"name": "Warhammer 40,000: Space Marine",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -9030,7 +9030,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/ac2/ac25b5cef220bf5b8d052e0978451cab.jpg",
-		"fecLan": "2011-09-05",
+		"released": "2011-09-05",
 		"rating": 3.45,
 		"genres": [
 			"Action",
@@ -9077,7 +9077,7 @@ export const videogames=[
 	},
 	{
 		"id": 23322,
-		"nombre": "Surviving Mars",
+		"name": "Surviving Mars",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -9087,7 +9087,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/08b/08b2eee52a9876a48b955e5149affe5b.jpg",
-		"fecLan": "2018-03-14",
+		"released": "2018-03-14",
 		"rating": 3.5,
 		"genres": [
 			"Strategy",
@@ -9121,7 +9121,7 @@ export const videogames=[
 	},
 	{
 		"id": 15274,
-		"nombre": "Jotun: Valhalla Edition",
+		"name": "Jotun: Valhalla Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -9132,7 +9132,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/032/0329db96e252aa41e672da2ba16f914c.jpg",
-		"fecLan": "2015-09-29",
+		"released": "2015-09-29",
 		"rating": 3.07,
 		"genres": [
 			"Action",
@@ -9181,13 +9181,13 @@ export const videogames=[
 	},
 	{
 		"id": 17380,
-		"nombre": "Sid Meier's Civilization III Complete",
+		"name": "Sid Meier's Civilization III Complete",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/054/0549f1a0a5e782d4e81cdf8d022073fa.jpg",
-		"fecLan": "2001-10-29",
+		"released": "2001-10-29",
 		"rating": 3.69,
 		"genres": [
 			"Strategy",
@@ -9224,7 +9224,7 @@ export const videogames=[
 	},
 	{
 		"id": 4179,
-		"nombre": "Darksiders II",
+		"name": "Darksiders II",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -9234,7 +9234,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/848/8482235332f4518da363c3cb4e5cd075.jpg",
-		"fecLan": "2012-08-14",
+		"released": "2012-08-14",
 		"rating": 3.75,
 		"genres": [
 			"Action",
@@ -9268,13 +9268,13 @@ export const videogames=[
 	},
 	{
 		"id": 5687,
-		"nombre": "The Playroom",
+		"name": "The Playroom",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/363/36306deef81e7955a5d0f5c3b43fccee.jpg",
-		"fecLan": "2013-11-15",
+		"released": "2013-11-15",
 		"rating": 2.28,
 		"genres": [
 			"Arcade"
@@ -9297,7 +9297,7 @@ export const videogames=[
 	},
 	{
 		"id": 16359,
-		"nombre": "Divinity: Original Sin - Enhanced Edition",
+		"name": "Divinity: Original Sin - Enhanced Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -9307,7 +9307,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/33b/33b825c76382931df0fd8ecddf5caebe.jpg",
-		"fecLan": "2015-10-27",
+		"released": "2015-10-27",
 		"rating": 4.28,
 		"genres": [
 			"RPG",
@@ -9358,7 +9358,7 @@ export const videogames=[
 	},
 	{
 		"id": 10449,
-		"nombre": "Darksiders II Deathinitive Edition",
+		"name": "Darksiders II Deathinitive Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -9367,7 +9367,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/cfe/cfe5960b5caca432f3575fc7d8ff736b.jpg",
-		"fecLan": "2015-11-05",
+		"released": "2015-11-05",
 		"rating": 3.79,
 		"genres": [
 			"Action",
@@ -9416,14 +9416,14 @@ export const videogames=[
 	},
 	{
 		"id": 9600,
-		"nombre": "The Forest",
+		"name": "The Forest",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/1be/1be575aa6de86de328433a63fb534d9a.jpg",
-		"fecLan": "2018-04-30",
+		"released": "2018-04-30",
 		"rating": 3.76,
 		"genres": [
 			"Action",
@@ -9468,7 +9468,7 @@ export const videogames=[
 	},
 	{
 		"id": 13628,
-		"nombre": "Dear Esther: Landmark Edition",
+		"name": "Dear Esther: Landmark Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -9477,7 +9477,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/screenshots/b20/b20a20205954f9765e82298dbd41e48a.jpg",
-		"fecLan": "2017-02-14",
+		"released": "2017-02-14",
 		"rating": 3.37,
 		"genres": [
 			"Adventure",
@@ -9514,13 +9514,13 @@ export const videogames=[
 	},
 	{
 		"id": 14062,
-		"nombre": "Red Orchestra 2: Heroes of Stalingrad with Rising Storm",
+		"name": "Red Orchestra 2: Heroes of Stalingrad with Rising Storm",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/bff/bff077fb7c3b037bd5ed920bf447c863.jpg",
-		"fecLan": "2011-09-13",
+		"released": "2011-09-13",
 		"rating": 3.25,
 		"genres": [
 			"Action"
@@ -9566,7 +9566,7 @@ export const videogames=[
 	},
 	{
 		"id": 3427,
-		"nombre": "Murdered: Soul Suspect",
+		"name": "Murdered: Soul Suspect",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -9576,7 +9576,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/54a/54a3e4c617217848dc43c4de9989fe37.jpg",
-		"fecLan": "2014-06-03",
+		"released": "2014-06-03",
 		"rating": 3.46,
 		"genres": [
 			"Action",
@@ -9624,7 +9624,7 @@ export const videogames=[
 	},
 	{
 		"id": 2166,
-		"nombre": "Game of Thrones - A Telltale Games Series",
+		"name": "Game of Thrones - A Telltale Games Series",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -9637,7 +9637,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/c81/c812e158129e00c9b0f096ae8a0bb7d6.jpg",
-		"fecLan": "2014-12-02",
+		"released": "2014-12-02",
 		"rating": 3.21,
 		"genres": [
 			"Action",
@@ -9690,7 +9690,7 @@ export const videogames=[
 	},
 	{
 		"id": 50781,
-		"nombre": "Sea of Thieves",
+		"name": "Sea of Thieves",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox Series S/X",
@@ -9698,7 +9698,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/539/53911178036df07d518dd492ddc25289.jpg",
-		"fecLan": "2018-03-20",
+		"released": "2018-03-20",
 		"rating": 3.69,
 		"genres": [
 			"Action",
@@ -9744,7 +9744,7 @@ export const videogames=[
 	},
 	{
 		"id": 2047,
-		"nombre": "Lords of the Fallen",
+		"name": "Lords of the Fallen",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -9754,7 +9754,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/d09/d096ad37b7f522e11c02848252213a9a.jpg",
-		"fecLan": "2014-10-28",
+		"released": "2014-10-28",
 		"rating": 2.93,
 		"genres": [
 			"Action",
@@ -9803,7 +9803,7 @@ export const videogames=[
 	},
 	{
 		"id": 3554,
-		"nombre": "The Evil Within",
+		"name": "The Evil Within",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -9813,7 +9813,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/157/1570121f5c4d240504f1eae5c3854733.jpg",
-		"fecLan": "2014-10-12",
+		"released": "2014-10-12",
 		"rating": 3.96,
 		"genres": [
 			"Action",
@@ -9863,7 +9863,7 @@ export const videogames=[
 	},
 	{
 		"id": 15858,
-		"nombre": "Star Wars: Knights of the Old Republic II – The Sith Lords",
+		"name": "Star Wars: Knights of the Old Republic II – The Sith Lords",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox",
@@ -9875,7 +9875,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/046/0464f4a36cd975a37c95b93b06058855.jpg",
-		"fecLan": "2004-12-06",
+		"released": "2004-12-06",
 		"rating": 4.38,
 		"genres": [
 			"Adventure",
@@ -9925,7 +9925,7 @@ export const videogames=[
 	},
 	{
 		"id": 9653,
-		"nombre": "Hacknet",
+		"name": "Hacknet",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -9933,7 +9933,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/23b/23b69bfef2a1ce2e3dcdf1aa8ef1150b.jpg",
-		"fecLan": "2015-08-11",
+		"released": "2015-08-11",
 		"rating": 3.16,
 		"genres": [
 			"Simulation",
@@ -9977,7 +9977,7 @@ export const videogames=[
 	},
 	{
 		"id": 3912,
-		"nombre": "Sanctum 2",
+		"name": "Sanctum 2",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -9987,7 +9987,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/963/963815b2a1a88475a31f311b591e70fb.jpg",
-		"fecLan": "2013-05-15",
+		"released": "2013-05-15",
 		"rating": 2.94,
 		"genres": [
 			"Action",
@@ -10036,7 +10036,7 @@ export const videogames=[
 	},
 	{
 		"id": 2518,
-		"nombre": "Max Payne",
+		"name": "Max Payne",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -10049,7 +10049,7 @@ export const videogames=[
 			"PS Vita"
 		],
 		"image": "https://media.rawg.io/media/games/2f5/2f5eb72fe45540e93ac2726877551a20.jpg",
-		"fecLan": "2001-07-23",
+		"released": "2001-07-23",
 		"rating": 4.46,
 		"genres": [
 			"Action",
@@ -10080,7 +10080,7 @@ export const videogames=[
 	},
 	{
 		"id": 894,
-		"nombre": "Destiny",
+		"name": "Destiny",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -10089,7 +10089,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/062/062420d85c7143f72ad3557f32c41ead.jpg",
-		"fecLan": "2014-09-09",
+		"released": "2014-09-09",
 		"rating": 3.69,
 		"genres": [
 			"Action",
@@ -10121,7 +10121,7 @@ export const videogames=[
 	},
 	{
 		"id": 11974,
-		"nombre": "Mark of the Ninja",
+		"name": "Mark of the Ninja",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -10131,7 +10131,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/b17/b17485d757ca36b5f1ad376b6b096885.jpg",
-		"fecLan": "2012-09-07",
+		"released": "2012-09-07",
 		"rating": 3.99,
 		"genres": [
 			"Action",
@@ -10177,7 +10177,7 @@ export const videogames=[
 	},
 	{
 		"id": 46956,
-		"nombre": "Doki Doki Literature Club!",
+		"name": "Doki Doki Literature Club!",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -10185,7 +10185,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/972/972aea3c9eb253e893947bec2d2cfbb9.jpg",
-		"fecLan": "2017-09-22",
+		"released": "2017-09-22",
 		"rating": 4.06,
 		"genres": [
 			"Adventure",
@@ -10218,7 +10218,7 @@ export const videogames=[
 	},
 	{
 		"id": 12320,
-		"nombre": "Prison Architect",
+		"name": "Prison Architect",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -10229,7 +10229,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/6bc/6bc79f5bc023b1e6938f6eaf9926f073.jpg",
-		"fecLan": "2015-10-05",
+		"released": "2015-10-05",
 		"rating": 3.72,
 		"genres": [
 			"Strategy",
@@ -10281,7 +10281,7 @@ export const videogames=[
 	},
 	{
 		"id": 10001,
-		"nombre": "Serious Sam Fusion 2017 (beta)",
+		"name": "Serious Sam Fusion 2017 (beta)",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -10289,7 +10289,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/21b/21babfc41e2a6972290833d1b860f13e.jpg",
-		"fecLan": "2017-03-20",
+		"released": "2017-03-20",
 		"rating": 3.08,
 		"genres": [
 			"Action",
@@ -10335,7 +10335,7 @@ export const videogames=[
 	},
 	{
 		"id": 14690,
-		"nombre": "Trine Enchanted Edition",
+		"name": "Trine Enchanted Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -10345,7 +10345,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/e0f/e0f05a97ff926acf4c8f43e0849b6832.jpg",
-		"fecLan": "2009-07-02",
+		"released": "2009-07-02",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -10394,7 +10394,7 @@ export const videogames=[
 	},
 	{
 		"id": 4729,
-		"nombre": "Assassin's Creed",
+		"name": "Assassin's Creed",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -10403,7 +10403,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/0bc/0bcc108295a244b488d5c25f7d867220.jpg",
-		"fecLan": "2007-11-13",
+		"released": "2007-11-13",
 		"rating": 3.89,
 		"genres": [
 			"Action",
@@ -10439,7 +10439,7 @@ export const videogames=[
 	},
 	{
 		"id": 3449,
-		"nombre": "Resident Evil",
+		"name": "Resident Evil",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -10452,7 +10452,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/510/51039d0ec5dc8c3e08ae4374dfceecec.jpg",
-		"fecLan": "1996-03-22",
+		"released": "1996-03-22",
 		"rating": 4.19,
 		"genres": [
 			"Action",
@@ -10489,7 +10489,7 @@ export const videogames=[
 	},
 	{
 		"id": 53341,
-		"nombre": "Jet Set Radio",
+		"name": "Jet Set Radio",
 		"descripcion": "",
 		"plataformas": [
 			"iOS",
@@ -10502,7 +10502,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/fd7/fd794a9f0ffe816038d981b3acc3eec9.jpg",
-		"fecLan": "2000-06-29",
+		"released": "2000-06-29",
 		"rating": 3.42,
 		"genres": [
 			"Action",
@@ -10546,7 +10546,7 @@ export const videogames=[
 	},
 	{
 		"id": 274480,
-		"nombre": "Mortal Kombat 11",
+		"name": "Mortal Kombat 11",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -10557,7 +10557,7 @@ export const videogames=[
 			"PlayStation 5"
 		],
 		"image": "https://media.rawg.io/media/games/eb5/eb514db62d397c64288160d5bd8fd67a.jpg",
-		"fecLan": "2019-04-22",
+		"released": "2019-04-22",
 		"rating": 3.98,
 		"genres": [
 			"Action",
@@ -10592,7 +10592,7 @@ export const videogames=[
 	},
 	{
 		"id": 19375,
-		"nombre": "Far Cry 3: Blood Dragon",
+		"name": "Far Cry 3: Blood Dragon",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -10601,7 +10601,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/5e4/5e4bff02098b2b6f824c68286d5da1a6.jpg",
-		"fecLan": "2013-04-30",
+		"released": "2013-04-30",
 		"rating": 4.01,
 		"genres": [
 			"Shooter"
@@ -10646,7 +10646,7 @@ export const videogames=[
 	},
 	{
 		"id": 3647,
-		"nombre": "Child of Light",
+		"name": "Child of Light",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -10659,7 +10659,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/c47/c4796c4c49e7e06ad328e07aa8944cdd.jpg",
-		"fecLan": "2014-04-29",
+		"released": "2014-04-29",
 		"rating": 3.86,
 		"genres": [
 			"RPG",
@@ -10705,7 +10705,7 @@ export const videogames=[
 	},
 	{
 		"id": 259801,
-		"nombre": "Final Fantasy VII",
+		"name": "Final Fantasy VII",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -10713,7 +10713,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/d89/d89bd0cf4fcdc10820892980cbba0f49.jpg",
-		"fecLan": "2020-04-10",
+		"released": "2020-04-10",
 		"rating": 4.37,
 		"genres": [
 			"Action",
@@ -10748,7 +10748,7 @@ export const videogames=[
 	},
 	{
 		"id": 3697,
-		"nombre": "Serious Sam 3: BFE",
+		"name": "Serious Sam 3: BFE",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -10758,7 +10758,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/12e/12ea6b35b65df38258e25885a0a392a6.jpg",
-		"fecLan": "2011-11-22",
+		"released": "2011-11-22",
 		"rating": 3.47,
 		"genres": [
 			"Action",
@@ -10810,7 +10810,7 @@ export const videogames=[
 	},
 	{
 		"id": 678,
-		"nombre": "Neverwinter",
+		"name": "Neverwinter",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -10818,7 +10818,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/26b/26b27e1da9e3727fcb12e3e4e86c8c19.jpg",
-		"fecLan": "2013-06-20",
+		"released": "2013-06-20",
 		"rating": 2.94,
 		"genres": [
 			"Action",
@@ -10868,7 +10868,7 @@ export const videogames=[
 	},
 	{
 		"id": 51610,
-		"nombre": "Dark Souls: Remastered",
+		"name": "Dark Souls: Remastered",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -10877,7 +10877,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/29c/29c6c21cc0c78cff6f45d23631cc82f4.jpg",
-		"fecLan": "2018-05-23",
+		"released": "2018-05-23",
 		"rating": 4.47,
 		"genres": [
 			"Action",
@@ -10924,14 +10924,14 @@ export const videogames=[
 	},
 	{
 		"id": 817974,
-		"nombre": "Wallpaper Engine",
+		"name": "Wallpaper Engine",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/screenshots/5a7/5a72aed79451d8fbd6a7b82f784002bd.jpg",
-		"fecLan": "2016-10-10",
+		"released": "2016-10-10",
 		"rating": 4.22,
 		"genres": [
 			"Casual"
@@ -10968,7 +10968,7 @@ export const videogames=[
 	},
 	{
 		"id": 58813,
-		"nombre": "Resident Evil 2",
+		"name": "Resident Evil 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -10978,7 +10978,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/053/053fc543bf488349610f1ae2d0c1b51b.jpg",
-		"fecLan": "2019-01-25",
+		"released": "2019-01-25",
 		"rating": 4.48,
 		"genres": [
 			"Action",
@@ -11026,7 +11026,7 @@ export const videogames=[
 	},
 	{
 		"id": 10090,
-		"nombre": "Beholder",
+		"name": "Beholder",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -11039,7 +11039,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/40a/40ab95c1639aa1d7ec04d4cd523af6b1.jpg",
-		"fecLan": "2016-11-08",
+		"released": "2016-11-08",
 		"rating": 3.81,
 		"genres": [
 			"Adventure",
@@ -11089,14 +11089,14 @@ export const videogames=[
 	},
 	{
 		"id": 14317,
-		"nombre": "Endless Space - Collection",
+		"name": "Endless Space - Collection",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/screenshots/bf7/bf71c819eace914e6c42ae3ecb667308.jpg",
-		"fecLan": "2012-07-04",
+		"released": "2012-07-04",
 		"rating": 3.13,
 		"genres": [
 			"Strategy"
@@ -11139,14 +11139,14 @@ export const videogames=[
 	},
 	{
 		"id": 10092,
-		"nombre": "Minion Masters",
+		"name": "Minion Masters",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/e4a/e4ab7f784bdc38c76ce6e4cef9715d18.jpg",
-		"fecLan": "2019-05-24",
+		"released": "2019-05-24",
 		"rating": 2.33,
 		"genres": [
 			"Action",
@@ -11195,14 +11195,14 @@ export const videogames=[
 	},
 	{
 		"id": 19299,
-		"nombre": "Fallout 2",
+		"name": "Fallout 2",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/218/218167ff4011acc825c844d0070940a0.jpg",
-		"fecLan": "1998-09-30",
+		"released": "1998-09-30",
 		"rating": 4.36,
 		"genres": [
 			"RPG"
@@ -11248,7 +11248,7 @@ export const videogames=[
 	},
 	{
 		"id": 12569,
-		"nombre": "Starbound",
+		"name": "Starbound",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -11256,7 +11256,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/6d9/6d92d50affeebf2eb3894d178eb1117e.jpg",
-		"fecLan": "2016-07-22",
+		"released": "2016-07-22",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -11307,7 +11307,7 @@ export const videogames=[
 	},
 	{
 		"id": 3350,
-		"nombre": "Broken Age",
+		"name": "Broken Age",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -11321,7 +11321,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/3ef/3eff92562640e452d3487c04ba6d7fae.jpg",
-		"fecLan": "2014-01-28",
+		"released": "2014-01-28",
 		"rating": 3.66,
 		"genres": [
 			"Adventure",
@@ -11377,7 +11377,7 @@ export const videogames=[
 	},
 	{
 		"id": 670682,
-		"nombre": "Counter-Strike: Condition Zero Deleted Scenes",
+		"name": "Counter-Strike: Condition Zero Deleted Scenes",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -11385,7 +11385,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/screenshots/9fd/9fd128fef547eb630182a1995b1edeb5.jpg",
-		"fecLan": "2004-03-23",
+		"released": "2004-03-23",
 		"rating": 2.87,
 		"genres": [
 			"Shooter"
@@ -11409,7 +11409,7 @@ export const videogames=[
 	},
 	{
 		"id": 19452,
-		"nombre": "F.E.A.R.",
+		"name": "F.E.A.R.",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -11417,7 +11417,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/89a/89a8378d49732505cdb28babe505df9e.jpg",
-		"fecLan": "2005-10-18",
+		"released": "2005-10-18",
 		"rating": 4.27,
 		"genres": [
 			"Action",
@@ -11457,7 +11457,7 @@ export const videogames=[
 	},
 	{
 		"id": 4000,
-		"nombre": "Remember Me",
+		"name": "Remember Me",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -11465,7 +11465,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/569/569ea25d2b56bd05c7fa309ddabe81ff.jpg",
-		"fecLan": "2013-06-04",
+		"released": "2013-06-04",
 		"rating": 3.66,
 		"genres": [
 			"Action",
@@ -11511,7 +11511,7 @@ export const videogames=[
 	},
 	{
 		"id": 2574,
-		"nombre": "Enter the Gungeon",
+		"name": "Enter the Gungeon",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -11522,7 +11522,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/3be/3be0e624424d3453005019799a760af2.jpg",
-		"fecLan": "2016-04-04",
+		"released": "2016-04-04",
 		"rating": 4.09,
 		"genres": [
 			"Action",
@@ -11577,7 +11577,7 @@ export const videogames=[
 	},
 	{
 		"id": 17174,
-		"nombre": "Resident Evil Revelations 2 / Biohazard Revelations 2",
+		"name": "Resident Evil Revelations 2 / Biohazard Revelations 2",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -11589,7 +11589,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/ea3/ea3228b5c6c749019a9ed42e90a4e7c6.jpg",
-		"fecLan": "2015-02-24",
+		"released": "2015-02-24",
 		"rating": 3.67,
 		"genres": [
 			"Action",
@@ -11642,7 +11642,7 @@ export const videogames=[
 	},
 	{
 		"id": 829,
-		"nombre": "Killing Floor 2",
+		"name": "Killing Floor 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -11650,7 +11650,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/192/1921ec949024a5fbd1e1c7008f54b5af.jpg",
-		"fecLan": "2016-11-18",
+		"released": "2016-11-18",
 		"rating": 3.51,
 		"genres": [
 			"Action"
@@ -11701,7 +11701,7 @@ export const videogames=[
 	},
 	{
 		"id": 12019,
-		"nombre": "BattleBlock Theater",
+		"name": "BattleBlock Theater",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -11711,7 +11711,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/388/388935d851846f8ec747fffc7c765800.jpg",
-		"fecLan": "2013-04-03",
+		"released": "2013-04-03",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -11766,7 +11766,7 @@ export const videogames=[
 	},
 	{
 		"id": 3300,
-		"nombre": "The Elder Scrolls Online: Tamriel Unlimited",
+		"name": "The Elder Scrolls Online: Tamriel Unlimited",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -11775,7 +11775,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/596/596a48ef3b62b63b4cc59633e28be903.jpg",
-		"fecLan": "2015-03-17",
+		"released": "2015-03-17",
 		"rating": 3.48,
 		"genres": [
 			"Action",
@@ -11825,7 +11825,7 @@ export const videogames=[
 	},
 	{
 		"id": 3052,
-		"nombre": "STAR WARS Battlefront",
+		"name": "STAR WARS Battlefront",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -11833,7 +11833,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/bd2/bd2cc7714e0b9b1adad1ba1b2400d436.jpg",
-		"fecLan": "2015-11-17",
+		"released": "2015-11-17",
 		"rating": 3.29,
 		"genres": [
 			"Action",
@@ -11887,7 +11887,7 @@ export const videogames=[
 	},
 	{
 		"id": 7381,
-		"nombre": "ABZU",
+		"name": "ABZU",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -11896,7 +11896,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/ba9/ba9ad92b6d04825bd15a407c6059db94.jpg",
-		"fecLan": "2016-08-02",
+		"released": "2016-08-02",
 		"rating": 3.92,
 		"genres": [
 			"Adventure",
@@ -11944,7 +11944,7 @@ export const videogames=[
 	},
 	{
 		"id": 3729,
-		"nombre": "LEGO The Hobbit",
+		"name": "LEGO The Hobbit",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -11958,7 +11958,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/e4f/e4fb3fd188f61fabec48dca22e6ef28a.jpg",
-		"fecLan": "2014-04-08",
+		"released": "2014-04-08",
 		"rating": 3.4,
 		"genres": [
 			"Action",
@@ -12004,7 +12004,7 @@ export const videogames=[
 	},
 	{
 		"id": 47137,
-		"nombre": "Fortnite Battle Royale",
+		"name": "Fortnite Battle Royale",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -12018,7 +12018,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/dcb/dcbb67f371a9a28ea38ffd73ee0f53f3.jpg",
-		"fecLan": "2017-09-26",
+		"released": "2017-09-26",
 		"rating": 3.2,
 		"genres": [
 			"Action",
@@ -12059,7 +12059,7 @@ export const videogames=[
 	},
 	{
 		"id": 2100,
-		"nombre": "Tales from the Borderlands",
+		"name": "Tales from the Borderlands",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -12071,7 +12071,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/264/2642b17a7885f7abc4fd018e98943242.jpg",
-		"fecLan": "2015-10-21",
+		"released": "2015-10-21",
 		"rating": 4.19,
 		"genres": [
 			"Adventure"
@@ -12122,7 +12122,7 @@ export const videogames=[
 	},
 	{
 		"id": 295021,
-		"nombre": "Orwell: Keeping an Eye On You",
+		"name": "Orwell: Keeping an Eye On You",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -12132,7 +12132,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/2e1/2e187b31e5cee21c110bd16798d75fab.jpg",
-		"fecLan": "2016-10-27",
+		"released": "2016-10-27",
 		"rating": 3.27,
 		"genres": [
 			"Adventure",
@@ -12181,7 +12181,7 @@ export const videogames=[
 	},
 	{
 		"id": 295,
-		"nombre": "Oxenfree",
+		"name": "Oxenfree",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -12194,7 +12194,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/7ba/7baf4663962bad7197e2470d59a6e322.jpg",
-		"fecLan": "2016-01-14",
+		"released": "2016-01-14",
 		"rating": 3.91,
 		"genres": [
 			"Adventure",
@@ -12250,7 +12250,7 @@ export const videogames=[
 	},
 	{
 		"id": 10064,
-		"nombre": "Assassin’s Creed Brotherhood",
+		"name": "Assassin’s Creed Brotherhood",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -12261,7 +12261,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/116/116b93c6876a361a96b2eee3ee58ab13.jpg",
-		"fecLan": "2010-11-16",
+		"released": "2010-11-16",
 		"rating": 4.25,
 		"genres": [
 			"Action",
@@ -12305,7 +12305,7 @@ export const videogames=[
 	},
 	{
 		"id": 19451,
-		"nombre": "Fallout 3: Game of the Year Edition",
+		"name": "Fallout 3: Game of the Year Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -12313,7 +12313,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/e53/e5372e767149bc88106e1da0ae7e9104.jpg",
-		"fecLan": "2009-10-13",
+		"released": "2009-10-13",
 		"rating": 4.14,
 		"genres": [
 			"Action",
@@ -12354,7 +12354,7 @@ export const videogames=[
 	},
 	{
 		"id": 19600,
-		"nombre": "Far Cry 2",
+		"name": "Far Cry 2",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -12363,7 +12363,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/511/5115617b4180a4e4505e0de09e62c6a0.jpg",
-		"fecLan": "2008-10-21",
+		"released": "2008-10-21",
 		"rating": 3.45,
 		"genres": [
 			"Action",
@@ -12407,7 +12407,7 @@ export const videogames=[
 	},
 	{
 		"id": 23587,
-		"nombre": "Sonic Mania",
+		"name": "Sonic Mania",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -12416,7 +12416,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/bbf/bbf8d74ab64440ad76294cff2f4d9cfa.jpg",
-		"fecLan": "2017-08-15",
+		"released": "2017-08-15",
 		"rating": 3.86,
 		"genres": [
 			"Action",
@@ -12469,7 +12469,7 @@ export const videogames=[
 	},
 	{
 		"id": 17037,
-		"nombre": "Monaco: What's Yours Is Mine",
+		"name": "Monaco: What's Yours Is Mine",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -12478,7 +12478,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/screenshots/4f4/4f4722571e32954af43a4508607c1748.jpg",
-		"fecLan": "2013-04-24",
+		"released": "2013-04-24",
 		"rating": 3.01,
 		"genres": [
 			"Action",
@@ -12529,7 +12529,7 @@ export const videogames=[
 	},
 	{
 		"id": 6879,
-		"nombre": "The Flame in the Flood",
+		"name": "The Flame in the Flood",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -12539,7 +12539,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/87a/87a29bcc56b6b6082ead1dd5e2510aaa.jpg",
-		"fecLan": "2016-02-23",
+		"released": "2016-02-23",
 		"rating": 2.9,
 		"genres": [
 			"Action",
@@ -12586,7 +12586,7 @@ export const videogames=[
 	},
 	{
 		"id": 4397,
-		"nombre": "Battlefield 3",
+		"name": "Battlefield 3",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -12595,7 +12595,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/8bd/8bda6d876f3e241c6024022299553efd.jpg",
-		"fecLan": "2011-10-25",
+		"released": "2011-10-25",
 		"rating": 4.05,
 		"genres": [
 			"Action",
@@ -12637,7 +12637,7 @@ export const videogames=[
 	},
 	{
 		"id": 4882,
-		"nombre": "Lara Croft and the Guardian of Light",
+		"name": "Lara Croft and the Guardian of Light",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -12647,7 +12647,7 @@ export const videogames=[
 			"iOS"
 		],
 		"image": "https://media.rawg.io/media/games/a92/a92272ea5cfc35b8ad6317fbd81ce0f6.jpg",
-		"fecLan": "2010-08-05",
+		"released": "2010-08-05",
 		"rating": 3.42,
 		"genres": [
 			"Action",
@@ -12695,7 +12695,7 @@ export const videogames=[
 	},
 	{
 		"id": 3635,
-		"nombre": "Rogue Legacy",
+		"name": "Rogue Legacy",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -12707,7 +12707,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/598/59851e152a6898c8bf79069b5bf2f4db.jpg",
-		"fecLan": "2013-06-27",
+		"released": "2013-06-27",
 		"rating": 3.87,
 		"genres": [
 			"Action",
@@ -12760,7 +12760,7 @@ export const videogames=[
 	},
 	{
 		"id": 892,
-		"nombre": "Dust: An Elysian Tail",
+		"name": "Dust: An Elysian Tail",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -12772,7 +12772,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/c40/c40f9f0a3d1b4601a7a44d230c95f126.jpg",
-		"fecLan": "2012-08-15",
+		"released": "2012-08-15",
 		"rating": 3.63,
 		"genres": [
 			"Action",
@@ -12825,7 +12825,7 @@ export const videogames=[
 	},
 	{
 		"id": 42215,
-		"nombre": "Dying Light",
+		"name": "Dying Light",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -12834,7 +12834,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/4a5/4a5ce21f529cf8fd4670b4c3188b25df.jpg",
-		"fecLan": "2015-01-27",
+		"released": "2015-01-27",
 		"rating": 4.09,
 		"genres": [
 			"Action",
@@ -12871,13 +12871,13 @@ export const videogames=[
 	},
 	{
 		"id": 16199,
-		"nombre": "Killer is Dead - Nightmare Edition",
+		"name": "Killer is Dead - Nightmare Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/345/34589f72fe291f0f38f12488f28c8f43.jpg",
-		"fecLan": "2014-05-23",
+		"released": "2014-05-23",
 		"rating": 3.21,
 		"genres": [
 			"Action"
@@ -12920,7 +12920,7 @@ export const videogames=[
 	},
 	{
 		"id": 5565,
-		"nombre": "F.E.A.R. 3",
+		"name": "F.E.A.R. 3",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -12928,7 +12928,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/1da/1da9a7af524e81d257f972fbc06baefd.jpg",
-		"fecLan": "2011-03-25",
+		"released": "2011-03-25",
 		"rating": 3.36,
 		"genres": [
 			"Action",
@@ -12976,14 +12976,14 @@ export const videogames=[
 	},
 	{
 		"id": 49,
-		"nombre": "Persona 5",
+		"name": "Persona 5",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/3ea/3ea0e57ede873970c0f1130e30d88749.jpg",
-		"fecLan": "2016-09-15",
+		"released": "2016-09-15",
 		"rating": 4.38,
 		"genres": [
 			"Action",
@@ -13019,7 +13019,7 @@ export const videogames=[
 	},
 	{
 		"id": 5564,
-		"nombre": "F.E.A.R. 2: Project Origin",
+		"name": "F.E.A.R. 2: Project Origin",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -13027,7 +13027,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/d1d/d1dd46e2ef7f8a1ee946d3ab779c3754.jpg",
-		"fecLan": "2009-02-10",
+		"released": "2009-02-10",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -13067,7 +13067,7 @@ export const videogames=[
 	},
 	{
 		"id": 1758,
-		"nombre": "Valiant Hearts: The Great War",
+		"name": "Valiant Hearts: The Great War",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -13080,7 +13080,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/39a/39a8aa7798b685f9625e857bc394259d.jpg",
-		"fecLan": "2014-06-24",
+		"released": "2014-06-24",
 		"rating": 4.37,
 		"genres": [
 			"Adventure",
@@ -13125,7 +13125,7 @@ export const videogames=[
 	},
 	{
 		"id": 4347,
-		"nombre": "DiRT Showdown",
+		"name": "DiRT Showdown",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -13133,7 +13133,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/23d/23d78acedbb5f40c9fb64e73af5af65d.jpg",
-		"fecLan": "2012-05-24",
+		"released": "2012-05-24",
 		"rating": 3.29,
 		"genres": [
 			"Racing",
@@ -13164,13 +13164,13 @@ export const videogames=[
 	},
 	{
 		"id": 4491,
-		"nombre": "Shadow of the Colossus (2011)",
+		"name": "Shadow of the Colossus (2011)",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/6ac/6ac602e70c837ababdf025e997391d9c.jpg",
-		"fecLan": "2011-09-22",
+		"released": "2011-09-22",
 		"rating": 4.27,
 		"genres": [
 			"Action"
@@ -13200,7 +13200,7 @@ export const videogames=[
 	},
 	{
 		"id": 719,
-		"nombre": "Deponia",
+		"name": "Deponia",
 		"descripcion": "",
 		"plataformas": [
 			"Nintendo Switch",
@@ -13212,7 +13212,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/c2e/c2e6ad5c838d551aeff376f1f3d9d65e.jpg",
-		"fecLan": "2012-01-27",
+		"released": "2012-01-27",
 		"rating": 3.83,
 		"genres": [
 			"Adventure",
@@ -13261,7 +13261,7 @@ export const videogames=[
 	},
 	{
 		"id": 3561,
-		"nombre": "Spelunky",
+		"name": "Spelunky",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -13271,7 +13271,7 @@ export const videogames=[
 			"PS Vita"
 		],
 		"image": "https://media.rawg.io/media/games/fad/fadc4be043ed07904012d47cd02671e4.jpg",
-		"fecLan": "2012-07-04",
+		"released": "2012-07-04",
 		"rating": 3.68,
 		"genres": [
 			"Indie",
@@ -13322,7 +13322,7 @@ export const videogames=[
 	},
 	{
 		"id": 28110,
-		"nombre": "Vampyr",
+		"name": "Vampyr",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -13331,7 +13331,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/23b/23b42b7a896140f4ce1d0df8c42fa012.jpg",
-		"fecLan": "2018-06-04",
+		"released": "2018-06-04",
 		"rating": 3.46,
 		"genres": [
 			"Action",
@@ -13375,7 +13375,7 @@ export const videogames=[
 	},
 	{
 		"id": 17885,
-		"nombre": "Overlord",
+		"name": "Overlord",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -13384,7 +13384,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/d1c/d1cd8a226cb224357c1f59605577cbf2.jpg",
-		"fecLan": "2007-06-26",
+		"released": "2007-06-26",
 		"rating": 3.8,
 		"genres": [
 			"Action",
@@ -13426,14 +13426,14 @@ export const videogames=[
 	},
 	{
 		"id": 3290,
-		"nombre": "PlanetSide 2",
+		"name": "PlanetSide 2",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/2fd/2fd1b58116b10cc1f4442bee5593ca7c.jpg",
-		"fecLan": "2012-11-20",
+		"released": "2012-11-20",
 		"rating": 3,
 		"genres": [
 			"Action",
@@ -13477,13 +13477,13 @@ export const videogames=[
 	},
 	{
 		"id": 19491,
-		"nombre": "Burnout Paradise: The Ultimate Box",
+		"name": "Burnout Paradise: The Ultimate Box",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/7cf/7cf38d2d80267c121c6d0d361e9429ce.jpg",
-		"fecLan": "2009-02-05",
+		"released": "2009-02-05",
 		"rating": 3.95,
 		"genres": [
 			"Racing",
@@ -13523,13 +13523,13 @@ export const videogames=[
 	},
 	{
 		"id": 19647,
-		"nombre": "Crysis 2 - Maximum Edition",
+		"name": "Crysis 2 - Maximum Edition",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/1ed/1edaaa9e24e0072772244633d01642f4.jpg",
-		"fecLan": "2011-03-22",
+		"released": "2011-03-22",
 		"rating": 3.7,
 		"genres": [
 			"Action"
@@ -13570,7 +13570,7 @@ export const videogames=[
 	},
 	{
 		"id": 4032,
-		"nombre": "Dragon's Dogma: Dark Arisen",
+		"name": "Dragon's Dogma: Dark Arisen",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -13581,7 +13581,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/639/639ce7d7fecbb9f0717e9fbc1180f8f8.jpg",
-		"fecLan": "2013-04-23",
+		"released": "2013-04-23",
 		"rating": 3.92,
 		"genres": [
 			"Action",
@@ -13640,7 +13640,7 @@ export const videogames=[
 	},
 	{
 		"id": 13820,
-		"nombre": "The Elder Scrolls III: Morrowind",
+		"name": "The Elder Scrolls III: Morrowind",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -13648,7 +13648,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/ccf/ccf26f6e3d553a04f0033a8107a521b8.jpg",
-		"fecLan": "2002-05-01",
+		"released": "2002-05-01",
 		"rating": 4.39,
 		"genres": [
 			"RPG"
@@ -13694,7 +13694,7 @@ export const videogames=[
 	},
 	{
 		"id": 442855,
-		"nombre": "Mafia II: Definitive Edition",
+		"name": "Mafia II: Definitive Edition",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -13702,7 +13702,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/d73/d7364906c530ccc2d89b0b5d8695e03c.jpg",
-		"fecLan": "2020-05-19",
+		"released": "2020-05-19",
 		"rating": 3.84,
 		"genres": [
 			"Action",
@@ -13744,7 +13744,7 @@ export const videogames=[
 	},
 	{
 		"id": 10040,
-		"nombre": "Stellaris",
+		"name": "Stellaris",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -13752,7 +13752,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/92b/92bbf8a451e2742ab812a580546e593a.jpg",
-		"fecLan": "2016-05-08",
+		"released": "2016-05-08",
 		"rating": 4.13,
 		"genres": [
 			"Strategy",
@@ -13798,7 +13798,7 @@ export const videogames=[
 	},
 	{
 		"id": 12929,
-		"nombre": "The Talos Principle",
+		"name": "The Talos Principle",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -13811,7 +13811,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/948/948fe7f00b6cba8472f5ecd07a455077.jpg",
-		"fecLan": "2014-12-11",
+		"released": "2014-12-11",
 		"rating": 4.16,
 		"genres": [
 			"Adventure",
@@ -13864,7 +13864,7 @@ export const videogames=[
 	},
 	{
 		"id": 1789,
-		"nombre": "The Swapper",
+		"name": "The Swapper",
 		"descripcion": "",
 		"plataformas": [
 			"Wii U",
@@ -13877,7 +13877,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/6fc/6fcb1c529c764700d55f3bbc1b0fbb5b.jpg",
-		"fecLan": "2013-05-13",
+		"released": "2013-05-13",
 		"rating": 3.51,
 		"genres": [
 			"Action",
@@ -13927,7 +13927,7 @@ export const videogames=[
 	},
 	{
 		"id": 2300,
-		"nombre": "Drawful 2",
+		"name": "Drawful 2",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -13937,7 +13937,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/eeb/eeb9e668da5fd07bab9f655acfbbe579.jpg",
-		"fecLan": "2016-06-20",
+		"released": "2016-06-20",
 		"rating": 3.27,
 		"genres": [
 			"Strategy",
@@ -13978,7 +13978,7 @@ export const videogames=[
 	},
 	{
 		"id": 23557,
-		"nombre": "Gwent: The Witcher Card Game",
+		"name": "Gwent: The Witcher Card Game",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -13988,7 +13988,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/742/7424c1f7d0a8da9ae29cd866f985698b.jpg",
-		"fecLan": "2018-10-23",
+		"released": "2018-10-23",
 		"rating": 3.6,
 		"genres": [
 			"RPG",
@@ -14038,7 +14038,7 @@ export const videogames=[
 	},
 	{
 		"id": 5342,
-		"nombre": "Medal of Honor",
+		"name": "Medal of Honor",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -14046,7 +14046,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/106/1069e754e7e6012b0cf42b4b04704792.jpg",
-		"fecLan": "2010-10-12",
+		"released": "2010-10-12",
 		"rating": 3.26,
 		"genres": [
 			"Action",
@@ -14091,7 +14091,7 @@ export const videogames=[
 	},
 	{
 		"id": 41490,
-		"nombre": "Divinity: Original Sin",
+		"name": "Divinity: Original Sin",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -14100,7 +14100,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/963/9639183ff27251b0b686acaa6aac0297.jpg",
-		"fecLan": "2014-06-30",
+		"released": "2014-06-30",
 		"rating": 4.17,
 		"genres": [
 			"RPG",
@@ -14150,7 +14150,7 @@ export const videogames=[
 	},
 	{
 		"id": 28121,
-		"nombre": "Slay the Spire",
+		"name": "Slay the Spire",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -14163,7 +14163,7 @@ export const videogames=[
 			"Android"
 		],
 		"image": "https://media.rawg.io/media/games/f52/f5206d55f918edf8ee07803101106fa6.jpg",
-		"fecLan": "2019-01-22",
+		"released": "2019-01-22",
 		"rating": 4.37,
 		"genres": [
 			"RPG",
@@ -14203,7 +14203,7 @@ export const videogames=[
 	},
 	{
 		"id": 397477,
-		"nombre": "Resident Evil 3",
+		"name": "Resident Evil 3",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -14212,7 +14212,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/a4b/a4bb55f42fe837ae7bf1307e7b41cc85.jpg",
-		"fecLan": "2020-04-02",
+		"released": "2020-04-02",
 		"rating": 4.03,
 		"genres": [
 			"Action",
@@ -14264,7 +14264,7 @@ export const videogames=[
 	},
 	{
 		"id": 58494,
-		"nombre": "Battlefield V",
+		"name": "Battlefield V",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -14272,7 +14272,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/45b/45b57ed59de4b84effd8f6bc4b7bf515.jpg",
-		"fecLan": "2018-11-20",
+		"released": "2018-11-20",
 		"rating": 3.51,
 		"genres": [
 			"Action",
@@ -14323,7 +14323,7 @@ export const videogames=[
 	},
 	{
 		"id": 13886,
-		"nombre": "Star Wars: Battlefront II (2005)",
+		"name": "Star Wars: Battlefront II (2005)",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox",
@@ -14332,7 +14332,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/662/6625a20ca1d13699ee7c191b20a02408.jpg",
-		"fecLan": "2005-10-30",
+		"released": "2005-10-30",
 		"rating": 4.21,
 		"genres": [
 			"Action",
@@ -14378,7 +14378,7 @@ export const videogames=[
 	},
 	{
 		"id": 3965,
-		"nombre": "Binary Domain",
+		"name": "Binary Domain",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -14386,7 +14386,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/bcd/bcd9896b7c3b9fa80e5dcb67c961e2be.jpg",
-		"fecLan": "2012-02-16",
+		"released": "2012-02-16",
 		"rating": 3.56,
 		"genres": [
 			"Action",
@@ -14433,13 +14433,13 @@ export const videogames=[
 	},
 	{
 		"id": 10428,
-		"nombre": "Heroes & Generals",
+		"name": "Heroes & Generals",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/98c/98cd77a9f61b31a6ddab1670b079c841.jpg",
-		"fecLan": "2016-10-18",
+		"released": "2016-10-18",
 		"rating": 2.79,
 		"genres": [
 			"Action",
@@ -14483,7 +14483,7 @@ export const videogames=[
 	},
 	{
 		"id": 884,
-		"nombre": "Call of Duty: Modern Warfare Remastered",
+		"name": "Call of Duty: Modern Warfare Remastered",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox One",
@@ -14491,7 +14491,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/509/509c81a5da92a8d0645d9e160d155017.jpg",
-		"fecLan": "2016-10-05",
+		"released": "2016-10-05",
 		"rating": 3.96,
 		"genres": [
 			"Action",
@@ -14527,7 +14527,7 @@ export const videogames=[
 	},
 	{
 		"id": 4439,
-		"nombre": "Mass Effect 3",
+		"name": "Mass Effect 3",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -14537,7 +14537,7 @@ export const videogames=[
 			"Xbox 360"
 		],
 		"image": "https://media.rawg.io/media/games/315/3156817d3ac1f341da73de6495fb28f5.jpg",
-		"fecLan": "2012-03-05",
+		"released": "2012-03-05",
 		"rating": 4.4,
 		"genres": [
 			"Action",
@@ -14574,7 +14574,7 @@ export const videogames=[
 	},
 	{
 		"id": 15829,
-		"nombre": "Pillars of Eternity",
+		"name": "Pillars of Eternity",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -14584,7 +14584,7 @@ export const videogames=[
 			"Linux"
 		],
 		"image": "https://media.rawg.io/media/games/789/7896837ec22a83e4007018ddd55e8c9a.jpg",
-		"fecLan": "2015-03-26",
+		"released": "2015-03-26",
 		"rating": 3.96,
 		"genres": [
 			"RPG"
@@ -14629,7 +14629,7 @@ export const videogames=[
 	},
 	{
 		"id": 34,
-		"nombre": "Crash Bandicoot N. Sane Trilogy",
+		"name": "Crash Bandicoot N. Sane Trilogy",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -14638,7 +14638,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/444/4440f674e2bcb257e249a9ab595d8ab6.jpg",
-		"fecLan": "2017-06-30",
+		"released": "2017-06-30",
 		"rating": 4.13,
 		"genres": [
 			"Action",
@@ -14686,7 +14686,7 @@ export const videogames=[
 	},
 	{
 		"id": 15566,
-		"nombre": "Red Faction: Guerrilla",
+		"name": "Red Faction: Guerrilla",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -14694,7 +14694,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/94a/94a59c5136a9b90eef5f23fea7bf997c.jpg",
-		"fecLan": "2009-06-02",
+		"released": "2009-06-02",
 		"rating": 3.66,
 		"genres": [
 			"Action",
@@ -14742,7 +14742,7 @@ export const videogames=[
 	},
 	{
 		"id": 4869,
-		"nombre": "Tomb Raider: Underworld",
+		"name": "Tomb Raider: Underworld",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -14753,7 +14753,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/341/3413d7275fb1e919f00a925df8288b77.jpg",
-		"fecLan": "2008-11-18",
+		"released": "2008-11-18",
 		"rating": 3.68,
 		"genres": [
 			"Action",
@@ -14792,7 +14792,7 @@ export const videogames=[
 	},
 	{
 		"id": 4358,
-		"nombre": "Assassin's Creed Revelations",
+		"name": "Assassin's Creed Revelations",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -14802,7 +14802,7 @@ export const videogames=[
 			"PlayStation 3"
 		],
 		"image": "https://media.rawg.io/media/games/193/19390fa5e75e9048b22c9a736cf9992f.jpg",
-		"fecLan": "2011-11-15",
+		"released": "2011-11-15",
 		"rating": 3.98,
 		"genres": [
 			"Action",
@@ -14847,7 +14847,7 @@ export const videogames=[
 	},
 	{
 		"id": 59313,
-		"nombre": "Gris",
+		"name": "Gris",
 		"descripcion": "",
 		"plataformas": [
 			"macOS",
@@ -14858,7 +14858,7 @@ export const videogames=[
 			"Nintendo Switch"
 		],
 		"image": "https://media.rawg.io/media/games/51c/51c430f1795c79b78f863a9f22dc422d.jpg",
-		"fecLan": "2018-12-13",
+		"released": "2018-12-13",
 		"rating": 4.22,
 		"genres": [
 			"Adventure",
@@ -14898,7 +14898,7 @@ export const videogames=[
 	},
 	{
 		"id": 1259,
-		"nombre": "Machinarium",
+		"name": "Machinarium",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -14913,7 +14913,7 @@ export const videogames=[
 			"macOS"
 		],
 		"image": "https://media.rawg.io/media/games/8cd/8cd179c85bd3de8f79bef245b15075fb.jpg",
-		"fecLan": "2009-10-16",
+		"released": "2009-10-16",
 		"rating": 4.16,
 		"genres": [
 			"Adventure",
@@ -14966,7 +14966,7 @@ export const videogames=[
 	},
 	{
 		"id": 326252,
-		"nombre": "Gears 5",
+		"name": "Gears 5",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox Series S/X",
@@ -14974,7 +14974,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/121/1213f8b9b0a26307e672cf51f34882f8.jpg",
-		"fecLan": "2019-09-10",
+		"released": "2019-09-10",
 		"rating": 3.93,
 		"genres": [
 			"Action",
@@ -15015,13 +15015,13 @@ export const videogames=[
 	},
 	{
 		"id": 398423,
-		"nombre": "Gothic Playable Teaser",
+		"name": "Gothic Playable Teaser",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/64e/64e4fc48c5d977188e8c47287f2a2cef.jpg",
-		"fecLan": "2019-12-14",
+		"released": "2019-12-14",
 		"rating": 2.6,
 		"genres": [
 			"RPG"
@@ -15045,7 +15045,7 @@ export const videogames=[
 	},
 	{
 		"id": 5636,
-		"nombre": "Rage",
+		"name": "Rage",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -15054,7 +15054,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/8a7/8a75028028592f9323d1e6e86668bb91.jpg",
-		"fecLan": "2011-10-03",
+		"released": "2011-10-03",
 		"rating": 3.42,
 		"genres": [
 			"Action",
@@ -15100,7 +15100,7 @@ export const videogames=[
 	},
 	{
 		"id": 382,
-		"nombre": "Sniper Elite 4",
+		"name": "Sniper Elite 4",
 		"descripcion": "",
 		"plataformas": [
 			"PC",
@@ -15109,7 +15109,7 @@ export const videogames=[
 			"Xbox One"
 		],
 		"image": "https://media.rawg.io/media/games/2fe/2feec1ba840f467a2280061b9e665c6e.jpg",
-		"fecLan": "2017-02-13",
+		"released": "2017-02-13",
 		"rating": 3.58,
 		"genres": [
 			"Action",
@@ -15158,7 +15158,7 @@ export const videogames=[
 	},
 	{
 		"id": 4581,
-		"nombre": "Crysis",
+		"name": "Crysis",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 3",
@@ -15166,7 +15166,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/90f/90fd5e569bc4c4a666c588a732124908.jpg",
-		"fecLan": "2007-11-12",
+		"released": "2007-11-12",
 		"rating": 4.01,
 		"genres": [
 			"Action",
@@ -15210,7 +15210,7 @@ export const videogames=[
 	},
 	{
 		"id": 44525,
-		"nombre": "Yakuza Kiwami",
+		"name": "Yakuza Kiwami",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 4",
@@ -15219,7 +15219,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/fbb/fbbd9fe21317bde9134114e2b1306069.jpg",
-		"fecLan": "2016-01-21",
+		"released": "2016-01-21",
 		"rating": 4.07,
 		"genres": [
 			"Action",
@@ -15258,7 +15258,7 @@ export const videogames=[
 	},
 	{
 		"id": 29153,
-		"nombre": "Max Payne 2: The Fall of Max Payne",
+		"name": "Max Payne 2: The Fall of Max Payne",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -15267,7 +15267,7 @@ export const videogames=[
 			"PlayStation 2"
 		],
 		"image": "https://media.rawg.io/media/games/6fd/6fd971ffa72faa1758960d25ef6196bc.jpg",
-		"fecLan": "2003-10-14",
+		"released": "2003-10-14",
 		"rating": 4.43,
 		"genres": [
 			"Action",
@@ -15301,7 +15301,7 @@ export const videogames=[
 	},
 	{
 		"id": 5528,
-		"nombre": "Call of Duty: World at War",
+		"name": "Call of Duty: World at War",
 		"descripcion": "",
 		"plataformas": [
 			"Xbox 360",
@@ -15312,7 +15312,7 @@ export const videogames=[
 			"Wii"
 		],
 		"image": "https://media.rawg.io/media/games/da1/da15524e850ee9791b32973b748e08d5.jpg",
-		"fecLan": "2008-11-11",
+		"released": "2008-11-11",
 		"rating": 3.95,
 		"genres": [
 			"Action",
@@ -15358,7 +15358,7 @@ export const videogames=[
 	},
 	{
 		"id": 1140,
-		"nombre": "World of Goo",
+		"name": "World of Goo",
 		"descripcion": "",
 		"plataformas": [
 			"Android",
@@ -15370,7 +15370,7 @@ export const videogames=[
 			"Wii"
 		],
 		"image": "https://media.rawg.io/media/games/d03/d030347839f74454afcd1008248b08ae.jpg",
-		"fecLan": "2008-10-13",
+		"released": "2008-10-13",
 		"rating": 4.01,
 		"genres": [
 			"Strategy",
@@ -15421,13 +15421,13 @@ export const videogames=[
 	},
 	{
 		"id": 9631,
-		"nombre": "Sins of a Solar Empire: Rebellion",
+		"name": "Sins of a Solar Empire: Rebellion",
 		"descripcion": "",
 		"plataformas": [
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/screenshots/65c/65c9c15e274705b5fe343e424ce76ec8.jpg",
-		"fecLan": "2012-06-12",
+		"released": "2012-06-12",
 		"rating": 2.75,
 		"genres": [
 			"Strategy",
@@ -15475,7 +15475,7 @@ export const videogames=[
 	},
 	{
 		"id": 452638,
-		"nombre": "Stray",
+		"name": "Stray",
 		"descripcion": "",
 		"plataformas": [
 			"PlayStation 5",
@@ -15483,7 +15483,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/cd3/cd3c9c7d3e95cb1608fd6250f1b90b7a.jpg",
-		"fecLan": "2022-07-19",
+		"released": "2022-07-19",
 		"rating": 4.2,
 		"genres": [
 			"Action",
@@ -15532,7 +15532,7 @@ export const videogames=[
 	},
 	{
 		"id": 11279,
-		"nombre": "Day of Defeat: Source",
+		"name": "Day of Defeat: Source",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -15540,7 +15540,7 @@ export const videogames=[
 			"PC"
 		],
 		"image": "https://media.rawg.io/media/games/bff/bff7d82316cddea9541261a045ba008a.jpg",
-		"fecLan": "2005-09-26",
+		"released": "2005-09-26",
 		"rating": 3.22,
 		"genres": [
 			"Action"
@@ -15583,7 +15583,7 @@ export const videogames=[
 	},
 	{
 		"id": 3315,
-		"nombre": "Magicka 2",
+		"name": "Magicka 2",
 		"descripcion": "",
 		"plataformas": [
 			"Linux",
@@ -15592,7 +15592,7 @@ export const videogames=[
 			"PlayStation 4"
 		],
 		"image": "https://media.rawg.io/media/games/516/516c6bfe36ddb498d860f68927448a75.jpg",
-		"fecLan": "2015-05-26",
+		"released": "2015-05-26",
 		"rating": 3.67,
 		"genres": [
 			"Action",
