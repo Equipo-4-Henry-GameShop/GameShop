@@ -63,6 +63,7 @@ const HomeScreen =({ navigation, route})=>{
         inputStyle={styles.SearchbarText}
         style={styles.Searchbarfondo}
         iconColor={color_blanco}
+        placeholderTextColor={color_blanco}
       />
         <SectionList
          // // //  , 
@@ -74,30 +75,23 @@ const HomeScreen =({ navigation, route})=>{
                       (pagina-1)*porPagina,
                       (pagina-1)*porPagina+porPagina)
                     .map(el=>{
-                      // console.log("elemto sliceado",el)
+                     //console.log("elemto sliceado",el)
                     return ({
                                     key: `${el.id}`, 
                                     img: {uri:el.image }, 
                                     nombre:el.name ,
                                     fecLan: el.released,
                                     // screnshoots: el.screnshoots,
-                                    screenshoots:[
-                                      "https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-                                      "https://media.rawg.io/media/screenshots/a7c/a7c43871a54bed6573a6a429451564ef.jpg",
-                                      "https://media.rawg.io/media/screenshots/cf4/cf4367daf6a1e33684bf19adb02d16d6.jpg",
-                                      "https://media.rawg.io/media/screenshots/f95/f9518b1d99210c0cae21fc09e95b4e31.jpg",
-                                      "https://media.rawg.io/media/screenshots/a5c/a5c95ea539c87d5f538763e16e18fb99.jpg",
-                                      "https://media.rawg.io/media/screenshots/a7e/a7e990bc574f4d34e03b5926361d1ee7.jpg",
-                                      "https://media.rawg.io/media/screenshots/592/592e2501d8734b802b2a34fee2df59fa.jpg"
-                                    ],
+                                    screenshoots:el.screenshots,
                                     informacion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit risus et felis malesuada, in interdum turpis lacinia. Donec gravida tincidunt mollis. Donec luctus est non iaculis ultricies. In bibendum turpis et odio mollis, ac tincidunt dui efficitur. Vivamus iaculis a eros nec congue. Donec neque metus, blandit condimentum velit nec, eleifend scelerisque tellus. Vestibulum sed pretium dui, quis bibendum dui.',
                                     rating: el.rating,
                                     generos: el.genre,
                                     tiendas: el.tiendas,
                                     etiquetas: el.etiquetas,
                                     plataformas: el.platforms,
-                                    precio: (Math.random() * (100 - 45)).toFixed(2),
-                                    requerimientos:el.requeriments_en.map(el=>el)
+                                    precio: el.price,
+                                    requerimientos:el.requeriments_en
+                                    // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
                     })   
           },
@@ -105,7 +99,9 @@ const HomeScreen =({ navigation, route})=>{
         ]}
         renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
           <>  
-                <CardHome data={item} navigation={navigation}/>
+               
+                <CardHome data={item} navigation={navigation}  
+                 ActivityIndicator color={color_azul} size={"large"}/>
           </>
         }
         renderSectionHeader={({section}) => <Text style={styles.cabecera}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
@@ -135,14 +131,16 @@ const styles = StyleSheet.create({
   },
   SearchbarText:{
     color: color_naranja,
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: 'bold',
-    
+    // alignItems: 'flex-start'
+    justifyContent:'center',
+    verticalAlign: 'top'
   },
   Searchbarfondo:{
     margin:5, 
     backgroundColor: color_negro,
-    height:50,
+    height:35,
   },
   Navback:{
     width: '6%',

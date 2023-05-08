@@ -1,4 +1,5 @@
 import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
+import { WebView } from 'react-native-webview';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
@@ -6,14 +7,21 @@ import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_
 const CardExtra = (videogame) => {
     
     console.log("extra requerimientos", videogame.videogame.requerimientos)
+    // let data=Object.entries(videogame.videogame.requerimientos)
+    console.log("data-->",videogame.videogame.requerimientos[0].minimum);
     return (
         <View  style={styles.container}>
-          <Text> Requerimientos Minimos</Text>
-          {/* <Text>{videogame.videogame.requerimientos}</Text> */}
+          <Text style={styles.reqtitle}> Requerimientos Minimos</Text>
+        {/* <WebView style={styles.req} >{videogame.videogame.requerimientos[0].minimum}</WebView> */}
 
          <SectionList
         // <SectionList 
         sections={[
+
+          // {
+          //   title: 'Requisitos', 
+          //   data: data
+          // },
           {
             title: 'Generos', 
             data: videogame.videogame.generos.map( (el)=> {
@@ -30,23 +38,8 @@ const CardExtra = (videogame) => {
                      }
                     )})
           },
-           {
-            title: 'Requerimientos', 
-            data: videogame.videogame.requerimientos
-            // .map( (el)=> {
-                    //  return (  {
-                    //     key: `${el}`,      nombre:el,
-                    //  }
-                    // )})
-          },
-          // {
-          //   title: 'Tiendas Virtuales', 
-          //   data: videogame.videogame.tiendas.map( (el)=> {
-          //            return (  {
-          //               key: `${el}`,      nombre:el,
-          //            }
-          //           )})
-          // },
+           
+          
          
         ]}
         renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
@@ -149,7 +142,13 @@ const CardExtra = (videogame) => {
         alignContent: 'center',
     //    backgroundColor:color_gris,
        padding:1
-    }
+    },
+    reqtitle:{
+      fontSize: 25,
+    },
+    req:{
+        fontSize:20,
+    },
    
   });
   

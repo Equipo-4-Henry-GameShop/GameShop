@@ -1,76 +1,105 @@
-import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
+import 'react-native-gesture-handler';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from './src/constants/Colors'
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from './src/components/Views/Home'
 import Detail from './src/components/Views/Detail/Detail'
 import Landing from './src/components/Views/Landing'
-
+import Form_Create from './src/components/Views/Form_Create'
 import { Provider } from 'react-redux'
 import store from './src/redux/store'
 
 
 
-const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+// const Stack = createNativeStackNavigator();
 
 export default function App() {
 
   return ( <>
   <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
-        <Stack.Screen  
-                name="Landing" 
-                component={Landing} 
-                initialParams={{ fromChild: 'Initial' }} 
-                options={{ 
-                  title: 'Bienvenido Jugadoraso',
-                  headerStyle: {
-                    backgroundColor: color_azul,
-                  },
-                  headerTintColor: color_blanco,
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize:25
-                  }
-                }}
-       />
-       <Stack.Screen  
-                name="Home" 
-                component={Home} 
-                initialParams={{ fromChild: 'Initial' }} 
-                options={{ 
-                  title: 'Home',
-                  headerStyle: {
-                    backgroundColor: color_azul,
-                  },
-                  headerTintColor: color_blanco,
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize:25
-                  }
-                }}
-       />
-        <Stack.Screen 
-          name='Detail'
-          component={Detail} 
-          options={{ 
-            title: 'Detail',
-            headerStyle: {
-              backgroundColor: color_azul,
-            },
-            headerTintColor: color_blanco,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize:25
-            }
-          }}
-          // options={({ route }) => ({ title: route.params.name }: any)}
-        />
-        
-        </Stack.Navigator>
+        <Drawer.Navigator>
+            <Drawer.Screen  
+                    name="Landing" 
+                    component={Landing} 
+                    // initialParams={{ fromChild: 'Initial' }} 
+                    options={{ 
+                    title: 'Bienvenido Jugadoraso',
+                      headerStyle: {
+                        backgroundColor: color_azul,
+                      },
+                      headerTintColor: color_blanco,
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                        fontSize:25
+                      }
+                     }}
+          />
+          <Drawer.Screen  
+                    name="Home" 
+                    component={Home} 
+                    initialParams={{ fromChild: 'Initial' }} 
+                    
+                    options={{ 
+                      title: 'Home',
+                      headerStyle: {
+                        backgroundColor: color_azul,
+                      },
+                      
+                      headerTintColor: color_blanco,
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                        fontSize:25
+                      },
+                    
+                      headerRight :  () => ( 
+                        <TouchableOpacity onPress={()=>alert("filtrado")}>
+                              <MaterialCommunityIcons name="filter" color={color_blanco}  size={30}/>
+                              
+                        </TouchableOpacity>
+                        ),
+                      
+                    }}
+          />
+            <Drawer.Screen 
+              name='Detail'
+              component={Detail} 
+              options={{ 
+                title: 'Detail',
+                headerStyle: {
+                  backgroundColor: color_azul,
+                },
+                headerTintColor: color_blanco,
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                }
+              }}
+            />
+            <Drawer.Screen 
+              name='Creacion Video Juego'
+              component={Form_Create} 
+              options={{ 
+                title: 'Detail',
+                headerStyle: {
+                  backgroundColor: color_azul,
+                },
+                headerTintColor: color_blanco,
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                }
+              }}
+            />
+            
+        </Drawer.Navigator>
       </NavigationContainer>
       </Provider>
       </>
@@ -79,13 +108,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex:1,
-    
-    // backgroundColor: color_negro,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // width: '100%',
-    // height: '100%'
+
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: color_gris,
