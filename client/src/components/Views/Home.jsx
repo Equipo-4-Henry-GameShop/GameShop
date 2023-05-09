@@ -45,13 +45,16 @@ const Home=({ navigation, route})=>{
   const onChangeSearch = (query) => {
     // console.log("caracter en home", query)
     if (flag_prev==='false') {
+
       dispatch(setPrvVideogame(vGames.videoGames))
       dispatch(setFlaPrev(true))
     }
     setSearchQuery(query);
     dispatch(getvGamebyName(query))
     dispatch(set1rsPage())
+  
   }
+  
   const onCloseSearch = () => {
     // console.log("limpiando valores de busqueda");
     dispatch(updateVideogames(prev_videogames))
