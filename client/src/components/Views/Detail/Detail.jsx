@@ -38,7 +38,7 @@ const TabExtra= (props) => {
 }
 const DetailScreen = ({route,navigation}) => {
   // export default function DetailScreen () {
-    // console.log("videogame en DEtail")
+    // console.log("videogame en DEtail",route.params.videogame.screenshoots )
     return (
      
       <Tab.Navigator
@@ -74,7 +74,7 @@ const DetailScreen = ({route,navigation}) => {
             <MaterialCommunityIcons name="images-outline" color={color} size={size} />
           )
         }}>
-                          {/* //=> navigation:{navigation} route:{route}       */}
+
         {props => <TabCarrousel {...props} data={route.params.videogame.screenshoots} />}
       </Tab.Screen>
       <Tab.Screen 

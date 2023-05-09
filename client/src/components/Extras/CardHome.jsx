@@ -6,7 +6,7 @@ import {size} from 'lodash'
 
 
 export default function CardHome(data) {
-  //  console.log("esto llega a card",data.navigation)
+  // console.log("esto llega a card",data.data.screenshoots)
   function estrellitas(index) {
     // console.log("entro una estreilla");
     return <Image source={require('../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
