@@ -1,10 +1,11 @@
 
-export const validate= (val) => {
-    let errors = {};
-    if (!val.name) {
-      errors.name = "Missing enter name";
-    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(val.name)) {
-      errors.name = "The user must only have 4-16 digits and can only contain letters, numbers and underscores."}
+
+const validate= () => {
+  const errors = {};
+    if (!val.user) {
+      errors.user = "Missing enter name";
+    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(val.user)) {
+      setErrors(...errors, errors.user, "The user must only have 4-16 digits and can only contain letters, numbers and underscores.")}
 
     if (!val.email) {
       errors.email = "Missing enter Email";
@@ -41,3 +42,4 @@ export const validate= (val) => {
     return errors
   }
   
+

@@ -10,6 +10,8 @@ import {
 } from "react-native";
 
 
+
+
 import {
   color_azul,
   color_blanco,
@@ -34,6 +36,18 @@ const Landing =({ navigation, route})=>{
       >
           <View style={styles.button}>
             <Text style={styles.buttonText}>Acceder</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("CreateUser", { name: "CreateUser" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>CreateUser</Text>
           </View>
         </TouchableOpacity>
       </View>

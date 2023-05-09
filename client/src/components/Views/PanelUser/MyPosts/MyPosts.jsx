@@ -24,21 +24,8 @@ import {
 export const MyPosts= () => {
     return (
       <View>
-        <View>
-          {/* <Link href="/MyProfile">My profile</Link> */}
-        </View>
-        <View>
-          {/* <Link href="/Security">Security</Link> */}
-        </View>
-        <View>
-          {/* <Link href="/Communications">Communications</Link> */}
-        </View>
-        <View>
-          {/* <Link href="/Myposts">Communications</Link> */}
-        </View>
-        <View>
-          {/* <Link href="/Preferences">Communications</Link> */}
-        </View>
+        ///Acá se puede añadir una FlatList con los posteos que contenga un link que
+        ///redirija al admin a las publicaciónes que realizó
       </View>
     );
   };
