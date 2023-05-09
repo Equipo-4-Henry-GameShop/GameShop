@@ -6,10 +6,9 @@ import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} fro
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from './src/constants/Colors'
 import {NavigationContainer} from '@react-navigation/native';
-// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import Home from './src/components/Views/Home'
-import Detail from './src/components/Views/Detail/Detail'
+import HomeScreen from './src/components/Views/Home'
+
 import Landing from './src/components/Views/Landing'
 import Form_Create from './src/components/Views/Form_Create'
 import { Provider } from 'react-redux'
@@ -18,7 +17,7 @@ import store from './src/redux/store'
 
 
 const Drawer = createDrawerNavigator();
-// const Stack = createNativeStackNavigator();
+
 
 export default function App() {
 
@@ -31,7 +30,7 @@ export default function App() {
                     component={Landing} 
                     // initialParams={{ fromChild: 'Initial' }} 
                     options={{ 
-                    title: 'Bienvenido Jugadoraso',
+                    title: 'Bienvenido',
                       headerStyle: {
                         backgroundColor: color_azul,
                       },
@@ -43,8 +42,8 @@ export default function App() {
                      }}
           />
           <Drawer.Screen  
-                    name="Home" 
-                    component={Home} 
+                    name="HomeScreen" 
+                    component={HomeScreen} 
                     initialParams={{ fromChild: 'Initial' }} 
                     
                     options={{ 
@@ -59,35 +58,18 @@ export default function App() {
                         fontSize:25
                       },
                     
-                      headerRight :  () => ( 
-                        <TouchableOpacity onPress={()=>alert("filtrado")}>
-                              <MaterialCommunityIcons name="filter" color={color_blanco}  size={30}/>
-                              
-                        </TouchableOpacity>
-                        ),
+                     
                       
                     }}
           />
-            <Drawer.Screen 
-              name='Detail'
-              component={Detail} 
-              options={{ 
-                title: 'Detail',
-                headerStyle: {
-                  backgroundColor: color_azul,
-                },
-                headerTintColor: color_blanco,
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize:25
-                }
-              }}
-            />
+            {/* <Drawer.Screen 
+              
+            /> */}
             <Drawer.Screen 
               name='Creacion Video Juego'
               component={Form_Create} 
               options={{ 
-                title: 'Detail',
+                title: 'Formulario de Creacion',
                 headerStyle: {
                   backgroundColor: color_azul,
                 },

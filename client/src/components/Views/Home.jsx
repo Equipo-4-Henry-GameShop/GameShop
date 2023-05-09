@@ -4,13 +4,19 @@ import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect ,useState} from 'react'
-import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName} from "../../redux/videogamesActions"
-import CardHome from '../Extras/CardHome';
+import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../redux/videogamesActions"
 import { Searchbar } from 'react-native-paper';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import CardHome from '../Extras/CardHome';
+import Detail from './Detail/Detail'
+import { setFlaPrev, updateVideogames } from '../../redux/videogamesSlice';
 
 
-const HomeScreen =({ navigation, route})=>{
+//este tiene toda la logica xq va dentro de un stack
+const Home=({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
+  const flag_prev= vGames.flag_prev
+  const prev_videogames= vGames.videoGames_Prev
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
@@ -18,7 +24,7 @@ const HomeScreen =({ navigation, route})=>{
   
   const dispatch= useDispatch();
   useEffect(()=>{
-    // console.log("entro aqui?")
+    console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
 
@@ -38,15 +44,24 @@ const HomeScreen =({ navigation, route})=>{
   }
   const onChangeSearch = (query) => {
     // console.log("caracter en home", query)
+    if (flag_prev==='false') {
+
+      dispatch(setPrvVideogame(vGames.videoGames))
+      dispatch(setFlaPrev(true))
+    }
     setSearchQuery(query);
     dispatch(getvGamebyName(query))
+    dispatch(set1rsPage())
+  
   }
+  
   const onCloseSearch = () => {
     // console.log("limpiando valores de busqueda");
-    dispatch(getvideoGames()) ;
+    dispatch(updateVideogames(prev_videogames))
+    // dispatch(getvideoGames()) ;
   }
-  return (
-    <View  style={styles.container}>
+return (
+  <View  style={styles.container}>
       <View style={styles.Navback}>
             <TouchableOpacity onPress={PrevPage}>
                < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
@@ -116,6 +131,57 @@ const HomeScreen =({ navigation, route})=>{
         </TouchableOpacity>
       </View>
     </View>
+    )
+}
+
+const HomeScreen =({ navigation, route})=>{
+  
+
+const Stack = createNativeStackNavigator();
+  return (
+     <Stack.Navigator>
+        <Stack.Screen 
+        name='Home'
+              component={Home} 
+              options={{ 
+                title: 'Listado ',
+                headerStyle: {
+                  backgroundColor: color_azul
+                },
+                headerTintColor: color_blanco,
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerRight :  () => ( 
+                  <TouchableOpacity onPress={()=>alert("filtrado")}>
+                        <MaterialCommunityIcons name="filter" color={color_blanco}  size={30}/>
+                        
+                  </TouchableOpacity>
+                  ),
+              }}
+        >
+             {/* {props => <TabInfo {...props} videogame= {route.params.videogame} />} */}
+          
+        </Stack.Screen>
+        <Stack.Screen
+        name='Detail'
+              component={Detail} 
+              options={{ 
+                title: 'Detail',
+                headerStyle: {
+                  backgroundColor: color_azul,
+                },
+                headerTintColor: color_blanco,
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                }
+              }}
+              >
+        </Stack.Screen>
+     </Stack.Navigator>
+    
     );
 
 }
