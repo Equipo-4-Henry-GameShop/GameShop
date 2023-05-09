@@ -1,15 +1,16 @@
-import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,getVideogamesbyName} from "./videogamesSlice";
+import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,
+    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames} from "./videogamesSlice";
 import axios from "axios";
-// import {videogames} from '../utils/dataVideojuegos'
+import {videogames} from '../utils/dataVideojuegos'
 
 let estado=0
 export const  getvideoGames = () =>(dispatch)=>{
   
-   // dispatch(getAllVideogames(videogames))
-   // axios(`https://gameshopback-pf-ek5y.onrender.com/games?name=`)
-    axios("https://gameshopback-pf-ek5y.onrender.com/games")
-    .then(res => dispatch(getAllVideogames(res.data)))
-    .catch(e=>console.log("error en la ruta" ,e))
+   dispatch(getAllVideogames(videogames))
+   
+    // axios("https://gameshopback-pf-ek5y.onrender.com/games")
+    // .then(res => dispatch(getAllVideogames(res.data)))
+    // .catch(e=>console.log("error en la ruta" ,e))
 }
 
 export const getvGamebyName =(query)=> (dispatch=>{
@@ -59,5 +60,27 @@ export const setMxPage=(maximo)=>{
     
     return  function(dispatch){
            dispatch(setMaxPage(maximo))
+    }
+}
+export const set1rsPage=()=>{
+    return function(dispatch){
+        dispatch(setFirstPage())
+    }
+}
+export const setflgPrev=(value)=>{
+    return function(dispatch){
+        dispatch(setFlaPrev(value))
+    }    
+}
+
+export const setPrvVideogame=()=>{
+    return function(dispatch){
+        dispatch(setPrevVideoGame())
+}
+}
+
+export const updateVgames=(data)=>{
+    return function(dispatch){
+        dispatch(updateVideogames(data))
     }
 }

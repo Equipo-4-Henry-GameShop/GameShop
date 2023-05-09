@@ -41,10 +41,22 @@ export const videogamesSlice= createSlice({
         setMaxPage : (state,action)=>{
             state.pagina=action.payload
         },
+        setFirstPage : (state,action)=>{
+            state.pagina=1
+        },
+        setFlaPrev: (state,action)=>{
+            state.flag_prev=action.payload
+        },
+        setPrevVideoGame:(state,action)=>{
+            state.videoGames_Prev=action.payload
+        },
+        updateVideogames:(state,action)=>{
+            state.videoGames=action.payload
+        },
 
     }
 })
 
-export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,
-              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame}=videogamesSlice.actions
+export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,}=videogamesSlice.actions
 export default videogamesSlice.reducer

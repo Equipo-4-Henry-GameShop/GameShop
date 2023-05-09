@@ -8,7 +8,7 @@ const CardExtra = (videogame) => {
     
     console.log("extra requerimientos", videogame.videogame.requerimientos)
     // let data=Object.entries(videogame.videogame.requerimientos)
-    console.log("data-->",videogame.videogame.requerimientos[0].minimum);
+    // console.log("data-->",videogame.videogame.requerimientos[0].minimum);
     return (
         <View  style={styles.container}>
           <Text style={styles.reqtitle}> Requerimientos Minimos</Text>

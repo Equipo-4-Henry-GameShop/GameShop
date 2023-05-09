@@ -26,6 +26,7 @@ export default function CardHome(data) {
 
 
   return (
+    
     <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
       <View style={styles.container}>
             <View style={styles.viewImageContainer}>

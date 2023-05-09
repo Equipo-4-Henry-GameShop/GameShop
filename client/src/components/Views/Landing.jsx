@@ -18,7 +18,7 @@ const Landing =({ navigation, route})=>{
       <View style={styles.buttonContainer} >
       
       <TouchableOpacity onPress={() =>
-            navigation.navigate('Home', { name: 'Usuario Invitado ?' })
+            navigation.navigate('HomeScreen', { name: 'Usuario Invitado ?' })
           }
       >
           <View style={styles.button}>
