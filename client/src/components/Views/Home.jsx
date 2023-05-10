@@ -24,7 +24,7 @@ const Home=({ navigation, route})=>{
   
   const dispatch= useDispatch();
   useEffect(()=>{
-    console.log("entro aqui?")
+    // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
 
@@ -62,6 +62,8 @@ const Home=({ navigation, route})=>{
   }
 return (
   <View  style={styles.container}>
+      
+
       <View style={styles.Navback}>
             <TouchableOpacity onPress={PrevPage}>
                < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
@@ -277,8 +279,7 @@ const styles = StyleSheet.create({
     // borderTopEndRadius:8,
     // borderTopStartRadius:8,
     
-  },
-
+  }
  
 });
 

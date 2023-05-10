@@ -42,7 +42,7 @@ const DetailScreen = ({route,navigation}) => {
     return (
      
       <Tab.Navigator
-      initialRouteName="Información"
+      initialRouteName={"Información"}
       
       screenOptions={{
         "tabBarActiveTintColor": "darkred",
@@ -56,8 +56,10 @@ const DetailScreen = ({route,navigation}) => {
         }
       }}
     >
+
+      
        <Tab.Screen 
-        name="Información" 
+        name={route.params.videogame.nombre} //detalle de CARD
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="information-circle-outline" color={color} size={size} />
