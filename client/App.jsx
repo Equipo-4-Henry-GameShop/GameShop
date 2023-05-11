@@ -19,11 +19,11 @@ import { Provider } from 'react-redux'
 import store from './src/redux/store'
 import MenuBottonItem from './src/components/Extras/MenuButton'
 import MenuButtonSubItem from './src/components/Extras/MenuButtonSubItem';
+import { Login } from './src/components/Views/LogIn';
+
+
+
 import axios from "axios";
-
-
-
-
 
 const Drawer = createDrawerNavigator();
 
@@ -206,6 +206,26 @@ export default function App() {
               }}
             />
 
+<Drawer.Screen  
+                    name="Login" 
+                    component={Login} 
+                    options={{ title: 'Bienvenido',
+                      headerStyle: {
+                        backgroundColor: color_azul,
+                      },
+                      drawerIcon: ({ color_azul }) => (
+                        <Image
+                          source={require('./src/assets/gameshop-white-mario.png')}
+                          style={{width:20, height:20}}
+                        />),
+                      headerTintColor: color_blanco,
+                      headerTitleStyle: {
+                        fontWeight: 'bold',
+                        fontSize:25
+                      }
+                     }}
+          />
+
 <Drawer.Screen
               name="UserList"
               component={UserList}
@@ -335,6 +355,10 @@ const MenuItems=({navigation})=>{
           <MenuButtonSubItem
             nombre= 'Sign In'
             onPress={()=> navigation.navigate('CreateUser')}
+          />
+                    <MenuButtonSubItem
+            nombre= 'Login'
+            onPress={()=> navigation.navigate('Login')}
           />
     </DrawerContentScrollView>
   )
