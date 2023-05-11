@@ -215,7 +215,7 @@ export default function App() {
                       },
                       drawerIcon: ({ color_azul }) => (
                         <Image
-                          source={require('./src/assets/gameshop-white-mario.png')}
+                          source={require('./src/assets/gameShop-white-mario.png')}
                           style={{width:20, height:20}}
                         />),
                       headerTintColor: color_blanco,
