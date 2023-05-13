@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     // alignItems: 'flex-start'
     justifyContent:'center',
-    verticalAlign: 'top'
+    // verticalAlign: 'top'
   },
   Searchbarfondo:{
     margin:5, 
