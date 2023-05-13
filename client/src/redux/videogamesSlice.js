@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
-    videoGames:[],
-    videoGames_Prev:[],
+    videoGames:[],//280   -> action = ->80  -> rpg = 60 -> prev  =280
+    videoGames_Prev:[],//280 -> 280 = ->80
     videoGame:[],
     msgerror:"NULL",
     flag_prev:false,
     videoGame:[],
     pagina:1,
-    porPagina:15,
+    porPagina:12,
     input:1,
     maximo:0,
     msgerror:"NULL",
@@ -19,17 +19,44 @@ export const videogamesSlice= createSlice({
     initialState,
     reducers:{//noc xq pero aqui es plural
         getAllVideogames: (state,action)=>{
-            
+            // console.log("lo q llega a reducer",action.payload)
+
             state.videoGames= action.payload;
+        },
+        getVideogamesbyName: (state,action)=>{
+            state.videoGames= action.payload;
+        },
+        setPrevVideoGame: (state,action)=>{
+            state.videoGames_Prev= action.payload;
         },
         getVideogamebyId: (state,action)=>{
             state.videoGame=action.payload
         },
-        
-        
+        setNextPage: (state,action)=>{
+            state.pagina=state.pagina +1 
+        },
+        setPrevPage: (state,action)=>{
+            state.pagina=state.pagina -1
+        },
+        setMaxPage : (state,action)=>{
+            state.pagina=action.payload
+        },
+        setFirstPage : (state,action)=>{
+            state.pagina=1
+        },
+        setFlaPrev: (state,action)=>{
+            state.flag_prev=action.payload
+        },
+        setPrevVideoGame:(state,action)=>{
+            state.videoGames_Prev=action.payload
+        },
+        updateVideogames:(state,action)=>{
+            state.videoGames=action.payload
+        },
 
     }
 })
 
-export const {getAllVideogames,getVideogamebyId,addUser}=videogamesSlice.actions
+export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,}=videogamesSlice.actions
 export default videogamesSlice.reducer
