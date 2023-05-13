@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {Image} from 'react-native-elements'
-import { color_rojoNeon,color_azul, color_blanco, color_rojo } from '../../constants/Colors'
+import { color_rojoNeon,color_azul, color_blanco, color_rojo } from '../../../constants/Colors'
 import {size} from 'lodash'
-
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+import React from 'react';
 
 
 export default function CardHome(data) {
   // console.log("esto llega a card",data.data.screenshoots)
+  //esta linea debo de llamar en cada componente 
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
   function estrellitas(index) {
-    // console.log("entro una estreilla");
-    return <Image source={require('../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
+    
+    return <Image source={require('../../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
   }  
   
   //con esta fraccion de codigo redondeo el valor de rating y creo n estrellas de dibujo
@@ -35,7 +39,7 @@ export default function CardHome(data) {
                                 style={styles.image}
                                 PlaceholderContent={<ActivityIndicator color={color_azul} size={"large"}/>}
                               /> 
-                          : <Image source={require('../../assets/Unknown.jpg')} /> 
+                          : <Image source={require('../../../assets/Unknown.jpg')} /> 
                 }
             </View>
             <View style={styles.viewInforContainer}>

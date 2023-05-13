@@ -1,15 +1,15 @@
 import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator, Alert} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect ,useState} from 'react'
-import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../redux/videogamesActions"
+import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
 import { Searchbar } from 'react-native-paper';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CardHome from '../Extras/CardHome';
-import Detail from './Detail/Detail'
-import { setFlaPrev, updateVideogames } from '../../redux/videogamesSlice';
+import CardHome from './CardHome';
+import Detail from '../Detail/Detail'
+import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
 
 
 //este tiene toda la logica xq va dentro de un stack

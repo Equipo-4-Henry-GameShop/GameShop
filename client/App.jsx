@@ -9,7 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from './src/constants/Colors'
 import {NavigationContainer} from '@react-navigation/native';
 
-import HomeScreen from './src/components/Views/Home'
+import HomeScreen from './src/components/Views/Home/Home'
 import {MyVideogames, PanelUser, MyPosts, MyProfile, Security, Communications, CreateUser, CreateVideogame, VideoGameList, UserList} from "./src/components/Views/PanelUser/routesPanelUser"
 
 import Landing from './src/components/Views/Landing'

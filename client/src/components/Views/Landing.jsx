@@ -24,7 +24,7 @@ const Landing =({ navigation, route})=>{
           }
       >
           <View style={[styles.button, isDarkMode && styles.darkButton ]}>
-            <Text style={[styles, isDarkMode && styles.darkButtonText ]}>Acceder</Text>
+            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>Acceder</Text>
           </View>
         </TouchableOpacity>
       </View>
