@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {Image} from 'react-native-elements'
-import { color_rojoNeon,color_azul, color_blanco, color_rojo, color_negro, color_crema } from '../../../constants/Colors'
+import { color_rojoNeon,color_azul, color_blanco,color_negro_grafito,color_negro_ligero, color_rojo, color_negro, color_crema } from '../../../constants/Colors'
 import {size} from 'lodash'
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
@@ -71,26 +71,28 @@ const styles = StyleSheet.create({
     marginTop:4 ,
     paddingBottom: 2,
     paddingTop: 2,
+    borderRadius:5,
   },
   Darkcontainer: {
     flexDirection:'row',
-    backgroundColor: color_negro,
+    backgroundColor: color_negro_ligero,
     alignItems: 'center',
     width: '100%',   
     marginBottom: 4,
     marginTop:4 ,
+    borderRadius:5,
   },
   viewImageContainer: {
     alignItems: 'center',
     // flex:1
     width: '50%',
     // marginRight: 10 , 
-    marginLeft:8
+    marginLeft:5
   },
   viewInforContainer: {
     
     // flex:4,
-    marginLeft: 5,
+    marginLeft: 8,
     width: '45%',
   },
   viewEstrellas: {

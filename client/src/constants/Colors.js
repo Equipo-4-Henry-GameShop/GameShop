@@ -11,7 +11,8 @@ export const color_gris='#D9D9D9';
 export const color_neon='#E630D3';
 export const color_rojo='red';
 export const color_azul='#4528F4';
-
+export const color_negro_grafito ='#1b1e23';
+export const color_negro_ligero='#7d7f7d';
 export default {
   light: {
     text: '#000',

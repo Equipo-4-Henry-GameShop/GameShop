@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 // variables proveedoras del thema
-import { ThemeProvider } from './src/components/Theme/ThemeProvider';
-
+import { ThemeProvider,ThemeContext } from './src/components/Theme/ThemeProvider';
+import React from 'react';
 
 import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
@@ -32,7 +32,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   // axios.defaults.baseURL = "https://gameshopback-pf-ek5y.onrender.com/"
   axios.defaults.baseURL = "https://gameshop-production-e844.up.railway.app/"
-
+  
   return ( 
   <>
     <ThemeProvider>

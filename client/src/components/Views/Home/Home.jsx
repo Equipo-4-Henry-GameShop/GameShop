@@ -1,15 +1,16 @@
 import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator, Alert} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_negro_grafito, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect ,useState} from 'react'
 import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
-import { Searchbar } from 'react-native-paper';
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CardHome from './CardHome';
 import Detail from '../Detail/Detail'
 import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
+
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
 import React from 'react';
@@ -20,7 +21,7 @@ import SearchBar from './SearchBar';
 const Home=({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
   const flag_prev= vGames.flag_prev
-  const prev_videogames= vGames.videoGames_Prev
+  
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
@@ -32,7 +33,7 @@ const Home=({ navigation, route})=>{
     // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
-
+  
   const NextPage=()=>{
     if(maximo===pagina){
       alert("Ya se encuentra ubicado en la ultima pagina")
@@ -47,24 +48,7 @@ const Home=({ navigation, route})=>{
       }
       dispatch(setPrvPage())
   }
-  // const onChangeSearch = (query) => {
-  //   // console.log("caracter en home", query)
-  //   if (flag_prev==='false') {
-
-  //     dispatch(setPrvVideogame(vGames.videoGames))
-  //     dispatch(setFlaPrev(true))
-  //   }
-  //   setSearchQuery(query);
-  //   dispatch(getvGamebyName(query))
-  //   dispatch(set1rsPage())
-  
-  // }
-  
-  // const onCloseSearch = () => {
-  //   // console.log("limpiando valores de busqueda");
-  //   dispatch(updateVideogames(prev_videogames))
-  //   // dispatch(getvideoGames()) ;
-  // }
+ 
 
   const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
 
@@ -80,18 +64,8 @@ return (
         
       </View>
       <View style={styles.List}>
-          {/* <SearchBar prev_videogames={prev_videogames}/> */}
-        {/* <Searchbar
-        autoFocus={true}
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        onClearIconPress={onCloseSearch}
-        value={searchQuery}
-        inputStyle={styles.SearchbarText}
-        style={styles.Searchbarfondo}
-        iconColor={color_blanco}
-        placeholderTextColor={color_blanco}
-      /> */}
+          
+        
         <SectionList
          // // //  , 
         sections={[
@@ -148,8 +122,19 @@ return (
 }
 
 const HomeScreen =({ navigation, route})=>{
-  
+  const vGames=useSelector((state)=>state.videogamesState)
+  const prev_videogames= vGames.videoGames_Prev
+  const flag_prev= vGames.flag_prev
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
 
+  useEffect(()=>{
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+      },
+    })
+  })
+  
 const Stack = createNativeStackNavigator();
   return (
      <Stack.Navigator>
@@ -157,21 +142,12 @@ const Stack = createNativeStackNavigator();
         name='Home'
               component={Home} 
               options={{ 
-                title: 'Listado ',
+                title: ' ',
                 headerStyle: {
-                  backgroundColor: color_azul
+                  backgroundColor: isDarkMode ?color_negro : color_azul
                 },
-                headerTintColor: color_blanco,
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize:25
-                },
-                headerRight :  () => ( 
-                  <TouchableOpacity onPress={()=>alert("filtrado")}>
-                        <MaterialCommunityIcons name="filter" color={color_blanco}  size={30}/>
-                        
-                  </TouchableOpacity>
-                  ),
+                headerLeft: () => (<SearchBar flag_prev={flag_prev} prev_videogames={prev_videogames}/> )
+                
               }}
         >
              {/* {props => <TabInfo {...props} videogame= {route.params.videogame} />} */}
@@ -209,24 +185,11 @@ const styles = StyleSheet.create({
   },
   darkContainer: {
     justifyContent: 'space-between',
-    backgroundColor: color_negro,
+    backgroundColor: color_negro_grafito,
     alignItems: 'center',
     width: '99%',
     flexDirection: 'row',
     height: '100%'
-  },
-  SearchbarText:{
-    color: color_naranja,
-    fontSize: 23,
-    fontWeight: 'bold',
-    // alignItems: 'flex-start'
-    justifyContent:'center',
-    // verticalAlign: 'top'
-  },
-  Searchbarfondo:{
-    margin:5, 
-    backgroundColor: color_blanco,
-    height:35,
   },
   Navback:{
     width: '6%',
@@ -271,14 +234,7 @@ const styles = StyleSheet.create({
     
   },
 
-   h2: {
-    color: color_azul,
-    fontSize: 18,
-    marginTop: 8,
-    textAlign: 'center',
-    alignItems: 'center',
-    fontWeight:'600'
-  },
+   
   button: {
     marginBottom: 30,
     width: 250,
@@ -290,14 +246,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius:8,
     
   },
-  buttonText: {
-    textAlign: 'center',
-    padding: 2,
-    fontSize:20,
-    fontWeight:'bold',
-    color: color_blanco,
-
-  },
+ 
   image: {
     width: 250,
     height: 300,

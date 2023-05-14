@@ -1,4 +1,4 @@
-import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,
+import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,setErrorMsg,
     setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames} from "./videogamesSlice";
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
@@ -17,7 +17,7 @@ export const  getvideoGames = () =>(dispatch)=>{
 
 export const getvGamebyName =(query)=> (dispatch=>{
     // console.log("esto me llega de query",query)
-    fetch(`/games?name=${query}`)
+    fetch(`https://gameshop-production-e844.up.railway.app/games?name=${query}`)
             .then(response =>{
                 estado= response.status
                 return response.json()
@@ -31,9 +31,8 @@ export const getvGamebyName =(query)=> (dispatch=>{
                         dispatch(getVideogamesbyName(json))
               
             }).catch(error =>{
-                dispatch({ type: SET_ERROR,
-                        payload: error.message
-                })
+                alert("error", error)
+                dispatch(setErrorMsg(error))
             })
    
 })
