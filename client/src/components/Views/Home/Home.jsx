@@ -10,6 +10,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CardHome from './CardHome';
 import Detail from '../Detail/Detail'
 import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+import React from 'react';
+import SearchBar from './SearchBar';
 
 
 //este tiene toda la logica xq va dentro de un stack
@@ -20,6 +24,7 @@ const Home=({ navigation, route})=>{
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
+  
   const [searchQuery, setSearchQuery] = useState('');
   
   const dispatch= useDispatch();
@@ -42,36 +47,41 @@ const Home=({ navigation, route})=>{
       }
       dispatch(setPrvPage())
   }
-  const onChangeSearch = (query) => {
-    // console.log("caracter en home", query)
-    if (flag_prev==='false') {
+  // const onChangeSearch = (query) => {
+  //   // console.log("caracter en home", query)
+  //   if (flag_prev==='false') {
 
-      dispatch(setPrvVideogame(vGames.videoGames))
-      dispatch(setFlaPrev(true))
-    }
-    setSearchQuery(query);
-    dispatch(getvGamebyName(query))
-    dispatch(set1rsPage())
+  //     dispatch(setPrvVideogame(vGames.videoGames))
+  //     dispatch(setFlaPrev(true))
+  //   }
+  //   setSearchQuery(query);
+  //   dispatch(getvGamebyName(query))
+  //   dispatch(set1rsPage())
   
-  }
+  // }
   
-  const onCloseSearch = () => {
-    // console.log("limpiando valores de busqueda");
-    dispatch(updateVideogames(prev_videogames))
-    // dispatch(getvideoGames()) ;
-  }
+  // const onCloseSearch = () => {
+  //   // console.log("limpiando valores de busqueda");
+  //   dispatch(updateVideogames(prev_videogames))
+  //   // dispatch(getvideoGames()) ;
+  // }
+
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+
 return (
-  <View  style={styles.container}>
+  <View  style={[styles.Container, isDarkMode && styles.darkContainer]}>
       
 
       <View style={styles.Navback}>
-            <TouchableOpacity onPress={PrevPage}>
-               < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
+            <TouchableOpacity onPress={PrevPage} flag_prev={flag_prev}>
+               < MaterialCommunityIcons name="chevron-back-circle-sharp" 
+               size={30} color={isDarkMode ? color_blanco: color_negro}/>
             </TouchableOpacity> 
         
       </View>
       <View style={styles.List}>
-        <Searchbar
+          {/* <SearchBar prev_videogames={prev_videogames}/> */}
+        {/* <Searchbar
         autoFocus={true}
         placeholder="Search"
         onChangeText={onChangeSearch}
@@ -81,7 +91,7 @@ return (
         style={styles.Searchbarfondo}
         iconColor={color_blanco}
         placeholderTextColor={color_blanco}
-      />
+      /> */}
         <SectionList
          // // //  , 
         sections={[
@@ -106,7 +116,7 @@ return (
                                     tiendas: el.tiendas,
                                     etiquetas: el.etiquetas,
                                     plataformas: el.platforms,
-                                    precio: el.price,
+                                    precio: el.price ? el.price: '20.55',
                                     requerimientos:el.requeriments_en
                                     // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
@@ -121,14 +131,15 @@ return (
                  ActivityIndicator color={color_azul} size={"large"}/>
           </>
         }
-        renderSectionHeader={({section}) => <Text style={styles.cabecera}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
+        renderSectionHeader={({section}) => <Text style={[styles.cabecera, isDarkMode && styles.Darkcabecera]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
               // keyExtractor={(item, index) => index}
         />
         
       </View>
       <View style={styles.NavNext}>
       <TouchableOpacity onPress={NextPage}>
-          < MaterialCommunityIcons name="chevron-forward-circle-sharp" size={30}/>
+          < MaterialCommunityIcons name="chevron-forward-circle-sharp" 
+          size={30} color={isDarkMode ? color_blanco: color_negro}/>
           
         </TouchableOpacity>
       </View>
@@ -188,14 +199,21 @@ const Stack = createNativeStackNavigator();
 
 }
 const styles = StyleSheet.create({
-  container: {
-
-    // flex: 1,
+  Container: {
     justifyContent: 'space-between',
     backgroundColor: color_blanco,
     alignItems: 'center',
     width: '99%',
     flexDirection: 'row',
+    height: '100%'
+  },
+  darkContainer: {
+    justifyContent: 'space-between',
+    backgroundColor: color_negro,
+    alignItems: 'center',
+    width: '99%',
+    flexDirection: 'row',
+    height: '100%'
   },
   SearchbarText:{
     color: color_naranja,
@@ -207,7 +225,7 @@ const styles = StyleSheet.create({
   },
   Searchbarfondo:{
     margin:5, 
-    backgroundColor: color_negro,
+    backgroundColor: color_blanco,
     height:35,
   },
   Navback:{
@@ -232,7 +250,15 @@ const styles = StyleSheet.create({
     color: color_azul,
     fontWeight: 'bold',
     fontSize:25,
-    // fontFamily: 'Black Ops One',
+    textAlign: 'center',
+
+  },
+  Darkcabecera:{
+    alignContent: 'center',
+    justifyContent: 'center',
+    color: color_blanco,
+    fontWeight: 'bold',
+    fontSize:25,
     textAlign: 'center',
 
   }
