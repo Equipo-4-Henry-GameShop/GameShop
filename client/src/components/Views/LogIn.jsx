@@ -50,6 +50,9 @@ export const Login = () => {
       }) => {
         return (
           <View style={styles.container}>
+            <View style={styles.header}>
+              <Image style={styles.mario} source={require("../../assets/gameShop-white-mario.png")}></Image>
+            </View>
             <View style={styles.containerLogin}>
               <View >
                 <TextInput placeholder="Username" style={styles.input} />
@@ -61,6 +64,18 @@ export const Login = () => {
                   <Text>{errors.password}</Text>
                 )}
               </View>
+              <TouchableOpacity style={styles.miniButton} >
+                  <Text style={styles.buttonText}>Log in</Text>
+              </TouchableOpacity>
+              <View><Text>or</Text></View>
+              <View><Text>-------- Sign up with --------</Text></View>
+                  
+                <TouchableOpacity>
+                
+                </TouchableOpacity>
+                <TouchableOpacity>
+                
+                </TouchableOpacity>
               <TouchableOpacity style={styles.buttonGoogle}>
                 <Image
                   style={styles.imageGoogle}
@@ -76,22 +91,39 @@ export const Login = () => {
 };
 
  const styles = StyleSheet.create({
+
+  header:{
+    alignContent:"center",
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:color_azul,
+    width:"100%",
+    },
+  mario:{
+    margin:10,
+    height:70,
+    width:310,
+  },
   container: {
-    flexDirection: "row",
-    backgroundColor: color_blanco,
-    height:"100vh",
+    backgroundColor: color_azul,
+    height:"100%",
+    alignItems:"center",
     alignContent:"center",
     justifyContent:"center",
     padding: 8,
   },
   
   containerLogin: {
-    borderRadius:8,
-    width:"50%",
-    height:"50%" ,
+    margin:"auto",
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
+    width:320,
+    height:"80%" ,
     borderColor: color_negro,
-    backgroundColor: color_azul,
+    backgroundColor: color_blanco,
     alignItems: "center",
+    alignContent:"center",
+    justifyContent:"center",
     padding: 10,
   },
   title: {
@@ -102,12 +134,15 @@ export const Login = () => {
   },
 
   miniButton: {
-    margin: "2%",
-    width: "20%",
+    alignItems:"center",
+    alignContent:"center",
+    justifyContent:"center",
+    marginBottom: "10%",
+    height:"10%",
+    width: "50%",
     padding: 0,
     backgroundColor: color_azul,
     borderRadius: 8,
-    color: color_blanco,
   },
   error: {
     margin: 8,
@@ -116,28 +151,35 @@ export const Login = () => {
     fontWeight: "bold",
   },
   input: {
+    textAlign:"center",
     height: 50,
-    paddingHorizontal: 8,
-    width: "90%",
+    borderWidth:2,
+    borderColor: color_azul ,
+    paddingHorizontal: 70,
+    marginLeft:"2%",
+    marginRight:"2%",
     borderColor: "#ddd",
-    borderWidth: 1,
     backgroundColor: "#fff",
-    margin: 10,
+    marginBottom: 40,
     borderRadius:8,
   },
   buttonText: {
     textAlign: "center",
     padding: 10,
-    fontSize: 10,
+    fontSize: 15,
     fontWeight: "bold",
     color: color_blanco,
   },
   buttonGoogle: {
-    width: "50%",
-    borderRadius: 8,
+    marginTop:"10%",
+    alignItems: "center",
+    alignContent:"center",
+    justifyContent:"center",
+    width: "100%",
+    borderRadius: 20,
   },
   imageGoogle: {
-    height: 40,
-    width:"100%",
+    height:40,
+    width:250,
   },
 });
