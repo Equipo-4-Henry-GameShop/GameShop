@@ -30,8 +30,8 @@ const Drawer = createDrawerNavigator();
   
 
 export default function App() {
-  axios.defaults.baseURL = "https://gameshopback-pf-ek5y.onrender.com/"
-  
+  // axios.defaults.baseURL = "https://gameshopback-pf-ek5y.onrender.com/"
+  axios.defaults.baseURL = "https://gameshop-production-e844.up.railway.app/"
 
   return ( 
   <>
