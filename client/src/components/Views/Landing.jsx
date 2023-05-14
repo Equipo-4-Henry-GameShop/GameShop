@@ -1,19 +1,32 @@
 
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
-import {color_azul, color_blanco, color_gris, color_negro, } from '../../constants/Colors'
+import {color_azul, color_blanco, color_gris, color_negro, color_negro_grafito, color_negro_ligero, color_verdeNeon, } from '../../constants/Colors'
 import { ThemeContext } from '../Theme/ThemeProvider';
 import * as React from 'react';
+import { useEffect } from 'react';
+import { StatusBar } from 'react-native';
+
 
 const Landing =({ navigation, route})=>{
 
-  //esta linea debo de llamar en cada componente 
   const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+  
+  useEffect(()=>{
+    navigation.setOptions({
+      HeaderTitle: 'Bienvenido',
+      headerStyle: {
+        backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+      },
+    })
+  })
+  //esta linea debo de llamar en cada componente 
     return (
       <View style={[styles.container, isDarkMode && styles.darkContainer]}>
+        <StatusBar backgroundColor={isDarkMode ? color_negro: color_azul} barStyle="light-content" />
         <View style={styles.imgContainer}>
           <Image 
-            source={isDarkMode ? require( '../../assets/gameShop-white-mario.png') :require( '../../assets/gameshop.png')}
-            // style={styles.image}
+            source={require( '../../assets/gameshop.png')}
+            style={[styles.image,isDarkMode && styles.Darkimage]}
             
             />
         </View>
@@ -24,7 +37,7 @@ const Landing =({ navigation, route})=>{
           }
       >
           <View style={[styles.button, isDarkMode && styles.darkButton ]}>
-            <Text style={[styles, isDarkMode && styles.darkButtonText ]}>Acceder</Text>
+            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>Acceder</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -47,8 +60,14 @@ const Landing =({ navigation, route})=>{
       
       alignItems: 'center',
       width: '100%',
-      backgroundColor: color_negro,
+      backgroundColor: color_negro_ligero,
       
+    },
+    image:{
+        opacity:0.99
+    },
+    Darkimage:{
+      opacity:0.95
     },
     imgContainer:{
      

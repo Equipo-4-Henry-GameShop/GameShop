@@ -1,25 +1,31 @@
 import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator, Alert} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../constants/Colors'
+import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_negro_grafito, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect ,useState} from 'react'
-import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../redux/videogamesActions"
-import { Searchbar } from 'react-native-paper';
+import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
+
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import CardHome from '../Extras/CardHome';
-import Detail from './Detail/Detail'
-import { setFlaPrev, updateVideogames } from '../../redux/videogamesSlice';
+import CardHome from './CardHome';
+import Detail from '../Detail/Detail'
+import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
+
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+import React from 'react';
+import SearchBar from './SearchBar';
 
 
 //este tiene toda la logica xq va dentro de un stack
 const Home=({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
   const flag_prev= vGames.flag_prev
-  const prev_videogames= vGames.videoGames_Prev
+  
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
+  
   const [searchQuery, setSearchQuery] = useState('');
   
   const dispatch= useDispatch();
@@ -27,7 +33,7 @@ const Home=({ navigation, route})=>{
     // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
-
+  
   const NextPage=()=>{
     if(maximo===pagina){
       alert("Ya se encuentra ubicado en la ultima pagina")
@@ -42,46 +48,24 @@ const Home=({ navigation, route})=>{
       }
       dispatch(setPrvPage())
   }
-  const onChangeSearch = (query) => {
-    // console.log("caracter en home", query)
-    if (flag_prev==='false') {
+ 
 
-      dispatch(setPrvVideogame(vGames.videoGames))
-      dispatch(setFlaPrev(true))
-    }
-    setSearchQuery(query);
-    dispatch(getvGamebyName(query))
-    dispatch(set1rsPage())
-  
-  }
-  
-  const onCloseSearch = () => {
-    // console.log("limpiando valores de busqueda");
-    dispatch(updateVideogames(prev_videogames))
-    // dispatch(getvideoGames()) ;
-  }
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+
 return (
-  <View  style={styles.container}>
+  <View  style={[styles.Container, isDarkMode && styles.darkContainer]}>
       
 
       <View style={styles.Navback}>
-            <TouchableOpacity onPress={PrevPage}>
-               < MaterialCommunityIcons name="chevron-back-circle-sharp" size={30}/>
+            <TouchableOpacity onPress={PrevPage} flag_prev={flag_prev}>
+               < MaterialCommunityIcons name="chevron-back-circle-sharp" 
+               size={30} color={isDarkMode ? color_blanco: color_negro}/>
             </TouchableOpacity> 
         
       </View>
       <View style={styles.List}>
-        <Searchbar
-        autoFocus={true}
-        placeholder="Search"
-        onChangeText={onChangeSearch}
-        onClearIconPress={onCloseSearch}
-        value={searchQuery}
-        inputStyle={styles.SearchbarText}
-        style={styles.Searchbarfondo}
-        iconColor={color_blanco}
-        placeholderTextColor={color_blanco}
-      />
+          
+        
         <SectionList
          // // //  , 
         sections={[
@@ -106,7 +90,7 @@ return (
                                     tiendas: el.tiendas,
                                     etiquetas: el.etiquetas,
                                     plataformas: el.platforms,
-                                    precio: el.price,
+                                    precio: el.price ? el.price: '20.55',
                                     requerimientos:el.requeriments_en
                                     // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
@@ -121,14 +105,15 @@ return (
                  ActivityIndicator color={color_azul} size={"large"}/>
           </>
         }
-        renderSectionHeader={({section}) => <Text style={styles.cabecera}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
+        renderSectionHeader={({section}) => <Text style={[styles.cabecera, isDarkMode && styles.Darkcabecera]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
               // keyExtractor={(item, index) => index}
         />
         
       </View>
       <View style={styles.NavNext}>
       <TouchableOpacity onPress={NextPage}>
-          < MaterialCommunityIcons name="chevron-forward-circle-sharp" size={30}/>
+          < MaterialCommunityIcons name="chevron-forward-circle-sharp" 
+          size={30} color={isDarkMode ? color_blanco: color_negro}/>
           
         </TouchableOpacity>
       </View>
@@ -137,8 +122,19 @@ return (
 }
 
 const HomeScreen =({ navigation, route})=>{
-  
+  const vGames=useSelector((state)=>state.videogamesState)
+  const prev_videogames= vGames.videoGames_Prev
+  const flag_prev= vGames.flag_prev
+  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
 
+  useEffect(()=>{
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+      },
+    })
+  })
+  
 const Stack = createNativeStackNavigator();
   return (
      <Stack.Navigator>
@@ -146,21 +142,12 @@ const Stack = createNativeStackNavigator();
         name='Home'
               component={Home} 
               options={{ 
-                title: 'Listado ',
+                title: ' ',
                 headerStyle: {
-                  backgroundColor: color_azul
+                  backgroundColor: isDarkMode ?color_negro : color_azul
                 },
-                headerTintColor: color_blanco,
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize:25
-                },
-                headerRight :  () => ( 
-                  <TouchableOpacity onPress={()=>alert("filtrado")}>
-                        <MaterialCommunityIcons name="filter" color={color_blanco}  size={30}/>
-                        
-                  </TouchableOpacity>
-                  ),
+                headerLeft: () => (<SearchBar flag_prev={flag_prev} prev_videogames={prev_videogames}/> )
+                
               }}
         >
              {/* {props => <TabInfo {...props} videogame= {route.params.videogame} />} */}
@@ -188,27 +175,21 @@ const Stack = createNativeStackNavigator();
 
 }
 const styles = StyleSheet.create({
-  container: {
-
-    // flex: 1,
+  Container: {
     justifyContent: 'space-between',
     backgroundColor: color_blanco,
     alignItems: 'center',
     width: '99%',
     flexDirection: 'row',
+    height: '100%'
   },
-  SearchbarText:{
-    color: color_naranja,
-    fontSize: 23,
-    fontWeight: 'bold',
-    // alignItems: 'flex-start'
-    justifyContent:'center',
-    // verticalAlign: 'top'
-  },
-  Searchbarfondo:{
-    margin:5, 
-    backgroundColor: color_negro,
-    height:35,
+  darkContainer: {
+    justifyContent: 'space-between',
+    backgroundColor: color_negro_grafito,
+    alignItems: 'center',
+    width: '99%',
+    flexDirection: 'row',
+    height: '100%'
   },
   Navback:{
     width: '6%',
@@ -232,7 +213,15 @@ const styles = StyleSheet.create({
     color: color_azul,
     fontWeight: 'bold',
     fontSize:25,
-    // fontFamily: 'Black Ops One',
+    textAlign: 'center',
+
+  },
+  Darkcabecera:{
+    alignContent: 'center',
+    justifyContent: 'center',
+    color: color_blanco,
+    fontWeight: 'bold',
+    fontSize:25,
     textAlign: 'center',
 
   }
@@ -245,14 +234,7 @@ const styles = StyleSheet.create({
     
   },
 
-   h2: {
-    color: color_azul,
-    fontSize: 18,
-    marginTop: 8,
-    textAlign: 'center',
-    alignItems: 'center',
-    fontWeight:'600'
-  },
+   
   button: {
     marginBottom: 30,
     width: 250,
@@ -264,14 +246,7 @@ const styles = StyleSheet.create({
     borderBottomStartRadius:8,
     
   },
-  buttonText: {
-    textAlign: 'center',
-    padding: 2,
-    fontSize:20,
-    fontWeight:'bold',
-    color: color_blanco,
-
-  },
+ 
   image: {
     width: 250,
     height: 300,
