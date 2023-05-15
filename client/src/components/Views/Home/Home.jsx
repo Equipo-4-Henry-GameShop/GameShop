@@ -3,13 +3,13 @@ import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_negro_grafito, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
-import { useEffect ,useState} from 'react'
+import { useEffect } from 'react'
 import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CardHome from './CardHome';
 import Detail from '../Detail/Detail'
-import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
+
 
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
