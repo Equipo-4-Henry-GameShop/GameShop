@@ -16,7 +16,7 @@ import {
   } from "../../constants/Colors";
 
 
-const CardDataPanelPersons = (props) => {
+const CardDataPanel = (props) => {
   return (
     <View key={props.id} style={styles.container}>
       <TouchableOpacity style={styles.buttonContainer}>
@@ -55,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardDataPanelPersons;
+export default CardDataPanel;

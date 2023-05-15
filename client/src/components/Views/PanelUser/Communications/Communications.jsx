@@ -8,7 +8,7 @@ import {
   SectionList,
   ScrollView,
 } from "react-native";
-import CardDataPanel from "../../../Extras/CardDataPanel";
+import CardDataPanel from "../../../helpers/CardDataPanel";
 
 import {
   color_azul,

@@ -15,7 +15,7 @@ import {
   color_blanco,
   color_negro,
 } from "../../../../constants/Colors";
-import CardDataPanel from "../../../Extras/CardDataPanel";
+import CardDataPanel from "../../../helpers/CardDataPanel";
 
 import { Items } from "../../../../utils/Items";
 ////Acá podemos pasar como props los datos del usuarios para que este
