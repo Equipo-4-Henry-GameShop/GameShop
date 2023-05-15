@@ -3,18 +3,6 @@
     "name": "GameShopLocal",
     "slug": "GameShopLocal",
     "description": "Esta App esta orientada a un E-Comerce para VidegoJuegos",
-    "plugins": [
-      
-        "expo-localization"
-      ,
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app accesses your photos to let you share them with your friends."
-        }
-      ]
-    ],
-
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -39,6 +27,15 @@
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
   }
 }
