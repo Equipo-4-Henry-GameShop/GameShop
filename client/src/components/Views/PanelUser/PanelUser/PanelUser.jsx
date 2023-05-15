@@ -16,7 +16,6 @@ import {
   color_blanco,
   color_negro,
 } from "../../../../constants/Colors";
-import { useNavigation } from "@react-navigation/native";
 import { wrap } from "lodash";
 import { color } from "react-native-elements/dist/helpers";
 
