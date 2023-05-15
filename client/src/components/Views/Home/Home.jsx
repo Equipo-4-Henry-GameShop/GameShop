@@ -1,6 +1,5 @@
 import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityIndicator, Alert} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_azul, color_blanco, color_crema, color_gris, color_naranja, color_naranja_claro, color_negro, color_negro_grafito, color_neon, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
 
 import {useDispatch, useSelector} from "react-redux"
 import { useEffect } from 'react'
@@ -31,8 +30,8 @@ const Home=({ navigation, route})=>{
 
 
   //linea para setear el lenguaje /obtener palabras de lenguaje
-  const { isDarkMode , StringsDark} = useContext(ThemeContext);
-  const {localizedStrings }= useContext(LocalizationContext)
+  const {  StringsDark} = useContext(ThemeContext);
+  const {StringsLanguaje }= useContext(LocalizationContext)
 
   useEffect(()=>{
     // console.log("entro aqui?")
@@ -74,7 +73,7 @@ return (
          // // //  , 
         sections={[
           {
-            title: `${localizedStrings.Page}  ${pagina} ${localizedStrings.of} ${maximo}` ,
+            title: `${StringsLanguaje.Page}  ${pagina} ${StringsLanguaje.of} ${maximo}` ,
            
             data : vGames.videoGames.slice(
                       (pagina-1)*porPagina,
@@ -106,7 +105,7 @@ return (
           <>  
                
                 <CardHome data={item} navigation={navigation}  
-                 ActivityIndicator color={color_azul} size={"large"}/>
+                 ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>
           </>
         }
         renderSectionHeader={({section}) => <Text style={[styles.cabecera, {color: StringsDark.bkContesp}]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
@@ -130,12 +129,12 @@ const HomeScreen =({ navigation, route})=>{
   const prev_videogames= vGames.videoGames_Prev
   const flag_prev= vGames.flag_prev
   const { isDarkMode, StringsDark } = useContext(ThemeContext);
-  const {locale,localizedStrings }= useContext(LocalizationContext)
+  const {locale,StringsLanguaje }= useContext(LocalizationContext)
   const Stack = createNativeStackNavigator();
 
   useEffect(()=>{
     navigation.setOptions({
-      headerTitle: `${localizedStrings.Home}`,
+      headerTitle: `${StringsLanguaje.Home}`,
       headerStyle: {
         backgroundColor: StringsDark.backgroundContainer,
       },
@@ -166,9 +165,9 @@ const HomeScreen =({ navigation, route})=>{
               options={{ 
                 title: 'Detail',
                 headerStyle: {
-                  backgroundColor: color_azul,
+                  backgroundColor: StringsDark.backgroundTittle,
                 },
-                headerTintColor: color_blanco,
+                headerTintColor: StringsDark.titblanco,
                 headerTitleStyle: {
                   fontWeight: 'bold',
                   fontSize:25
@@ -215,26 +214,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
 
   },
-  title: {
-    color: color_azul,
-    fontSize:30,
-    fontWeight:'700',
-    alignItems: 'center',
+  // title: {
+  //   color: color_azul,
+  //   fontSize:30,
+  //   fontWeight:'700',
+  //   alignItems: 'center',
     
-  },
-
-   
-  button: {
-    marginBottom: 30,
-    width: 250,
-    height: 40,
-    alignItems: 'center',
-    backgroundColor: color_azul,
-    
-    borderBottomEndRadius:8,
-    borderBottomStartRadius:8,
-    
-  },
+  // },
  
   image: {
     width: 250,

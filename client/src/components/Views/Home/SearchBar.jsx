@@ -32,7 +32,7 @@ const SearchBar = (props) => {
         dispatch(updateVgames(props.prev_videogames))
         // dispatch(getvideoGames()) ;
       }
-      const {localizedStrings }= React.useContext(LocalizationContext)
+      const {StringsLanguaje }= React.useContext(LocalizationContext)
       const { StringsDark } = React.useContext(ThemeContext);
       // console.log("StringsDark.backgroundContainer",StringsDark.backgroundContainer)
   return (
@@ -40,7 +40,7 @@ const SearchBar = (props) => {
       <View style={[styles.Container,{backgroundColor :StringsDark.backgroundTittle}]}>
       <Searchbar
         autoFocus={true}
-        placeholder={localizedStrings.Search}
+        placeholder={StringsLanguaje.Search}
         onChangeText={onChangeSearch}
         onClearIconPress={onCloseSearch}
         value={searchQuery}

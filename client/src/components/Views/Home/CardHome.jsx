@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {Image} from 'react-native-elements'
-import { color_rojoNeon,color_azul, color_blanco,color_negro_grafito,color_negro_ligero, color_rojo, color_negro, color_crema } from '../../../constants/Colors'
 import {size} from 'lodash'
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
@@ -10,7 +9,7 @@ import React from 'react';
 export default function CardHome(data) {
   // console.log("esto llega a card",data.data.screenshoots)
   //esta linea debo de llamar en cada componente 
-  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+  const { StringsDark } = React.useContext(ThemeContext);
   function estrellitas(index) {
     return <Image source={require('../../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
   }  
@@ -31,29 +30,29 @@ export default function CardHome(data) {
   return (
     
     <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
-      <View style={[styles.container, isDarkMode && styles.Darkcontainer]}>
+      <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
             <View style={styles.viewImageContainer}>
                 { data.data.img ? <Image 
                                 source={data.data.img} 
                                 style={styles.image}
-                                PlaceholderContent={<ActivityIndicator color={isDarkMode ? color_blanco :color_azul} size={"large"}/>}
+                                PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
                               /> 
                           : <Image source={require('../../../assets/Unknown.jpg')} /> 
                 }
             </View>
             <View style={styles.viewInforContainer}>
-                <Text style={[styles.h2, isDarkMode && styles.h2Dark]}>{data.data.nombre}</Text>
+                <Text style={[styles.h2, {color:StringsDark.bkContesp}]}>{data.data.nombre}</Text>
                   <View style={styles.viewEstrellas}>
                   {starArr}
                   </View>
                   
-                <Text style={[styles.h3, isDarkMode && styles.h3Dark]}>
+                <Text style={[styles.h3,  {color:StringsDark.text}]}>
                    { size(data.data.informacion) >0 
                         ? `${data.data.informacion.substr(0,60)} ...`
                         : data.data.informacion
                       }
                   </Text>
-                <Text style={[styles.Precio, isDarkMode && styles.DarkPrecio]}> $ {data.data.precio}</Text>
+                <Text style={[styles.Precio, {color:StringsDark.txtprice}]}> $ {data.data.precio}</Text>
 
             </View>
       </View>
@@ -64,7 +63,7 @@ export default function CardHome(data) {
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
-    backgroundColor: color_blanco,
+    //backgroundColor: color_blanco,
     alignItems: 'center',
     width: '100%',   
     marginBottom: 4,
@@ -73,15 +72,7 @@ const styles = StyleSheet.create({
     paddingTop: 2,
     borderRadius:5,
   },
-  Darkcontainer: {
-    flexDirection:'row',
-    backgroundColor: color_negro_ligero,
-    alignItems: 'center',
-    width: '100%',   
-    marginBottom: 4,
-    marginTop:4 ,
-    borderRadius:5,
-  },
+
   viewImageContainer: {
     alignItems: 'center',
     // flex:1
@@ -106,26 +97,21 @@ const styles = StyleSheet.create({
 
   h2: {
     fontSize:20 ,
-    color:color_azul,
+    
     fontWeight: 'bold'
   },
   h2Dark:{
     fontSize:20 ,
-    color:color_blanco,
+    
     fontWeight: 'bold'
   },
   h3:{
     fontSize: 15,
-    color: color_negro,
-  },
-  h3Dark:{
-    fontSize: 15,
-    color: color_blanco,
+    
   },
   Precio :{
     padding:10,
     fontSize: 30,
-    color: color_rojoNeon,
     fontWeight: 'bold',
     alignItems: 'center',
     alignContent: 'center'
@@ -133,7 +119,6 @@ const styles = StyleSheet.create({
   DarkPrecio :{
     padding:10,
     fontSize: 30,
-    color: color_crema,
     fontWeight: 'bold',
     alignItems: 'center',
     alignContent: 'center'

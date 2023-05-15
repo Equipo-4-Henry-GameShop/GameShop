@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { strings } from './strings';
+import { strings } from './stringsColors';
 export const ThemeContext = createContext();
   // console.log("ThemeContext",ThemeContext)
 export const ThemeProvider = ({ children }) => {
