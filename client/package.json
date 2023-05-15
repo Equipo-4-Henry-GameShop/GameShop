@@ -38,13 +38,9 @@
     "react-native-screens": "~3.20.0",
     "react-native-web": "~0.18.11",
     "react-native-webview": "11.26.0",
-<<<<<<< Updated upstream
     "react-redux": "^8.0.5",
-    "react-native-gesture-handler": "~2.9.0",
     "expo-image-picker": "~14.1.1"
-=======
-    "react-redux": "^8.0.5"
->>>>>>> Stashed changes
+
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
