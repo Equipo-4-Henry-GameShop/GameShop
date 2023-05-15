@@ -13,26 +13,32 @@ import { setFlaPrev, updateVideogames } from '../../../redux/videogamesSlice';
 
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
-import React from 'react';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+
+import {useContext} from 'react';
 import SearchBar from './SearchBar';
 
 
 //este tiene toda la logica xq va dentro de un stack
 const Home=({ navigation, route})=>{
+  const dispatch= useDispatch();
   const vGames=useSelector((state)=>state.videogamesState)
   const flag_prev= vGames.flag_prev
-  
   const pagina=vGames.pagina
   const porPagina= vGames.porPagina
   const maximo=Math.ceil(vGames.videoGames.length/porPagina)
-  
-  const [searchQuery, setSearchQuery] = useState('');
-  
-  const dispatch= useDispatch();
+
+
+  //linea para setear el lenguaje /obtener palabras de lenguaje
+  const { isDarkMode , StringsDark} = useContext(ThemeContext);
+  const {localizedStrings }= useContext(LocalizationContext)
+
   useEffect(()=>{
     // console.log("entro aqui?")
     dispatch(getvideoGames()) ;
   },[])
+  
   
   const NextPage=()=>{
     if(maximo===pagina){
@@ -50,16 +56,14 @@ const Home=({ navigation, route})=>{
   }
  
 
-  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
-
+  
 return (
-  <View  style={[styles.Container, isDarkMode && styles.darkContainer]}>
+  <View  style={[styles.Container, {backgroundColor:StringsDark.bktitle}]}>
       
-
       <View style={styles.Navback}>
             <TouchableOpacity onPress={PrevPage} flag_prev={flag_prev}>
                < MaterialCommunityIcons name="chevron-back-circle-sharp" 
-               size={30} color={isDarkMode ? color_blanco: color_negro}/>
+               size={30} color={StringsDark.text}/>
             </TouchableOpacity> 
         
       </View>
@@ -70,7 +74,7 @@ return (
          // // //  , 
         sections={[
           {
-            title: `Pagina  ${pagina} de ${maximo}` ,
+            title: `${localizedStrings.Page}  ${pagina} ${localizedStrings.of} ${maximo}` ,
            
             data : vGames.videoGames.slice(
                       (pagina-1)*porPagina,
@@ -105,7 +109,7 @@ return (
                  ActivityIndicator color={color_azul} size={"large"}/>
           </>
         }
-        renderSectionHeader={({section}) => <Text style={[styles.cabecera, isDarkMode && styles.Darkcabecera]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
+        renderSectionHeader={({section}) => <Text style={[styles.cabecera, {color: StringsDark.bkContesp}]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
               // keyExtractor={(item, index) => index}
         />
         
@@ -113,7 +117,7 @@ return (
       <View style={styles.NavNext}>
       <TouchableOpacity onPress={NextPage}>
           < MaterialCommunityIcons name="chevron-forward-circle-sharp" 
-          size={30} color={isDarkMode ? color_blanco: color_negro}/>
+          size={30} color={StringsDark.text}/>
           
         </TouchableOpacity>
       </View>
@@ -125,17 +129,20 @@ const HomeScreen =({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
   const prev_videogames= vGames.videoGames_Prev
   const flag_prev= vGames.flag_prev
-  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+  const { isDarkMode, StringsDark } = useContext(ThemeContext);
+  const {locale,localizedStrings }= useContext(LocalizationContext)
+  const Stack = createNativeStackNavigator();
 
   useEffect(()=>{
     navigation.setOptions({
+      headerTitle: `${localizedStrings.Home}`,
       headerStyle: {
-        backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+        backgroundColor: StringsDark.backgroundContainer,
       },
     })
-  })
+  },[isDarkMode,locale])
+
   
-const Stack = createNativeStackNavigator();
   return (
      <Stack.Navigator>
         <Stack.Screen 
@@ -144,7 +151,7 @@ const Stack = createNativeStackNavigator();
               options={{ 
                 title: ' ',
                 headerStyle: {
-                  backgroundColor: isDarkMode ?color_negro : color_azul
+                  backgroundColor: StringsDark.backgroundContainer
                 },
                 headerLeft: () => (<SearchBar flag_prev={flag_prev} prev_videogames={prev_videogames}/> )
                 
@@ -177,15 +184,7 @@ const Stack = createNativeStackNavigator();
 const styles = StyleSheet.create({
   Container: {
     justifyContent: 'space-between',
-    backgroundColor: color_blanco,
-    alignItems: 'center',
-    width: '99%',
-    flexDirection: 'row',
-    height: '100%'
-  },
-  darkContainer: {
-    justifyContent: 'space-between',
-    backgroundColor: color_negro_grafito,
+    // backgroundColor: color_blanco,
     alignItems: 'center',
     width: '99%',
     flexDirection: 'row',
@@ -210,22 +209,12 @@ const styles = StyleSheet.create({
   cabecera:{
     alignContent: 'center',
     justifyContent: 'center',
-    color: color_azul,
+    // color: color_azul,
     fontWeight: 'bold',
     fontSize:25,
     textAlign: 'center',
 
   },
-  Darkcabecera:{
-    alignContent: 'center',
-    justifyContent: 'center',
-    color: color_blanco,
-    fontWeight: 'bold',
-    fontSize:25,
-    textAlign: 'center',
-
-  }
-  ,
   title: {
     color: color_azul,
     fontSize:30,

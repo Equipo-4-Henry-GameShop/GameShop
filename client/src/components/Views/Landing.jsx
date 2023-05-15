@@ -2,23 +2,28 @@
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
 import {color_azul, color_blanco, color_gris, color_negro, color_negro_grafito, color_negro_ligero, color_verdeNeon, } from '../../constants/Colors'
 import { ThemeContext } from '../Theme/ThemeProvider';
-import * as React from 'react';
-import { useEffect } from 'react';
+import {useContext,useEffect} from 'react';
+
 import { StatusBar } from 'react-native';
-
-
-const Landing =({ navigation, route})=>{
-
-  const { isDarkMode, toggleTheme } = React.useContext(ThemeContext);
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../Languaje/LocalizationContext';
+//este es el boton para cambiar lenguaje
+const Landing =({ navigation, route}, props)=>{
   
-  useEffect(()=>{
-    navigation.setOptions({
-      HeaderTitle: 'Bienvenido',
-      headerStyle: {
-        backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
-      },
-    })
+  //linea para setear el modo dark
+  const { isDarkMode, toggleTheme, Darkmode,toggleThemeText } = useContext(ThemeContext);
+  //linea para setear el lenguaje /obtener palabras de lenguaje
+  const {locale,toggleLanguaje,localizedStrings }= useContext(LocalizationContext)
+//  console.log("localizedStrings",localizedStrings)
+  
+useEffect(()=>{
+  navigation.setOptions({
+    headerTitle: `${localizedStrings.Welcome}`,
+    headerStyle: {
+      backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+    },
   })
+},[isDarkMode,locale])
   //esta linea debo de llamar en cada componente 
     return (
       <View style={[styles.container, isDarkMode && styles.darkContainer]}>
@@ -31,13 +36,17 @@ const Landing =({ navigation, route})=>{
             />
         </View>
       <View style={styles.buttonContainer} >
-      <Button title={isDarkMode ? 'Light Mode' : 'Dark Mode'} onPress={toggleTheme} />
-      <TouchableOpacity onPress={() =>
+                <Text>TExto de Prueba</Text>
+                <Text>{localizedStrings.Welcome}</Text>
+                <Button title={isDarkMode ? 'Light Mode' : 'Dark Mode'} onPress={toggleTheme} />
+                <Button title={locale==='es' ? 'English':'Español' }  onPress={toggleLanguaje}  />
+                <Button title={Darkmode==='light' ? 'Dark Mode':'Light Mode' } onPress={toggleThemeText} />
+           <TouchableOpacity onPress={() =>
             navigation.navigate('HomeScreen', { name: 'Usuario Invitado ?' })
-          }
-      >
+             }
+           > 
           <View style={[styles.button, isDarkMode && styles.darkButton ]}>
-            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>Acceder</Text>
+            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>{localizedStrings.Acces}</Text>
           </View>
         </TouchableOpacity>
       </View>

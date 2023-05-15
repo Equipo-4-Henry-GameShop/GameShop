@@ -1,7 +1,11 @@
 import 'react-native-gesture-handler';
 // variables proveedoras del thema
 import { ThemeProvider,ThemeContext } from './src/components/Theme/ThemeProvider';
-import React from 'react';
+  
+import {useContext} from 'react';
+//variable para envoler el lenguaje de la APP
+import { LocalizationProvider ,LocalizationContext} from './src/components/Languaje/LocalizationContext';
+// import {strings } from './src/components/Languaje/localizeStrings'
 
 import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
 import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList} from 'react-native';
@@ -20,9 +24,8 @@ import store from './src/redux/store'
 
 import { Login } from './src/components/Views/LogIn';
 import MenuItems from './src/components/Views/MenuApp/MenuItems';
-
-
 import axios from "axios";
+
 
 
 const Drawer = createDrawerNavigator();
@@ -33,12 +36,14 @@ export default function App() {
   // axios.defaults.baseURL = "https://gameshopback-pf-ek5y.onrender.com/"
   axios.defaults.baseURL = "https://gameshop-production-e844.up.railway.app/"
   
+  
   return ( 
   <>
+  <LocalizationProvider>
     <ThemeProvider>
      <Provider store={store}>
         <NavigationContainer>
-            
+             
         <Drawer.Navigator
               drawerContent={(props)=> <MenuItems {...props}/>}
             >
@@ -46,7 +51,7 @@ export default function App() {
             <Drawer.Screen  
                     name="Landing" 
                     component={Landing} 
-                    options={{ title: 'Bienvenido',
+                    options={{ title: `Bienvenido`,
                       headerStyle: {
                         backgroundColor: color_azul,
                       },
@@ -282,6 +287,7 @@ export default function App() {
       </NavigationContainer>
       </Provider>
     </ThemeProvider>
+    </LocalizationProvider>
       </>
   );
 }
