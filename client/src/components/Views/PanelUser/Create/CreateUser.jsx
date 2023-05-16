@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import SweetAlert from 'react-native-sweet-alert';
+
 import {
   color_azul,
   color_blanco,
@@ -15,8 +17,9 @@ import {
   TouchableHighlight,
   StyleSheet,
   ScrollView,
+  
 } from "react-native";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik } from "formik";
 
 import Checkbox from "expo-checkbox";
 import { values } from "lodash";
@@ -25,12 +28,9 @@ const CreateUser = (props) => {
   const [AcceptTaC, setAcceptTac] = useState(true);
   const [receibeNewsLetter, setReceibeNewsLetter] = useState(true);
 
-  console.log(AcceptTaC);
 
-  console.log(receibeNewsLetter);
-  useEffect(() => {
-    Formik;
-  }, [AcceptTaC, receibeNewsLetter]);
+
+
 
   return (
     <Formik
@@ -44,7 +44,16 @@ const CreateUser = (props) => {
         tac: AcceptTaC,
         newsLetter: receibeNewsLetter,
       }}
-      onSubmit={{}}
+      onSubmit={(values)=>{
+        console.log(values)
+        SweetAlert.showAlert({
+          title: '¡Hola!',
+          subtitle: 'Esto es una alerta',
+          confirmText: 'Aceptar',
+        });
+
+      }}
+
       validate={(val) => {
         let errors = {};
         if (!val.user) {
@@ -114,10 +123,9 @@ const CreateUser = (props) => {
         values,
         errors,
         touched,
-        onSubmito,
       }) => {
         return (
-          <View style={styles.container}>
+          <View style={styles.container} onSubmit={handleSubmit}>
             {console.log(values)}
             <View style={styles.containerLogin}>
               <View>
@@ -238,7 +246,7 @@ const CreateUser = (props) => {
               <View style={styles.submitContainer}>
               
             <TouchableHighlight
-              onPress={(onSubmit = { handleSubmit })}
+              onPress={handleSubmit=>onSubmit}
               style={styles.miniButton}
             >
               <Text style={styles.buttonText}>Submit</Text>

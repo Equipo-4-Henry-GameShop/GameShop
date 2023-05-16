@@ -9,6 +9,8 @@ import {
   FlatList,
 } from "react-native";
 
+import { validate } from "./components/Validate/CreateGameValidate";
+
 import { SelectList } from "react-native-dropdown-select-list";
 
 import { allGenres, allPlatforms } from "./components/dataFilteredgames";
@@ -19,12 +21,11 @@ import {
   color_negro,
 } from "../../../../constants/Colors";
 
-import { ImagePickerExample } from "../../../helpers/imagePicker";
+import ImagePickerExample from "../../../helpers/imagePicker";
 
 const CreateVideogame = () => {
   const inputRef = useRef();
 
-  
   const [stackData, setStackData] = useState({
     platform: allPlatforms,
     image: "",
@@ -34,101 +35,120 @@ const CreateVideogame = () => {
   });
   const [newVideoGame, setNewVideoGame] = useState({
     name: "",
-    platform: [],
     description: "",
-    image: "",
-    genres: [],
-    screnShots: "",
     releaseDate: "",
+    image: [],
+    screnShots: [],
+    platform: [],
+    genres: [],
     tags: [],
   });
 
-  // useEffect(() => {
-  //   pushItemGenres()
-  //   removeItemGenres()
-    
-  // }, [stackData.platform, newVideoGame.platform])
+  useEffect(() => {
+    validate(newVideoGame)
+  }, [newVideoGame])
   
-  console.log(newVideoGame)
-  console.log(stackData)
-    
+
+  const validateNvg = validate(newVideoGame);
+
+  console.log(validateNvg.errors)
+
+  console.log(validate);
+
+  console.log(newVideoGame);
+  console.log(stackData);
+
+  ///////
 
   const pushItemGenres = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      genres: [...prevState.genres, value],
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        genres: [...prevState.genres, value],
+      }));
 
-    })) ;
-
-
-    setStackData((prevState) => ({
-      ...prevState,
-      genres: prevState.genres.filter((p) => p !== value),
-    }));
-
+      setStackData((prevState) => ({
+        ...prevState,
+        genres: prevState.genres.filter((p) => p !== value),
+      }));
+    }, 1200);
   };
 
   const removeItemGenres = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      genres: prevState.genres.filter((p) => p !== value),
-    }));
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        genres: prevState.genres.filter((p) => p !== value),
+      }));
 
-    setStackData((prevState) => ({
-      ...prevState,
-      genres: [...prevState.genres, value],
-    }));
+      setStackData((prevState) => ({
+        ...prevState,
+        genres: [...prevState.genres, value],
+      }));
+    }, 1200);
   };
 
   ///////
 
   const pushItemPlatform = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      platform: [...prevState.platform, value],
-    }));
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        platform: [...prevState.platform, value],
+      }));
 
-    setStackData((prevState) => ({
-      ...prevState,
-      platform: prevState.platform.filter((p) => p !== value),
-    }));
+      setStackData((prevState) => ({
+        ...prevState,
+        platform: prevState.platform.filter((p) => p !== value),
+      }));
+    }, 1200);
   };
 
   const removeItemPlatform = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      platform: prevState.platform.filter((p) => p !== value),
-    }));
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        platform: prevState.platform.filter((p) => p !== value),
+      }));
 
-    setStackData((prevState) => ({
-      ...prevState,
-      platform: [...prevState.platform, value],
-    }));
+      setStackData((prevState) => ({
+        ...prevState,
+        platform: [...prevState.platform, value],
+      }));
+    }, 1200);
   };
 
-  const pushItemTag = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      genres: [...prevState.genres, value],
-    }));
+  ///////
 
-    setStackData((prevState) => ({
-      ...prevState,
-      genres: prevState.genres.filter((p) => p !== value),
-    }));
+  const pushItemTag = (value) => {
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        genres: [...prevState.genres, value],
+      }));
+
+      setStackData((prevState) => ({
+        ...prevState,
+        genres: prevState.genres.filter((p) => p !== value),
+      }));
+    }, 1200);
   };
 
   const removeItemTag = (value) => {
-    setNewVideoGame((prevState) => ({
-      ...prevState,
-      genres: prevState.genres.filter((p) => p !== value),
-    }));
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        genres: prevState.genres.filter((p) => p !== value),
+      }));
 
-    setStackData((prevState) => ({
-      ...prevState,
-      genres: [...prevState.genres, value],
-    }));
+      setStackData((prevState) => ({
+        ...prevState,
+        genres: [...prevState.genres, value],
+      }));
+    }, 1200);
   };
+
+  ///////
 
   const handleInputChange = (inputName, inputValue) => {
     setNewVideoGame({
@@ -140,7 +160,6 @@ const CreateVideogame = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        {/* <ImagePickerExample/> */}
         <View>
           <Text style={styles.title}>Name: </Text>
           <TextInput
@@ -150,32 +169,16 @@ const CreateVideogame = () => {
             keyboardAppearance="light"
             onChangeText={(text) => handleInputChange("name", text)}
           />
+          <></>
         </View>
+
         <View>
           <Text style={styles.title}>Description: </Text>
           <TextInput
             style={styles.input}
             placeholder="Insert descrption"
             value={newVideoGame.description}
-            onChangeText={(text) => handleInputChange("name", text)}
-          />
-        </View>
-
-        <View>
-          <Text style={styles.title}>Image: </Text>
-          <TextInput
-            style={styles.input}
-            value={newVideoGame.image}
-            onChangeText={(text) => handleInputChange("name", text)}
-          />
-        </View>
-
-        <View>
-          <Text style={styles.title}>Screnshots: </Text>
-          <TextInput
-            style={styles.input}
-            value={newVideoGame.screnShots}
-            onChangeText={(text) => handleInputChange("name", text)}
+            onChangeText={(text) => handleInputChange("description", text)}
           />
         </View>
 
@@ -186,73 +189,84 @@ const CreateVideogame = () => {
             placeholder="dd/mm/yy"
             value={newVideoGame.releaseDate}
             keyboardType="numeric"
+            onChangeText={(text) => handleInputChange("releaseDate",text)}
+          />
+        </View>
+
+          <ImagePickerExample/>
+        <View>
+          <Text style={styles.title}>Load image: </Text>
+          
+        </View>
+
+        <View>
+          <Text style={styles.title}>Load screnshots: </Text>
+        </View>
+        <View>
+          <Text style={styles.title}>Tags: </Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Insert Tags"
+            value={newVideoGame.tags}
             onChangeText={(text) => handleInputChange("name", text)}
           />
-          <View>
-            <Text style={styles.title}>Tags: </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Insert Tags"
-              value={newVideoGame.tags}
-              onChangeText={(text) => handleInputChange("name", text)}
-            />
-          </View>
+        </View>
 
-          <Text style={styles.title}>Add Genre</Text>
-          <View>
-            <SelectList
-              placeholder="Add genre"
-              setSelected={(val) => pushItemGenres(val)}
-              data={stackData.genres}
-              search={false}
-            />
-          </View>
-          <View>
-            <SelectList
-              placeholder="Remove genres"
-              setSelected={(val) => removeItemGenres(val)}
-              data={newVideoGame.genres}
-              search={false}
-            />
-          </View>
+        <Text style={styles.title}>Add Genre</Text>
+        <View>
+          <SelectList
+            placeholder="Add genre"
+            setSelected={(val) => pushItemGenres(val)}
+            data={stackData.genres}
+            search={false}
+          />
+        </View>
+        <View>
+          <SelectList
+            placeholder="Remove genres"
+            setSelected={(val) => removeItemGenres(val)}
+            data={newVideoGame.genres}
+            search={false}
+          />
+        </View>
 
-          <Text style={styles.title}>Add Platform</Text>
-          <View>
-            <SelectList
-              placeholder="Add platform"
-              setSelected={(val) => pushItemPlatform(val)}
-              data={stackData.platform}
-              search={false}
-            />
-          </View>
-          <View>
-            <SelectList
-              placeholder= "Remove platforms"
-              setSelected={(val) => removeItemPlatform(val)}
-              data={newVideoGame.platform}
-              search={false}
-            />
-          </View>
-          <Text style={styles.title}>Add Tags</Text>
-          <View>
-            <SelectList
-              placeholder="Add tag"
-              setSelected={(val) => pushItemPlatform(val)}
-              data={stackData.platform}
-              search={false}
-            />
-          </View>
-          <View>
-            <SelectList
-              placeholder= "Remove tag"
-              setSelected={(val) => removeItemPlatform(val)}
-              data={newVideoGame.platform}
-              search={false}
-            />
-          </View>
-          <View>
-            <Button title="Submit"></Button>
-          </View>
+        <Text style={styles.title}>Add Platform</Text>
+        <View>
+          <SelectList
+            placeholder="Add platform"
+            setSelected={(val) => pushItemPlatform(val)}
+            data={stackData.platform}
+            search={false}
+          />
+        </View>
+        <View>
+          <SelectList
+            placeholder="Remove platforms"
+            setSelected={(val) => removeItemPlatform(val)}
+            data={newVideoGame.platform}
+            search={false}
+          />
+        </View>
+
+        <Text style={styles.title}>Add Tags</Text>
+        <View>
+          <SelectList
+            placeholder="Add tag"
+            setSelected={(val) => pushItemPlatform(val)}
+            data={stackData.platform}
+            search={false}
+          />
+        </View>
+        <View>
+          <SelectList
+            placeholder="Remove tag"
+            setSelected={(val) => removeItemPlatform(val)}
+            data={newVideoGame.platform}
+            search={false}
+          />
+        </View>
+        <View>
+          <Button title="Submit"></Button>
         </View>
       </ScrollView>
     </View>
