@@ -13,12 +13,12 @@ const Landing =({ navigation, route}, props)=>{
   //linea para setear el modo dark
   const { isDarkMode, toggleTheme, Darkmode,toggleThemeText } = useContext(ThemeContext);
   //linea para setear el lenguaje /obtener palabras de lenguaje
-  const {locale,toggleLanguaje,localizedStrings }= useContext(LocalizationContext)
-//  console.log("localizedStrings",localizedStrings)
+  const {locale,toggleLanguaje,StringsLanguaje }= useContext(LocalizationContext)
+//  console.log("StringsLanguaje",StringsLanguaje)
   
 useEffect(()=>{
   navigation.setOptions({
-    headerTitle: `${localizedStrings.Welcome}`,
+    headerTitle: `${StringsLanguaje.Welcome}`,
     headerStyle: {
       backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
     },
@@ -37,7 +37,7 @@ useEffect(()=>{
         </View>
       <View style={styles.buttonContainer} >
                 <Text>TExto de Prueba</Text>
-                <Text>{localizedStrings.Welcome}</Text>
+                <Text>{StringsLanguaje.Welcome}</Text>
                 <Button title={isDarkMode ? 'Light Mode' : 'Dark Mode'} onPress={toggleTheme} />
                 <Button title={locale==='es' ? 'English':'Español' }  onPress={toggleLanguaje}  />
                 <Button title={Darkmode==='light' ? 'Dark Mode':'Light Mode' } onPress={toggleThemeText} />
@@ -46,7 +46,7 @@ useEffect(()=>{
              }
            > 
           <View style={[styles.button, isDarkMode && styles.darkButton ]}>
-            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>{localizedStrings.Acces}</Text>
+            <Text style={[styles.buttonText, isDarkMode && styles.darkButtonText ]}>{StringsLanguaje.Acces}</Text>
           </View>
         </TouchableOpacity>
       </View>

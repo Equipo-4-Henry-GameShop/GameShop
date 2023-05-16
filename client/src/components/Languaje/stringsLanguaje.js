@@ -27,7 +27,7 @@ export const strings = {
     Checkout : 'Checkout',
     MsgUserNoRegister: 'Unregistered User login to your account',
     Search: 'Search',
-    
+    Information: 'Information',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -56,6 +56,7 @@ export const strings = {
     Checkout : 'Pago',
     MsgUserNoRegister: 'Usuario no registrado acceda a su cuenta',
     Search: 'Buscar',
+    Information: 'Informacion',
   }
 };
 
