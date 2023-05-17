@@ -94,7 +94,7 @@ return (
                                     etiquetas: el.etiquetas,
                                     plataformas: el.platforms,
                                     precio: el.price ? el.price: '20.55',
-                                    requerimientos:el.requeriments_en
+                                    requerimientos: el.requeriments_en ? el.requeriments_en :' aqui falta data'
                                     // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
                     })   

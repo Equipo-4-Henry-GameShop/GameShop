@@ -11,7 +11,7 @@ import { LocalizationContext } from '../Languaje/LocalizationContext';
 const Landing =({ navigation, route}, props)=>{
   
   //linea para setear el modo dark
-  const { isDarkMode, toggleTheme, Darkmode,toggleThemeText } = useContext(ThemeContext);
+  const { isDarkMode, StringsDark } = useContext(ThemeContext);
   //linea para setear el lenguaje /obtener palabras de lenguaje
   const {locale,toggleLanguaje,StringsLanguaje }= useContext(LocalizationContext)
 //  console.log("StringsLanguaje",StringsLanguaje)
@@ -20,7 +20,7 @@ useEffect(()=>{
   navigation.setOptions({
     headerTitle: `${StringsLanguaje.Welcome}`,
     headerStyle: {
-      backgroundColor: isDarkMode ? color_negro_grafito: color_azul,
+      backgroundColor: StringsDark.backgroundContainer,
     },
   })
 },[isDarkMode,locale])
@@ -36,11 +36,11 @@ useEffect(()=>{
             />
         </View>
       <View style={styles.buttonContainer} >
-                <Text>TExto de Prueba</Text>
+                {/* <Text>TExto de Prueba</Text>
                 <Text>{StringsLanguaje.Welcome}</Text>
                 <Button title={isDarkMode ? 'Light Mode' : 'Dark Mode'} onPress={toggleTheme} />
                 <Button title={locale==='es' ? 'English':'Español' }  onPress={toggleLanguaje}  />
-                <Button title={Darkmode==='light' ? 'Dark Mode':'Light Mode' } onPress={toggleThemeText} />
+                <Button title={Darkmode==='light' ? 'Dark Mode':'Light Mode' } onPress={toggleThemeText} /> */}
            <TouchableOpacity onPress={() =>
             navigation.navigate('HomeScreen', { name: 'Usuario Invitado ?' })
              }
