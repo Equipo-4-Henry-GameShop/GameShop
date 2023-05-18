@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
-
-import SweetAlert from 'react-native-sweet-alert';
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Image,
+} from "react-native";
+import { Formik } from "formik";
+import Checkbox from "expo-checkbox";
+import { uploadImageAsync } from "../../../helpers/uploadImage";
+import * as ImagePicker from "expo-image-picker";
 
 import {
   color_azul,
@@ -9,258 +20,250 @@ import {
   color_negro,
 } from "../../../../constants/Colors";
 
-import {
-  Text,
-  Button,
-  TextInput,
-  View,
-  TouchableHighlight,
-  StyleSheet,
-  ScrollView,
-  
-} from "react-native";
-import { Formik } from "formik";
+const CreateUser = () => {
+  const [acceptTac, setAcceptTac] = useState(false);
+  const [receibeNewsletter, setReceiveNewsletter] = useState(false);
+  const [image, setImage] = useState([
+    "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360",
+  ]);
 
-import Checkbox from "expo-checkbox";
-import { values } from "lodash";
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsMultipleSelection: false,
+      allowsEditing: true,
+      aspect: [4, 4],
+      quality: 0.5,
+    });
 
-const CreateUser = (props) => {
-  const [AcceptTaC, setAcceptTac] = useState(true);
-  const [receibeNewsLetter, setReceibeNewsLetter] = useState(true);
+    console.log(result);
 
+    if (!result.canceled) {
+      const arrLks = [];
+      // const arrView = []
+      const uploadedImages = await Promise.all(
+        result.assets.map(async (image) => {
+          let imageUrl = await uploadImageAsync(image.uri);
 
+          // arrView.push(image.uri)
+          arrLks.push(imageUrl);
 
+          console.log(`3-----${arrLks}`);
+          // return arrImg
+        })
+      );
 
+      setImage(arrLks);
+      console.log(`4-----${image}`);
+      return arrLks;
+    }
+  };
 
+  const onSubmit = (values) => {
+    const userData = {
+      ...values,
+      tac: acceptTac,
+      newsletter: receibeNewsletter,
+    };
+
+    console.log(userData);
+  };
+
+  const deleteImage = (image) => {
+    setImage((image) => ({
+      ...image,
+      image: image.filter((i) => i !== image),
+    }));
+  };
   return (
-    <Formik
-      initialValues={{
-        user: "",
-        password: "",
-        fullname: "",
-        email: "",
-        date: "",
-        number: "",
-        tac: AcceptTaC,
-        newsLetter: receibeNewsLetter,
-      }}
-      onSubmit={(values)=>{
-        console.log(values)
-        SweetAlert.showAlert({
-          title: '¡Hola!',
-          subtitle: 'Esto es una alerta',
-          confirmText: 'Aceptar',
-        });
+    <ScrollView>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: color_azul,
+        }}
+      >
+        <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
+          <Image
+            source={{ uri: image[0] }}
+            style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
+          />
+        </TouchableOpacity>
+      </View>
 
-      }}
+      <Formik
+        initialValues={{
+          username: "",
+          password: "",
+          fullname: "",
+          email: "",
+          date: "",
+          number: "",
+        }}
+        validate={(values) => {
+          let errors = {};
+          if (!values.username) {
+            errors.username = "Please enter a username";
+          }
+          if (!values.password) {
+            errors.password = "Please enter a password";
+          }
+          if (!values.fullname) {
+            errors.fullname = "Please enter your full name";
+          }
+          if (!values.email) {
+            errors.email = "Please enter your email address";
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+            errors.email = "Please enter a valid email address";
+          }
+          if (!values.date) {
+            errors.date = "Please enter your date of birth";
+          }
+          if (!values.number) {
+            errors.number = "Please enter your phone number";
+          }
 
-      validate={(val) => {
-        let errors = {};
-        if (!val.user) {
-          errors.user = "Missing enter name";
-        } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(val.name)) {
-          errors.user =
-            "The user must only have 4-16 digits and can only contain letters, numbers and underscores.";
-        }
+          return errors;
+        }}
+        image={image}
+        onSubmit={onSubmit}
+      >
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+          image,
+        }) => (
+          <View>
+            <View style={styles.container}>
+              <View style={styles.containerLogin}>
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.username}
+                    placeholder="Username"
+                    onChangeText={handleChange("username")}
+                    onBlur={handleBlur("username")}
+                  />
+                  {errors.username && touched.username && (
+                    <Text style={styles.error}>{errors.username}</Text>
+                  )}
+                </View>
 
-        if (!val.email) {
-          errors.email = "Missing enter Email";
-        } else if (
-          /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(
-            val.email
-          )
-        ) {
-          errors.email = "The email format is invalid";
-        }
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.password}
+                    placeholder="Password"
+                    secureTextEntry
+                    onChangeText={handleChange("password")}
+                    onBlur={handleBlur("password")}
+                  />
+                  {errors.password && touched.password && (
+                    <Text style={styles.error}>{errors.password}</Text>
+                  )}
+                </View>
 
-        if (!val.password) {
-          errors.password = "Missing enter Password";
-        } else if (
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(
-            val.password
-          )
-        ) {
-          errors.password =
-            "-The string must contain at least 1 lowercase alphabetical character, 1 lowercase alphabetical character, 1 uppercase alphabetical character, 1 numeric character, The string must contain at least one special character, but we are escaping reserved RegEx characters to avoid conflict and The string must be eight characters or longer";
-        }
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.fullname}
+                    placeholder="Full Name"
+                    onChangeText={handleChange("fullname")}
+                    onBlur={handleBlur("fullname")}
+                  />
+                  {errors.fullname && touched.fullname && (
+                    <Text style={styles.error}>{errors.fullname}</Text>
+                  )}
+                </View>
 
-        if (!val.fullname) {
-          errors.name = "Missing enter Email";
-        } else if (
-          /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i.test(
-            val.email
-          )
-        ) {
-          errors.fullname = "The email format is invalid";
-        }
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.email}
+                    placeholder="Email"
+                    onChangeText={handleChange("email")}
+                    onBlur={handleBlur("email")}
+                  />
+                  {errors.email && touched.email && (
+                    <Text style={styles.error}>{errors.email}</Text>
+                  )}
+                </View>
 
-        if (/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g.test(val.number)) {
-          errors.number = "It is not a valid number";
-        }
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.date}
+                    placeholder="Date of Birth"
+                    onChangeText={handleChange("date")}
+                    onBlur={handleBlur("date")}
+                  />
+                  {errors.date && touched.date && (
+                    <Text style={styles.error}>{errors.date}</Text>
+                  )}
+                </View>
 
-        if (!val.date) {
-          errors.date = "Missing enter Date";
-        } else if (
-          /^([0-2][0-9]|3[0-1])(\/|-)(0[1-9]|1[0-2])\2(\d{4})$/.test(val.date)
-        ) {
-          errors.date = "The date format is invalid";
-        } else if (/^(1[89]|[2-9]\d)$/gm.test(val.date)) {
-          errors.date = "You are under 18 years of age";
-        }
+                <View>
+                  <TextInput
+                    style={styles.input}
+                    value={values.number}
+                    placeholder="Phone Number"
+                    onChangeText={handleChange("number")}
+                    onBlur={handleBlur("number")}
+                  />
+                  {errors.number && touched.number && (
+                    <Text style={styles.error}>{errors.number}</Text>
+                  )}
+                </View>
 
-        if (val.tac === false) {
-          errors.tac = "Accept terms and conditions";
-        }
-
-        return errors;
-      }}
-    >
-      {({
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        onSubmit,
-        values,
-        errors,
-        touched,
-      }) => {
-        return (
-          <View style={styles.container} onSubmit={handleSubmit}>
-            {console.log(values)}
-            <View style={styles.containerLogin}>
-              <View>
-                <TextInput
-                  style={styles.input}
-                  value={values.user}
-                  placeholder="User"
-                  onChangeText={handleChange("user")}
-                  onBlur={handleBlur("user")}
-                />
-
-                {errors.user && touched.user && (
-                  <Text style={styles.error}>{errors.user}</Text>
-                )}
-              </View>
-              <View>
-                <TextInput
-                  id="Password"
-                  style={styles.input}
-                  placeholder="Password"
-                  onChangeText={handleChange("password")}
-                  onBlur={handleBlur("password")}
-                  value={values.password}
-                  secureTextEntry={true}
-                />
-                {errors.password && touched.password && (
-                  <Text style={styles.error}>{errors.password}</Text>
-                )}
-              </View>
-
-              <View>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Fullname"
-                  onChangeText={handleChange("fullname")}
-                  onBlur={handleBlur("fullname")}
-                  value={values.fullname}
-                  keyboardType="default"
-                />
-                {errors.fullname && touched.fullname && (
-                  <Text style={styles.error}>{errors.fullname}</Text>
-                )}
-              </View>
-
-              <View>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Email"
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
-                  keyboardType="email-address"
-                />
-                {errors.email && touched.email && (
-                  <Text style={styles.error}>{errors.email}</Text>
-                )}
-              </View>
-              <View>
-                <TextInput
-                  style={styles.input}
-                  placeholder="dd-mm-yy"
-                  onChangeText={handleChange("date")}
-                  onBlur={handleBlur("date")}
-                  value={values.date}
-                  keyboardType="number-pad"
-                />
-                {errors.date && touched.date && (
-                  <Text style={styles.error}>{errors.date}</Text>
-                )}
-              </View>
-
-              <View>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Number WhatsApp"
-                  onChangeText={handleChange("number")}
-                  onBlur={handleBlur("number")}
-                  value={values.number}
-                  keyboardType="phone-pad"
-                />
-                {errors.number && touched.number && (
-                  <Text style={styles.error}>{errors.number}</Text>
-                )}
-              </View>
-              <View style={styles.boxcontainercheckbox}>
-                <View style={styles.checkboxContainer}>
+                <View style={styles.boxcontainercheckbox}>
                   <View style={styles.checkboxSection}>
                     <Checkbox
                       style={styles.checkbox}
-                      value={AcceptTaC}
+                      value={acceptTac}
                       onValueChange={setAcceptTac}
                     />
                     <Text style={styles.checkboxParagraph}>
-                      Terms & conditions
+                      I accept the Terms and Conditions
                     </Text>
-                    {errors.tac && (
-                      <Text style={styles.error}>{errors.tac}</Text>
-                    )}
                   </View>
-                </View>
 
-                <View style={styles.checkboxContainer}>
                   <View style={styles.checkboxSection}>
                     <Checkbox
                       style={styles.checkbox}
-                      value={receibeNewsLetter}
-                      onValueChange={setReceibeNewsLetter}
+                      value={receibeNewsletter}
+                      onValueChange={setReceiveNewsletter}
                     />
                     <Text style={styles.checkboxParagraph}>
-                      Receive Newsletter
+                      I want to receive the newsletter
                     </Text>
-                    {errors.newsLetter && (
-                      <Text style={styles.error}>{errors.newsLetter}</Text>
-                    )}
                   </View>
                 </View>
+
+                <View style={styles.submitContainer}>
+                  <TouchableOpacity
+                    style={styles.miniButton}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={styles.buttonText}>Submit</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View style={styles.submitContainer}>
-              
-            <TouchableHighlight
-              onPress={handleSubmit=>onSubmit}
-              style={styles.miniButton}
-            >
-              <Text style={styles.buttonText}>Submit</Text>
-            </TouchableHighlight>
-            </View>
             </View>
           </View>
-        );
-      }}
-    </Formik>
+        )}
+      </Formik>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  /////
   header: {
     alignContent: "center",
     justifyContent: "center",
@@ -276,11 +279,11 @@ const styles = StyleSheet.create({
   },
 
   container: {
+    marginTop: 0,
     backgroundColor: color_azul,
-    height: "100%",
+    height: "120%",
     alignItems: "center",
     alignContent: "center",
-    justifyContent: "center",
     padding: 8,
   },
 
@@ -289,11 +292,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
     width: 320,
-    height: "100%",
+
     borderColor: color_negro,
     backgroundColor: color_blanco,
     padding: 10,
-
   },
 
   input: {
@@ -309,12 +311,23 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 8,
   },
-  submitContainer:{
-
+  submitContainer: {
     alignItems: "center",
   },
+  ImageButton: {
+    marginTop: "10%",
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    width: 250,
+    height: 250,
+    padding: 0,
+    backgroundColor: color_blanco,
+    borderRadius: 125,
+  },
   miniButton: {
-    marginTop:"30%",
+    marginTop: 15,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
@@ -363,7 +376,7 @@ const styles = StyleSheet.create({
   },
   checkboxParagraph: {
     color: color_negro,
-    fontSize: 15,
+    fontSize: 12,
   },
   checkbox: {
     margin: 8,
