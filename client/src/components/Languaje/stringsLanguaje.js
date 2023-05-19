@@ -40,6 +40,9 @@ export const strings = {
     clCart:'Clear Cart',
     chkOut:'CheckOut',
     emptycar: 'Your cart is empty',
+    MsgAlertTitle:'Are you sure you want to clear the cart?' ,
+    optCancel: 'Cancel',
+    remove:'Remove',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -77,10 +80,14 @@ export const strings = {
     MyVideogames:'Mis Video Juegos',
     Communications: 'Comunicaciones',
     MyPosts: 'Mis Mensajes',
-    youtCart: 'Su cesta',
+    youtCart: 'Tu cesta',
     clCart:'Borrar cesta',
     chkOut:'Pagar',
-    emptycar: 'Su cesta está vacía',
+    emptycar: 'Tu cesta está vacía',
+    MsgAlertTitle:'¿Estás seguro de que quieres vaciar el carrito?' ,
+    optCancel: 'Cancelar',
+    remove:'Eliminar'
+
   }
 };
 

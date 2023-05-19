@@ -3,7 +3,7 @@ import videogamesReducer from "./videogamesSlice";
 import userReducer from "./usersSlices"
 import platformReducer from "./platformSlice"
 import screenReducer from "./screenSlice"
-import carReducer from "./cart"
+import carReducer from "./cartSlice"
 
 export default configureStore({
     reducer:{

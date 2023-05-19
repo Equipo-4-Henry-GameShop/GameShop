@@ -41,7 +41,7 @@ const Card = (videogame) => {
           
           let objeto={
             id:videogame.videogame.key,
-            title:videogame.videogame.nombre.replace(/\s/g, ''),
+            title:videogame.videogame.nombre ,//.replace(/\s/g, ''),
             price:videogame.videogame.precio,
             img: videogame.videogame.img,
             amount:1

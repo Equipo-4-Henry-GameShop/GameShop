@@ -1,15 +1,22 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
-import React from "react";
+
+import React, {useContext} from 'react';
 //import useSelector from react redux
 import { useDispatch ,useSelector} from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
- import {     amountAdd, amountSub, removeItem } from "./CardCartController";
- import { updateCart } from '../../../../redux/cart';
-
+import {     amountAdd, amountSub, removeItem } from "./CardCartController";
+import { updateCart } from '../../../../redux/cartSlice';
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
  const CartItems = (props) => {
     //  console.log("esto es lo q llega de props", props)
     const {id,img,price,amount,title}=props.item
+    //linea para setear el lenguaje /obtener palabras de lenguaje
+    const {  StringsDark,isDarkMode} = useContext(ThemeContext);
+    const {StringsLanguaje ,locale}= useContext(LocalizationContext)
     const dispatch = useDispatch();
     if (typeof(id)===undefined) {
         console.log("capturando id undefined")
@@ -17,11 +24,12 @@ import { Ionicons } from "@expo/vector-icons";
     }
 
   return (
-    <View key={id} style={styles.cartItem}>
+    
+    <View key={id} style={[styles.cartItem, {backgroundColor:StringsDark.tabActive,shadowColor:StringsDark.text}]}>
       <Image source={img} style={styles.cartItemImg} />
       <View style={styles.carDet}>
-        <Text style={styles.cartItemTitle}>{title}</Text>
-        <Text style={styles.cartItemPrice}>${price}</Text>
+        <Text style={[styles.cartItemTitle,{color:StringsDark.text}]}>{title}</Text>
+        <Text style={[styles.cartItemPrice,{color:StringsDark.txtprice}]}>${price}</Text>
         <View style={styles.cartItemAmount}>
           <TouchableOpacity
             onPress={() => {
@@ -50,7 +58,7 @@ import { Ionicons } from "@expo/vector-icons";
             }
              }
           >
-            <Ionicons name="md-remove" size={24} color="black" />
+            <Ionicons name="md-remove" size={24} color={StringsDark.text}/>
           </TouchableOpacity>
           <Text style={styles.cartItemAmountText}>{amount}</Text>
           <TouchableOpacity
@@ -60,7 +68,7 @@ import { Ionicons } from "@expo/vector-icons";
               }}
           >
             
-            <Ionicons name="md-add" size={24} color="black" />
+            <Ionicons name="md-add" size={24} color={StringsDark.text}/>
           </TouchableOpacity>
         </View>
         <View style={styles.cartItemRemove}>
@@ -71,8 +79,8 @@ import { Ionicons } from "@expo/vector-icons";
             }}
             style={styles.cartItemRemoveButton}
           >
-            <Ionicons name="md-trash" size={15} color="black" />
-            <Text>Remove</Text>
+            <Ionicons name="md-trash" size={15} color={StringsDark.text} />
+            <Text style={{color:StringsDark.text}}>{StringsLanguaje.remove}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -84,16 +92,16 @@ export default CartItems;
 
 const styles = StyleSheet.create({
   cartItem: {
-    padding: 20,
+    padding: 15,
     // backgroundColor: "white",
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 10,
     marginVertical: 5,
     borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
+    // shadowColor: "#ff2301",
+    shadowOpacity: 0.23,
+    shadowOffset: { width: 1, height: 2 },
     shadowRadius: 10,
     elevation: 3,
   },
@@ -112,6 +120,7 @@ const styles = StyleSheet.create({
   cartItemTitle: {
     fontSize: 18,
     marginVertical: 5,
+    textAlign:'center',
   },
   cartItemPrice: {
     textAlign:'center',

@@ -123,7 +123,7 @@ export default function App() {
                   }}
                 />
 
-                <Drawer.Screen
+              <Drawer.Screen
                   name="Carrito"
                   component={Carrito}
                   options={{
@@ -132,7 +132,7 @@ export default function App() {
                     headerTintColor: color_blanco,
                     headerTitleStyle: { fontWeight: "bold", fontSize: 25 },
                   }}
-                />
+                />  
 
                 <Drawer.Screen
                   name="PanelUser"

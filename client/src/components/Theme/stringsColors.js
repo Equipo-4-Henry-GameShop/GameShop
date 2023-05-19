@@ -37,6 +37,7 @@ export const strings = {
         cabmenu:color_crema,
         btnPagar: color_celeste,
         
+        
       },
     dark: {
         text: color_blanco,

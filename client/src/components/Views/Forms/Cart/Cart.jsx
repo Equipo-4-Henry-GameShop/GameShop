@@ -6,47 +6,43 @@ import { useDispatch, useSelector } from "react-redux";
 import CardCard from './CardCart';
 import {   cleanCart } from "./CardCartController";
 import { useFocusEffect } from '@react-navigation/native';
-import { updateCart } from '../../../../redux/cart';
-import { color_azul } from '../../../Theme/stringsColors';
-
+import { updateCart } from '../../../../redux/cartSlice';
+import {     removeItem } from "./CardCartController";
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
-const Cart = (navigation) => {
+const Cart = ({navigation}) => {
     const dispatch=useDispatch()
     const cartG = useSelector((state) => state.cartState);
     // console.log("estado q llega del redux", cartG)
     const [Carrito, setCarrito] = useState([]);
     const [total, setTotal] = useState(0);
     //linea para setear el lenguaje /obtener palabras de lenguaje
-    const {  StringsDark} = useContext(ThemeContext);
-    const {StringsLanguaje }= useContext(LocalizationContext)
+    const {  StringsDark,isDarkMode} = useContext(ThemeContext);
+    const {StringsLanguaje ,locale}= useContext(LocalizationContext)
     let acumulador = 0;
-  
-    useFocusEffect(
+
+    useEffect(()=>{
+        // console.log("navigation",navigation.setOptions)
+        navigation.setOptions({
+          headerTitle: `${StringsLanguaje.Shopping_Car}`,
+          headerStyle: {
+            backgroundColor: StringsDark.backgroundContainer,
+          },
+        })
+    },[isDarkMode,locale])
+
+ useFocusEffect(
         React.useCallback(() => {
-            // console.log("entro  X FOCUS")
-          // Aquí puedes llamar a funciones o realizar las acciones necesarias para recargar los datos de la pantalla
            getAllItems();
         }, [cartG])
       );
 
-    // Linea necesaria para poder correr en WEB
- const removeItem = async (key) => {
-    // console.log("ID a eliminar ",key)
-    try {
-      await AsyncStorage.removeItem(key);
-      console.log('Clave eliminada exitosamente');
-    } catch (error) {
-      console.log('Error al eliminar la clave:', error);
-    }
-  };
   useEffect(() => {
     // console.log("entre una vez");
-    removeItem('EXPO_CONSTANTS_INSTALLATION_ID');
-    
+     removeItem('EXPO_CONSTANTS_INSTALLATION_ID');
      getAllItems();
   }, []);
   
@@ -59,16 +55,14 @@ const Cart = (navigation) => {
 
     setTotal(acumulador);
   }, [Carrito]);
-
-
   
   const AlertItem = () => {
     Alert.alert(
-      'Are you sure you want to clear the cart?',
+      StringsLanguaje.MsgAlertTitle,
       '',
       [
         {
-          text: 'Cancel',
+          text: StringsLanguaje.optCancel,
           onPress: () => console.log('Cancel Pressed'),
           style: 'cancel',
         },
@@ -81,7 +75,6 @@ const Cart = (navigation) => {
       { cancelable: false }
     );
   };
-
 
   const handlePress = () => {
     cleanCart();
@@ -133,7 +126,7 @@ const Cart = (navigation) => {
         })
         }
       </View>
-      <View style={styles.cartTotal}>
+      <View style={[styles.cartTotal,{borderColor:StringsDark.txtprice}]}>
         <Text style={[styles.cartTotalTitle,{color:StringsDark.text}]}>Total</Text>
         <Text style={[styles.cartTotalPrice,{color:StringsDark.text}]}>U$S{total.toFixed(2)}</Text>
       </View>
@@ -150,7 +143,7 @@ const Cart = (navigation) => {
 
 const styles = StyleSheet.create({
     cartContainer: {
-    //   backgroundColor: "#fff",
+    
     },
     emptyCartContainer:{
 
@@ -163,11 +156,11 @@ const styles = StyleSheet.create({
       justifyContent: "space-between",
       flexDirection: "row",
       padding: 20,
-      borderTopColor: "#eee",
+    
       borderTopWidth: 1,
     },
     cartTotalPrice:{
-        color: color_azul,
+        // color: color_azul,
         fontSize:20,
         fontWeight:'bold'
     },
