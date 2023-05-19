@@ -3,8 +3,42 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 
 import { Alert } from 'react-native'
+//linea para modificar el contexto de localizacion para el lenaguje
 
 
+//inserta o agrega cantidad de item
+export const  InsertarItem= async (key,objString) => {
+    
+
+    
+    try {           
+        const currentValue = await AsyncStorage.getItem(key);
+        if (currentValue !== null) {
+            const parsedValue = JSON.parse(currentValue);
+            if (parsedValue.amount===3){
+                alert("Lo Sentimos el numero maximo de compras por titulo es 3.")
+            }else{
+            parsedValue.amount = parsedValue.amount+1; // Aquí puedes realizar las modificaciones necesarias en el valor
+            // Convertir el objeto modificado a una cadena de texto
+            const updatedValue = JSON.stringify(parsedValue);
+            await AsyncStorage.setItem(key, updatedValue);
+            // dispatch(updateCart());
+            alert('Se adiciono una unidad al item actual')
+            // console.log('Item modificado exitosamente');
+            }
+        }   
+        else{
+            await AsyncStorage.setItem(key, objString);
+            // Kawait AsyncStorage.setItem('item2', objString);
+            // console.log("llave agregada",objString)
+            alert('el item ha sido agregado')
+        }
+       
+    } catch (error) {
+      console.log("error al guardar objeto", error);
+    }
+
+  }
 
 
 // Agregar cantidad de item en AsyncStorage

@@ -4,10 +4,10 @@ import React, { useEffect, useState ,useContext} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 
 import CardCard from './CardCart';
-import {   cleanCart } from "./CardCartController";
-import { useFocusEffect } from '@react-navigation/native';
+import {     removeItem,cleanCart } from "./CardCartController";
 import { updateCart } from '../../../../redux/cartSlice';
-import {     removeItem } from "./CardCartController";
+
+import { useFocusEffect } from '@react-navigation/native';
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
@@ -128,7 +128,7 @@ const Cart = ({navigation}) => {
       </View>
       <View style={[styles.cartTotal,{borderColor:StringsDark.txtprice}]}>
         <Text style={[styles.cartTotalTitle,{color:StringsDark.text}]}>Total</Text>
-        <Text style={[styles.cartTotalPrice,{color:StringsDark.text}]}>U$S{total.toFixed(2)}</Text>
+        <Text style={[styles.cartTotalPrice,{color:StringsDark.text}]}>U$S {total.toFixed(2)}</Text>
       </View>
       <TouchableOpacity onPress={AlertItem} style={[styles.clearCart,{backgroundColor:StringsDark.txtClaro}]}>
         <Text style={[styles.clearCartText,{color:StringsDark.text}]}>{StringsLanguaje.clCart}</Text>
