@@ -39,6 +39,9 @@ const validate= () => {
       errors.tac = "Accept terms and conditions";
     }
 
+    if (!val.price) {
+      errors.price = "Missing enter Price$$";
+    }
     return errors
   }
   

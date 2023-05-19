@@ -1,16 +1,23 @@
 import { StyleSheet ,Text, Image,View,SectionList, ActivityIndicator, TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-import {color_blanco, color_azul, color_gris, color_naranja, color_naranja_claro, color_negro, color_rojo, color_rojoNeon, color_verdeNeon, color_crema} from '../../../constants/Colors'
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+import React from 'react';
 
 
 const Card = (videogame) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
+    const {  StringsDark} = React.useContext(ThemeContext);
+    const {StringsLanguaje }= React.useContext(LocalizationContext)
     function estrellitas(index) {
         // console.log("entro una estreilla");
         return <Image source={require('../../../assets/star.png')} 
                       key={index} style={{width: 25, height: 25}}
-                      PlaceholderContent={<ActivityIndicator color={color_azul}/>}
+                      PlaceholderContent={<ActivityIndicator color={StringsDark.text}/>}
                       />
     }  
    
@@ -25,32 +32,56 @@ const Card = (videogame) => {
         starArr.push(estrellitas(index))
       }      
       
-      const InsertarItem= () => {
-        // let arreglo=[]
-        // arreglo.push(videogame.videogame.key)  
+      const InsertarItem= async () => {
+        
+        // console.log("esto mando",videogame.videogame)
+        
+        // AsyncStorage.setItem('vgame', videogame.videogame.key);
+      try {
           
+          let objeto={
+            id:videogame.videogame.key,
+            title:videogame.videogame.nombre ,//.replace(/\s/g, ''),
+            price:videogame.videogame.precio,
+            img: videogame.videogame.img,
+            amount:1
+          }
+
+          const objString = JSON.stringify(objeto);
+          // console.log("objeto      ñ",objeto)
+          console.log("objeto String",objString)
+          await AsyncStorage.setItem(videogame.videogame.key, objString);
+          // Kawait AsyncStorage.setItem('item2', objString);
+          console.log("llave agregada",objString)
+          alert('el item ha sido agregado')
+      } catch (error) {
+        console.log("error al guardar objeto", error);
+      }
         
  
-        // console.log("esto mando",videogame.videogame.key)
-        AsyncStorage.setItem('vgame', videogame.videogame.key);
-        alert('el item ha sido agregado')
+
+
+
+        
       }
       
     return (
-      <View  style={styles.container}>
+      <View  style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
 
          <TouchableOpacity style={styles.botonFlotPos} onPress={InsertarItem}> 
-            <View style={styles.botonFlotFondo}>
-              <MaterialCommunityIcons  name="add-circle" size={20} style={styles.botonplus} />
+            <View style={[styles.botonFlotFondo,{backgroundColor: StringsDark.botFlot}]}>
+              <MaterialCommunityIcons  name="add-circle" size={20} style={styles.botonplus} 
+              color={StringsDark.titblanco}/>
               {/* <Text style={styles.botonFlotText}>Agregar al carro</Text> */}
-              <MaterialCommunityIcons  name="cart" size={50} style={styles.botonCar} />
+              <MaterialCommunityIcons  name="cart" size={50} style={styles.botonCar}
+               color={StringsDark.titblanco}/>
             </View>        
           </TouchableOpacity>
               <SectionList
             // <SectionList 
             sections={[
               {
-                // title: `${videogame.videogame.nombre}`, 
+                title: `${videogame.videogame.nombre}`, 
                 data: [ videogame.videogame]
               },
               
@@ -59,36 +90,38 @@ const Card = (videogame) => {
             renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
             
                   <View>        
-                      <Text style={styles.text}>
+                      <Text style={[styles.text, {color:StringsDark.bkContesp}]}>
                               {item.informacion}
                       </Text>
                       <View style={styles.imageContenedor}>
                               <Image source={item.img} 
-                                      style={styles.image}
+                                      style={[styles.image,{borderColor : StringsDark.bordercolor}]}
                         //  PlaceholderContent={<ActivityIndicator color={color_azul}/>}
                               /> 
                       </View>
-                          <Text style={styles.Ranktitle}> Ranking: <Text style={styles.Ranktext}>     {item.rating} </Text></Text>    
+                          <Text style={[styles.Ranktitle,{color:StringsDark.txtprice}]}> {StringsLanguaje.Ranking}: 
+                          <Text style={[styles.Ranktext, {color:StringsDark.bkContesp}]}>     {item.rating} </Text>
+                          </Text>    
                       <View style={styles.estrella}>
                                 {starArr}
                       </View>   
-                      <Text style={styles.precio}>
+                      <Text style={[styles.precio, {color: StringsDark.txtprice}]}>
                         $ {item.precio}
                       </Text>
-                      <View style={styles.containerfecha}>
-                        <Text style={styles.titleFec}>
-                              Fecha de Lanzamiento &nbsp; 
-                              <Text style={styles.txtFec}>
-                                  {item.fecLan}
-                                </Text> 
 
+                      <View style={[styles.containerfecha, {backgroundColor:StringsDark.fondonegro}]}>
+                        <Text style={[styles.titleFec, {color:StringsDark.tint}]}>
+                              {StringsLanguaje.Release}
+                        </Text>   
+                        <Text style={[styles.txtFec, {color: StringsDark.letraverde}]}>
+                                  {item.fecLan}
                         </Text>
                       </View>  
                   </View>
                   
                   
                   }
-            renderSectionHeader={({section}) => <Text style={styles.title}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
+            renderSectionHeader={({section}) => <Text style={[styles.title,{color:StringsDark.txtprice}]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
                   // keyExtractor={(item, index) => index}
             />
             </View> 
@@ -97,23 +130,23 @@ const Card = (videogame) => {
 const styles = StyleSheet.create({
  container: {
    justifyContent: 'space-between',
-   backgroundColor: color_blanco,
+  //  backgroundColor: color_blanco,
    alignItems: 'center',
    width: '100%',
    height: '100%',
  },
  
  title: {
-   color: color_rojoNeon,
+  //  color: color_rojoNeon,
    fontSize: 25,
    fontWeight:'bold',
    alignItems: 'center',
    alignContent: 'center',
    textAlign: 'center',
-   fontWeight: '800'
+   fontWeight: 'bold'
  },
  text: {
-     color: color_azul,
+    //  color: color_azul,
    fontSize: 18,
    marginTop: 8,
    fontWeight: '800',
@@ -126,9 +159,9 @@ const styles = StyleSheet.create({
    height: 350,
    justifyContent: 'center',
    alignItems: 'center',
-   backgroundColor: color_blanco,
+  //  backgroundColor: color_rojo,
    borderRadius: 8,
-   borderColor :color_naranja_claro,
+  //  borderColor :color_naranja_claro,
    borderWidth:0.2,
  },
  imageContenedor: {
@@ -147,7 +180,7 @@ const styles = StyleSheet.create({
  precio :{
   padding:10,
   fontSize: 35,
-  color: color_rojoNeon,
+  // color: color_rojoNeon,
   fontWeight: 'bold',
   // alignItems: 'center',
   // alignContent: 'center',
@@ -157,37 +190,38 @@ const styles = StyleSheet.create({
 },
 Ranktitle:{
  fontSize: 30,
-  color: color_crema,
+  // color: color_crema,
   fontWeight: 'bold',
   textAlign: 'center',
 },
 Ranktext:{
- fontSize: 25,
+ fontSize: 30,
  fontWeight: 'bold',
- color: color_azul,
+//  color: color_azul,
  textAlign: 'center',
 },
 containerfecha:{
-  marginLeft: 35,
-  marginRight: 20,
-  width: 300,
+  marginLeft: '25%',
+  // marginRight: 20,
+  width: '50%',
   // height:200,
   borderRadius: 10,
-  backgroundColor: color_negro,
-  flexDirection: 'row',
+  // backgroundColor: color_negro,
+  // flexDirection: 'column',
    justifyContent: 'center',
     alignItems: 'center',
+    alignContent: 'center',
    opacity: 0.81,
    marginBottom: 10,
 },
 titleFec:{
- color: color_blanco,
-  fontSize: 20,
+//  color: color_blanco,
+  fontSize: 17,
   textAlign: 'center',
   fontWeight: 'bold',
 },
 txtFec:{
-  color: color_verdeNeon,
+  // color: color_verdeNeon,
   fontSize: 30,
   fontWeight: 'bold',
   textAlign: 'center'
@@ -200,7 +234,7 @@ botonFlotPos:{
 
 },
 botonFlotFondo:{
-  backgroundColor: color_rojoNeon,
+  // backgroundColor: color_rojoNeon,
   flexDirection:'row',
   width: 60,
   height:60, 
@@ -213,13 +247,13 @@ botonFlotFondo:{
 },
 botonCar:{
   fontSize:40,
-  color:color_blanco,
+  // color:color_blanco,
   fontWeight: 'bold',
   alignSelf:'center'
 },
 botonplus:{
   fontSize:25,
-  color:color_blanco,
+  // color:color_blanco,
   fontWeight: 'bold',
   alignSelf:'flex-start'
 }

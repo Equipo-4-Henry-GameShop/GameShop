@@ -16,7 +16,6 @@ import {
   color_blanco,
   color_negro,
 } from "../../../../constants/Colors";
-import { useNavigation } from "@react-navigation/native";
 import { wrap } from "lodash";
 import { color } from "react-native-elements/dist/helpers";
 
@@ -34,7 +33,7 @@ export const PanelUser = ({navigation, route}) => {
           }
         >
           <View >
-            <Text style={styles.buttonText}>MyPosts</Text>
+            <Text style={styles.buttonText}>My Posts</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -60,7 +59,7 @@ export const PanelUser = ({navigation, route}) => {
           }
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>MyProfile</Text>
+            <Text style={styles.buttonText}>My Profile</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -73,6 +72,18 @@ export const PanelUser = ({navigation, route}) => {
         >
           <View style={styles.button}>
             <Text style={styles.buttonText}>Create Videogame</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.button}
+          onPress={() =>
+            navigation.navigate("CreateItem", { name: "CreateItem" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Create Item</Text>
           </View>
         </TouchableOpacity>
       </View>

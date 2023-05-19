@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { StyleSheet ,Image,TouchableOpacity, Text, View, Button,SectionList,FlatList} from 'react-native';
-import {color_blanco, color_azul, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+import { StyleSheet } from 'react-native';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import CardDet from './CardDet';
 import Carrousel from './Carrousel';
 import CardExtra from './CardExtra';
+
+import { useEffect, } from 'react';
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+
+
+
 const Tab = createBottomTabNavigator();
 
 const TabInfo= (props) => {
-  
+
   return (
     <>
     <CardDet  videogame= {props.videogame} />
@@ -37,43 +46,79 @@ const TabExtra= (props) => {
   
 }
 const DetailScreen = ({route,navigation}) => {
-  // export default function DetailScreen () {
-    // console.log("videogame en DEtail",route.params.videogame.screenshoots )
+    //linea para setear el lenguaje /obtener palabras de lenguaje
+    const { StringsDark,isDarkMode} = React.useContext(ThemeContext);
+    const {StringsLanguaje, locale }= React.useContext(LocalizationContext)
+
+    useEffect(()=>{
+      navigation.setOptions({
+        headerTitle: `${StringsLanguaje.Detail}`,
+        headerStyle: {
+          backgroundColor: StringsDark.backgroundContainer,
+        },
+      })
+    },[isDarkMode,locale])
+
     return (
      
       <Tab.Navigator
       initialRouteName={"Información"}
-      
-      screenOptions={{
-        "tabBarActiveTintColor": "darkred",
+      // tabBarStyle={{
+      //   activeBackgroundColor: StringsDark.tabActive, // Cambia el fondo del tab activo
+      //   inactiveBackgroundColor: StringsDark.tabInactive, // Cambia el fondo de los tabs inactivos
+      // }}
+      screenOptions={({ route }) => ({
         headerStyle: {
-          backgroundColor: color_blanco,
+          backgroundColor: StringsDark.bktitle,
         },
-        headerTintColor: color_azul,
+        tabBarStyle: {
+          backgroundColor: route.state && route.state.index === route.key ? StringsDark.tabActive : StringsDark.tabInactive,
+        },
+        tabBarLabelStyle: {
+          color: StringsDark.bkContesp
+        },
         headerTitleStyle: {
           fontWeight: 'bold',
           fontSize:25,
+          color: StringsDark.txtprice
         }
-      }}
-    >
-
+      })}
       
+    >
        <Tab.Screen 
-        name={route.params.videogame.nombre} //detalle de CARD
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="information-circle-outline" color={color} size={size} />
+        name={StringsLanguaje.Information} //detalle de CARD
+        options={({ route }) => ({
+          // title: `${StringsLanguaje.Information}`,
+          // headerTitleStyle: {
+          //   color: StringsDark.txtprice
+          // },
+          
+          // tabBarLabelStyle: {
+          //   color: StringsDark.bkContesp
+          // },
+          tabBarIcon: ({  size }) => (
+            <MaterialCommunityIcons name="information-circle-outline" 
+            color={StringsDark.bkContesp} size={size} />
           )
-        }}
+        })}
       >
         {props => <TabInfo {...props} videogame= {route.params.videogame} />}
       </Tab.Screen>
 
       <Tab.Screen 
         name="Capturas de Pantalla" 
+        
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="images-outline" color={color} size={size} />
+          title: `${StringsLanguaje.Screenshot}`,
+        //    headerTitleStyle: {
+        //     color: StringsDark.bkContesp
+        // },
+        // tabBarLabelStyle: {
+        //   color: StringsDark.bkContesp
+        // },
+          tabBarIcon: ({  size }) => (
+            <MaterialCommunityIcons name="images-outline" 
+            color={StringsDark.bkContesp} size={size} />
           )
         }}>
 
@@ -82,8 +127,16 @@ const DetailScreen = ({route,navigation}) => {
       <Tab.Screen 
         name="Extra" 
         options={{
+          title: `${StringsLanguaje.Extra}`,
+        //    headerTitleStyle: {
+        //   color: StringsDark.bkContesp
+        // },
+        // tabBarLabelStyle: {
+        //   color: StringsDark.bkContesp
+        // },
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="file-tray-stacked-outline" color={color} size={size} />
+            <MaterialCommunityIcons name="file-tray-stacked-outline" 
+            color={StringsDark.bkContesp} size={size} />
           )
         }}
       >
@@ -94,77 +147,7 @@ const DetailScreen = ({route,navigation}) => {
     );
   };
   const styles = StyleSheet.create({
-    container: {
-  
-      flex: 1,
-      justifyContent: 'space-between',
-      backgroundColor: color_rojoNeon,
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
-    },
-    
-    title: {
-      color: color_blanco,
-      fontSize: 40,
-      fontWeight:'700',
-    },
-    text: {
-        color: color_blanco,
-        fontSize: 30,
-        fontWeight:'700',
-      },
-    separator: {
-      marginVertical: 30,
-      height: 5,
-      width: '80%',
-      color: color_blanco
-    },
-     h2: {
-      color: '#FAE042',
-      fontSize: 18,
-      marginTop: 8,
-    },
-    button: {
-      marginBottom: 30,
-      width: 250,
-      alignItems: 'center',
-      backgroundColor: color_verdeNeon,
-      borderRadius:8,
-  
-    },
-    buttonText: {
-      textAlign: 'center',
-      padding: 20,
-      fontSize:40,
-    
-      color: color_negro,
-  
-    },
-    image: {
-      width: 360,
-      height: 400,
-      justifyContent: 'center',
-      alignItems: 'center',
-    
-      backgroundColor: color_negro,
-    },
-    imageContenedor: {
-        width: '100%',
-        height: 400,
-        justifyContent: 'center',
-        backgroundColor: color_negro,
-      },
-    buttonContainer: {
-      backgroundColor: color_negro,
-      height:'100%',
-      width: '100%',
-      borderRadius: 5,
-      padding: 2,
-      margin: 2,
-      alignItems: 'center',
-      // justifyContent: ,
-    },
+ 
    
   });
   

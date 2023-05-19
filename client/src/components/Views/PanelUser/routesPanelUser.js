@@ -8,7 +8,9 @@ import CreateUser from "./Create/CreateUser"
 import CreateVideogame from "./Create/CreateVideoGame";
 import { Security } from "./Security/Security"
 import { MyVideogames } from "./MyVideogames/MyVideogames";
+import CreateItem from "./Create/CrateItem";
 
 
 
-export {PanelUser, MyPosts, MyProfile, Security, Communications, CreateUser, CreateVideogame, VideoGameList, UserList, MyVideogames}
+
+export {PanelUser, MyPosts, MyProfile, Security, Communications, CreateUser, CreateVideogame, VideoGameList, UserList, MyVideogames, CreateItem}

@@ -11,8 +11,6 @@ const initialState={
     porPagina:12,
     input:1,
     maximo:0,
-    msgerror:"NULL",
-
 }
 export const videogamesSlice= createSlice({
     name: "videogames",
@@ -53,10 +51,14 @@ export const videogamesSlice= createSlice({
         updateVideogames:(state,action)=>{
             state.videoGames=action.payload
         },
+        setErrorMsg:(state,action)=>{
+            state.msgerror= action.payload
+        },
 
     }
 })
 
-export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,
-              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,}=videogamesSlice.actions
+export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,setErrorMsg,
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
+             }=videogamesSlice.actions
 export default videogamesSlice.reducer

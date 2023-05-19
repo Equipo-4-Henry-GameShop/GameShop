@@ -17,7 +17,7 @@ import {
   
   import { videogames } from "../../../../utils/dataVideojuegos";
   
-  import CardDataPanel from "../../../Extras/CardDataPanel";
+  import CardDataPanel from "../../../helpers/CardDataPanel";
   ////Acá podemos pasar como props los datos del usuarios para que este
   ////componente sea netamente visual y el codigo quede mas prolijo
   

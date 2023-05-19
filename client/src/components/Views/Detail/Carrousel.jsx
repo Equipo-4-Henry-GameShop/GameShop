@@ -1,9 +1,12 @@
 
-import * as React from 'react';
-import {View,Text,StyleSheet, FlatList,Image,Dimensions,SafeAreaView,Animated} from 'react-native'
-import {color_blanco, color_crema, color_gris, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon} from '../../../constants/Colors'
+
+import {View,Text,StyleSheet, Image,Dimensions,SafeAreaView,Animated} from 'react-native'
+
 import {LinearGradient} from "expo-linear-gradient";
-//npm i expo-linear-gradient
+import { ThemeContext } from '../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+import React from 'react';
 
 const width= Dimensions.get("window").width;
 const height= Dimensions.get("window").height;
@@ -15,6 +18,8 @@ const altura_backDrop= height* 0.5;
 function BackDrop(scrollX){
 // console.log("data en BrackDrop -->", scrollX.scrollX)
 //nota le envio dos variables pero solo me la reconoce en la primera props
+const {  StringsDark} = React.useContext(ThemeContext);
+const {StringsLanguaje }= React.useContext(LocalizationContext)
   return (
     <View style={([{height:altura_backDrop,
                 width,
@@ -45,7 +50,7 @@ function BackDrop(scrollX){
                         position: "absolute",
                         top:0,//estaba en cero
                         opacity,
-                        borderColor: color_blanco,
+                        borderColor: StringsDark.borderColor,
                         
                       }]}
             />
@@ -61,11 +66,13 @@ function BackDrop(scrollX){
 
 export default function Carrousel(data) {
 // console.log("Data-->",data.data)
+const {  StringsDark} = React.useContext(ThemeContext);
+const {StringsLanguaje }= React.useContext(LocalizationContext)
 
   const scrollX= React.useRef(new Animated.Value(0)).current;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: StringsDark.bkCard}]}>
      <BackDrop info={data.data} scrollX={scrollX} />
 
       <Animated.FlatList 
@@ -111,14 +118,14 @@ export default function Carrousel(data) {
               <Animated.View style={{
                 marginHorizontal: espacio,
                 borderRadius:34,
-                backgroundColor: color_blanco,
+                backgroundColor: StringsDark.tabActive,
                 alignItems: "center",
                 transform: [{translateY}]
                 }}>
                 <Image source={{uri:item.img}} 
                         style={styles.posterImage}
                         />
-                <Text style={styles.name}>Captura({item.key})</Text>
+                <Text style={[styles.name,{color:StringsDark.txtprice}]}>{StringsLanguaje.Capture}({Number(item.key)+1})</Text>
                </Animated.View> 
             </View> 
             )
@@ -133,7 +140,7 @@ export default function Carrousel(data) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: color_blanco,
+    // backgroundColor: color_blanco,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -148,7 +155,7 @@ const styles = StyleSheet.create({
     
   },
   name:{
-    color:'red',
+    // color:'red',
     fontWeight: 'bold'
   }
 });
