@@ -26,7 +26,7 @@ useEffect(()=>{
 },[isDarkMode,locale])
   //esta linea debo de llamar en cada componente 
     return (
-      <View style={[styles.container, isDarkMode && styles.darkContainer]}>
+      <View style={[styles.container, {backgroundColor:StringsDark.tabInactive}]}>
         <StatusBar backgroundColor={isDarkMode ? color_negro: color_azul} barStyle="light-content" />
         <View style={styles.imgContainer}>
           <Image 
@@ -59,7 +59,7 @@ useEffect(()=>{
     container: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: color_blanco,
+      // backgroundColor: color_blanco,
       alignItems: 'center',
       width: '100%',
     },
@@ -69,7 +69,7 @@ useEffect(()=>{
       
       alignItems: 'center',
       width: '100%',
-      backgroundColor: color_negro_ligero,
+      // backgroundColor: color_negro_ligero,
       
     },
     image:{

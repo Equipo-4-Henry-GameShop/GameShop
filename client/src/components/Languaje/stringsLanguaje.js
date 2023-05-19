@@ -36,6 +36,10 @@ export const strings = {
     MyVideogames:'MyVideo Games',
     Communications: 'Communications',
     MyPosts: 'My Posts',
+    youtCart: 'Your Cart',
+    clCart:'Clear Cart',
+    chkOut:'CheckOut',
+    emptycar: 'Your cart is empty',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -73,6 +77,10 @@ export const strings = {
     MyVideogames:'Mis Video Juegos',
     Communications: 'Comunicaciones',
     MyPosts: 'Mis Mensajes',
+    youtCart: 'Su cesta',
+    clCart:'Borrar cesta',
+    chkOut:'Pagar',
+    emptycar: 'Su cesta está vacía',
   }
 };
 

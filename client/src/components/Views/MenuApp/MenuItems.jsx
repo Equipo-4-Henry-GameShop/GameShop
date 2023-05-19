@@ -2,7 +2,6 @@ import { View, Text,Image ,TouchableOpacity,StyleSheet} from 'react-native'
 import MenuButtonSubItem from './MenuButtonSubItem';
 import MenuBottonItem from './MenuButton'
 import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
-import {color_azul, color_blanco, color_crema, dark, color_naranja, color_negro, color_rojo, color_rojoNeon, color_verdeNeon, color_gris} from '../../../constants/Colors'
 
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import { ThemeContext } from '../../Theme/ThemeProvider';
@@ -87,6 +86,7 @@ const MenuItems=({navigation})=>{
               onPress={()=> navigation.navigate('Carrito')}
               icon='cart'
             />
+          
   
             {/* <MenuButtonSubItem
               nombre= 'Videogames'

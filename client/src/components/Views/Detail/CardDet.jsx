@@ -32,15 +32,37 @@ const Card = (videogame) => {
         starArr.push(estrellitas(index))
       }      
       
-      const InsertarItem= () => {
-        // let arreglo=[]
-        // arreglo.push(videogame.videogame.key)  
+      const InsertarItem= async () => {
+        
+        // console.log("esto mando",videogame.videogame)
+        
+        // AsyncStorage.setItem('vgame', videogame.videogame.key);
+      try {
           
+          let objeto={
+            id:videogame.videogame.key,
+            title:videogame.videogame.nombre.replace(/\s/g, ''),
+            price:videogame.videogame.precio,
+            img: videogame.videogame.img,
+            amount:1
+          }
+
+          const objString = JSON.stringify(objeto);
+          // console.log("objeto      ñ",objeto)
+          console.log("objeto String",objString)
+          await AsyncStorage.setItem(videogame.videogame.key, objString);
+          // Kawait AsyncStorage.setItem('item2', objString);
+          console.log("llave agregada",objString)
+          alert('el item ha sido agregado')
+      } catch (error) {
+        console.log("error al guardar objeto", error);
+      }
         
  
-        // console.log("esto mando",videogame.videogame.key)
-        AsyncStorage.setItem('vgame', videogame.videogame.key);
-        alert('el item ha sido agregado')
+
+
+
+        
       }
       
     return (

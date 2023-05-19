@@ -13,6 +13,7 @@ export const color_rojo='red';
 export const color_azul='#4528F4';
 export const color_negro_grafito ='#1b1e23';
 export const color_negro_ligero='#7d7f7d';
+export const color_celeste='#1ec6ff';
 export const strings = {
     light: {
         text: color_negro,
@@ -34,8 +35,8 @@ export const strings = {
         letraverde: color_verdeNeon,
         txtClaro:color_crema,
         cabmenu:color_crema,
-        // tabIconDefault: '#ccc',
-        // tabIconSelected: tintColorLight,
+        btnPagar: color_celeste,
+        
       },
     dark: {
         text: color_blanco,
@@ -52,12 +53,13 @@ export const strings = {
         focllene:color_negro_ligero,
         tabActive: color_negro ,
         tabInactive: color_negro_ligero ,
-        // tabIconDefault: '#ccc',
-        // tabIconSelected: tintColorDark,
+
         botFlot: color_negro_grafito,
         fondonegro: color_negro_grafito,
         letraverde: color_verdeNeon,
         txtClaro:color_negro_grafito,
         cabmenu:color_negro_ligero,
+        btnPagar: color_crema,
+        
       },
 };

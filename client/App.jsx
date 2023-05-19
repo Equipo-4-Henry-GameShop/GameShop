@@ -57,7 +57,7 @@ import {
 
 import Landing from "./src/components/Views/Landing";
 
-import Carrito from "./src/components/Views/Forms/Cart";
+import Carrito from './src/components/Views/Forms/Cart/Cart'
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
 

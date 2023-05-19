@@ -11,8 +11,6 @@ const initialState={
     porPagina:12,
     input:1,
     maximo:0,
-    
-
 }
 export const videogamesSlice= createSlice({
     name: "videogames",
@@ -61,5 +59,6 @@ export const videogamesSlice= createSlice({
 })
 
 export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,setErrorMsg,
-              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,}=videogamesSlice.actions
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
+             }=videogamesSlice.actions
 export default videogamesSlice.reducer
