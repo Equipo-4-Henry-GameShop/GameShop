@@ -7,7 +7,7 @@ import { ThemeContext } from '../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import React from 'react';
-
+import { InsertarItem } from '../Forms/Cart/CardCartController';
 
 const Card = (videogame) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
@@ -32,43 +32,22 @@ const Card = (videogame) => {
         starArr.push(estrellitas(index))
       }      
       
-      const InsertarItem= async () => {
-        
-        // console.log("esto mando",videogame.videogame)
-        
-        // AsyncStorage.setItem('vgame', videogame.videogame.key);
-      try {
-          
-          let objeto={
-            id:videogame.videogame.key,
-            title:videogame.videogame.nombre ,//.replace(/\s/g, ''),
-            price:videogame.videogame.precio,
-            img: videogame.videogame.img,
-            amount:1
-          }
-
-          const objString = JSON.stringify(objeto);
-          // console.log("objeto      ñ",objeto)
-          console.log("objeto String",objString)
-          await AsyncStorage.setItem(videogame.videogame.key, objString);
-          // Kawait AsyncStorage.setItem('item2', objString);
-          console.log("llave agregada",objString)
-          alert('el item ha sido agregado')
-      } catch (error) {
-        console.log("error al guardar objeto", error);
+      let objeto={
+        id:videogame.videogame.key,
+        title:videogame.videogame.nombre ,//.replace(/\s/g, ''),
+        price:videogame.videogame.precio,
+        img: videogame.videogame.img,
+        amount:1
       }
-        
- 
-
-
-
-        
-      }
+      const objString = JSON.stringify(objeto);
+      const key= videogame.videogame.key
+      // console.log("objeto      ñ",objeto)
+      //  console.log("objeto String",objString)  
       
     return (
       <View  style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
 
-         <TouchableOpacity style={styles.botonFlotPos} onPress={InsertarItem}> 
+         <TouchableOpacity style={styles.botonFlotPos} onPress={()=>InsertarItem(key,objString)}> 
             <View style={[styles.botonFlotFondo,{backgroundColor: StringsDark.botFlot}]}>
               <MaterialCommunityIcons  name="add-circle" size={20} style={styles.botonplus} 
               color={StringsDark.titblanco}/>

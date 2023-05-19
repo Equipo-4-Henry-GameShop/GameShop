@@ -43,6 +43,9 @@ export const strings = {
     MsgAlertTitle:'Are you sure you want to clear the cart?' ,
     optCancel: 'Cancel',
     remove:'Remove',
+    MsgAlertAmountMax:'Sorry, the maximum number of purchases per title is 3.',
+    MsgAlertItemAmountAdd: 'One unit has been added to the current item',
+    MSGAlertItemAdd: 'Item has been added',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -86,7 +89,10 @@ export const strings = {
     emptycar: 'Tu cesta está vacía',
     MsgAlertTitle:'¿Estás seguro de que quieres vaciar el carrito?' ,
     optCancel: 'Cancelar',
-    remove:'Eliminar'
+    remove:'Eliminar',
+    MsgAlertAmountMax:'Lo Sentimos el numero maximo de compras por titulo es 3.',
+    MsgAlertItemAmountAdd: 'Se adiciono una unidad al item actual',
+    MSGAlertItemAdd: 'Ítem ha sido agregado',
 
   }
 };
