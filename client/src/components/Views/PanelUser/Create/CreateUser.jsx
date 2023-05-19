@@ -19,13 +19,15 @@ import {
   color_gris,
   color_negro,
 } from "../../../../constants/Colors";
+import axios from "axios";
 
 const CreateUser = () => {
   const [acceptTac, setAcceptTac] = useState(false);
-  const [receibeNewsletter, setReceiveNewsletter] = useState(false);
-  const [image, setImage] = useState([
-    "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360",
-  ]);
+  const [receibenewsLetter, setReceivenewsLetter] = useState(false);
+
+  const [image, setImage] = useState(
+    "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
+  );
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -53,20 +55,46 @@ const CreateUser = () => {
         })
       );
 
-      setImage(arrLks);
+      setImage(arrLks[0]);
       console.log(`4-----${image}`);
+      console.log(`46-----${arrLks}`)
       return arrLks;
     }
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     const userData = {
       ...values,
       tac: acceptTac,
-      newsletter: receibeNewsletter,
+      newsLetter: receibenewsLetter,
+      id: 1 + Math.floor(Math.random() * 999),
+      userAdmin: true,
+      image: image,
     };
-
-    console.log(userData);
+  
+    console.log(`Antes del try ${userData}`);
+  
+    try {
+      console.log(`Después del try ${userData}`);
+  
+      const response = await axios.post("https://gameshop-production-e844.up.railway.app/user", {
+        user: userData.user,
+        password: userData.password,
+        fullname: userData.fullname,
+        email: userData.email,
+        date: userData.date,
+        phone: userData.phone,
+        tac: userData.tac,
+        newsLetter: userData.newsLetter,
+        id: userData.id,
+        userAdmin: userData.userAdmin,
+        image: userData.image,
+      });
+  
+      console.log(`Respuesta del servidor:`, response.data);
+    } catch (error) {
+      console.log("Error en el backend:", error);
+    }
   };
 
   const deleteImage = (image) => {
@@ -87,7 +115,7 @@ const CreateUser = () => {
       >
         <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
           <Image
-            source={{ uri: image[0] }}
+            source={{ uri: `${image}` }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
           />
         </TouchableOpacity>
@@ -95,17 +123,17 @@ const CreateUser = () => {
 
       <Formik
         initialValues={{
-          username: "",
+          user: "",
           password: "",
           fullname: "",
           email: "",
           date: "",
-          number: "",
+          phone: "",
         }}
         validate={(values) => {
           let errors = {};
-          if (!values.username) {
-            errors.username = "Please enter a username";
+          if (!values.user) {
+            errors.user = "Please enter a user";
           }
           if (!values.password) {
             errors.password = "Please enter a password";
@@ -121,8 +149,8 @@ const CreateUser = () => {
           if (!values.date) {
             errors.date = "Please enter your date of birth";
           }
-          if (!values.number) {
-            errors.number = "Please enter your phone number";
+          if (!values.phone) {
+            errors.phone = "Please enter your phone phone";
           }
 
           return errors;
@@ -145,13 +173,13 @@ const CreateUser = () => {
                 <View>
                   <TextInput
                     style={styles.input}
-                    value={values.username}
-                    placeholder="Username"
-                    onChangeText={handleChange("username")}
-                    onBlur={handleBlur("username")}
+                    value={values.user}
+                    placeholder="user"
+                    onChangeText={handleChange("user")}
+                    onBlur={handleBlur("user")}
                   />
-                  {errors.username && touched.username && (
-                    <Text style={styles.error}>{errors.username}</Text>
+                  {errors.user && touched.user && (
+                    <Text style={styles.error}>{errors.user}</Text>
                   )}
                 </View>
 
@@ -211,13 +239,13 @@ const CreateUser = () => {
                 <View>
                   <TextInput
                     style={styles.input}
-                    value={values.number}
-                    placeholder="Phone Number"
-                    onChangeText={handleChange("number")}
-                    onBlur={handleBlur("number")}
+                    value={values.phone}
+                    placeholder="Phone"
+                    onChangeText={handleChange("phone")}
+                    onBlur={handleBlur("phone")}
                   />
-                  {errors.number && touched.number && (
-                    <Text style={styles.error}>{errors.number}</Text>
+                  {errors.phone && touched.phone && (
+                    <Text style={styles.error}>{errors.phone}</Text>
                   )}
                 </View>
 
@@ -236,23 +264,23 @@ const CreateUser = () => {
                   <View style={styles.checkboxSection}>
                     <Checkbox
                       style={styles.checkbox}
-                      value={receibeNewsletter}
-                      onValueChange={setReceiveNewsletter}
+                      value={receibenewsLetter}
+                      onValueChange={setReceivenewsLetter}
                     />
                     <Text style={styles.checkboxParagraph}>
-                      I want to receive the newsletter
+                      I want to receive the newsLetter
                     </Text>
                   </View>
                 </View>
+              </View>
 
-                <View style={styles.submitContainer}>
-                  <TouchableOpacity
-                    style={styles.miniButton}
-                    onPress={handleSubmit}
-                  >
-                    <Text style={styles.buttonText}>Submit</Text>
-                  </TouchableOpacity>
-                </View>
+              <View style={styles.submitContainer}>
+                <TouchableOpacity
+                  style={styles.miniButton}
+                  onPress={handleSubmit}
+                >
+                  <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </View>

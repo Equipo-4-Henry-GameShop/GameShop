@@ -10,6 +10,7 @@ import {
   Image,
 } from "react-native";
 
+
 import * as ImagePicker from "expo-image-picker";
 
 import { uploadImageAsync } from "../../../helpers/uploadImage";
@@ -26,30 +27,42 @@ import {
   color_negro,
 } from "../../../../constants/Colors";
 
+import axios from "axios";
+
+
 const CreateVideogame = () => {
   const [image, setImage] = useState([]);
 
   const [imageScreen, setImageScreen] = useState([]);
 
+  const [inputFocusedName, setInputFocusedName] = useState(true);
+  const [inputFocusedDesc, setInputFocusedDesc] = useState(true);
+  const [inputFocusedDate, setInputFocusedDate] = useState(true);
+  const [inputFocusedPrice, setInputFocusedPrice] = useState(true);
+  const [inputFocusedReq, setInputFocusedReq] = useState(true);
+  const [validateSubmit, setValidateSubmit] = useState(true);
+
   const [stackData, setStackData] = useState({
-    platform: allPlatforms,
-    genres: allGenres,
-    screnShots: "",
-    tags: "",
+    platforms: allPlatforms,
+    genre: allGenres,
+    tags: allGenres,
   });
   const [newVideoGame, setNewVideoGame] = useState({
+    id: 1 + Math.floor(Math.random() * 999),
     name: "",
     description: "",
     releaseDate: "",
-    image: [],
+    image: "",
     screnShots: [],
-    platform: [],
-    genres: [],
+    platforms: [],
+    genre: [],
     tags: [],
+    price: "",
+    req: ""
   });
 
-  // console.log(allPlatforms)
-  // console.log(allGenres)
+  // console.log(allplatformss)
+  // console.log(allgenre)
 
   console.log(newVideoGame);
 
@@ -59,62 +72,127 @@ const CreateVideogame = () => {
 
   const validateNvg = validate(newVideoGame);
 
-  ///////
-
-  const pushItemGenres = (value) => {
-    setTimeout(() => {
-      setNewVideoGame((prevState) => ({
-        ...prevState,
-        genres: [...prevState.genres, value],
-      }));
-
-      setStackData((prevState) => ({
-        ...prevState,
-        genres: prevState.genres.filter((p) => p !== value),
-      }));
-    }, 1200);
-  };
-
-  const removeItemGenres = (value) => {
-    setTimeout(() => {
-      setNewVideoGame((prevState) => ({
-        ...prevState,
-        genres: prevState.genres.filter((p) => p !== value),
-      }));
-
-      setStackData((prevState) => ({
-        ...prevState,
-        genres: [...prevState.genres, value],
-      }));
-    }, 1200);
-  };
+  console.log(validateNvg.name);
 
   ///////
 
-  const pushItemPlatform = (value) => {
+  const inputStyle = {
+    height: Math.max(40, newVideoGame.description.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
+  };
+
+  const inputStyleVar = {
+    height: Math.max(40, newVideoGame.req.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
+  };
+
+  const handleTextChange = (text) => {
+    setNewVideoGame((prevVideoGame) => ({
+      ...prevVideoGame,
+      req: text,
+    }));
+  };
+
+  
+  const handleTextChange2 = (text) => {
+    setNewVideoGame((prevVideoGame) => ({
+      ...prevVideoGame,
+      description: text,
+    }));
+  };
+
+  const Submit = async () => {
+    try {
+      console.log(newVideoGame);
+      if (
+        newVideoGame.name === "" ||
+        newVideoGame.description === "" ||
+        newVideoGame.releaseDate === "" ||
+        !newVideoGame.platforms.length  ||
+        !newVideoGame.tags.length ||
+        !newVideoGame.genre.length ||
+        newVideoGame.image === "" ||
+        !newVideoGame.screnShots.length ||
+        newVideoGame.price === "" ||
+        newVideoGame.req === ""
+      ) {
+        setValidateSubmit(false);
+      } else {
+        const res = await axios.post("https://gameshop-production-e844.up.railway.app/games", {
+          id: newVideoGame.id,
+          name: newVideoGame.name,
+          description: newVideoGame.description,
+          releaseDate: newVideoGame.releaseDate,
+          image: newVideoGame.image,
+          screnShots: newVideoGame.screnShots,
+          platforms: newVideoGame.platforms,
+          genre: newVideoGame.genre,
+          tags: newVideoGame.tags,
+          price: newVideoGame.price,
+          req: newVideoGame.req
+        });
+  
+        console.log("Respuesta del servidor:", res.data);
+      }
+    } catch (error) {
+      console.log("Error en el backend:", error);
+    }
+  };
+
+  ///////
+
+  const pushItemgenre = (value) => {
     setTimeout(() => {
       setNewVideoGame((prevState) => ({
         ...prevState,
-        platform: [...prevState.platform, value],
+        genre: [...prevState.genre, value],
       }));
 
       setStackData((prevState) => ({
         ...prevState,
-        platform: prevState.platform.filter((p) => p !== value),
+        genre: prevState.genre.filter((p) => p !== value),
       }));
     }, 1200);
   };
 
-  const removeItemPlatform = (value) => {
+  const removeItemgenre = (value) => {
     setTimeout(() => {
       setNewVideoGame((prevState) => ({
         ...prevState,
-        platform: prevState.platform.filter((p) => p !== value),
+        genre: prevState.genre.filter((p) => p !== value),
       }));
 
       setStackData((prevState) => ({
         ...prevState,
-        platform: [...prevState.platform, value],
+        genre: [...prevState.genre, value],
+      }));
+    }, 1200);
+  };
+
+  ///////
+
+  const pushItemplatforms = (value) => {
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        platforms: [...prevState.platforms, value],
+      }));
+
+      setStackData((prevState) => ({
+        ...prevState,
+        platforms: prevState.platforms.filter((p) => p !== value),
+      }));
+    }, 1200);
+  };
+
+  const removeItemplatforms = (value) => {
+    setTimeout(() => {
+      setNewVideoGame((prevState) => ({
+        ...prevState,
+        platforms: prevState.platforms.filter((p) => p !== value),
+      }));
+
+      setStackData((prevState) => ({
+        ...prevState,
+        platforms: [...prevState.platforms, value],
       }));
     }, 1200);
   };
@@ -125,12 +203,12 @@ const CreateVideogame = () => {
     setTimeout(() => {
       setNewVideoGame((prevState) => ({
         ...prevState,
-        genres: [...prevState.genres, value],
+        tags: [...prevState.tags, value],
       }));
 
       setStackData((prevState) => ({
         ...prevState,
-        genres: prevState.genres.filter((p) => p !== value),
+        tags: prevState.tags.filter((p) => p !== value),
       }));
     }, 1200);
   };
@@ -139,12 +217,12 @@ const CreateVideogame = () => {
     setTimeout(() => {
       setNewVideoGame((prevState) => ({
         ...prevState,
-        genres: prevState.genres.filter((p) => p !== value),
+        tags: prevState.tags.filter((p) => p !== value),
       }));
 
       setStackData((prevState) => ({
         ...prevState,
-        genres: [...prevState.genres, value],
+        tags: [...prevState.tags, value],
       }));
     }, 1200);
   };
@@ -161,10 +239,10 @@ const CreateVideogame = () => {
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsMultipleSelection: true,
-      allowsEditing: false,
-      aspect: [3, 4],
-      quality: 0.5,
+      allowsMultipleSelection: false,
+      allowsEditing: true,
+      aspect: [4,4],
+      quality: 1,
     });
 
     console.log(result);
@@ -186,7 +264,7 @@ const CreateVideogame = () => {
 
       setNewVideoGame((newVideoGame) => ({
         ...newVideoGame,
-        image: [...newVideoGame.image, ...arrLks],
+        image: arrLks[0],
       }));
 
       console.log(`4-----${newVideoGame}`);
@@ -194,10 +272,10 @@ const CreateVideogame = () => {
     }
   };
 
-  const deleteImage = (image) => {
+
+  const deleteImage = () => {
     setNewVideoGame((newVideoGame) => ({
-      ...newVideoGame,
-      image: newVideoGame.image.filter((i) => i !== image),
+      ...newVideoGame, image: ""
     }));
   };
 
@@ -213,8 +291,8 @@ const CreateVideogame = () => {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsMultipleSelection: true,
       allowsEditing: false,
-      aspect: [3, 4],
-      quality: 0.5,
+      aspect: [ 4 , 3],
+      quality: 0.8,
     });
 
     console.log(result);
@@ -255,34 +333,76 @@ const CreateVideogame = () => {
               style={styles.input}
               placeholder="Enter Game name"
               value={newVideoGame.name}
+              onBlur={() => setInputFocusedName(false)}
               keyboardAppearance="light"
               onChangeText={(text) => handleInputChange("name", text)}
             />
+            {validateNvg.name !== "" && !inputFocusedName && (
+              <Text style={styles.error}>{validateNvg.name}</Text>
+            )}
           </View>
-
+                  
           <View>
-            <Text style={styles.title}>Description</Text>
+            <Text style={styles.title}>Price</Text>
             <TextInput
               style={styles.input}
-              placeholder="Paste description"
-              value={newVideoGame.description}
-              onChangeText={(text) => handleInputChange("description", text)}
+              placeholder="$999.99"
+              onBlur={() => setInputFocusedPrice(false)}
+              value={newVideoGame.price}
+              onChangeText={(text) => handleInputChange("price", text)}
             />
+            {validateNvg.price !== "" && !inputFocusedPrice && (
+              <Text style={styles.error}>{validateNvg.price}</Text>
+            )}
+          </View>
+
+          <View style={styles.containerInput}>
+            <Text style={styles.title}>Description</Text>
+            <TextInput
+              style={[styles.inputStyle2, inputStyle]}
+              placeholder="Paste_description"
+              onBlur={() => setInputFocusedDesc(false)}
+              value={newVideoGame.description}
+              onChangeText={handleTextChange2}
+              multiline
+            />
+            {validateNvg.description !== "" && !inputFocusedDesc && (
+              <Text style={styles.error}>{validateNvg.description}</Text>
+            )}
+          </View>
+
+          <View style={styles.containerInput}>
+            <Text style={styles.title}>System Requirements</Text>
+            <TextInput
+              style={[styles.inputStyle2, inputStyleVar]}
+              placeholder="Paste_requirements"
+              onBlur={() => setInputFocusedReq(false)}
+              value={newVideoGame.req}
+              onChangeText={handleTextChange}
+              multiline
+            />
+            {validateNvg.req !== "" && !inputFocusedReq && (
+              <Text style={styles.error}>{validateNvg.req}</Text>
+            )}
           </View>
 
           <View>
             <Text style={styles.title}>Release Date </Text>
             <TextInput
               style={styles.input}
-              placeholder="dd/mm/yy"
+              placeholder="dd-mm-yyyy"
               value={newVideoGame.releaseDate}
+              onBlur={() => setInputFocusedDate(false)}
               keyboardType="numeric"
               onChangeText={(text) => handleInputChange("releaseDate", text)}
             />
+            {validateNvg.releaseDate !== "" && !inputFocusedDate && (
+              <Text style={styles.error}>{validateNvg.releaseDate}</Text>
+            )}
           </View>
 
           <View>
-            <Text style={styles.title}>Load image</Text>
+            <Text style={styles.title}>Video game cover</Text>
 
             <View
               style={{
@@ -294,24 +414,21 @@ const CreateVideogame = () => {
               <TouchableOpacity onPress={pickImage} style={styles.miniButton}>
                 <Text style={styles.buttonText}>Load from gallery</Text>
               </TouchableOpacity>
-
-              {newVideoGame.image &&
-                newVideoGame.image.map((i) => {
-                  return (
-                    <View>
-                      <TouchableOpacity
-                        onPress={() => deleteImage(i)}
-
-                      >
-                        <Image
-                          key={i}
-                          source={{ uri: i }}
-                          style={{ margin: 5, width: 200, height: 200 }}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                  );
-                })}
+              {validateNvg.image !== "" && !validateSubmit && (
+                <Text style={styles.error}>{validateNvg.image}</Text>
+              )}
+              {console.log(`5454--------------${newVideoGame.image}`)}
+              {newVideoGame.image && 
+                <View>
+                  <TouchableOpacity onPress={() => deleteImage(newVideoGame.image)}>
+                    <Image
+                      key={newVideoGame.image}
+                      source={{ uri: `${newVideoGame.image}` }}
+                      style={{ margin: 5, width: 200, height: 200 }}
+                    />
+                  </TouchableOpacity>
+                </View>
+              }
             </View>
           </View>
 
@@ -331,15 +448,18 @@ const CreateVideogame = () => {
               >
                 <Text style={styles.buttonText}>Load from gallery</Text>
               </TouchableOpacity>
+              {validateNvg.screnShots !== "" && !validateSubmit && (
+                <Text style={styles.error}>{validateNvg.screnShots}</Text>
+              )}
 
-              {newVideoGame.screnShots &&
+              {newVideoGame.screnShots[0] &&
                 newVideoGame.screnShots.map((i) => {
                   return (
                     <View>
-                      <TouchableOpacity onPress={() => deleteImage(i)}>
+                      <TouchableOpacity onPress={() => deleteScreen(`${i}`)}>
                         <Image
                           key={i}
-                          source={{ uri: i }}
+                          source={{ uri: `${i}` }}
                           style={{ margin: 5, width: 200, height: 200 }}
                         />
                       </TouchableOpacity>
@@ -352,39 +472,45 @@ const CreateVideogame = () => {
             <Text style={styles.title}>Add Genre</Text>
             <View>
               <SelectList
-                data={stackData.genres}
-                placeholder="Add genres"
-                setSelected={(val) => pushItemGenres(val)}
+                data={stackData.genre}
+                placeholder="Add genre"
+                setSelected={(val) => pushItemgenre(val)}
                 search={false}
               />
             </View>
             <View>
               <SelectList
-                placeholder="Remove genres"
-                setSelected={(val) => removeItemGenres(val)}
-                data={newVideoGame.genres}
+                placeholder="Remove genre"
+                setSelected={(val) => removeItemgenre(val)}
+                data={newVideoGame.genre}
                 search={false}
               />
             </View>
+            {validateNvg.genre !== "" && !validateSubmit && (
+              <Text style={styles.error}>{validateNvg.genre}</Text>
+            )}
           </View>
           <View style={styles.select}>
-            <Text style={styles.title}>Add Platform</Text>
+            <Text style={styles.title}>Add platforms</Text>
             <View>
               <SelectList
-                data={stackData.platform}
-                placeholder="Add platform"
-                setSelected={(val) => pushItemPlatform(val)}
+                data={stackData.platforms}
+                placeholder="Add platforms"
+                setSelected={(val) => pushItemplatforms(val)}
                 search={false}
               />
             </View>
             <View>
               <SelectList
-                placeholder="Remove platforms"
-                setSelected={(val) => removeItemPlatform(val)}
-                data={newVideoGame.platform}
+                placeholder="Remove platformss"
+                setSelected={(val) => removeItemplatforms(val)}
+                data={newVideoGame.platforms}
                 search={false}
               />
             </View>
+            {validateNvg.platforms !== "" && !validateSubmit && (
+              <Text style={styles.error}>{validateNvg.platforms}</Text>
+            )}
           </View>
 
           <View style={styles.select}>
@@ -392,23 +518,29 @@ const CreateVideogame = () => {
             <View>
               <SelectList
                 placeholder="Add tag"
-                setSelected={(val) => pushItemPlatform(val)}
-                data={stackData.platform}
+                setSelected={(val) => pushItemTag(val)}
+                data={stackData.platforms}
                 search={false}
               />
             </View>
             <View>
               <SelectList
                 placeholder="Remove tag"
-                setSelected={(val) => removeItemPlatform(val)}
-                data={newVideoGame.platform}
+                setSelected={(val) => removeItemplatforms(val)}
+                data={newVideoGame.tags}
                 search={false}
               />
             </View>
+            {validateNvg.tags !== "" && !validateSubmit && (
+              <Text style={styles.error}>{validateNvg.tags}</Text>
+            )}
           </View>
           <View></View>
-          <View style={styles.submit} >
-            <TouchableOpacity style={styles.miniButton}>
+          <View style={styles.submit}>
+            <TouchableOpacity
+              style={styles.miniButton}
+              onPress={() => Submit()}
+            >
               <Text style={styles.buttonText}>Create Publication</Text>
             </TouchableOpacity>
           </View>
@@ -470,13 +602,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   input: {
+    width: '100%',
+    padding: 10,
+    fontSize: 16, 
     textAlign: "center",
-    height: 35,
+    height: 50,
     borderWidth: 2,
     borderColor: color_azul,
-    paddingHorizontal: 70,
-    marginLeft: "2%",
-    marginRight: "2%",
+    marginHorizontal:"auto",
     borderColor: "#ddd",
     backgroundColor: "#fff",
     marginBottom: 15,
@@ -497,11 +630,31 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 
-  submit:{
-    marginTop:30,
+  submit: {
+    marginTop: 30,
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
+  },
+  containerInput: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+
+  inputStyle2 : {
+    width: '100%',
+    padding: 10,
+    fontSize: 16, 
+    textAlign: "center",
+    borderWidth: 2,
+    borderColor: color_azul,
+    marginHorizontal:"auto",
+    borderColor: "#ddd",
+    backgroundColor: "#fff",
+    marginBottom: 15,
+    borderRadius: 8,
   }
 });
 

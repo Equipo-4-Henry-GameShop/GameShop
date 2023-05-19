@@ -3,6 +3,8 @@ export const validate = (val) => {
 
   if (val.name === "") {
     errors.name = "Missing enter name";
+  } else if (!/^[A-Z][a-zA-Z\s\d\S]*$/.test(val.name)) {
+    errors.name = "Name must start with an uppercase letter and can only contain letters, spaces, numbers, and symbols";
   } else {
     errors.name = "";
   }
@@ -14,12 +16,14 @@ export const validate = (val) => {
   }
 
   if (val.releaseDate === "") {
-    errors.releaseDate = "Need to add an date";
+    errors.releaseDate = "Need to add a date";
+  } else if (!/^(0[1-9]|1\d|2\d|3[01])-(0[1-9]|1[0-2])-\d{4}$/.test(val.releaseDate)) {
+    errors.releaseDate = "Invalid date format (dd-mm-yyyy)";
   } else {
     errors.releaseDate = "";
   }
 
-  if (!val.image.length) {
+  if (!val.image === "") {
     errors.image = "Need to add an image";
   } else {
     errors.image = "";
@@ -31,22 +35,30 @@ export const validate = (val) => {
     errors.screnShots = "";
   }
 
-  if (!val.platform.length) {
-    errors.platform = "Need to add an platform";
+  if (!val.platforms.length) {
+    errors.platforms = "Need to add an platforms";
   } else {
-    errors.platform = "";
+    errors.platforms = "";
   }
   
-  if (!val.genres.length) {
-    errors.genres = "Need to add an genre";
+  if (!val.genre.length) {
+    errors.genre = "Need to add an genre";
   } else {
-    errors.genres = "";
+    errors.genre = "";
   }
 
   if (!val.tags.length) {
     errors.tags = "Need to add an tag";
   } else {
     errors.tags = "";
+  }
+
+  if (!val.price) {
+    errors.price = "Missing enter Price$$";
+  } else if (!/\$\d+/.test(val.price)) {
+    errors.price = "Price must be in ($)";
+  } else {
+    errors.price = "";
   }
 
   return errors;
