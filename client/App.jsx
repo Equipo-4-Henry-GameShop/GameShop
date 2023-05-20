@@ -57,42 +57,49 @@ import {
 } from "./src/components/Views/PanelUser/routesPanelUser";
 
 import Landing from "./src/components/Views/Landing";
-import {getKeysCount} from './src/components/Views/Forms/Cart/CardCartController'
+
+// import {getKeysCount} from './src/components/Views/Forms/Cart/CardCartController'
+
 import Carrito from './src/components/Views/Forms/Cart/Cart'
+
 import { Provider } from "react-redux";
+
 import store from "./src/redux/store";
-import { Badge } from "react-native-paper";
+
+// import { Badge } from "react-native-paper";
 
 import MenuItems from "./src/components/Views/MenuApp/MenuItems";
+
 import axios from "axios";
+
 import { Login } from "./src/components/Views/Login/Login";
 
 const Drawer = createDrawerNavigator();
 //esta linea debo de llamar en cada componente
 //componente para llamar a el carrito desde el drawner
-const CartButton = () => {
-  const navigation = useNavigation();
-  const cartItemsCount = getKeysCount(); 
-  // const cartItemsCount = 5; 
-  console.log("lo q llega a badge",cartItemsCount)
-  return (
-    <TouchableOpacity onPress={() => navigation.navigate("Carrito")}>
-      <MaterialCommunityIcons name="cart" color={color_blanco} size={30} />
-      {cartItemsCount > 0 && (
-        <Badge
-          size={18}
-          style={{
-            position: "absolute",
-            top: -5,
-            right: 15,
-          }}
-        >
-          {cartItemsCount}
-        </Badge>
-      )}
-    </TouchableOpacity>
-  );
-};
+// const CartButton = () => {
+//   const navigation = useNavigation();
+//   const cartItemsCount = getKeysCount(); 
+//   // const cartItemsCount = 5; 
+//   console.log("lo q llega a badge",cartItemsCount)
+//   return (
+//     <TouchableOpacity onPress={() => navigation.navigate("Carrito")}>
+//       <MaterialCommunityIcons name="cart" color={color_blanco} size={30} />
+//       {/* {cartItemsCount > 0 && (
+//         <Badge
+//           size={18}
+//           style={{
+//             position: "absolute",
+//             top: -5,
+//             right: 15,
+//           }}
+//         >
+//           {cartItemsCount}
+//         </Badge>
+//       )} */}
+//     </TouchableOpacity>
+//   );
+// };
 
 
 export default function App() {
@@ -138,7 +145,7 @@ export default function App() {
                       fontWeight: "bold",
                       fontSize: 25,
                     },
-                    headerRight: () => <CartButton />,
+                    // headerRight: () => <CartButton />,
                   }}
                 />
 

@@ -107,7 +107,7 @@ const Cart = ({navigation}) => {
   
 
   if (Carrito.length < 1) {
-    console.log("ya entre aqui pero x no sale nada->",StringsDark.srchBartxt)
+    // console.log("ya entre aqui pero x no sale nada->",StringsDark.srchBartxt)
     return (
       <View style={[styles.emptyCartContainer,{backgroundColor:StringsDark.btnPagar}]}>
         <Text style={[styles.emptyCart,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.emptycar}</Text>

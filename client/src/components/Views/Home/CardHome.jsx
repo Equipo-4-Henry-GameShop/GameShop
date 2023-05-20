@@ -7,12 +7,16 @@ import { ThemeContext } from '../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import React, { useContext} from 'react';
 import { InsertarItem } from '../Forms/Cart/CardCartController';
-
+import { useDispatch } from "react-redux";
+import { updateCart } from '../../../redux/cartSlice';
 export default function CardHome(data) {
+
+  const dispatch = useDispatch();
   // console.log("esto llega a card",data.data.screenshoots)
       //linea para setear el lenguaje /obtener palabras de lenguaje
   const {  StringsDark,isDarkMode} = useContext(ThemeContext);
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
+
   function estrellitas(index) {
     return <Image source={require('../../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
   }  
@@ -67,7 +71,9 @@ export default function CardHome(data) {
                   </Text>
                 <Text style={[styles.Precio, {color:StringsDark.txtprice}]}> $ {data.data.precio}</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => InsertarItem(key,objString)}>
+          <TouchableOpacity onPress={() => {
+                  InsertarItem(key,objString)
+                  dispatch(updateCart())}}>
             <View style={[styles.AddCartContainer,{backgroundColor:StringsDark.txtprice}]}>
               <Text style={[styles.addItemCar,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.addItemCar}</Text>
 

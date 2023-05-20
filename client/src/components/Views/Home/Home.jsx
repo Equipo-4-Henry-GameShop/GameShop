@@ -2,7 +2,7 @@ import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityI
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 
 import {useDispatch, useSelector} from "react-redux"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -18,7 +18,8 @@ import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import {useContext} from 'react';
 import SearchBar from './SearchBar';
 
-
+import { Badge } from "react-native-paper";
+import {getKeysCount} from '../../../../src/components/Views/Forms/Cart/CardCartController'
 //este tiene toda la logica xq va dentro de un stack
 const Home=({ navigation, route})=>{
   const dispatch= useDispatch();
@@ -123,6 +124,37 @@ return (
     </View>
     )
 }
+const CartButton = ({ navigation }) => {
+  const [countBadge, setCountBadge]=useState(0);
+  // const cartG = useSelector((state) => state.cartState);
+
+  useEffect(() => {
+    console.log("fui llamad en BUTTON x redux???")
+    getKeysCount()
+      .then((count) => {
+        setCountBadge(count);
+        console.log("Cantidad de claves en CardButon:", countBadge);
+      })
+      .catch((error) => {
+        console.log("Error al obtener las claves de AsyncStorage:", error);
+      });
+  }, []);
+
+  return (
+    <View style={{ marginRight: 10 }}>
+      <TouchableOpacity onPress={() => navigation.navigate("Carrito")}>
+        <Text>{countBadge}</Text>
+        <MaterialCommunityIcons name="cart" color={'red'} size={30} />
+        {countBadge > 0 && (
+          <Badge  size={30} style={{ position: "absolute",top: -5,right: 15, color:'white'  }}
+          >
+            {countBadge}
+          </Badge>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const HomeScreen =({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
@@ -131,15 +163,18 @@ const HomeScreen =({ navigation, route})=>{
   const { isDarkMode, StringsDark } = useContext(ThemeContext);
   const {locale,StringsLanguaje }= useContext(LocalizationContext)
   const Stack = createNativeStackNavigator();
+  const cartG = useSelector((state) => state.cartState);
 
   useEffect(()=>{
+    // console.log("rellamando a cabecera en home x redux");
     navigation.setOptions({
       headerTitle: `${StringsLanguaje.Home}`,
       headerStyle: {
         backgroundColor: StringsDark.backgroundContainer,
       },
+      headerRight: () => <CartButton navigation={navigation} />, 
     })
-  },[isDarkMode,locale])
+  },[isDarkMode,locale,cartG])
 
   
   return (

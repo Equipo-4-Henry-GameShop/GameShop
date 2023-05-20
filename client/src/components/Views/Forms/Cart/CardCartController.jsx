@@ -1,6 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from "react-redux"
 
 import { Alert } from 'react-native'
 //linea para modificar el contexto de localizacion para el lenaguje
@@ -8,9 +6,6 @@ import { Alert } from 'react-native'
 
 //inserta o agrega cantidad de item
 export const  InsertarItem= async (key,objString) => {
-    
-
-    
     try {           
         const currentValue = await AsyncStorage.getItem(key);
         if (currentValue !== null) {
@@ -22,7 +17,7 @@ export const  InsertarItem= async (key,objString) => {
             // Convertir el objeto modificado a una cadena de texto
             const updatedValue = JSON.stringify(parsedValue);
             await AsyncStorage.setItem(key, updatedValue);
-            // dispatch(updateCart());
+            
             alert('Se adiciono una unidad al item actual')
             // console.log('Item modificado exitosamente');
             }
@@ -95,7 +90,7 @@ export const amountSub = async (key, newValue) => {
 
     // Eliminar una clave de AsyncStorage
 export const removeItem = async (key) => {
-    console.log("ID a eliminar ",key)
+    // console.log("ID a eliminar ",key)
     try {
       await AsyncStorage.removeItem(key);
       console.log('Clave eliminada exitosamente');
@@ -138,7 +133,7 @@ export const removeItem = async (key) => {
       const allKeys = await AsyncStorage.getAllKeys();
       const keysCount = allKeys.length;
   
-      console.log('Cantidad de claves en AsyncStorage:', keysCount);
+      console.log('Cantidad DESDE FX GET KEYS COUNT:', keysCount);
       return keysCount
     } catch (error) {
       console.log('Error al obtener las claves de AsyncStorage:', error);

@@ -4,7 +4,7 @@ export const strings = {
     Welcome: 'Welcome',
     Acces: 'Acces',
     Enter:'Enter',
-    Dashboard: 'Dashboard',
+    User_Panel: 'User Panel',
     Security: 'Security',
     Logout: 'Logout',
     Sign_in: 'Sign In',
@@ -52,7 +52,7 @@ export const strings = {
     Welcome: 'Bienvenido',
     Acces: 'Acceder',
     Enter:'Ingresar',
-    Dashboard: 'Panel de Usuario',
+    User_Panel: 'Panel de Usuario',
     Security: 'Securidad',
     Logout: 'Salir',
     Sign_in: 'Registrate',
@@ -94,7 +94,7 @@ export const strings = {
     MsgAlertAmountMax:'Lo Sentimos el numero maximo de compras por titulo es 3.',
     MsgAlertItemAmountAdd: 'Se adiciono una unidad al item actual',
     MSGAlertItemAdd: 'Ítem ha sido agregado',
-    addItemCar: 'Añadir a la Cesta'
+    addItemCar: 'Añadir a la Cesta',
     
   }
 };
