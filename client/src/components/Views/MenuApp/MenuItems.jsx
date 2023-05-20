@@ -57,8 +57,8 @@ const MenuItems=({navigation})=>{
             icon='home'
           />
          <MenuBottonItem
-            nombre= {StringsLanguaje.User_Panel}
-            onPress={()=> navigation.navigate('PanelUser')}
+            nombre= {StringsLanguaje.Dashboard}
+            onPress={()=> navigation.navigate('Dashboard')}
             icon='person'
           />
            <MenuButtonSubItem

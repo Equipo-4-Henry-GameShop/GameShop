@@ -23,9 +23,23 @@ import { color } from "react-native-elements/dist/helpers";
 ////componente sea netamente visual y el codigo quede mas prolijo
 
 
-export const PanelUser = ({navigation, route}) => {
+export const Dashboard = ({navigation, route}) => {
   return (
     <View style={styles.container}>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.button}
+          onPress={() =>
+            navigation.navigate("MyProfile", { name: "MyProfile" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>My Profile</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}
           onPress={() =>
@@ -39,15 +53,26 @@ export const PanelUser = ({navigation, route}) => {
       </View>
 
 
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button}
+          onPress={() =>
+            navigation.navigate("MyShoppings", { name: "My shoppings" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>My shoppings</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}
           onPress={() =>
-            navigation.navigate("Communications", { name: "Communications" })
+            navigation.navigate("MyVotes", { name: "My votes" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Communications</Text>
+          <View >
+            <Text style={styles.buttonText}>My votes</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -55,11 +80,11 @@ export const PanelUser = ({navigation, route}) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity  style={styles.button}
           onPress={() =>
-            navigation.navigate("MyProfile", { name: "MyProfile" })
+            navigation.navigate("VideoGameList", { name: "VideoGame List" })
           }
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>My Profile</Text>
+            <Text style={styles.buttonText}>VideoGame list</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -67,7 +92,32 @@ export const PanelUser = ({navigation, route}) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity  style={styles.button}
           onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
+            navigation.navigate("UserList", { name: "User list" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>User list</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.button}
+          onPress={() =>
+            navigation.navigate("Sales", { name: "Sales" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Sales</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.button}
+          onPress={() =>
+            navigation.navigate("CreateVideogame", { name: "Create Videogame" })
           }
         >
           <View style={styles.button}>
@@ -75,21 +125,20 @@ export const PanelUser = ({navigation, route}) => {
           </View>
         </TouchableOpacity>
       </View>
-
+      
       <View style={styles.buttonContainer}>
         <TouchableOpacity  style={styles.button}
           onPress={() =>
-            navigation.navigate("CreateItem", { name: "CreateItem" })
+            navigation.navigate("CreateItem", { name: "Create Item" })
           }
         >
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Create Item</Text>
+            <Text style={styles.buttonText}>Publish item</Text>
           </View>
         </TouchableOpacity>
       </View>
-      
-    </View>
 
+      </View>
     
   );
 };

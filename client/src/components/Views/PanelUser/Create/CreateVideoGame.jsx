@@ -137,7 +137,7 @@ const CreateVideogame = ({navigation, route}) => {
           }
         );
         Alert.alert(
-          "Publication Create!",
+          "Publication Create!","",
           [
             {
               onPress: () =>
@@ -156,7 +156,7 @@ const CreateVideogame = ({navigation, route}) => {
                 }),
                 text: "Continue loading games",
             },
-            { text: "Back to dashboard" },
+            { text: "Back to dashboard" , onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })},
           ]
         );
   
@@ -164,7 +164,7 @@ const CreateVideogame = ({navigation, route}) => {
       }
     } catch (error) {
       Alert.alert(
-        "Auch...Something went wrong")
+        "Auch...Something went wrong","")
       console.log("Error en el backend:", error);
     }
   };
@@ -172,17 +172,17 @@ const CreateVideogame = ({navigation, route}) => {
 
   const CancelSubmit = () => {
     Alert.alert(
-      'Alert Title',
-      'My Alert Msg',
+      'Cancel Publication',
+      'You are about to cancel your publication',
       [
         {
           text: 'Cancel',
           onPress: () =>
             Alert.alert(
-              'Return to Home',
-              'Are you sure you want to return to Userpanel?',
+              'Return to Dashboard',
+              'Are you sure you want to return to Dashboard?',
               [
-                { text: 'Yes', onPress: () => navigation.navigate("PanelUser", { name: "PanelUser" })   },
+                { text: 'Yes', onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })   },
                 { text: 'No', onPress: () => console.log('No pressed') },
               ]
             ),

@@ -39,7 +39,7 @@ export const getvGamebyName =(query)=> (dispatch=>{
 
 
 export const getUser = () =>(dispatch)=>{
-fetch("https://jsonplaceholder.typicode.com/users/2")
+fetch("https://gameshop-production-e844.up.railway.app/user")
     .then((res) =>res.json())
     .then((data)=> dispatch(addUser(data)))
     .catch((error)=> console.log(error))

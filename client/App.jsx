@@ -40,30 +40,32 @@ import {
 } from "./src/constants/Colors";
 import { NavigationContainer } from "@react-navigation/native";
 
+
 import HomeScreen from "./src/components/Views/Home/Home";
 import {
-  MyVideogames,
-  PanelUser,
+  MyVotes,
+  Dashboard,
   MyPosts,
   MyProfile,
-  Security,
-  Communications,
+  Sales,
+  Metrics,
   CreateUser,
   CreateVideogame,
   VideoGameList,
   UserList,
   CreateItem,
+  MyShoppings
 } from "./src/components/Views/PanelUser/routesPanelUser";
 
 import Landing from "./src/components/Views/Landing";
 
-import Carrito from './src/components/Views/Forms/Cart/Cart'
+import Carrito from "./src/components/Views/Forms/Cart/Cart";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
 
-import { Login } from "./src/components/Views/LogIn";
 import MenuItems from "./src/components/Views/MenuApp/MenuItems";
 import axios from "axios";
+import { Login } from "./src/components/Views/Login/Login";
 
 const Drawer = createDrawerNavigator();
 //esta linea debo de llamar en cada componente
@@ -123,7 +125,7 @@ export default function App() {
                   }}
                 />
 
-              <Drawer.Screen
+                <Drawer.Screen
                   name="Carrito"
                   component={Carrito}
                   options={{
@@ -132,13 +134,13 @@ export default function App() {
                     headerTintColor: color_blanco,
                     headerTitleStyle: { fontWeight: "bold", fontSize: 25 },
                   }}
-                />  
+                />
 
                 <Drawer.Screen
-                  name="PanelUser"
-                  component={PanelUser}
+                  name="Dashboard"
+                  component={Dashboard}
                   options={{
-                    title: "Panel User",
+                    title: "Dashboard",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },
@@ -198,6 +200,38 @@ export default function App() {
                   }}
                 />
 
+<Drawer.Screen
+                  name="MyVotes"
+                  component={MyVotes}
+                  options={{
+                    title: "My votes",
+                    headerStyle: {
+                      backgroundColor: color_azul,
+                    },
+                    headerTintColor: color_blanco,
+                    headerTitleStyle: {
+                      fontWeight: "bold",
+                      fontSize: 25,
+                    },
+                  }}
+                />
+
+                <Drawer.Screen
+                  name="MyShoppings"
+                  component={MyShoppings}
+                  options={{
+                    title: "My shoppings",
+                    headerStyle: {
+                      backgroundColor: color_azul,
+                    },
+                    headerTintColor: color_blanco,
+                    headerTitleStyle: {
+                      fontWeight: "bold",
+                      fontSize: 25,
+                    },
+                  }}
+                />
+
                 <Drawer.Screen
                   name="MyProfile"
                   component={MyProfile}
@@ -215,10 +249,10 @@ export default function App() {
                 />
 
                 <Drawer.Screen
-                  name="Security"
-                  component={Security}
+                  name="Sales"
+                  component={Sales}
                   options={{
-                    title: "Security",
+                    title: "Sales",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },
@@ -231,10 +265,10 @@ export default function App() {
                 />
 
                 <Drawer.Screen
-                  name="Communications"
-                  component={Communications}
+                  name="Metrics"
+                  component={Metrics}
                   options={{
-                    title: "Communications",
+                    title: "Metrics",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },
@@ -250,7 +284,7 @@ export default function App() {
                   name="Login"
                   component={Login}
                   options={{
-                    title: "Bienvenido",
+                    title: "Welcome",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },
@@ -300,21 +334,6 @@ export default function App() {
                   }}
                 />
 
-                <Drawer.Screen
-                  name="MyVideogames"
-                  component={MyVideogames}
-                  options={{
-                    title: "My games",
-                    headerStyle: {
-                      backgroundColor: color_azul,
-                    },
-                    headerTintColor: color_blanco,
-                    headerTitleStyle: {
-                      fontWeight: "bold",
-                      fontSize: 25,
-                    },
-                  }}
-                />
 
                 <Drawer.Screen
                   name="CreateItem"

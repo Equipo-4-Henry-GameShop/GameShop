@@ -17,8 +17,8 @@ import {
   color_blanco,
   color_gris,
   color_negro,
-} from "../../constants/Colors";
-import { persons } from "../../utils/arrayPersons";
+} from "../../Theme/stringsColors";
+import { persons } from "../../../utils/arrayPersons";
 import { Formik } from "formik";
 import { useState } from "react";
 
@@ -65,7 +65,7 @@ export const Login = ({navigation}) => {
             <View style={styles.header}>
               <Image
                 style={styles.mario}
-                source={require("../../assets/gameShop-white-mario.png")}
+                source={require("../../../assets/gameShop-white-mario.png")}
               ></Image>
             </View>
             <View style={styles.containerLogin}>
@@ -97,7 +97,7 @@ export const Login = ({navigation}) => {
               <TouchableOpacity style={styles.buttonGoogle}>
                 <Image
                   style={styles.imageGoogle}
-                  source={require("../../assets/singinwhitgoogle.png")}
+                  source={require("../../../assets/singinwhitgoogle.png")}
                 />
               </TouchableOpacity>
             </View>

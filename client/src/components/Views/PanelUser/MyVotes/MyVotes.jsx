@@ -21,7 +21,7 @@ import {
   ////Acá podemos pasar como props los datos del usuarios para que este
   ////componente sea netamente visual y el codigo quede mas prolijo
   
-  export const MyVideogames = () => {
+  export const MyVotes = () => {
     return (
       <ScrollView>
         <View>
