@@ -54,9 +54,9 @@ export const validate = (val) => {
   }
 
   if (!val.price) {
-    errors.price = "Missing enter Price$$";
-  } else if (!/\$\d+/.test(val.price)) {
-    errors.price = "Price must be in ($)";
+    errors.price = "Missing enter Price";
+  } else if (!/^\d+$/.test(val.price)) {
+    errors.price = "Price must be a number";
   } else {
     errors.price = "";
   }

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  Alert,
 } from "react-native";
 
 
@@ -24,13 +25,16 @@ import { useState, useRef, useEffect } from "react";
 import {
   color_azul,
   color_blanco,
+  color_crema,
+  color_gris,
   color_negro,
+  color_rojoClaro,
 } from "../../../../constants/Colors";
 
 import axios from "axios";
 
 
-const CreateVideogame = () => {
+const CreateVideogame = ({navigation, route}) => {
   const [image, setImage] = useState([]);
 
   const [imageScreen, setImageScreen] = useState([]);
@@ -106,7 +110,7 @@ const CreateVideogame = () => {
         newVideoGame.name === "" ||
         newVideoGame.description === "" ||
         newVideoGame.releaseDate === "" ||
-        !newVideoGame.platforms.length  ||
+        !newVideoGame.platforms.length ||
         !newVideoGame.tags.length ||
         !newVideoGame.genre.length ||
         newVideoGame.image === "" ||
@@ -116,26 +120,89 @@ const CreateVideogame = () => {
       ) {
         setValidateSubmit(false);
       } else {
-        const res = await axios.post("https://gameshop-production-e844.up.railway.app/games", {
-          id: newVideoGame.id,
-          name: newVideoGame.name,
-          description: newVideoGame.description,
-          releaseDate: newVideoGame.releaseDate,
-          image: newVideoGame.image,
-          screnShots: newVideoGame.screnShots,
-          platforms: newVideoGame.platforms,
-          genre: newVideoGame.genre,
-          tags: newVideoGame.tags,
-          price: newVideoGame.price,
-          req: newVideoGame.req
-        });
+        const res = await axios.post(
+          "https://gameshop-production-e844.up.railway.app/games",
+          {
+            id: newVideoGame.id,
+            name: newVideoGame.name,
+            description: newVideoGame.description,
+            releaseDate: newVideoGame.releaseDate,
+            image: newVideoGame.image,
+            screnShots: newVideoGame.screnShots,
+            platforms: newVideoGame.platforms,
+            genre: newVideoGame.genre,
+            tags: newVideoGame.tags,
+            price: newVideoGame.price,
+            req: newVideoGame.req,
+          }
+        );
+        Alert.alert(
+          "Publication Create!",
+          [
+            {
+              onPress: () =>
+                setNewVideoGame({
+                  id: 1 + Math.floor(Math.random() * 999),
+                  name: "",
+                  description: "",
+                  releaseDate: "",
+                  image: "",
+                  screnShots: [],
+                  platforms: [],
+                  genre: [],
+                  tags: [],
+                  price: "",
+                  req: "",
+                }),
+                text: "Continue loading games",
+            },
+            { text: "Back to dashboard" },
+          ]
+        );
   
         console.log("Respuesta del servidor:", res.data);
       }
     } catch (error) {
+      Alert.alert(
+        "Auch...Something went wrong")
       console.log("Error en el backend:", error);
     }
   };
+
+
+  const CancelSubmit = () => {
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {
+          text: 'Cancel',
+          onPress: () =>
+            Alert.alert(
+              'Return to Home',
+              'Are you sure you want to return to Userpanel?',
+              [
+                { text: 'Yes', onPress: () => navigation.navigate("PanelUser", { name: "PanelUser" })   },
+                { text: 'No', onPress: () => console.log('No pressed') },
+              ]
+            ),
+          style: 'cancel',
+        },
+        {
+          text: 'Continue edit',
+          onPress: () => console.log('Continue edit pressed'),
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () =>
+          Alert.alert(
+            'This alert was dismissed by tapping outside of the alert dialog.'
+          ),
+      }
+    );
+  };
+
 
   ///////
 
@@ -538,10 +605,16 @@ const CreateVideogame = () => {
           <View></View>
           <View style={styles.submit}>
             <TouchableOpacity
-              style={styles.miniButton}
+              style={styles.miniButtonSubmit}
               onPress={() => Submit()}
             >
-              <Text style={styles.buttonText}>Create Publication</Text>
+              <Text style={styles.buttonTextSubmit}>Create Publication</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.miniButtonCancel}
+              onPress={() => CancelSubmit()}
+            >
+              <Text style={styles.buttonTextSubmit}>Cancel Publication</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -592,8 +665,51 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
+    backgroundColor: color_blanco,
+    borderRadius: 8,
+    borderBottomColor: color_gris,
+    borderBottomWidth: 4,
+    borderRightWidth: 4,
+    borderColor: color_gris,
+    borderWidth:1
+  },
+  buttonText: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: color_negro,
+  },
+  miniButtonSubmit: {
+    marginTop: 5,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    height: 60,
+    width: "70%",
+    padding: 0,
     backgroundColor: color_azul,
     borderRadius: 8,
+  },
+  miniButtonCancel: {
+    marginTop: 5,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    height: 60,
+    width: "70%",
+    padding: 0,
+    backgroundColor: color_rojoClaro,
+    borderRadius: 8,
+  },
+  buttonTextSubmit: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: color_blanco,
   },
   error: {
     margin: 8,
@@ -615,13 +731,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 8,
   },
-  buttonText: {
-    textAlign: "center",
-    padding: 10,
-    fontSize: 15,
-    fontWeight: "bold",
-    color: color_blanco,
-  },
 
   select: {
     marginHorizontal: 50,
@@ -636,6 +745,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
+
   containerInput: {
     flex: 1,
     alignItems: 'center',
