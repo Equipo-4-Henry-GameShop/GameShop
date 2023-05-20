@@ -3,13 +3,16 @@ import {Image} from 'react-native-elements'
 import {size} from 'lodash'
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
-import React from 'react';
-
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+import React, { useContext} from 'react';
+import { InsertarItem } from '../Forms/Cart/CardCartController';
 
 export default function CardHome(data) {
   // console.log("esto llega a card",data.data.screenshoots)
-  //esta linea debo de llamar en cada componente 
-  const { StringsDark } = React.useContext(ThemeContext);
+      //linea para setear el lenguaje /obtener palabras de lenguaje
+  const {  StringsDark,isDarkMode} = useContext(ThemeContext);
+  const {StringsLanguaje ,locale}= useContext(LocalizationContext)
   function estrellitas(index) {
     return <Image source={require('../../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
   }  
@@ -25,13 +28,21 @@ export default function CardHome(data) {
     starArr.push(estrellitas(index))
   }      
 
-
+  let objeto={
+    id:data.data.key,
+    title:data.data.nombre ,//.replace(/\s/g, ''),
+    price:data.data.precio,
+    img: data.data.img,
+    amount:1
+  }
+  const objString = JSON.stringify(objeto);
+  const key= data.data.key
 
   return (
     
-    <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
-      <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
+    <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
             <View style={styles.viewImageContainer}>
+       <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}>
                 { data.data.img ? <Image 
                                 source={data.data.img} 
                                 style={styles.image}
@@ -39,8 +50,10 @@ export default function CardHome(data) {
                               /> 
                           : <Image source={require('../../../assets/Unknown.jpg')} /> 
                 }
+            </TouchableOpacity>
             </View>
             <View style={styles.viewInforContainer}>
+        <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
                 <Text style={[styles.h2, {color:StringsDark.bkContesp}]}>{data.data.nombre}</Text>
                   <View style={styles.viewEstrellas}>
                   {starArr}
@@ -53,10 +66,16 @@ export default function CardHome(data) {
                       }
                   </Text>
                 <Text style={[styles.Precio, {color:StringsDark.txtprice}]}> $ {data.data.precio}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => InsertarItem(key,objString)}>
+            <View style={[styles.AddCartContainer,{backgroundColor:StringsDark.txtprice}]}>
+              <Text style={[styles.addItemCar,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.addItemCar}</Text>
 
             </View>
+          </TouchableOpacity>
+            </View>
+
       </View>
-    </TouchableOpacity>
   )
 }
 
@@ -64,7 +83,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
     //backgroundColor: color_blanco,
-    alignItems: 'center',
+    // alignContent:'space-between',
+    // alignItems:'center',
+    justifyContent:'space-between',
     width: '100%',   
     marginBottom: 4,
     marginTop:4 ,
@@ -77,14 +98,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // flex:1
     width: '50%',
+    // height: '20%',
     // marginRight: 10 , 
     marginLeft:5
   },
   viewInforContainer: {
     
     // flex:4,
-    marginLeft: 8,
-    width: '45%',
+    // backgroundColor:'red',
+     marginLeft: 8,
+    width: '48%',
+    margin:10,
+  },
+  AddCartContainer:{
+    alignContent:'center',
+    borderRadius:8,
+    alignItems:'center',
+    width:'84%',
+    // textAlign:'center'
+  },
+  addItemCar:{
+    margin:5,
+    textAlign:'center',
+    fontWeight: '700',
+    fontSize:15,
+
   },
   viewEstrellas: {
     flexDirection : 'row'
@@ -100,11 +138,7 @@ const styles = StyleSheet.create({
     
     fontWeight: 'bold'
   },
-  h2Dark:{
-    fontSize:20 ,
-    
-    fontWeight: 'bold'
-  },
+
   h3:{
     fontSize: 15,
     
@@ -116,12 +150,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center'
   },
-  DarkPrecio :{
-    padding:10,
-    fontSize: 30,
-    fontWeight: 'bold',
-    alignItems: 'center',
-    alignContent: 'center'
-  },
+
   
 })

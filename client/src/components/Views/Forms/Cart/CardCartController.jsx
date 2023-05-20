@@ -133,5 +133,16 @@ export const removeItem = async (key) => {
     );
   };
   
+  export const getKeysCount = async () => {
+    try {
+      const allKeys = await AsyncStorage.getAllKeys();
+      const keysCount = allKeys.length;
+  
+      console.log('Cantidad de claves en AsyncStorage:', keysCount);
+      return keysCount
+    } catch (error) {
+      console.log('Error al obtener las claves de AsyncStorage:', error);
+    }
+  };
   
   

@@ -22,7 +22,11 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
         console.log("capturando id undefined")
         return
     }
-
+    const handlePress = () => {
+      // console.log()
+      removeItem(id)
+      dispatch(updateCart());
+    }; 
   return (
     
     <View key={id} style={[styles.cartItem, {backgroundColor:StringsDark.tabActive,shadowColor:StringsDark.text}]}>
@@ -45,8 +49,7 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
                     },
                     {
                       text: "OK",
-                      onPress: () =>   removeItem(id)   
-                      
+                      onPress: () =>  handlePress()   
                     },
                   ],
                   { cancelable: false }

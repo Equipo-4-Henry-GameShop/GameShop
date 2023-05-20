@@ -7,7 +7,7 @@ let estado=0
 export const  getvideoGames = () =>(dispatch)=>{
   
 
-    dispatch(getAllVideogames(videogames))
+ dispatch(getAllVideogames(videogames))
 
    
     // axios("/games")
