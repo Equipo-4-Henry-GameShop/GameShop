@@ -131,7 +131,7 @@ const CartButton = ({ navigation }) => {
   const {  StringsDark } = useContext(ThemeContext);
 
   useEffect(() => {
-    // console.log("llamdo a CarButton una vez mas", cartG);
+    //  console.log("llamdo a CarButton una vez mas", cartG);
     const GetCountItemCart = async () => {
       try {
         const count = await getKeysCount();

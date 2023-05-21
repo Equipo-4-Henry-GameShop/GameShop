@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert ,ActivityIndicator} from "react-native";
 
 import React, {useContext} from 'react';
 //import useSelector from react redux
@@ -12,25 +12,30 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
  const CartItems = (props) => {
-    //  console.log("esto es lo q llega de props", props)
+      // console.log("esto es lo q llega de props", props.llave)
     const {id,img,price,amount,title}=props.item
+    const cartKEy= props.llave
+    // console.log("KEYS en CARt CARD___>", cartKEy)
     //linea para setear el lenguaje /obtener palabras de lenguaje
     const {  StringsDark,isDarkMode} = useContext(ThemeContext);
     const {StringsLanguaje ,locale}= useContext(LocalizationContext)
     const dispatch = useDispatch();
-    if (typeof(id)===undefined) {
+
+    if (typeof(cartKEy)===undefined) {
         console.log("capturando id undefined")
         return
     }
     const handlePress = () => {
       // console.log()
-      removeItem(id)
+      removeItem(cartKEy)
       dispatch(updateCart());
     }; 
   return (
     
     <View key={id} style={[styles.cartItem, {backgroundColor:StringsDark.tabActive,shadowColor:StringsDark.text}]}>
-      <Image source={img} style={styles.cartItemImg} />
+      <Image source={img} style={styles.cartItemImg} 
+        PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
+      />
       <View style={styles.carDet}>
         <Text style={[styles.cartItemTitle,{color:StringsDark.text}]}>{title}</Text>
         <Text style={[styles.cartItemPrice,{color:StringsDark.txtprice}]}>${price}</Text>
@@ -56,7 +61,7 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
                 );
             }
               else 
-              amountSub(id,amount)
+              amountSub(cartKEy,amount)
               dispatch(updateCart())
             }
              }
@@ -66,7 +71,7 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
           <Text style={styles.cartItemAmountText}>{amount}</Text>
           <TouchableOpacity
             onPress={() => {
-                amountAdd(id, amount);
+                amountAdd(cartKEy, amount);
                 dispatch(updateCart());
               }}
           >
@@ -77,7 +82,7 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
         <View style={styles.cartItemRemove}>
           <TouchableOpacity
             onPress={() => {
-                removeItem(id)
+                removeItem(cartKEy)
                 dispatch(updateCart());
             }}
             style={styles.cartItemRemoveButton}

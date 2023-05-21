@@ -43,7 +43,8 @@ const Card = (videogame) => {
         amount:1
       }
       const objString = JSON.stringify(objeto);
-      const key= videogame.videogame.key
+      const key= 'cart'+videogame.videogame.key
+      // console.log("generado clave cart",key)
       // console.log("objeto      ñ",objeto)
       //  console.log("objeto String",objString)  
       

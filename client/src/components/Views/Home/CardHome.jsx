@@ -40,7 +40,9 @@ export default function CardHome(data) {
     amount:1
   }
   const objString = JSON.stringify(objeto);
-  const key= data.data.key
+  
+  const key='cart'+ data.data.key
+  // console.log("generado clave cart",key)
 
   return (
     

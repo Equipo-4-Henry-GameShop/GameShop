@@ -88,6 +88,7 @@ const Cart = ({navigation}) => {
   
       const result = items.map(([key, value]) => {
         let parsedValue;
+        
         try {
           parsedValue = JSON.parse(value);
         } catch (error) {
@@ -124,7 +125,9 @@ const Cart = ({navigation}) => {
       <View style={{backgroundColor:StringsDark.bktitle}}>
         {
             Carrito.map((el) => {
-                return (  <CardCard key={el.key} item={el.value}/> )
+                //  console.log("key en cart",el.key)
+                //  console.log("value en cart",el.value)
+                return (  <CardCard key={el.key} llave={el.key} item={el.value}/> )
         })
         }
       </View>

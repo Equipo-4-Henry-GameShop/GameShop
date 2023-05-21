@@ -64,6 +64,7 @@ export const amountAdd = async (key, newValue) => {
     };
 // Agregar cantidad de item en AsyncStorage
 export const amountSub = async (key, newValue) => {
+  // console.log("valor de key",key)
     try {
         // Obtener el valor actual del item
         const currentValue = await AsyncStorage.getItem(key);
@@ -130,12 +131,16 @@ export const removeItem = async (key) => {
   
   export const getKeysCount = async () => {
     try {
-      const allKeys = await AsyncStorage.getAllKeys();
-      const keysCount = allKeys.length;
-      console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      let allKeys = await AsyncStorage.getAllKeys();
+      // console.log(allKeys)
+      allKeys = await AsyncStorage.getAllKeys();
+      //  console.log(allKeys)
+      let keysCount = allKeys.length;
+      // console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
       return keysCount;
     } catch (error) {
       console.log("Error al obtener las claves de AsyncStorage:", error);
+      throw error; // Opcional: relanza el error para manejarlo en otro lugar si es necesario
     }
   };
   
