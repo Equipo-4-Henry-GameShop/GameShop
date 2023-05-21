@@ -44,17 +44,18 @@ export default function CardHome(data) {
 
   return (
     
-    <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
+    <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}> 
             <View style={styles.viewImageContainer}>
-       <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}>
-                { data.data.img ? <Image 
-                                source={data.data.img} 
-                                style={styles.image}
-                                PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
-                              /> 
-                          : <Image source={require('../../../assets/Unknown.jpg')} /> 
-                }
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}>
+                  { data.data.img ? <Image 
+                                  source={data.data.img} 
+                                  style={styles.image}
+                                  PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
+                                  /> 
+                                  : <Image source={require('../../../assets/Unknown.jpg')} /> 
+                  }
+                
+              </TouchableOpacity>
             </View>
             <View style={styles.viewInforContainer}>
         <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
@@ -70,17 +71,20 @@ export default function CardHome(data) {
                       }
                   </Text>
                 <Text style={[styles.Precio, {color:StringsDark.txtprice}]}> $ {data.data.precio}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-                  InsertarItem(key,objString)
-                  dispatch(updateCart())}}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+            InsertarItem(key, objString);
+            dispatch(updateCart());
+            // getKeysCount();
+          }}>
             <View style={[styles.AddCartContainer,{backgroundColor:StringsDark.txtprice}]}>
-              <Text style={[styles.addItemCar,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.addItemCar}</Text>
+              <Text style={[styles.addItemCar,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.addItemCar}
+              </Text>
 
             </View>
-          </TouchableOpacity>
-            </View>
+        </TouchableOpacity>
 
+        </View>
       </View>
   )
 }
@@ -88,9 +92,6 @@ export default function CardHome(data) {
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
-    //backgroundColor: color_blanco,
-    // alignContent:'space-between',
-    // alignItems:'center',
     justifyContent:'space-between',
     width: '100%',   
     marginBottom: 4,
@@ -98,23 +99,37 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
     paddingTop: 2,
     borderRadius:5,
+    backgroundColor:'yellow',
   },
 
   viewImageContainer: {
     alignItems: 'center',
     // flex:1
-    width: '50%',
-    // height: '20%',
+     width: '46%',
+      height: '100%',
     // marginRight: 10 , 
-    marginLeft:5
+    marginLeft:1,
+    // backgroundColor:'blue'
+
   },
   viewInforContainer: {
-    
-    // flex:4,
-    // backgroundColor:'red',
-     marginLeft: 8,
-    width: '48%',
-    margin:10,
+
+    //  marginLeft: 1,
+    width: '54%',
+    height:'100%',
+    // alignContent:'center',
+    alignItems:'center'
+    // margin:2,
+  },
+
+  image: {
+    marginTop:5,
+    width: 150,
+    height: 160,
+    borderRadius:8,   
+    // alignSelf:'center',
+    alignContent:'center',
+    resizeMode: 'cover',
   },
   AddCartContainer:{
     alignContent:'center',
@@ -124,7 +139,8 @@ const styles = StyleSheet.create({
     // textAlign:'center'
   },
   addItemCar:{
-    margin:5,
+    margin:2,
+    marginLeft:10,
     textAlign:'center',
     fontWeight: '700',
     fontSize:15,
@@ -133,25 +149,24 @@ const styles = StyleSheet.create({
   viewEstrellas: {
     flexDirection : 'row'
   },
-  image: {
-    width: 174,
-    height: 200,
-    borderRadius:8,   
-  },
+ 
 
   h2: {
     fontSize:20 ,
-    
-    fontWeight: 'bold'
+    textAlign:'center',
+    fontWeight: 'bold',
   },
 
   h3:{
     fontSize: 15,
+    // textAlign:'center',
     
   },
   Precio :{
-    padding:10,
-    fontSize: 30,
+    paddingTop:1,
+    paddingBottom:3,
+    fontSize: 23,
+    textAlign:'center',
     fontWeight: 'bold',
     alignItems: 'center',
     alignContent: 'center'

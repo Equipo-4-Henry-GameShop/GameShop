@@ -35,7 +35,7 @@ const Home=({ navigation, route})=>{
   const {StringsLanguaje }= useContext(LocalizationContext)
 
   useEffect(()=>{
-    // console.log("entro aqui?")
+    //  console.log("entro al 2do home??")
     dispatch(getvideoGames()) ;
   },[])
   
@@ -87,8 +87,9 @@ return (
                                     nombre:el.name ,
                                     fecLan: el.releaseDate ? el.releaseDate : '2020-10-10',
                                     // screnshoots: el.screnshoots,
-                                    screenshoots:el.screenshots,
+                                    screenshoots:el.screenShots,
                                     informacion: el.description ? el.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat metus eget maximus scelerisque. Vivamus tempor eleifend nulla in placerat. Sed sollicitudin a odio a viverra. Morbi sagittis consequat erat at malesuada. Ut a ultrices risus. Suspendisse consectetur lectus elementum libero auctor venenatis. Ut semper arcu eu efficitur efficitur. Maecenas gravida mauris a porttitor congue. Suspendisse et neque eget quam blandit vehicula. Praesent interdum elementum lorem eget scelerisque. Nam vitae condimentum ipsum. Sed interdum eros dui, sit amet faucibus elit maximus at. Aenean eu posuere elit. In vitae diam at neque feugiat pharetra in sit amet nunc.',
+                                    // informacion: el.description,
                                     rating: el.rating,
                                     generos: el.genre,
                                     tiendas: el.tiendas,
@@ -126,27 +127,32 @@ return (
 }
 const CartButton = ({ navigation }) => {
   const [countBadge, setCountBadge]=useState(0);
-  // const cartG = useSelector((state) => state.cartState);
+  const cartG = useSelector((state) => state.cartState);
+  const {  StringsDark } = useContext(ThemeContext);
 
   useEffect(() => {
-    console.log("fui llamad en BUTTON x redux???")
-    getKeysCount()
-      .then((count) => {
-        setCountBadge(count);
-        console.log("Cantidad de claves en CardButon:", countBadge);
-      })
-      .catch((error) => {
+    // console.log("llamdo a CarButton una vez mas", cartG);
+    const GetCountItemCart = async () => {
+      try {
+        const count = await getKeysCount();
+        // console.log("Cantidad de claves en AsyncStorage:", count);
+        setCountBadge(count)
+      } catch (error) {
         console.log("Error al obtener las claves de AsyncStorage:", error);
-      });
-  }, []);
+      }
+    }
+      GetCountItemCart();
+  }, [cartG]);
 
+  // console.log("Cantidad den button:", countBadge);
   return (
     <View style={{ marginRight: 10 }}>
       <TouchableOpacity onPress={() => navigation.navigate("Carrito")}>
         <Text>{countBadge}</Text>
-        <MaterialCommunityIcons name="cart" color={'red'} size={30} />
+        <MaterialCommunityIcons name="cart" color={StringsDark.bordercolor} size={30} />
         {countBadge > 0 && (
-          <Badge  size={30} style={{ position: "absolute",top: -5,right: 15, color:'white'  }}
+          <Badge  size={25} style={{ position: "absolute",top: 0,right: 17, 
+          color:StringsDark.bordercolor, backgroundColor:StringsDark.txtprice }}
           >
             {countBadge}
           </Badge>
@@ -163,7 +169,7 @@ const HomeScreen =({ navigation, route})=>{
   const { isDarkMode, StringsDark } = useContext(ThemeContext);
   const {locale,StringsLanguaje }= useContext(LocalizationContext)
   const Stack = createNativeStackNavigator();
-  const cartG = useSelector((state) => state.cartState);
+  //  const cartG = useSelector((state) => state.cartState);
 
   useEffect(()=>{
     // console.log("rellamando a cabecera en home x redux");
@@ -174,7 +180,7 @@ const HomeScreen =({ navigation, route})=>{
       },
       headerRight: () => <CartButton navigation={navigation} />, 
     })
-  },[isDarkMode,locale,cartG])
+  },[isDarkMode,locale])
 
   
   return (

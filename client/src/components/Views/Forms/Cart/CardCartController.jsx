@@ -132,11 +132,10 @@ export const removeItem = async (key) => {
     try {
       const allKeys = await AsyncStorage.getAllKeys();
       const keysCount = allKeys.length;
-  
-      console.log('Cantidad DESDE FX GET KEYS COUNT:', keysCount);
-      return keysCount
+      console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      return keysCount;
     } catch (error) {
-      console.log('Error al obtener las claves de AsyncStorage:', error);
+      console.log("Error al obtener las claves de AsyncStorage:", error);
     }
   };
   

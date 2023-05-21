@@ -137,6 +137,9 @@ const styles = StyleSheet.create({
    fontWeight: '800',
    textAlign: 'justify',
    margin:8,
+  //  backgroundColor:'green',
+   paddingLeft: '5%',
+   paddingRight: '5%',
    },
 
  image: {

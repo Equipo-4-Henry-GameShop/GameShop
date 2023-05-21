@@ -63,7 +63,7 @@ const MenuItems=({navigation})=>{
           />
            <MenuButtonSubItem
               nombre= {StringsLanguaje.MyVideogames}
-              onPress={()=> navigation.navigate('MyVideogames')}
+              onPress={()=> navigation.navigate('VideoGameList')}
               icon='pricetags'
             />
              <MenuButtonSubItem
