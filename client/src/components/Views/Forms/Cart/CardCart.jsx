@@ -12,11 +12,10 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
  const CartItems = (props) => {
-      // console.log("esto es lo q llega de props", props.llave)
+      
     const {id,img,price,amount,title}=props.item
     const cartKEy= props.llave
-    // console.log("KEYS en CARt CARD___>", cartKEy)
-    //linea para setear el lenguaje /obtener palabras de lenguaje
+    
     const {  StringsDark,isDarkMode} = useContext(ThemeContext);
     const {StringsLanguaje ,locale}= useContext(LocalizationContext)
     const dispatch = useDispatch();

@@ -119,7 +119,6 @@ return (
       <TouchableOpacity onPress={NextPage}>
           < MaterialCommunityIcons name="chevron-forward-circle-sharp" 
           size={30} color={StringsDark.text}/>
-          
         </TouchableOpacity>
       </View>
     </View>

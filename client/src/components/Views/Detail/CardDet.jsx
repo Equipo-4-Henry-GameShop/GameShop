@@ -64,8 +64,7 @@ const Card = (videogame) => {
             </View>        
           </TouchableOpacity>
               <SectionList
-            // <SectionList 
-            sections={[
+              sections={[
               {
                 title: `${videogame.videogame.nombre}`, 
                 data: [ videogame.videogame]

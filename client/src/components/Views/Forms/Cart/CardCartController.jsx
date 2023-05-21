@@ -132,7 +132,7 @@ export const removeItem = async (key) => {
   export const getKeysCount = async () => {
     try {
       let allKeys = await AsyncStorage.getAllKeys();
-      // console.log(allKeys)
+      
       allKeys = await AsyncStorage.getAllKeys();
       //  console.log(allKeys)
       let keysCount = allKeys.length;

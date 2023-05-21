@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {Image} from 'react-native-elements'
 import {size} from 'lodash'
+
 //linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
@@ -9,6 +10,7 @@ import React, { useContext} from 'react';
 import { InsertarItem } from '../Forms/Cart/CardCartController';
 import { useDispatch } from "react-redux";
 import { updateCart } from '../../../redux/cartSlice';
+
 export default function CardHome(data) {
 
   const dispatch = useDispatch();
