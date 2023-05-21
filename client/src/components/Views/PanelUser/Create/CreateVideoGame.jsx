@@ -43,7 +43,7 @@ const CreateVideogame = ({navigation, route}) => {
   const [inputFocusedDesc, setInputFocusedDesc] = useState(true);
   const [inputFocusedDate, setInputFocusedDate] = useState(true);
   const [inputFocusedPrice, setInputFocusedPrice] = useState(true);
-  const [inputFocusedReq, setInputFocusedReq] = useState(true);
+  const [inputFocusedrequeriments_en, setInputFocusedrequeriments_en] = useState(true);
   const [validateSubmit, setValidateSubmit] = useState(true);
 
   const [stackData, setStackData] = useState({
@@ -57,12 +57,12 @@ const CreateVideogame = ({navigation, route}) => {
     description: "",
     releaseDate: "",
     image: "",
-    screnShots: [],
+    screenShots: [],
     platforms: [],
     genre: [],
     tags: [],
     price: "",
-    req: ""
+    requeriments_en: ""
   });
 
   // console.log(allplatformss)
@@ -85,13 +85,13 @@ const CreateVideogame = ({navigation, route}) => {
   };
 
   const inputStyleVar = {
-    height: Math.max(40, newVideoGame.req.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
+    height: Math.max(40, newVideoGame.requeriments_en.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
   };
 
   const handleTextChange = (text) => {
     setNewVideoGame((prevVideoGame) => ({
       ...prevVideoGame,
-      req: text,
+      requeriments_en: text,
     }));
   };
 
@@ -114,9 +114,9 @@ const CreateVideogame = ({navigation, route}) => {
         !newVideoGame.tags.length ||
         !newVideoGame.genre.length ||
         newVideoGame.image === "" ||
-        !newVideoGame.screnShots.length ||
+        !newVideoGame.screenShots.length ||
         newVideoGame.price === "" ||
-        newVideoGame.req === ""
+        newVideoGame.requeriments_en === ""
       ) {
         setValidateSubmit(false);
       } else {
@@ -128,12 +128,12 @@ const CreateVideogame = ({navigation, route}) => {
             description: newVideoGame.description,
             releaseDate: newVideoGame.releaseDate,
             image: newVideoGame.image,
-            screnShots: newVideoGame.screnShots,
+            screenShots: newVideoGame.screenShots,
             platforms: newVideoGame.platforms,
             genre: newVideoGame.genre,
             tags: newVideoGame.tags,
             price: newVideoGame.price,
-            req: newVideoGame.req,
+            requeriments_en: newVideoGame.requeriments_en,
           }
         );
         Alert.alert(
@@ -147,12 +147,12 @@ const CreateVideogame = ({navigation, route}) => {
                   description: "",
                   releaseDate: "",
                   image: "",
-                  screnShots: [],
+                  screenShots: [],
                   platforms: [],
                   genre: [],
                   tags: [],
                   price: "",
-                  req: "",
+                  requeriments_en: "",
                 }),
                 text: "Continue loading games",
             },
@@ -349,7 +349,7 @@ const CreateVideogame = ({navigation, route}) => {
   const deleteScreen = (image) => {
     setNewVideoGame((newVideoGame) => ({
       ...newVideoGame,
-      screnShots: newVideoGame.screnShots.filter((i) => !image),
+      screenShots: newVideoGame.screenShots.filter((i) => !image),
     }));
   };
 
@@ -381,7 +381,7 @@ const CreateVideogame = ({navigation, route}) => {
 
       setNewVideoGame((newVideoGame) => ({
         ...newVideoGame,
-        screnShots: [...newVideoGame.screnShots, ...arrLks],
+        screenShots: [...newVideoGame.screenShots, ...arrLks],
       }));
       console.log(`4-----${newVideoGame}`);
       return arrLks;
@@ -439,17 +439,17 @@ const CreateVideogame = ({navigation, route}) => {
           </View>
 
           <View style={styles.containerInput}>
-            <Text style={styles.title}>System Requirements</Text>
+            <Text style={styles.title}>System requeriments_enuirements</Text>
             <TextInput
               style={[styles.inputStyle2, inputStyleVar]}
-              placeholder="Paste_requirements"
-              onBlur={() => setInputFocusedReq(false)}
-              value={newVideoGame.req}
+              placeholder="Paste_requeriments"
+              onBlur={() => setInputFocusedrequeriments_en(false)}
+              value={newVideoGame.requeriments_en}
               onChangeText={handleTextChange}
               multiline
             />
-            {validateNvg.req !== "" && !inputFocusedReq && (
-              <Text style={styles.error}>{validateNvg.req}</Text>
+            {validateNvg.requeriments_en !== "" && !inputFocusedrequeriments_en && (
+              <Text style={styles.error}>{validateNvg.requeriments_en}</Text>
             )}
           </View>
 
@@ -500,7 +500,7 @@ const CreateVideogame = ({navigation, route}) => {
           </View>
 
           <View>
-            <Text style={styles.title}>Load screnshots</Text>
+            <Text style={styles.title}>Load screenShots</Text>
 
             <View
               style={{
@@ -515,12 +515,12 @@ const CreateVideogame = ({navigation, route}) => {
               >
                 <Text style={styles.buttonText}>Load from gallery</Text>
               </TouchableOpacity>
-              {validateNvg.screnShots !== "" && !validateSubmit && (
-                <Text style={styles.error}>{validateNvg.screnShots}</Text>
+              {validateNvg.screenShots !== "" && !validateSubmit && (
+                <Text style={styles.error}>{validateNvg.screenShots}</Text>
               )}
 
-              {newVideoGame.screnShots[0] &&
-                newVideoGame.screnShots.map((i) => {
+              {newVideoGame.screenShots[0] &&
+                newVideoGame.screenShots.map((i) => {
                   return (
                     <View>
                       <TouchableOpacity onPress={() => deleteScreen(`${i}`)}>
