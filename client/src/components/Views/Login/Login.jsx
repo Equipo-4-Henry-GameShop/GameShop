@@ -12,6 +12,11 @@ import {
 
 import MaterialCommunityIcons from "react-native-vector-icons/Ionicons";
 
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../Languaje/LocalizationContext';
+import { useContext} from 'react';
 import {
   color_azul,
   color_blanco,
@@ -26,6 +31,10 @@ import { logService } from "../../../services/ServiceLogin";
 
 
 export const Login = ({ navigation }) => {
+  const {StringsDark,isDarkMode} = useContext(ThemeContext);
+  const {StringsLanguaje ,locale}= useContext(LocalizationContext)
+
+
   useEffect(() => {
     const LoggedUserJSON = window.localStorage.getItem("loggedGameShop");
     if (LoggedUserJSON) {
@@ -101,8 +110,8 @@ export const Login = ({ navigation }) => {
         onSubmit,
       }) => {
         return (
-          <View style={styles.container}>
-            <View style={styles.header}>
+          <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
+            <View style={[styles.header,{backgroundColor:StringsDark.backgroundContainer}]}>
               <Image
                 style={styles.mario}
                 source={require("../../../assets/gameShop-white-mario.png")}
@@ -136,7 +145,7 @@ export const Login = ({ navigation }) => {
                 )}
               </View>
               <TouchableOpacity style={styles.miniButton} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>Log in</Text>
+                <Text style={styles.buttonText}>{StringsLanguaje.Login}</Text>
               </TouchableOpacity>
               {errorMsg && <Text>Incorrect user or password</Text>}
               <TouchableOpacity
@@ -172,7 +181,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     width: "100%",
   },
   mario: {
@@ -181,7 +190,7 @@ const styles = StyleSheet.create({
     width: 310,
   },
   container: {
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     height: "100%",
     alignItems: "center",
     alignContent: "center",
