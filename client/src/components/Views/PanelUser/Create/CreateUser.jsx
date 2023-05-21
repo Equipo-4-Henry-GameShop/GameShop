@@ -7,6 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
+  Alert,
 } from "react-native";
 import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
@@ -21,7 +22,7 @@ import {
 } from "../../../../constants/Colors";
 import axios from "axios";
 
-const CreateUser = () => {
+const CreateUser = ({ navigation }) => {
   const [acceptTac, setAcceptTac] = useState(false);
   const [receibenewsLetter, setReceivenewsLetter] = useState(false);
 
@@ -57,7 +58,7 @@ const CreateUser = () => {
 
       setImage(arrLks[0]);
       console.log(`4-----${image}`);
-      console.log(`46-----${arrLks}`)
+      console.log(`46-----${arrLks}`);
       return arrLks;
     }
   };
@@ -71,31 +72,118 @@ const CreateUser = () => {
       userAdmin: true,
       image: image,
     };
-  
+
     console.log(`Antes del try ${userData}`);
-  
+
     try {
       console.log(`Después del try ${userData}`);
-  
-      const response = await axios.post("https://gameshop-production-e844.up.railway.app/user", {
-        user: userData.user,
-        password: userData.password,
-        fullname: userData.fullname,
-        email: userData.email,
-        date: userData.date,
-        phone: userData.phone,
-        tac: userData.tac,
-        newsLetter: userData.newsLetter,
-        id: userData.id,
-        userAdmin: userData.userAdmin,
-        image: userData.image,
-      });
-  
+
+      const response = await axios.post(
+        "https://gameshop-production-e844.up.railway.app/user",
+        {
+          user: userData.user,
+          password: userData.password,
+          fullname: userData.fullname,
+          email: userData.email,
+          date: userData.date,
+          phone: userData.phone,
+          tac: userData.tac,
+          newsLetter: userData.newsLetter,
+          id: userData.id,
+          userAdmin: userData.userAdmin,
+          image: userData.image,
+        }
+      );
       console.log(`Respuesta del servidor:`, response.data);
+
+      Alert.alert(
+        'User Created!',
+        '',
+        [
+          {
+            text: 'Go to login',
+            onPress: () => navigation.navigate('Login', { name: 'Login' }),
+          },
+        ]
+      );
+            
     } catch (error) {
       console.log("Error en el backend:", error);
+      Alert.alert("Auch...Something went wrong");
     }
   };
+
+  // const [userData, setUserData] = useState()
+
+  // const onSubmit = async (values) => {
+  //    setUserData({
+  //     ...values,
+  //     tac: acceptTac,
+  //     newsLetter: receibenewsLetter,
+  //     id: 1 + Math.floor(Math.random() * 999),
+  //     userAdmin: true,
+  //     image: image,
+  //   });
+
+  //   console.log(`Antes del try ${userData}`);
+
+  //   try {
+  //     console.log(`Después del try ${userData}`);
+
+  //     if (
+  //       userData.user === "" ||
+  //       userData.password === "" ||
+  //       userData.fullname === "" ||
+  //       userData.email === "" ||
+  //       userData.date === "" ||
+  //       userData.phone === "" ||
+  //       !userData.tac ||
+  //       !userData.newsLetter ||
+  //       userData.image === ""
+  //     ) {
+  //       setValidateSubmit(false);
+  //     } else {
+  //       const response = await axios.post("https://gameshop-production-e844.up.railway.app/user", {
+  //         user: userData.user,
+  //         password: userData.password,
+  //         fullname: userData.fullname,
+  //         email: userData.email,
+  //         date: userData.date,
+  //         phone: userData.phone,
+  //         tac: userData.tac,
+  //         newsLetter: userData.newsLetter,
+  //         id: userData.id,
+  //         userAdmin: userData.userAdmin,
+  //         image: userData.image,
+  //       });
+
+  //       Alert.alert("User Created!", [
+  //         {
+  //           text: "Go to login",
+  //           onPress: () => navigation.navigate("Login", { name: "Login" })},
+
+  //         setUserData({
+  //           user: "",
+  //           password: "",
+  //           fullname: "",
+  //           email: "",
+  //           date: "",
+  //           phone: "",
+  //           tac: false,
+  //           newsLetter: false,
+  //           id: "",
+  //           userAdmin: "",
+  //           image: "",
+  //         }),
+  //       ]);
+
+  //       console.log(`Respuesta del servidor:`, response.data);
+  //     }
+  //   } catch (error) {
+  //     Alert.alert("Auch...Something went wrong");
+  //     console.log("Error en el backend:", error);
+  //   }
+  // };
 
   const deleteImage = (image) => {
     setImage((image) => ({

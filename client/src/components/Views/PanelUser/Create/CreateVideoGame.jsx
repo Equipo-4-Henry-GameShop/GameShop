@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  Alert,
 } from "react-native";
 
 
@@ -24,13 +25,16 @@ import { useState, useRef, useEffect } from "react";
 import {
   color_azul,
   color_blanco,
+  color_crema,
+  color_gris,
   color_negro,
+  color_rojoClaro,
 } from "../../../../constants/Colors";
 
 import axios from "axios";
 
 
-const CreateVideogame = () => {
+const CreateVideogame = ({navigation, route}) => {
   const [image, setImage] = useState([]);
 
   const [imageScreen, setImageScreen] = useState([]);
@@ -39,7 +43,7 @@ const CreateVideogame = () => {
   const [inputFocusedDesc, setInputFocusedDesc] = useState(true);
   const [inputFocusedDate, setInputFocusedDate] = useState(true);
   const [inputFocusedPrice, setInputFocusedPrice] = useState(true);
-  const [inputFocusedReq, setInputFocusedReq] = useState(true);
+  const [inputFocusedrequeriments_en, setInputFocusedrequeriments_en] = useState(true);
   const [validateSubmit, setValidateSubmit] = useState(true);
 
   const [stackData, setStackData] = useState({
@@ -53,12 +57,12 @@ const CreateVideogame = () => {
     description: "",
     releaseDate: "",
     image: "",
-    screnShots: [],
+    screenShots: [],
     platforms: [],
     genre: [],
     tags: [],
     price: "",
-    req: ""
+    requeriments_en: ""
   });
 
   // console.log(allplatformss)
@@ -81,13 +85,13 @@ const CreateVideogame = () => {
   };
 
   const inputStyleVar = {
-    height: Math.max(40, newVideoGame.req.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
+    height: Math.max(40, newVideoGame.requeriments_en.length * 1.2), // Ajusta el tamaño en base a la longitud del texto
   };
 
   const handleTextChange = (text) => {
     setNewVideoGame((prevVideoGame) => ({
       ...prevVideoGame,
-      req: text,
+      requeriments_en: text,
     }));
   };
 
@@ -106,36 +110,99 @@ const CreateVideogame = () => {
         newVideoGame.name === "" ||
         newVideoGame.description === "" ||
         newVideoGame.releaseDate === "" ||
-        !newVideoGame.platforms.length  ||
+        !newVideoGame.platforms.length ||
         !newVideoGame.tags.length ||
         !newVideoGame.genre.length ||
         newVideoGame.image === "" ||
-        !newVideoGame.screnShots.length ||
+        !newVideoGame.screenShots.length ||
         newVideoGame.price === "" ||
-        newVideoGame.req === ""
+        newVideoGame.requeriments_en === ""
       ) {
         setValidateSubmit(false);
       } else {
-        const res = await axios.post("https://gameshop-production-e844.up.railway.app/games", {
-          id: newVideoGame.id,
-          name: newVideoGame.name,
-          description: newVideoGame.description,
-          releaseDate: newVideoGame.releaseDate,
-          image: newVideoGame.image,
-          screnShots: newVideoGame.screnShots,
-          platforms: newVideoGame.platforms,
-          genre: newVideoGame.genre,
-          tags: newVideoGame.tags,
-          price: newVideoGame.price,
-          req: newVideoGame.req
-        });
+        const res = await axios.post(
+          "https://gameshop-production-e844.up.railway.app/games",
+          {
+            id: newVideoGame.id,
+            name: newVideoGame.name,
+            description: newVideoGame.description,
+            releaseDate: newVideoGame.releaseDate,
+            image: newVideoGame.image,
+            screenShots: newVideoGame.screenShots,
+            platforms: newVideoGame.platforms,
+            genre: newVideoGame.genre,
+            tags: newVideoGame.tags,
+            price: newVideoGame.price,
+            requeriments_en: newVideoGame.requeriments_en,
+          }
+        );
+        Alert.alert(
+          "Publication Create!","",
+          [
+            {
+              onPress: () =>
+                setNewVideoGame({
+                  id: 1 + Math.floor(Math.random() * 999),
+                  name: "",
+                  description: "",
+                  releaseDate: "",
+                  image: "",
+                  screenShots: [],
+                  platforms: [],
+                  genre: [],
+                  tags: [],
+                  price: "",
+                  requeriments_en: "",
+                }),
+                text: "Continue loading games",
+            },
+            { text: "Back to dashboard" , onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })},
+          ]
+        );
   
         console.log("Respuesta del servidor:", res.data);
       }
     } catch (error) {
+      Alert.alert(
+        "Auch...Something went wrong","")
       console.log("Error en el backend:", error);
     }
   };
+
+
+  const CancelSubmit = () => {
+    Alert.alert(
+      'Cancel Publication',
+      'You are about to cancel your publication',
+      [
+        {
+          text: 'Cancel',
+          onPress: () =>
+            Alert.alert(
+              'Return to Dashboard',
+              'Are you sure you want to return to Dashboard?',
+              [
+                { text: 'Yes', onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })   },
+                { text: 'No', onPress: () => console.log('No pressed') },
+              ]
+            ),
+          style: 'cancel',
+        },
+        {
+          text: 'Continue edit',
+          onPress: () => console.log('Continue edit pressed'),
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () =>
+          Alert.alert(
+            'This alert was dismissed by tapping outside of the alert dialog.'
+          ),
+      }
+    );
+  };
+
 
   ///////
 
@@ -282,7 +349,7 @@ const CreateVideogame = () => {
   const deleteScreen = (image) => {
     setNewVideoGame((newVideoGame) => ({
       ...newVideoGame,
-      screnShots: newVideoGame.screnShots.filter((i) => !image),
+      screenShots: newVideoGame.screenShots.filter((i) => !image),
     }));
   };
 
@@ -314,7 +381,7 @@ const CreateVideogame = () => {
 
       setNewVideoGame((newVideoGame) => ({
         ...newVideoGame,
-        screnShots: [...newVideoGame.screnShots, ...arrLks],
+        screenShots: [...newVideoGame.screenShots, ...arrLks],
       }));
       console.log(`4-----${newVideoGame}`);
       return arrLks;
@@ -372,17 +439,17 @@ const CreateVideogame = () => {
           </View>
 
           <View style={styles.containerInput}>
-            <Text style={styles.title}>System Requirements</Text>
+            <Text style={styles.title}>System requeriments_enuirements</Text>
             <TextInput
               style={[styles.inputStyle2, inputStyleVar]}
-              placeholder="Paste_requirements"
-              onBlur={() => setInputFocusedReq(false)}
-              value={newVideoGame.req}
+              placeholder="Paste_requeriments"
+              onBlur={() => setInputFocusedrequeriments_en(false)}
+              value={newVideoGame.requeriments_en}
               onChangeText={handleTextChange}
               multiline
             />
-            {validateNvg.req !== "" && !inputFocusedReq && (
-              <Text style={styles.error}>{validateNvg.req}</Text>
+            {validateNvg.requeriments_en !== "" && !inputFocusedrequeriments_en && (
+              <Text style={styles.error}>{validateNvg.requeriments_en}</Text>
             )}
           </View>
 
@@ -433,7 +500,7 @@ const CreateVideogame = () => {
           </View>
 
           <View>
-            <Text style={styles.title}>Load screnshots</Text>
+            <Text style={styles.title}>Load screenShots</Text>
 
             <View
               style={{
@@ -448,12 +515,12 @@ const CreateVideogame = () => {
               >
                 <Text style={styles.buttonText}>Load from gallery</Text>
               </TouchableOpacity>
-              {validateNvg.screnShots !== "" && !validateSubmit && (
-                <Text style={styles.error}>{validateNvg.screnShots}</Text>
+              {validateNvg.screenShots !== "" && !validateSubmit && (
+                <Text style={styles.error}>{validateNvg.screenShots}</Text>
               )}
 
-              {newVideoGame.screnShots[0] &&
-                newVideoGame.screnShots.map((i) => {
+              {newVideoGame.screenShots[0] &&
+                newVideoGame.screenShots.map((i) => {
                   return (
                     <View>
                       <TouchableOpacity onPress={() => deleteScreen(`${i}`)}>
@@ -538,10 +605,16 @@ const CreateVideogame = () => {
           <View></View>
           <View style={styles.submit}>
             <TouchableOpacity
-              style={styles.miniButton}
+              style={styles.miniButtonSubmit}
               onPress={() => Submit()}
             >
-              <Text style={styles.buttonText}>Create Publication</Text>
+              <Text style={styles.buttonTextSubmit}>Create Publication</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.miniButtonCancel}
+              onPress={() => CancelSubmit()}
+            >
+              <Text style={styles.buttonTextSubmit}>Cancel Publication</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -592,8 +665,51 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
+    backgroundColor: color_blanco,
+    borderRadius: 8,
+    borderBottomColor: color_gris,
+    borderBottomWidth: 4,
+    borderRightWidth: 4,
+    borderColor: color_gris,
+    borderWidth:1
+  },
+  buttonText: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: color_negro,
+  },
+  miniButtonSubmit: {
+    marginTop: 5,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    height: 60,
+    width: "70%",
+    padding: 0,
     backgroundColor: color_azul,
     borderRadius: 8,
+  },
+  miniButtonCancel: {
+    marginTop: 5,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    height: 60,
+    width: "70%",
+    padding: 0,
+    backgroundColor: color_rojoClaro,
+    borderRadius: 8,
+  },
+  buttonTextSubmit: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: color_blanco,
   },
   error: {
     margin: 8,
@@ -615,13 +731,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 8,
   },
-  buttonText: {
-    textAlign: "center",
-    padding: 10,
-    fontSize: 15,
-    fontWeight: "bold",
-    color: color_blanco,
-  },
 
   select: {
     marginHorizontal: 50,
@@ -636,6 +745,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
+
   containerInput: {
     flex: 1,
     alignItems: 'center',

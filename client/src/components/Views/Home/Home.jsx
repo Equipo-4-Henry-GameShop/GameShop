@@ -2,7 +2,7 @@ import { StyleSheet ,TouchableOpacity, Text, View,Button, SectionList, ActivityI
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 
 import {useDispatch, useSelector} from "react-redux"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame} from "../../../redux/videogamesActions"
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -18,7 +18,8 @@ import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import {useContext} from 'react';
 import SearchBar from './SearchBar';
 
-
+import { Badge } from "react-native-paper";
+import {getKeysCount} from '../../../../src/components/Views/Forms/Cart/CardCartController'
 //este tiene toda la logica xq va dentro de un stack
 const Home=({ navigation, route})=>{
   const dispatch= useDispatch();
@@ -34,7 +35,7 @@ const Home=({ navigation, route})=>{
   const {StringsLanguaje }= useContext(LocalizationContext)
 
   useEffect(()=>{
-    // console.log("entro aqui?")
+    //  console.log("entro al 2do home??")
     dispatch(getvideoGames()) ;
   },[])
   
@@ -84,10 +85,11 @@ return (
                                     key: `${el.id}`, 
                                     img: {uri:el.image }, 
                                     nombre:el.name ,
-                                    fecLan: el.released,
+                                    fecLan: el.releaseDate ? el.releaseDate : '2020-10-10',
                                     // screnshoots: el.screnshoots,
-                                    screenshoots:el.screenshots,
-                                    informacion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas blandit risus et felis malesuada, in interdum turpis lacinia. Donec gravida tincidunt mollis. Donec luctus est non iaculis ultricies. In bibendum turpis et odio mollis, ac tincidunt dui efficitur. Vivamus iaculis a eros nec congue. Donec neque metus, blandit condimentum velit nec, eleifend scelerisque tellus. Vestibulum sed pretium dui, quis bibendum dui.',
+                                    screenshoots:el.screenShots,
+                                    informacion: el.description ? el.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat metus eget maximus scelerisque. Vivamus tempor eleifend nulla in placerat. Sed sollicitudin a odio a viverra. Morbi sagittis consequat erat at malesuada. Ut a ultrices risus. Suspendisse consectetur lectus elementum libero auctor venenatis. Ut semper arcu eu efficitur efficitur. Maecenas gravida mauris a porttitor congue. Suspendisse et neque eget quam blandit vehicula. Praesent interdum elementum lorem eget scelerisque. Nam vitae condimentum ipsum. Sed interdum eros dui, sit amet faucibus elit maximus at. Aenean eu posuere elit. In vitae diam at neque feugiat pharetra in sit amet nunc.',
+                                    // informacion: el.description,
                                     rating: el.rating,
                                     generos: el.genre,
                                     tiendas: el.tiendas,
@@ -117,12 +119,47 @@ return (
       <TouchableOpacity onPress={NextPage}>
           < MaterialCommunityIcons name="chevron-forward-circle-sharp" 
           size={30} color={StringsDark.text}/>
-          
         </TouchableOpacity>
       </View>
     </View>
     )
 }
+const CartButton = ({ navigation }) => {
+  const [countBadge, setCountBadge]=useState(0);
+  const cartG = useSelector((state) => state.cartState);
+  const {  StringsDark } = useContext(ThemeContext);
+
+  useEffect(() => {
+    //  console.log("llamdo a CarButton una vez mas", cartG);
+    const GetCountItemCart = async () => {
+      try {
+        const count = await getKeysCount();
+        // console.log("Cantidad de claves en AsyncStorage:", count);
+        setCountBadge(count)
+      } catch (error) {
+        console.log("Error al obtener las claves de AsyncStorage:", error);
+      }
+    }
+      GetCountItemCart();
+  }, [cartG]);
+
+  // console.log("Cantidad den button:", countBadge);
+  return (
+    <View style={{ marginRight: 10 }}>
+      <TouchableOpacity onPress={() => navigation.navigate("Carrito")}>
+        <Text>{countBadge}</Text>
+        <MaterialCommunityIcons name="cart" color={StringsDark.bordercolor} size={30} />
+        {countBadge > 0 && (
+          <Badge  size={25} style={{ position: "absolute",top: 0,right: 17, 
+          color:StringsDark.bordercolor, backgroundColor:StringsDark.txtprice }}
+          >
+            {countBadge}
+          </Badge>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const HomeScreen =({ navigation, route})=>{
   const vGames=useSelector((state)=>state.videogamesState)
@@ -131,13 +168,16 @@ const HomeScreen =({ navigation, route})=>{
   const { isDarkMode, StringsDark } = useContext(ThemeContext);
   const {locale,StringsLanguaje }= useContext(LocalizationContext)
   const Stack = createNativeStackNavigator();
+  //  const cartG = useSelector((state) => state.cartState);
 
   useEffect(()=>{
+    // console.log("rellamando a cabecera en home x redux");
     navigation.setOptions({
       headerTitle: `${StringsLanguaje.Home}`,
       headerStyle: {
         backgroundColor: StringsDark.backgroundContainer,
       },
+      headerRight: () => <CartButton navigation={navigation} />, 
     })
   },[isDarkMode,locale])
 

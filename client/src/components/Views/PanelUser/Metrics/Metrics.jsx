@@ -22,7 +22,7 @@ import { persons } from "../../../../utils/arrayPersons";
 
 
 
-export const Communications= (route) => {
+export const Metrics= (route) => {
   return (
     <View>
       {persons.map((p)=>{

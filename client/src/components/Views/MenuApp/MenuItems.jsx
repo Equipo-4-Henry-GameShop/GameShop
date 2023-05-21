@@ -57,13 +57,13 @@ const MenuItems=({navigation})=>{
             icon='home'
           />
          <MenuBottonItem
-            nombre= {StringsLanguaje.User_Panel}
-            onPress={()=> navigation.navigate('PanelUser')}
+            nombre= {StringsLanguaje.Dashboard}
+            onPress={()=> navigation.navigate('Dashboard')}
             icon='person'
           />
            <MenuButtonSubItem
               nombre= {StringsLanguaje.MyVideogames}
-              onPress={()=> navigation.navigate('MyVideogames')}
+              onPress={()=> navigation.navigate('VideoGameList')}
               icon='pricetags'
             />
              <MenuButtonSubItem

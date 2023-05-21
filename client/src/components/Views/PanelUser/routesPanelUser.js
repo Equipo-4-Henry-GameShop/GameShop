@@ -1,16 +1,17 @@
-import { PanelUser } from "./PanelUser/PanelUser";
+import { Dashboard } from "./Dashboard/Dashboard";
 import { MyPosts } from "./MyPosts/MyPosts";
 import { MyProfile } from "./MyProfile/MyProfile";
 import { UserList } from "./UserList/UserList";
 import { VideoGameList } from "./Videogame List/Videogame List";
-import { Communications } from "./Communications/Communications";
+import { Metrics } from "./Metrics/Metrics";
 import CreateUser from "./Create/CreateUser"
 import CreateVideogame from "./Create/CreateVideoGame";
-import { Security } from "./Security/Security"
-import { MyVideogames } from "./MyVideogames/MyVideogames";
+import { Sales } from "./Sales/Sales"
+import { MyVotes } from "./MyVotes/MyVotes";
 import CreateItem from "./Create/CrateItem";
+import {MyShoppings} from "./MyShoppings/MyShoppings";
 
 
 
 
-export {PanelUser, MyPosts, MyProfile, Security, Communications, CreateUser, CreateVideogame, VideoGameList, UserList, MyVideogames, CreateItem}
+export {Dashboard, MyShoppings ,  MyPosts, MyProfile, Sales, Metrics, CreateUser, CreateVideogame, VideoGameList, UserList, CreateItem, MyVotes}

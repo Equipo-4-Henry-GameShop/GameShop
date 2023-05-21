@@ -8,11 +8,14 @@ import { ThemeContext } from '../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import React from 'react';
 import { InsertarItem } from '../Forms/Cart/CardCartController';
+import { useDispatch } from "react-redux";
+import { updateCart } from '../../../redux/cartSlice';
 
 const Card = (videogame) => {
     // console.log("videogameCARD=>",videogame.videogame.img)
     const {  StringsDark} = React.useContext(ThemeContext);
     const {StringsLanguaje }= React.useContext(LocalizationContext)
+    const dispatch = useDispatch();
     function estrellitas(index) {
         // console.log("entro una estreilla");
         return <Image source={require('../../../assets/star.png')} 
@@ -40,14 +43,18 @@ const Card = (videogame) => {
         amount:1
       }
       const objString = JSON.stringify(objeto);
-      const key= videogame.videogame.key
+      const key= 'cart'+videogame.videogame.key
+      // console.log("generado clave cart",key)
       // console.log("objeto      ñ",objeto)
       //  console.log("objeto String",objString)  
       
     return (
       <View  style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>
 
-         <TouchableOpacity style={styles.botonFlotPos} onPress={()=>InsertarItem(key,objString)}> 
+         <TouchableOpacity style={styles.botonFlotPos} onPress={()=>{
+                      InsertarItem(key,objString)
+                      dispatch(updateCart())
+                                                            }}> 
             <View style={[styles.botonFlotFondo,{backgroundColor: StringsDark.botFlot}]}>
               <MaterialCommunityIcons  name="add-circle" size={20} style={styles.botonplus} 
               color={StringsDark.titblanco}/>
@@ -57,8 +64,7 @@ const Card = (videogame) => {
             </View>        
           </TouchableOpacity>
               <SectionList
-            // <SectionList 
-            sections={[
+              sections={[
               {
                 title: `${videogame.videogame.nombre}`, 
                 data: [ videogame.videogame]
@@ -131,6 +137,9 @@ const styles = StyleSheet.create({
    fontWeight: '800',
    textAlign: 'justify',
    margin:8,
+  //  backgroundColor:'green',
+   paddingLeft: '5%',
+   paddingRight: '5%',
    },
 
  image: {

@@ -13,6 +13,8 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
+
+
 const Cart = ({navigation}) => {
     const dispatch=useDispatch()
     const cartG = useSelector((state) => state.cartState);
@@ -78,9 +80,11 @@ const Cart = ({navigation}) => {
 
   const handlePress = () => {
     cleanCart();
-    dispatch(updateCart);
+    dispatch(updateCart());
   }; 
-
+  const handlePasarellaPress = () => {
+    navigation.navigate('Pasarella');
+  };
   const getAllItems = async () => {
     try {
       const keys = await AsyncStorage.getAllKeys();
@@ -88,6 +92,10 @@ const Cart = ({navigation}) => {
   
       const result = items.map(([key, value]) => {
         let parsedValue;
+        
+        
+        if (key.substring(0,4)==='cart'){
+        console.log("aqui solo entran KEY CART ", key)
         try {
           parsedValue = JSON.parse(value);
         } catch (error) {
@@ -96,6 +104,7 @@ const Cart = ({navigation}) => {
         }
   
         return { key, value: parsedValue };
+        }
       });
   
     //   console.log("get ALL estado de carrito", result);
@@ -107,13 +116,15 @@ const Cart = ({navigation}) => {
   
 
   if (Carrito.length < 1) {
+     console.log("ya entre aqui pero x no sale nada->")
     return (
-      <View style={styles.emptyCartContainer}>
-        <Text style={[styles.emptyCart,{color:StringsDark.text}]}>{StringsLanguaje.emptycar}</Text>
+      <View style={[styles.emptyCartContainer,{backgroundColor:StringsDark.btnPagar}]}>
+        <Text style={[styles.emptyCart,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.emptycar}</Text>
+       
       </View>
     );
   }
-
+  // console.log("longitus de carrito", Carrito)
   return (
     <ScrollView style={[styles.cartContainer,{backgroundColor:StringsDark.tabInactive}]}>
       <View>
@@ -122,7 +133,8 @@ const Cart = ({navigation}) => {
       <View style={{backgroundColor:StringsDark.bktitle}}>
         {
             Carrito.map((el) => {
-                return (  <CardCard key={el.key} item={el.value}/> )
+                console.log("keyyy", el.key);
+                return (  <CardCard key={el.key} llave={el.key} item={el.value}/> )
         })
         }
       </View>
@@ -133,7 +145,7 @@ const Cart = ({navigation}) => {
       <TouchableOpacity onPress={AlertItem} style={[styles.clearCart,{backgroundColor:StringsDark.txtClaro}]}>
         <Text style={[styles.clearCartText,{color:StringsDark.text}]}>{StringsLanguaje.clCart}</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={AlertItem} style={[styles.chkOutCart,{backgroundColor:StringsDark.btnPagar}]}>
+      <TouchableOpacity onPress={handlePasarellaPress} style={[styles.chkOutCart,{backgroundColor:StringsDark.btnPagar}]}>
         <Text style={[styles.clearCartText,{color:StringsDark.text}]}>{StringsLanguaje.chkOut}</Text>
       </TouchableOpacity>
       <View style={{ height: 100 }} />
@@ -198,9 +210,21 @@ const styles = StyleSheet.create({
       marginHorizontal: 20,
       marginVertical: 10,
     },
+    emptyCartContainer:{
+        width:'100%',
+        height:'50%',
+    },
     emptyCart: {
+         margin:'20%',
+        // marginBottom: '80%',
+        // marginTop: '80%',
+        // alignContent:'center',
+        // alignItems:'center',
+        // alignItems:'center',
+        // textAlign:'center',
         fontSize: 25,
-        
+        fontWeight:'bold',
+      
     }
   });
   

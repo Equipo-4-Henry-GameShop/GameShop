@@ -8,7 +8,7 @@ export const cartSlice= createSlice({
     reducers:{ 
         
         updateCart: (state) => {
-            
+            // console.log("cambiando estado ----> redux");
             return !state; // Alternar el valor booleano entre true y false
           },
           

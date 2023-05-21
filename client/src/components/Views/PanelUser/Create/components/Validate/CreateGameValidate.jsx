@@ -29,10 +29,10 @@ export const validate = (val) => {
     errors.image = "";
   }
 
-  if (!val.screnShots.length) {
-    errors.screnShots = "Need to add screenshot";
+  if (!val.screenShots.length) {
+    errors.screenShots = "Need to add screenshot";
   } else {
-    errors.screnShots = "";
+    errors.screenShots = "";
   }
 
   if (!val.platforms.length) {
@@ -54,11 +54,18 @@ export const validate = (val) => {
   }
 
   if (!val.price) {
-    errors.price = "Missing enter Price$$";
-  } else if (!/\$\d+/.test(val.price)) {
-    errors.price = "Price must be in ($)";
+    errors.price = "Missing enter Price";
+  } else if (!/^\d+$/.test(val.price)) {
+    errors.price = "Price must be a number";
   } else {
     errors.price = "";
+  }
+
+  if (val.requeriments_en === "") {
+    errors.requeriments_en = "Missing enter name";
+
+  } else {
+    errors.requeriments_en = "";
   }
 
   return errors;
