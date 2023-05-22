@@ -69,12 +69,12 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
   const [value, setValue] = useState(null);
 
   // ===============State Filter =========
-  const {allGenres, FilterGenre, platformState,orderABC,orderRating,orderPrice} = useSelector((state=>state))
-  const [orderAbc, setOrderAbc]= useState(orderABC)
-  const [orderprice, setOrderPrice]= useState(orderPrice)
-  const [orderrating, setOrderRating]= useState(orderRating)
-  const [filtergenre, setFilterGenre]= useState(FilterGenre)
-  const [plataformby, setPlataformBy]= useState(platformState)
+  // // const {allGenres, FilterGenre, platformState,orderABC,orderRating,orderPrice} = useSelector((state=>state))
+  // const [orderAbc, setOrderAbc]= useState(orderABC)
+  // const [orderprice, setOrderPrice]= useState(orderPrice)
+  // const [orderrating, setOrderRating]= useState(orderRating)
+  // const [filtergenre, setFilterGenre]= useState(FilterGenre)
+  // const [plataformby, setPlataformBy]= useState(platformState)
 
     //linea para setear el lenguaje /obtener palabras de lenguaje
     const {  StringsDark} = useContext(ThemeContext);
@@ -100,14 +100,14 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
 //   handlerFilterPriceg(ordPrice)
 // };
 
-const Genres = allGenres?.foreach(e=>({
-  label: e.name, 
-  value: e.name
-}))
+// const Genres = allGenres?.foreach(e=>({
+//   label: e.name, 
+//   value: e.name
+// }))
 
 
 
-
+console.log(vGames.allGenres)
 
     const handleChangeModal = ()=>{
       setView(!view);
@@ -158,9 +158,9 @@ const Genres = allGenres?.foreach(e=>({
     const handleFilterGenre= (data)=>{
       dispatch(filterByGenre(data));
     }
-    const hanlderCleanFilter = ()=>{
-      dispatch(getAllVideogames())
-    }
+    // const hanlderCleanFilter = ()=>{
+    //   dispatch(getAllVideogames())
+    // }
 
     const NextPage=()=>{
       if(maximo===pagina){
@@ -360,7 +360,7 @@ const Genres = allGenres?.foreach(e=>({
                         onChange={item => {
                           // setValue(item.value);
                           setIsFocus(false);
-                          handleFilterGenre(item.value);
+                          // handleFilterGenre(item.value);
                         }}
                         
                       />

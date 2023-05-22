@@ -133,6 +133,7 @@ export const GetallGenres=()=>(dispatch)=>{
     fetch('https://gameshopback-pf-ek5y.onrender.com/genres')
         .then((res)=>res.json())
         .then((data)=>dispatch(AllGenresVideoGame(data)))
+        
 }
 
 
