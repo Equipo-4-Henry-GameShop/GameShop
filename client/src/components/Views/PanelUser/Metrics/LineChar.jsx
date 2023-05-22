@@ -1,5 +1,8 @@
 import React from 'react';
 import { LineChart } from 'react-native-chart-kit';
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
 
 const ventas = [0, 56, 20, 36, 80, 40, 10, 1];
 const videogames = [
@@ -43,7 +46,7 @@ const LinesChart = () => {
   return (
     <LineChart
       data={midata}
-      width={300}
+      width={screenWidth}
       height={200}
       yAxisLabel="$"
       yAxisInterval={1}
