@@ -17,6 +17,8 @@ import {
 } from "../../../../constants/Colors";
 import { persons } from "../../../../utils/arrayPersons";
 
+import LinesChart from './LineChar';
+
 ////Acá podemos pasar como props los datos del usuarios para que este 
 ////componente sea netamente visual y el codigo quede mas prolijo
 
@@ -25,15 +27,11 @@ import { persons } from "../../../../utils/arrayPersons";
 export const Metrics= (route) => {
   return (
     <View>
-      {persons.map((p)=>{
-        return(
-        <CardDataPanel
-        image={p.image}
-        name={p.name}
-        id={p.id}
-        />)
 
-      })}
+      <Text> Ejemplo de grafico de ventas </Text>
+      <LinesChart/>
+
     </View>
+
 
 )};
