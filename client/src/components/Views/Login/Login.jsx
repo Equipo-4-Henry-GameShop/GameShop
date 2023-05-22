@@ -17,12 +17,12 @@ import { ThemeContext } from '../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import { useContext} from 'react';
-import {
-  color_azul,
-  color_blanco,
-  color_gris,
-  color_negro,
-} from "../../Theme/stringsColors";
+// import {
+//   color_azul,
+//   color_blanco,
+//   color_gris,
+//   color_negro,
+// } from "../../Theme/stringsColors";
 import { persons } from "../../../utils/arrayPersons";
 import { Formik } from "formik";
 import { useState, useEffect } from "react";
@@ -32,26 +32,9 @@ import {getItemAsyncStorage,InsertUserAsynStorage,removeItem} from '../Forms/Car
 import { useFocusEffect } from '@react-navigation/native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Login = ({ navigation }) => {
+
   const {StringsDark,isDarkMode} = useContext(ThemeContext);
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
-
-
-  useEffect(() => {
-    const LoggedUserJSON = window.localStorage.getItem("loggedGameShop");
-    if (LoggedUserJSON) {
-      const user = JSON.parse(LoggedUserJSON);
-      setUser(user);
-      logService.setToken(user.token);
-    }
-  }, []);
-    // useEffect(() => {
-  //   const LoggedUserJSON = window.localStorage.getItem("loggedGameShop");
-  //   if (LoggedUserJSON) {
-  //     const user = JSON.parse(LoggedUserJSON);
-  //     setUser(user);
-  //     logService.setToken(user.token);
-  //   }
-  // }, []);
   const [token, setToken] = useState();
 
   const [session, setSession] = useState(null);
@@ -59,55 +42,40 @@ export const Login = ({ navigation }) => {
   const [logginUser, setLoggingUser] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
-  const [datauser, setDataUser]=useState({})
+  const [isLogged, setIsLogged]=useState(false)
+
+   useEffect(() => {
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.Login}`,
+      headerStyle: {
+        backgroundColor: StringsDark.backgroundContainer,
+      },
+    })
+
+  }, [isDarkMode,locale]);
   useEffect(() => {
-
-    const getUserStorage = async () => {
-      try {
-        const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
-        setLoggingUser(LoggedUserJSON)
-        // console.log("LoggedUserJSON:", logginUser);
-      } catch (error) {
-        console.log("Error al obtener las claves de AsyncStorage:", error);
-      }
-    }
-    getUserStorage();
    
-    if (typeof(logginUser) !=='undefined') {
-      // console.log("que tengo logginUser",logginUser)
+    getUserStorage();
+  }, [isLogged]);
 
-      const parsedValue = JSON.parse(logginUser);
-      // console.log('Data parseada:',parsedValue)
-      setDataUser(parsedValue)
-      // console.log('Data parseada enes tado:',datauser)
+  const getUserStorage = async () => {
+    try {
+      const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
+      console.log("variable LoggedUserJSON->",LoggedUserJSON)
+      if(LoggedUserJSON){
+      setLoggingUser(LoggedUserJSON);
+        setIsLogged(true) 
+        console.log("Usuario Cargado correctamente", logginUser);
+      }else {
+      setLoggingUser('vacio')
+      }
+    } catch (error) {
+      console.log("Error al obtener la clave de  loggedGameShop:", error);
     }
-  }, [logginUser]);
+  };
   
-    // console.log("longitud de login",typeof(logginUser))
-  if (typeof(logginUser)!=='undefined'){
-    
-     return (
-       <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
-        <View style={[styles.header,{backgroundColor:StringsDark.backgroundContainer}]}>
-            <Image
-                  style={styles.mario}
-                  source={require("../../../assets/gameShop-white-mario.png")}
-                >
-            </Image>
-        </View> 
-        <View style={styles.containerLogin}> 
-            <Image
-                  style={styles.perfil}
-                  source={{uri:datauser.image}}
-                >
-            </Image>
-            <TouchableOpacity style={[styles.miniButtonLogout,{backgroundColor:StringsDark.backgroundTittle}]} > 
-              <Text style={styles.buttonText}>Logout</Text>
-            </TouchableOpacity>
-        </View> 
-     </View>
-     )
-  }
+  console.log("estado loginuser--->",(logginUser))
+  
 
   const handdleLogin = async (values) => {
     // console.log("values recibido en hanndler", values)
@@ -124,16 +92,17 @@ export const Login = ({ navigation }) => {
       if (typeof(userCredencials)!=="undefined"){
         
         console.log("Usuario Logeado con Exito")
-
+        
         InsertUserAsynStorage("loggedGameShop",JSON.stringify(userCredencials));
-        // setSession(session);? q hace?
+        setIsLogged(false) 
         setUser("");
         setPassword("");
+        console.log()
         navigation.navigate("HomeScreen")
       }else {
      
             console.log("no encontrado")
-            alert("Password NO Coincide")
+            alert("Password No Coincide")
             return
       }
     } 
@@ -147,11 +116,6 @@ export const Login = ({ navigation }) => {
     }
   };
 
-  // const handdleLogout=()=>{
-
-  //   window.localStorage.setItem("loggedGameShop", JSON.stringify(user));
-
-  // }
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
@@ -196,59 +160,91 @@ export const Login = ({ navigation }) => {
                 source={require("../../../assets/gameShop-white-mario.png")}
               ></Image>
             </View>
-            <View style={styles.containerLogin}>
-              <View>
-                <TextInput
-                  placeholder="Username"
-                  value={values.user}
-                  onChangeText={handleChange("user")}
-                  onBlur={handleBlur("user")}
-                  style={styles.input}
-                />
-                {errors.user && touched.user && (
-                  <Text style={styles.error}>{errors.user}</Text>
+            <View style={[styles.containerLogin,{backgroundColor:StringsDark.tabInactive},{forecolor:StringsDark.bordercolor}]}>
+              {logginUser ==='vacio' &&(
+                    <View>
+                      <TextInput
+                        placeholder="Username"
+                        value={values.user}
+                        onChangeText={handleChange("user")}
+                        onBlur={handleBlur("user")}
+                        style={styles.input}
+                      />
+                      {errors.user && touched.user && (
+                        <Text style={styles.error}>{errors.user}</Text>
+                      )}
+                    </View>
                 )}
-              </View>
-              <View>
-                <TextInput
-                  placeholder="Password"
-                  value={values.password}
-                  onChangeText={handleChange("password")}
-                  secureTextEntry={true}
-                  onBlur={handleBlur("password")}
-                  style={styles.input}
-                />
-                {/* <TouchableOpacity title={isPasswordVisible ? 'Hide Password' : 'Show Password'} onPress={() => setIsPasswordVisible(!isPasswordVisible)} /> */}
-                {errors.password && touched.password && (
-                  <Text style={styles.error}>{errors.password}</Text>
+                {logginUser ==='vacio' &&(
+                  <View>
+                        <TextInput
+                          placeholder="Password"
+                          value={values.password}
+                          onChangeText={handleChange("password")}
+                          secureTextEntry={true}
+                          onBlur={handleBlur("password")}
+                          style={styles.input}
+                        />
+                        {/* <TouchableOpacity title={isPasswordVisible ? 'Hide Password' : 'Show Password'} onPress={() => setIsPasswordVisible(!isPasswordVisible)} /> */}
+                        {errors.password && touched.password && (
+                          <Text style={styles.error}>{errors.password}</Text>
+                        )}
+                  </View>
                 )}
-              </View>
-              <TouchableOpacity style={[styles.miniButton,]} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>{StringsLanguaje.Login}</Text>
-              </TouchableOpacity>
-              {errorMsg && <Text>Incorrect user or password</Text>}
-              <TouchableOpacity
-                style={styles.miniButton}
-                onPress={() =>
-                  navigation.navigate("CreateUser", { name: "CreateUser" })
-                }
-              >
-                <Text style={styles.buttonText}>Register</Text>
-              </TouchableOpacity>
-              <View>
-                <Text>or</Text>
-              </View>
-              <View>
-                <Text>-------- Sign up with --------</Text>
-              </View>
-              <TouchableOpacity style={styles.buttonGoogle}>
-                <Image
-                  style={styles.imageGoogle}
-                  source={require("../../../assets/singinwhitgoogle.png")}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
+                  {errorMsg && <Text>Incorrect user or password</Text>}
+               
+               {logginUser ==='vacio' && ( 
+                    <TouchableOpacity style={[styles.miniButton,{backgroundColor:StringsDark.backgroundTittle}]} onPress={handleSubmit}>
+                    <Text style={[styles.buttonText,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.Login}</Text>
+                  </TouchableOpacity>
+               )}
+                  
+               {logginUser ==='vacio' && (
+                  <TouchableOpacity
+                    style={[styles.miniButton,{backgroundColor:StringsDark.backgroundTittle}]}
+                    onPress={() =>
+                      navigation.navigate("CreateUser", { name: "CreateUser" })
+                    }
+                  >
+                    <Text style={[styles.buttonText,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.Register}</Text>
+                  </TouchableOpacity>
+               )}
+               {logginUser ==='vacio' && (
+                <View>
+                  <View>
+                    <Text style={{textAlign:'center'}}>{StringsLanguaje.or}</Text>
+                  </View>
+                  <View>
+                    <Text style={{textAlign:'center'}}>-------- {StringsLanguaje.Sign_inWith} --------</Text>
+                  </View>
+                  <TouchableOpacity style={styles.buttonGoogle}>
+                    <Image
+                      style={styles.imageGoogle}
+                      source={require("../../../assets/singinwhitgoogle.png")}
+                    />
+                  </TouchableOpacity>
+                  </View>
+               )}
+
+                {/* //caso loged IN */}
+              {logginUser !=='vacio' && (  
+                <View style={styles.containerLogin}> 
+                    <Text style={[{fontSize:45},{color:StringsDark.text}]}>{StringsLanguaje.Welcome}</Text>
+                    <Text style={[{fontSize:20}, {fontWeight:'bold'},{color:StringsDark.text}]}>{logginUser.name}</Text> 
+                        <Image 
+                              style={styles.perfil}
+                              source={{uri:logginUser.image}}
+                            >
+                        </Image>
+                        <TouchableOpacity onPress={()=>{removeItem("loggedGameShop")
+                                                           setIsLogged(false)  }} 
+                                          style={[styles.miniButtonLogout,{backgroundColor:StringsDark.backgroundTittle}]} > 
+                          <Text style={[styles.buttonText,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.Logout}</Text>
+                        </TouchableOpacity>
+                    </View> 
+              )}
+                        </View>
+                </View>
         );
       }}
     </Formik>
@@ -270,10 +266,10 @@ const styles = StyleSheet.create({
     width: 310,
   },
   perfil: {
-    margin: 10,
-    height: 70,
-    width: 70,
-    borderRadius:20,
+     margin: 10,
+    height: 150,
+    width: 150,
+    borderRadius:100,
     
   },
   container: {
@@ -291,8 +287,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
     height: "85%",
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
+    // borderColor: color_negro,
+    // backgroundColor: 'verde',
     alignItems: "center",
     padding: 10,
   },
@@ -308,7 +304,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 50,
     borderWidth: 2,
-    borderColor: color_azul,
+    // borderColor: color_azul,
     paddingHorizontal: 70,
     marginLeft: "2%",
     marginRight: "2%",
@@ -332,11 +328,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     justifyContent: "center",
-    marginTop: "80%",
+    marginTop: "50%",
     height: "10%",
     width: "50%",
     padding: 0,
-     backgroundColor: color_azul,
+    //  backgroundColor: color_azul,
     borderRadius: 8,
   },
   error: {
@@ -351,7 +347,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-    color: color_blanco,
+    // color: color_blanco,
   },
   buttonGoogle: {
     marginTop: "10%",
@@ -360,6 +356,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     borderRadius: 20,
+    // color:'red'
   },
   imageGoogle: {
     height: 40,

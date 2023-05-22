@@ -134,33 +134,43 @@ export const removeItem = async (key) => {
     console.log("tb debo contar solo las claves CART")
     try {
       let allKeys = await AsyncStorage.getAllKeys();
-      
       allKeys = await AsyncStorage.getAllKeys();
+      console.log("todas las clave",allKeys)
+      const filteredKeys = allKeys.filter((el) => el !== 'loggedGameShop')
+      console.log("valor claves actualizado",allKeys)
       //  console.log(allKeys)
       let keysCount = allKeys.length;
       // console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
       return keysCount;
     } catch (error) {
-      console.log("Error al obtener las claves de AsyncStorage:", error);
+      console.log("Error al obtener las claves de AsyncStorage???:", error);
       throw error; // Opcional: relanza el error para manejarlo en otro lugar si es necesario
     }
   };
   
   // Obtener item en AsyncStorage
   export const getItemAsyncStorage = async (key) => {
-    // console.log("el key q llega----->", key)
+
     try {
-      let currentValue = await AsyncStorage.getItem(key);
-      // currentValue = await AsyncStorage.getItem(key);
-      // console.log("valor q llega de getItem",currentValue)
-      if(currentValue!==null){
-        // console.log("Entro diferente de null??",currentValue)
+      // let currentValue = await AsyncStorage.getItem(llaveUser);
+      currentValue = await AsyncStorage.getItem(key);
+      // console.log("danole al try",currentValue)
+      let parsedValue;
+      if(currentValue!=null){
+            try {
+              parsedValue = JSON.parse(currentValue);
+              console.log("viendo q se parsea,",parsedValue);
+            } catch (error) {
+              console.log(`Error al analizar el valor para la clave ${key}:`, error);
+              parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
+            }
         
-        return currentValue; // Devuelve el valor actual, incluso si es null
+        return parsedValue; // Devuelve el valor actual, incluso si es null
      
-     }
+     }else
+     return 'vacio'
     } catch (error) {
-      console.log('Error al obtener el item   -Z:', error);
+      console.log('Error al obtener el item -->:', error);
         return null; // Devuelve null en caso de error
     }
   };

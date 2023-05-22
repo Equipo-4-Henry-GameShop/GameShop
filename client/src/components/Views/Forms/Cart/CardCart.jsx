@@ -29,6 +29,7 @@ import { LocalizationContext } from '../../../Languaje/LocalizationContext';
       removeItem(cartKEy)
       dispatch(updateCart());
     }; 
+    // console.log("asi llega img", img)
   return (
     
     <View key={id} style={[styles.cartItem, {backgroundColor:StringsDark.tabActive,shadowColor:StringsDark.text}]}>

@@ -35,4 +35,13 @@ export const persons = [
     password: "123456",
     admin: false
   },
+  {
+    name: "David Velarde A",
+    user: "Davico84",
+    image:
+    "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg",
+    id: "sd456asd456",
+    password: "4321",
+    admin: "true"
+  },
 ];

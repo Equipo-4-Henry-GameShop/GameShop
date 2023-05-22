@@ -93,12 +93,14 @@ const MenuItems=({navigation})=>{
                onPress={()=> navigation.navigate('HomeScreen')}
             /> */}
             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Sign_in}
+              nombre= {StringsLanguaje.Register}
               onPress={()=> navigation.navigate('CreateUser')}
+              icon="clipboard-outline"
             />
-                      <MenuButtonSubItem
+            <MenuButtonSubItem
               nombre= {StringsLanguaje.Login}
               onPress={()=> navigation.navigate('Login')}
+              icon="log-in-outline"
             />
 
 
