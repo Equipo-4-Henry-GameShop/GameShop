@@ -102,6 +102,7 @@ export const removeItem = async (key) => {
 
   //limpiar carrito
   export const cleanCart = async () => {
+    console.log("nota debo controlar q solo se borren los cart")
     try {
       await AsyncStorage.clear();
       console.log('Elementos eliminados exitosamente');
@@ -130,6 +131,7 @@ export const removeItem = async (key) => {
   };
   
   export const getKeysCount = async () => {
+    console.log("tb debo contar solo las claves CART")
     try {
       let allKeys = await AsyncStorage.getAllKeys();
       
@@ -144,4 +146,35 @@ export const removeItem = async (key) => {
     }
   };
   
+  // Obtener item en AsyncStorage
+  export const getItemAsyncStorage = async (key) => {
+    // console.log("el key q llega----->", key)
+    try {
+      let currentValue = await AsyncStorage.getItem(key);
+      // currentValue = await AsyncStorage.getItem(key);
+      // console.log("valor q llega de getItem",currentValue)
+      if(currentValue!==null){
+        // console.log("Entro diferente de null??",currentValue)
+        
+        return currentValue; // Devuelve el valor actual, incluso si es null
+     
+     }
+    } catch (error) {
+      console.log('Error al obtener el item   -Z:', error);
+        return null; // Devuelve null en caso de error
+    }
+  };
+
+
+    export const  InsertUserAsynStorage= async (key,objString) => {
+      try {           
+              await AsyncStorage.setItem(key, objString);
+              // Kawait AsyncStorage.setItem('item2', objString);
+              // console.log("llave agregada",objString)
+              alert('el item ha sido agregado')
+         
+      } catch (error) {
+        console.log("error al guardar objeto", error);
+      }
   
+    }

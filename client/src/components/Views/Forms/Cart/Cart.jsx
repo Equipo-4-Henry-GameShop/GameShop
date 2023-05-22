@@ -88,29 +88,26 @@ const Cart = ({navigation}) => {
   const getAllItems = async () => {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      const items = await AsyncStorage.multiGet(keys);
-  
-      const result = items.map(([key, value]) => {
-        let parsedValue;
-        
-        
-        if (key.substring(0,4)==='cart'){
-        console.log("aqui solo entran KEY CART ", key)
-        try {
-          parsedValue = JSON.parse(value);
-        } catch (error) {
-          console.log(`Error al analizar el valor para la clave ${key}:`, error);
-          parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
-        }
-  
-        return { key, value: parsedValue };
-        }
-      });
-  
-    //   console.log("get ALL estado de carrito", result);
-      setCarrito(result);
+      const filterKeys= keys.filter(el=>el.substring(0,4)==='cart')
+      // console.log("cantidade Filtrada",filterKeys)
+      const items = await AsyncStorage.multiGet(filterKeys);
+      //  console.log("cantidade de llaves", keys)
+        // console.log("cantidade de items", items)
+     const result = items.map(([key, value]) => {
+          let parsedValue;
+            try {
+              parsedValue = JSON.parse(value);
+            } catch (error) {
+              console.log(`Error al analizar el valor para la clave ${key}:`, error);
+              parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
+            }
+          return { key, value: parsedValue };
+          }
+      );
+    // //   console.log("get ALL estado de carrito", result);
+       setCarrito(result);
     } catch (error) {
-      console.log('Error al obtener los elementos:', error);
+      console.log(`Error al obtener los elementos: ---Z:`, error);
     }
   };
   
