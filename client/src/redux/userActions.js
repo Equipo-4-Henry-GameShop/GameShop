@@ -13,7 +13,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://gameshopback-pf-ek5y.onrender.com/user/${id}`,
+          `https://gameshop-production-e844.up.railway.app/user/${id}`,
           token
         );
   
@@ -35,7 +35,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://gameshopback-pf-ek5y.onrender.com/user/user?name=${name}`
+          `https://gameshop-production-e844.up.railway.app/user?name=${name}`
         );
   
         const dataUser = response.data;
@@ -56,7 +56,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const data = await axios.get(
-          `https://gameshopback-pf-ek5y.onrender.com/user`
+          `https://gameshop-production-e844.up.railway.app/user`
         );
   
         const dataUsers = data.data;
@@ -76,7 +76,7 @@ export const getUserByID = (id) => {
     const oldData = { ...newData };
     try {
       const response = await axios.put(
-        `https://gameshopback-pf-ek5y.onrender.com/uiser/update/${id}`,
+        `https://gameshop-production-e844.up.railway.app/user/update/${id}`,
         newData
       );
   
