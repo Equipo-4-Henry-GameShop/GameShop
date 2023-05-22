@@ -28,8 +28,9 @@ import { Formik } from "formik";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { logService } from "../../../services/ServiceLogin";
-
-
+import {getItemAsyncStorage,InsertUserAsynStorage,removeItem} from '../Forms/Cart/CardCartController'
+import { useFocusEffect } from '@react-navigation/native';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 export const Login = ({ navigation }) => {
   const {StringsDark,isDarkMode} = useContext(ThemeContext);
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
@@ -55,30 +56,94 @@ export const Login = ({ navigation }) => {
 
   const [session, setSession] = useState(null);
   const [user, setUser] = useState("");
+  const [logginUser, setLoggingUser] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
+  const [datauser, setDataUser]=useState({})
+  useEffect(() => {
+
+    const getUserStorage = async () => {
+      try {
+        const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
+        setLoggingUser(LoggedUserJSON)
+        // console.log("LoggedUserJSON:", logginUser);
+      } catch (error) {
+        console.log("Error al obtener las claves de AsyncStorage:", error);
+      }
+    }
+    getUserStorage();
+   
+    if (typeof(logginUser) !=='undefined') {
+      // console.log("que tengo logginUser",logginUser)
+
+      const parsedValue = JSON.parse(logginUser);
+      // console.log('Data parseada:',parsedValue)
+      setDataUser(parsedValue)
+      // console.log('Data parseada enes tado:',datauser)
+    }
+  }, [logginUser]);
+  
+    // console.log("longitud de login",typeof(logginUser))
+  if (typeof(logginUser)!=='undefined'){
+    
+     return (
+       <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
+        <View style={[styles.header,{backgroundColor:StringsDark.backgroundContainer}]}>
+            <Image
+                  style={styles.mario}
+                  source={require("../../../assets/gameShop-white-mario.png")}
+                >
+            </Image>
+        </View> 
+        <View style={styles.containerLogin}> 
+            <Image
+                  style={styles.perfil}
+                  source={{uri:datauser.image}}
+                >
+            </Image>
+            <TouchableOpacity style={[styles.miniButtonLogout,{backgroundColor:StringsDark.backgroundTittle}]} > 
+              <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
+        </View> 
+     </View>
+     )
+  }
 
   const handdleLogin = async (values) => {
+    // console.log("values recibido en hanndler", values)
     setUser(values.user);
     setPassword(values.password);
+    // console.log("que hay en estado user", values.user)
+    // console.log("que hay en estado password", values.password)
     try {
-      const user = await logService({
-        user,
-        password,
+      const userCredencials = await logService({
+        user: values.user, // Utiliza values.user en lugar de user
+        password: values.password, // Utiliza values.password en lugar de password
       });
+      console.log("data recibida del backHardCode",userCredencials)
+      if (typeof(userCredencials)!=="undefined"){
+        
+        console.log("Usuario Logeado con Exito")
 
-      window.localStorage.setItem("loggedGameShop", JSON.stringify(user));
-
-      setSession(session);
-      setUser("");
-      setPassword("");
-    } catch (error) {
+        InsertUserAsynStorage("loggedGameShop",JSON.stringify(userCredencials));
+        // setSession(session);? q hace?
+        setUser("");
+        setPassword("");
+        navigation.navigate("HomeScreen")
+      }else {
+     
+            console.log("no encontrado")
+            alert("Password NO Coincide")
+            return
+      }
+    } 
+    catch (error) {
       setErrorMsg(true);
       setTimeout(() => {
         setErrorMsg(false);
       }, 5000);
 
-      console.log(error);
+      console.log("aqui se rompio algo !!!!!",error);
     }
   };
 
@@ -158,7 +223,7 @@ export const Login = ({ navigation }) => {
                   <Text style={styles.error}>{errors.password}</Text>
                 )}
               </View>
-              <TouchableOpacity style={styles.miniButton} onPress={handleSubmit}>
+              <TouchableOpacity style={[styles.miniButton,]} onPress={handleSubmit}>
                 <Text style={styles.buttonText}>{StringsLanguaje.Login}</Text>
               </TouchableOpacity>
               {errorMsg && <Text>Incorrect user or password</Text>}
@@ -198,10 +263,18 @@ const styles = StyleSheet.create({
     // backgroundColor: color_azul,
     width: "100%",
   },
+ 
   mario: {
     margin: 10,
     height: 70,
     width: 310,
+  },
+  perfil: {
+    margin: 10,
+    height: 70,
+    width: 70,
+    borderRadius:20,
+    
   },
   container: {
     // backgroundColor: color_azul,
@@ -221,9 +294,9 @@ const styles = StyleSheet.create({
     borderColor: color_negro,
     backgroundColor: color_blanco,
     alignItems: "center",
-
     padding: 10,
   },
+  
   title: {
     margin: 24,
     fontSize: 24,
@@ -252,7 +325,18 @@ const styles = StyleSheet.create({
     height: "10%",
     width: "50%",
     padding: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
+    borderRadius: 8,
+  },
+  miniButtonLogout:{
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginTop: "80%",
+    height: "10%",
+    width: "50%",
+    padding: 0,
+     backgroundColor: color_azul,
     borderRadius: 8,
   },
   error: {
