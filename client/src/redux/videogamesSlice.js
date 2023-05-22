@@ -1,0 +1,132 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState={
+    videoGames:[],//280   -> action = ->80  -> rpg = 60 -> prev  =280
+    videoGames_Prev:[],//280 -> 280 = ->80
+    videoGame:[],
+    msgerror:"NULL",
+    flag_prev:false,
+    videoGame:[],
+
+    filteredVideoGames: [],
+    allGenres: [],
+
+
+    orderABC: "",
+    orderPrice:"",
+    orderRating:"",
+    FilterGenre:"",
+    platformState: "",
+
+
+    pagina:1,
+    porPagina:12,
+    input:1,
+    maximo:0,
+}
+export const videogamesSlice= createSlice({
+    name: "videogames",
+    initialState,
+    reducers:{//noc xq pero aqui es plural
+        getAllVideogames: (state,action)=>{
+            // console.log("lo q llega a reducer",action.payload)
+
+            state.videoGames= action.payload;
+            state.filteredVideoGames = action.payload;
+        },
+        getVideogamesbyName: (state,action)=>{
+            state.videoGames= action.payload;
+        },
+        setPrevVideoGame: (state,action)=>{
+            state.videoGames_Prev= action.payload;
+        },
+        getVideogamebyId: (state,action)=>{
+            state.videoGame=action.payload
+        },
+        setNextPage: (state,action)=>{
+            state.pagina=state.pagina +1 
+        },
+        setPrevPage: (state,action)=>{
+            state.pagina=state.pagina -1
+        },
+        setMaxPage : (state,action)=>{
+            state.pagina=action.payload
+        },
+        setFirstPage : (state,action)=>{
+            state.pagina=1
+        },
+        setFlaPrev: (state,action)=>{
+            state.flag_prev=action.payload
+        },
+        setPrevVideoGame:(state,action)=>{
+            state.videoGames_Prev=action.payload
+        },
+        updateVideogames:(state,action)=>{
+            state.videoGames=action.payload
+        },
+        setErrorMsg:(state,action)=>{
+            state.msgerror= action.payload
+        },
+
+        FilterByPriceDesc:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.orderPrice=action.payload
+        },
+        FilterByPriceAsc:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.orderPrice=action.payload
+
+            
+        },
+        FilterByRatingDesc:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.orderRating=action.payload
+        },
+        FilterByRatingAsc:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.orderRating=action.payload
+
+        },
+        FilterZtoA:(state,action)=>{
+
+            
+            state.filteredVideoGames = action.payload;
+            state.orderABC=action.payload
+        },
+        FilterAtoZ:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.orderABC=action.payload
+
+        },
+        FilterBYPlataform:(state,action)=>{
+            
+            state.filteredVideoGames = action.payload;
+            state.platformState=action.payload
+
+        },
+        AllGenresVideoGame:(state,action)=>{
+            state.allGenres=action.payload
+        },
+        FilterByGenre:(state,action)=>{
+
+            const filtered = typeof state.filteredVideoGames !== "string"
+            ? state.filteredVideoGames.filter((game) =>
+                game.genres.includes(action.payload)
+            )
+            : [];
+
+            state.filteredVideoGames = filtered;
+            state.FilterGenre=action.payload
+        }
+    }
+})
+
+export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,setErrorMsg,
+              setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
+              FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame}=videogamesSlice.actions
+export default videogamesSlice.reducer
