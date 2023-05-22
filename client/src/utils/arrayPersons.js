@@ -6,6 +6,7 @@ export const persons = [
       "https://img.europapress.es/fotoweb/fotonoticia_20150331134913-15031252329_420.jpg",
     id: "sd456asd456",
     password: "123456",
+    admin: true
   },
   {
     name: "Maira Aleandra Sanchez",
@@ -14,6 +15,7 @@ export const persons = [
       "https://img.europapress.es/fotoweb/fotonoticia_20150331134913-15031252319_420.jpg",
     id: "sd456asd456",
     password: "123456",
+    admin: false
   },
   {
     name: "Micaela Tutan Calvo",
@@ -22,6 +24,7 @@ export const persons = [
       "https://img.europapress.es/fotoweb/fotonoticia_20150331134913-15031252349_600.jpg",
     id: "sd456asd456",
     password: "123456",
+    admin: true
   },
   {
     name: "Jose Oscar Lara",
@@ -30,5 +33,6 @@ export const persons = [
       "https://modaellos.com/wp-content/uploads/2017/11/cortes-tipo-rostro-ovalado-istock.jpg",
     id: "sd456asd456",
     password: "123456",
+    admin: false
   },
 ];

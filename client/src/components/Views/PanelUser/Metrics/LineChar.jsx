@@ -1,68 +1,56 @@
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from "chart.js";
+import React from 'react';
+import { LineChart } from 'react-native-chart-kit';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
-
-let ventas = [0, 56, 20, 36, 80, 40, 10, 1,];
-let videogames = [
-  "Firewatch",
-  "The Witcher 3: Wild Hunt",
-  "Tomb Raider (2013)",
-  "The Elder Scrolls V: Skyrim",
-  "God of War (2018)",
-  "Terraria",
-  "Warframe",
-  "Grand ThefT Auto IV",
+const ventas = [0, 56, 20, 36, 80, 40, 10, 1];
+const videogames = [
+  'Firewatch',
+  'The Witcher 3: Wild Hunt',
+  'Tomb Raider (2013)',
+  'The Elder Scrolls V: Skyrim',
+  'God of War (2018)',
+  'Terraria',
+  'Warframe',
+  'Grand Theft Auto IV',
 ];
 
-var midata = {
+const midata = {
   labels: videogames,
   datasets: [
-    // Cada una de las líneas del gráfico
     {
-      label: "Beneficios",
       data: ventas,
-      tension: 0.5,
-      fill: true,
-      borderColor: "rgb (21, 101, 192)",
-      backgroundColor: "rgb (66, 165, 245)",
-      pointRadius: 5,
-      pointBorderColor: "rgb (0, 188, 212)",
-      pointBackgroundColor: "rgb (178, 235, 242)",
+      color: (opacity = 1) => `rgba(21, 101, 192, ${opacity})`,
+      strokeWidth: 2,
     },
   ],
 };
 
-var misoptions = {
-  scales: {
-    y: {
-      min: 0,
-    },
-    x: {
-      ticks: { color: "rgb (1, 87, 155)" },
+const misoptions = {
+  yAxisLabel: '$',
+  xAxisLabel: 'Video Games',
+  chartConfig: {
+    backgroundColor: '#ffffff',
+    backgroundGradientFrom: '#ffffff',
+    backgroundGradientTo: '#ffffff',
+    decimalPlaces: 0,
+    color: (opacity = 1) => `rgba(1, 87, 155, ${opacity})`,
+    style: {
+      borderRadius: 16,
     },
   },
 };
 
-export default function LinesChart() {
-  return <Line data={midata} options={misoptions} />;
-}
+const LinesChart = () => {
+  return (
+    <LineChart
+      data={midata}
+      width={300}
+      height={200}
+      yAxisLabel="$"
+      yAxisInterval={1}
+      chartConfig={misoptions.chartConfig}
+      bezier
+    />
+  );
+};
+
+export default LinesChart;

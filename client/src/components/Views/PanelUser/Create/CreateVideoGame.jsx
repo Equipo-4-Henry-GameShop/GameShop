@@ -20,7 +20,7 @@ import { validate } from "./components/Validate/CreateGameValidate";
 
 import { SelectList } from "react-native-dropdown-select-list";
 
-import { allGenres, allPlatforms } from "./components/dataFilteredgames";
+import { allGenres, allPlatforms, allTags } from "./components/dataFilteredgames";
 import { useState, useRef, useEffect } from "react";
 import {
   color_azul,
@@ -49,7 +49,7 @@ const CreateVideogame = ({navigation, route}) => {
   const [stackData, setStackData] = useState({
     platforms: allPlatforms,
     genre: allGenres,
-    tags: allGenres,
+    tags: allTags,
   });
   const [newVideoGame, setNewVideoGame] = useState({
     id: 1 + Math.floor(Math.random() * 999),
@@ -586,7 +586,7 @@ const CreateVideogame = ({navigation, route}) => {
               <SelectList
                 placeholder="Add tag"
                 setSelected={(val) => pushItemTag(val)}
-                data={stackData.platforms}
+                data={stackData.tags}
                 search={false}
               />
             </View>

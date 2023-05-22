@@ -43,6 +43,14 @@ export const Login = ({ navigation }) => {
       logService.setToken(user.token);
     }
   }, []);
+    // useEffect(() => {
+  //   const LoggedUserJSON = window.localStorage.getItem("loggedGameShop");
+  //   if (LoggedUserJSON) {
+  //     const user = JSON.parse(LoggedUserJSON);
+  //     setUser(user);
+  //     logService.setToken(user.token);
+  //   }
+  // }, []);
   const [token, setToken] = useState();
 
   const [session, setSession] = useState(null);
@@ -74,6 +82,12 @@ export const Login = ({ navigation }) => {
     }
   };
 
+  // const handdleLogout=()=>{
+
+  //   window.localStorage.setItem("loggedGameShop", JSON.stringify(user));
+
+  // }
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
     <Formik
@@ -98,7 +112,7 @@ export const Login = ({ navigation }) => {
         return errors;
       }}
       onSubmit ={handdleLogin}
-      >
+    >
       {({
         handleChange,
         handleBlur,
@@ -110,7 +124,7 @@ export const Login = ({ navigation }) => {
         onSubmit,
       }) => {
         return (
-          <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
+           <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
             <View style={[styles.header,{backgroundColor:StringsDark.backgroundContainer}]}>
               <Image
                 style={styles.mario}
