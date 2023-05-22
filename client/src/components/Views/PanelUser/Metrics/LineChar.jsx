@@ -4,16 +4,13 @@ import { Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
 
-const ventas = [0, 56, 20, 36, 80, 40, 10, 1];
+const ventas = [0, 56, 20, 36, 80];
 const videogames = [
   'Firewatch',
   'The Witcher 3: Wild Hunt',
   'Tomb Raider (2013)',
   'The Elder Scrolls V: Skyrim',
   'God of War (2018)',
-  'Terraria',
-  'Warframe',
-  'Grand Theft Auto IV',
 ];
 
 const midata = {
@@ -47,10 +44,11 @@ const LinesChart = () => {
     <LineChart
       data={midata}
       width={screenWidth}
-      height={200}
+      height={400}
       yAxisLabel="$"
       yAxisInterval={1}
       chartConfig={misoptions.chartConfig}
+      verticalLabelRotation={20}
       bezier
     />
   );
