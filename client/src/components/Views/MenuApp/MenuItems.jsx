@@ -45,7 +45,6 @@ const MenuItems=({navigation})=>{
   
           </View>
         </View>
-          
           <MenuBottonItem
             nombre= {StringsLanguaje.Landing}
             onPress={()=> navigation.navigate('Landing')}

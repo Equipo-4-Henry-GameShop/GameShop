@@ -104,8 +104,7 @@ return (
         
         ]}
         renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
-          <>  
-               
+          <>   
                 <CardHome data={item} navigation={navigation}  
                  ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>
           </>

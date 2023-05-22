@@ -75,7 +75,6 @@ export const amountSub = async (key, newValue) => {
               parsedValue.amount = newValue-1; // Aquí puedes realizar las modificaciones necesarias en el valor
               // Convertir el objeto modificado a una cadena de texto
               const updatedValue = JSON.stringify(parsedValue);
-        
               // Guardar la cadena de texto actualizada en AsyncStorage
               await AsyncStorage.setItem(key, updatedValue);
               console.log('Item modificado exitosamente');
@@ -84,6 +83,7 @@ export const amountSub = async (key, newValue) => {
           console.log('No se encontró un item para la clave especificada');
         }
       } catch (error) {
+        
         console.log('Error al modificar el item:', error);
       }
     };

@@ -36,7 +36,7 @@ export const persons = [
     admin: false
   },
   {
-    name: "David Velarde A",
+    name: "David Velarde Alvarado",
     user: "Davico84",
     image:
     "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg",
