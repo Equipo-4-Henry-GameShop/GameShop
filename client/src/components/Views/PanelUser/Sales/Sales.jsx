@@ -14,73 +14,58 @@ import {
   color_blanco,
   color_negro,
 } from "../../../../constants/Colors";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSales } from "../../../../redux/salesActions";
+import CardDataPanel from "../../../helpers/CardDataPanel";
+import arrayPersons from "../../../../utils/arrayPersons"
+import ExcelGenerator from "../../../helpers/ExcelGenerate";
 
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
 
 export const Sales = (props) => {
+  const dispatch = useDispatch();
+
+  const allSales = useSelector((state) => state.salesState);
+
+  const allgames = useSelector((state) => state.videogamesState);
+
+  console.log(allSales);
+
+  console.log(allgames);
+
+  useEffect(() => {
+    dispatch(getAllSales());
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Text>Sales History</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
-          }
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>User</Text>
-          </View>
+        <Text>Lista de ventas</Text>
+      </View>
+
+      <View>
+        <TouchableOpacity>
+          <CardDataPanel />
         </TouchableOpacity>
       </View>
-      <View style={styles.buttonContainer}>
+
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ExcelGenerator data={arrayPersons} fileName="archivo" />
+      </View>
+
+
+
+      {/* <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
-          }
+          onPress={() => console.log("Aqui se descarga excel")}
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Password</Text>
-          </View>
+          <Text style={styles.buttonText}>Descargar</Text>
         </TouchableOpacity>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
-          }
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Create Videogame</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
-          }
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Email</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            navigation.navigate("CreateVideogame", { name: "CreateVideogame" })
-          }
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Delete my account</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };

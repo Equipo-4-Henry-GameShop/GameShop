@@ -22,9 +22,17 @@ import {
 } from "../../../../constants/Colors";
 import axios from "axios";
 
+
+
 export const MyProfile = ({ navigation }) => {
   const [acceptTac, setAcceptTac] = useState(false);
   const [receibenewsLetter, setReceivenewsLetter] = useState(false);
+
+
+  useEffect((idUser)=>
+   axios.get(`https://gameshopback-pf-ek5y.onrender.com/user/${idUser}`)
+   .then
+  )
 
   const [image, setImage] = useState(
     "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
