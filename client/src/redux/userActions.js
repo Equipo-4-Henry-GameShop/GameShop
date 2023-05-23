@@ -13,8 +13,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://gameshop-production-e844.up.railway.app/user/${id}`,
-          token
+          `https://gameshop-production-e844.up.railway.app/user/${id}`
         );
   
         const dataUser = response.data;

@@ -87,7 +87,7 @@ return (
                                     nombre:el.name ,
                                     fecLan: el.releaseDate ? el.releaseDate : '2020-10-10',
                                     // screnshoots: el.screnshoots,
-                                    screenshoots:el.screenShots,
+                                    screenshoots:el.screenshots,
                                     informacion: el.description ? el.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat metus eget maximus scelerisque. Vivamus tempor eleifend nulla in placerat. Sed sollicitudin a odio a viverra. Morbi sagittis consequat erat at malesuada. Ut a ultrices risus. Suspendisse consectetur lectus elementum libero auctor venenatis. Ut semper arcu eu efficitur efficitur. Maecenas gravida mauris a porttitor congue. Suspendisse et neque eget quam blandit vehicula. Praesent interdum elementum lorem eget scelerisque. Nam vitae condimentum ipsum. Sed interdum eros dui, sit amet faucibus elit maximus at. Aenean eu posuere elit. In vitae diam at neque feugiat pharetra in sit amet nunc.',
                                     // informacion: el.description,
                                     rating: el.rating,

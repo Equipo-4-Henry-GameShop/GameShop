@@ -65,16 +65,9 @@ const MenuItems=({navigation})=>{
               onPress={()=> navigation.navigate('VideoGameList')}
               icon='pricetags'
             />
-             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Security}
-              onPress={()=> navigation.navigate('Security')}
-              icon='finger-print'
-            />
-             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Communications}
-              onPress={()=> navigation.navigate('Communications')}
-              icon='mic-circle'
-            />
+
+
+
              <MenuButtonSubItem
               nombre= {StringsLanguaje.MyPosts}
               onPress={()=> navigation.navigate('MyPosts')}
