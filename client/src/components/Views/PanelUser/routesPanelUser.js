@@ -11,6 +11,7 @@ import { MyVotes } from "./MyVotes/MyVotes";
 import CreateItem from "./Create/CrateItem";
 import { MyShoppings } from "./MyShoppings/MyShoppings";
 import LineChart from "./Metrics/LineChar";
+import BarChart from "./Metrics/BarChar"
 
 export {
   Dashboard,
@@ -26,4 +27,5 @@ export {
   CreateItem,
   MyVotes,
   LineChart,
+  BarChart,
 };

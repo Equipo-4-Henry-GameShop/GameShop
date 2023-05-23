@@ -18,6 +18,7 @@ import {
 import { persons } from "../../../../utils/arrayPersons";
 
 import LineChart from './LineChar';
+import BarChart from './BarChar';
 
 
 ////Acá podemos pasar como props los datos del usuarios para que este 
@@ -28,9 +29,11 @@ import LineChart from './LineChar';
 export const Metrics= (route) => {
   return (
     <View>
-      <Text> Ejemplo de grafico de ventas </Text>
+      <Text> Ejemplo de grafico de ventas: </Text>
       <LineChart/>
 
+      <Text> Ejemplo de grafico de rating: </Text>
+      <BarChart/>
     </View>
 
 )};

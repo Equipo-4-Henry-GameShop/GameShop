@@ -6,7 +6,7 @@ const screenWidth = Dimensions.get("window").width;
 
 const ventas = [0, 56, 20, 36, 80];
 const videogames = [
-  'Firewatch',
+  'Resident Evil 5',
   'The Witcher 3: Wild Hunt',
   'Tomb Raider (2013)',
   'The Elder Scrolls V: Skyrim',
@@ -36,6 +36,7 @@ const misoptions = {
     style: {
       borderRadius: 16,
     },
+    
   },
 };
 
