@@ -78,6 +78,7 @@ const Cart = ({navigation}) => {
     );
   };
 
+  
   const handlePress = () => {
     cleanCart();
     dispatch(updateCart());

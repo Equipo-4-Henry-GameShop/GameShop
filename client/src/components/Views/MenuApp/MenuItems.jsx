@@ -45,7 +45,6 @@ const MenuItems=({navigation})=>{
   
           </View>
         </View>
-          
           <MenuBottonItem
             nombre= {StringsLanguaje.Landing}
             onPress={()=> navigation.navigate('Landing')}
@@ -66,16 +65,9 @@ const MenuItems=({navigation})=>{
               onPress={()=> navigation.navigate('VideoGameList')}
               icon='pricetags'
             />
-             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Security}
-              onPress={()=> navigation.navigate('Security')}
-              icon='finger-print'
-            />
-             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Communications}
-              onPress={()=> navigation.navigate('Communications')}
-              icon='mic-circle'
-            />
+
+
+
              <MenuButtonSubItem
               nombre= {StringsLanguaje.MyPosts}
               onPress={()=> navigation.navigate('MyPosts')}
@@ -93,12 +85,14 @@ const MenuItems=({navigation})=>{
                onPress={()=> navigation.navigate('HomeScreen')}
             /> */}
             <MenuButtonSubItem
-              nombre= {StringsLanguaje.Sign_in}
+              nombre= {StringsLanguaje.Register}
               onPress={()=> navigation.navigate('CreateUser')}
+              icon="clipboard-outline"
             />
-                      <MenuButtonSubItem
+            <MenuButtonSubItem
               nombre= {StringsLanguaje.Login}
               onPress={()=> navigation.navigate('Login')}
+              icon="log-in-outline"
             />
 
 

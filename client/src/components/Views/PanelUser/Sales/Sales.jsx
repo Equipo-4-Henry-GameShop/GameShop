@@ -18,7 +18,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSales } from "../../../../redux/salesActions";
 import CardDataPanel from "../../../helpers/CardDataPanel";
-import arrayPersons from "../../../../utils/arrayPersons"
+import {persons} from "../../../../utils/arrayPersons"
 import ExcelGenerator from "../../../helpers/ExcelGenerate";
 
 ////Acá podemos pasar como props los datos del usuarios para que este
@@ -27,7 +27,10 @@ import ExcelGenerator from "../../../helpers/ExcelGenerate";
 export const Sales = (props) => {
   const dispatch = useDispatch();
 
-  const allSales = useSelector((state) => state.salesState);
+
+  // const allSales = useSelector((state) => state.salesState);
+
+  const allSales = persons;
 
   const allgames = useSelector((state) => state.videogamesState);
 
@@ -48,12 +51,14 @@ export const Sales = (props) => {
 
       <View>
         <TouchableOpacity>
-          <CardDataPanel />
+          <CardDataPanel 
+          name={allSales.name}
+          />
         </TouchableOpacity>
       </View>
 
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ExcelGenerator data={arrayPersons} fileName="archivo" />
+        <ExcelGenerator  fileName="archivo" />
       </View>
 
 

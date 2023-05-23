@@ -13,8 +13,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://gameshop-production-e844.up.railway.app/user/${id}`,
-          token
+          `https://gameshop-production-e844.up.railway.app/user/${id}`
         );
   
         const dataUser = response.data;
@@ -35,7 +34,7 @@ export const getUserByID = (id) => {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://gameshop-production-e844.up.railway.app/user?name=${name}`
+          `https://gameshop-production-e844.up.railway.app/user?user=${name}`
         );
   
         const dataUser = response.data;
@@ -72,7 +71,7 @@ export const getUserByID = (id) => {
     };
   };
 
-  export const updateUsr = async (id, newData) => {
+  export const updateUser = async (id, newData) => {
     const oldData = { ...newData };
     try {
       const response = await axios.put(
@@ -101,20 +100,3 @@ export const getUserByID = (id) => {
     }
   };
 
-// Esta ruta ta rara... para mi es la misma q la de
-//traer users por nombre xD mejor consulto. No voy a trabajar al pedo...
-// const getGamesUser=(name)=>{{}
-// return async (dispatch) => {
-
-// const userhttps://gameshopback-pf-ek5y.onrender.com/user?name=${name}
-
-
-// }}
-
-//   // https://gameshopback-pf-ek5y.onrender.com/uiser/update/19710
-// //   updateuser: (state, action) =>{
-// //       state.dataUser = action.payload
-// //   },
-// //   gamesUser: (state,action) =>{
-// //       state.dataUser = action.payload
-// //   }
