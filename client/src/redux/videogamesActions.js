@@ -1,5 +1,5 @@
 import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,setErrorMsg,
-    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre} from "./videogamesSlice";
+    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre, FilterByAtoZDos, FilterByZtoADOS} from "./videogamesSlice";
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
 
@@ -87,17 +87,17 @@ export const updateVgames=(data)=>{
 }
 
 
-export const filterByAtoZ=()=>(dispatch)=>{
-    fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/asc')
-        .then((res)=>res.json())
-        .then((data)=>dispatch(FilterAtoZ(data)))
-}
+// export const filterByAtoZ=()=>(dispatch)=>{
+//     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/asc')
+//         .then((res)=>res.json())
+//         .then((data)=>dispatch(FilterAtoZ(data)))
+// }
 
-export const filterByZtoA=()=>(dispatch)=>{
-    fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/desc')
-        .then((res)=>res.json())
-        .then((data)=>dispatch(FilterZtoA(data)))
-}
+// export const filterByZtoA=()=>(dispatch)=>{
+//     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/desc')
+//         .then((res)=>res.json())
+//         .then((data)=>dispatch(FilterZtoA(data)))
+// }
 
 export const filterRatingAsc=()=>(dispatch)=>{
     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/ratmin')
@@ -140,5 +140,19 @@ export const GetallGenres=()=>(dispatch)=>{
 export const filterByGenre=(data)=>{
     return function(dispatch){
         dispatch(FilterByGenre(data))
+    }
+}
+
+filterByAtoZ
+
+export const filterByAtoZDOS=(data)=>{
+    return function(dispatch){
+        dispatch(FilterByAtoZDos(data))
+    }
+}
+
+export const filterByZtoADOS=(data)=>{
+    return function(dispatch){
+        dispatch(FilterByZtoADOS(data))
     }
 }

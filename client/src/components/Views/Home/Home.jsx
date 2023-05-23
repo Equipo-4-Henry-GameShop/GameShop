@@ -100,14 +100,14 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
 //   handlerFilterPriceg(ordPrice)
 // };
 
-// const Genres = allGenres?.foreach(e=>({
-//   label: e.name, 
-//   value: e.name
-// }))
+const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
+  label: e.name, 
+  value: e.name
+}))
 
 
 
-console.log(vGames.allGenres)
+// console.log(Genres)
 
     const handleChangeModal = ()=>{
       setView(!view);
@@ -216,7 +216,7 @@ console.log(vGames.allGenres)
               >
                 <View
                   style={{
-                    height:'48%',
+                    height:'70%',
                     width:'90%',
                     borderRadius:25,
                     borderBottomEndRadius:200,
@@ -225,7 +225,7 @@ console.log(vGames.allGenres)
                 >
                   <View
                     style={{
-                      height: 45,
+                      height: 40,
                       width: '100%',
                       flexDirection: 'row',
                       justifyContent: 'flex-end',
@@ -364,7 +364,7 @@ console.log(vGames.allGenres)
                         }}
                         
                       />
-                      <TouchableOpacity
+                      {/* <TouchableOpacity
                           onPress={hanlderCleanFilter}
                           style={{
                             backgroundColor: '5856D6',
@@ -374,7 +374,7 @@ console.log(vGames.allGenres)
                           }}
                         >
                           <Text style={{ color: '#FFFFFF' }}>Clean Filter</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                       
                     </View>
                 </View>
