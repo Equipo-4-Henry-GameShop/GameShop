@@ -10,8 +10,8 @@ import { Sales } from "./Sales/Sales";
 import { MyVotes } from "./MyVotes/MyVotes";
 import CreateItem from "./Create/CrateItem";
 import { MyShoppings } from "./MyShoppings/MyShoppings";
-import LineChart from "./Metrics/LineChar";
-import BarChart from "./Metrics/BarChar"
+import MyBezierLineChart from "./Metrics/LineChart";
+import MyBarChart from "./Metrics/BarChart"
 
 export {
   Dashboard,
@@ -26,6 +26,6 @@ export {
   UserList,
   CreateItem,
   MyVotes,
-  LineChart,
-  BarChart,
+  MyBezierLineChart,
+  MyBarChart,
 };

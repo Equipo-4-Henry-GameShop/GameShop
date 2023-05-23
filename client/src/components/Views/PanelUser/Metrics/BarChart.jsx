@@ -39,12 +39,12 @@ const options = {
   },
 };
 
-const BarrChart = () => {
+const MyBarChart = () => {
   return (
     <BarChart
       data={data}
       width={screenWidth}
-      height={200}
+      height={300}
       yAxisLabel=""
       chartConfig={options.chartConfig}
       verticalLabelRotation={20}
@@ -52,4 +52,4 @@ const BarrChart = () => {
   );
 };
 
-export default BarrChart;
+export default MyBarChart;
