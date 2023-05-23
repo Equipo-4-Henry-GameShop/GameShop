@@ -13,7 +13,7 @@ import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
 import { uploadImageAsync } from "../../../helpers/uploadImage";
 import * as ImagePicker from "expo-image-picker";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   color_azul,
   color_blanco,
@@ -21,59 +21,22 @@ import {
   color_negro,
 } from "../../../../constants/Colors";
 import axios from "axios";
-import { getUserByName, updateUser } from "../../../../redux/userActions";
-import { useDispatch, useSelector } from "react-redux";
-import { color_celeste } from "../../../Theme/stringsColors";
-
-export const MyProfile = ({ navigation }) => {
-  const [acceptTac, setAcceptTac] = useState(true);
-  const [receibenewsLetter, setReceivenewsLetter] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
-  const [dataUser, setDataUser] = useState(null);
-  const dispatch = useDispatch();
-  const dataUserdb = useSelector((state) => state.usersState.dataUser);
-
-  console.log(dataUser);
-  console.log(dataUserdb);
-  const getDataFromAsyncStorage = async () => {
-    try {
-      const data = await AsyncStorage.getItem("loggedGameShop");
-      if (data !== null) {
-        console.log("Valor almacenado en AsyncStorage:", data);
-        const parsedData = JSON.parse(data);
-        dispatch(getUserByName(parsedData.user)); // Despachar la acción antes de actualizar el estado
-        setDataUser(parsedData);
-        console.log(parsedData);
-
-        // Realiza las operaciones que necesites con los datos obtenidos
-        // ...
-
-        setIsLoading(false);
-      } else {
-        console.log("No se encontró ningún valor en AsyncStorage");
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.log("Error al acceder a AsyncStorage:", error);
-      setIsLoading(false);
-    }
-  };
-  
-  // const loadimage = ()=>{
-  //   setImage(dataUserdb[0].image)
-  // }
-  useEffect(() => {
-    getDataFromAsyncStorage();
-  }, []);
 
 
 
-  console.log(dataUserdb);
+export const EditMyProfile = ({ navigation }) => {
+  const [acceptTac, setAcceptTac] = useState(false);
+  const [receibenewsLetter, setReceivenewsLetter] = useState(false);
 
-const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/81763793-persona-usuario-icono-de-ilustraci%C3%B3n-de-amigo-vectror-aislado-sobre-fondo-gris.jpg'
 
-  const [image, setImage] = useState(!dataUserdb.length ? imageUser : dataUserdb[0].image);
+  useEffect((idUser)=>
+   axios.get(`https://gameshopback-pf-ek5y.onrender.com/user/${idUser}`)
+   .then
+  )
 
+  const [image, setImage] = useState(
+    "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
+  );
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -123,46 +86,114 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
     try {
       console.log(`Después del try ${userData}`);
 
-      updateUser(dataUserdb[0].id,{
-        user: userData.user,
-        password: userData.password,
-        fullname: userData.fullname,
-        email: userData.email,
-        date: userData.date,
-        phone: userData.phone,
-        tac: userData.tac,
-        newsLetter: userData.newsLetter,
-        id: dataUserdb[0].id,
-        userAdmin: userData.userAdmin,
-        image: userData.image,
-      });
+      const response = await axios.post(
+        "https://gameshop-production-e844.up.railway.app/user",
+        {
+          user: userData.user,
+          password: userData.password,
+          fullname: userData.fullname,
+          email: userData.email,
+          date: userData.date,
+          phone: userData.phone,
+          tac: userData.tac,
+          newsLetter: userData.newsLetter,
+          id: userData.id,
+          userAdmin: userData.userAdmin,
+          image: userData.image,
+        }
+      );
       console.log(`Respuesta del servidor:`, response.data);
 
-      Alert.alert("Data update!", "", [
-        {
-          text: "Go to home",
-          onPress: () => navigation.navigate("Home", { name: "Home" }),
-        },
-      ]);
+      Alert.alert(
+        'User Created!',
+        '',
+        [
+          {
+            text: 'Go to login',
+            onPress: () => navigation.navigate('Login', { name: 'Login' }),
+          },
+        ]
+      );
+            
     } catch (error) {
       console.log("Error en el backend:", error);
       Alert.alert("Auch...Something went wrong");
     }
   };
 
-  function convertirFecha(fecha) {
-    const fechaObjeto = new Date(fecha);
-    const dia = fechaObjeto.getDate().toString().padStart(2, "0");
-    const mes = (fechaObjeto.getMonth() + 1).toString().padStart(2, "0");
-    const anio = fechaObjeto.getFullYear().toString();
-    return `${dia}-${mes}-${anio}`;
-  }
-  if (!dataUserdb.length)
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
+  // const [userData, setUserData] = useState()
+
+  // const onSubmit = async (values) => {
+  //    setUserData({
+  //     ...values,
+  //     tac: acceptTac,
+  //     newsLetter: receibenewsLetter,
+  //     id: 1 + Math.floor(Math.random() * 999),
+  //     userAdmin: true,
+  //     image: image,
+  //   });
+
+  //   console.log(`Antes del try ${userData}`);
+
+  //   try {
+  //     console.log(`Después del try ${userData}`);
+
+  //     if (
+  //       userData.user === "" ||
+  //       userData.password === "" ||
+  //       userData.fullname === "" ||
+  //       userData.email === "" ||
+  //       userData.date === "" ||
+  //       userData.phone === "" ||
+  //       !userData.tac ||
+  //       !userData.newsLetter ||
+  //       userData.image === ""
+  //     ) {
+  //       setValidateSubmit(false);
+  //     } else {
+  //       const response = await axios.post("https://gameshop-production-e844.up.railway.app/user", {
+  //         user: userData.user,
+  //         password: userData.password,
+  //         fullname: userData.fullname,
+  //         email: userData.email,
+  //         date: userData.date,
+  //         phone: userData.phone,
+  //         tac: userData.tac,
+  //         newsLetter: userData.newsLetter,
+  //         id: userData.id,
+  //         userAdmin: userData.userAdmin,
+  //         image: userData.image,
+  //       });
+
+  //       Alert.alert("User Created!", [
+  //         {
+  //           text: "Go to login",
+  //           onPress: () => navigation.navigate("Login", { name: "Login" })},
+
+  //         setUserData({
+  //           user: "",
+  //           password: "",
+  //           fullname: "",
+  //           email: "",
+  //           date: "",
+  //           phone: "",
+  //           tac: false,
+  //           newsLetter: false,
+  //           id: "",
+  //           userAdmin: "",
+  //           image: "",
+  //         }),
+  //       ]);
+
+  //       console.log(`Respuesta del servidor:`, response.data);
+  //     }
+  //   } catch (error) {
+  //     Alert.alert("Auch...Something went wrong");
+  //     console.log("Error en el backend:", error);
+  //   }
+  // };
+
+
   return (
     <ScrollView>
       <View
@@ -175,7 +206,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
       >
         <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
           <Image
-            source={{ uri: image }}
+            source={{ uri: `${image}` }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
           />
         </TouchableOpacity>
@@ -190,31 +221,31 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
           date: "",
           phone: "",
         }}
-        // validate={(values) => {
-        //   // let errors = {};
-        //   // if (values.user) {
-        //   //   errors.user = "Modified value";
-        //   // }
-        //   // if (values.password) {
-        //   //   errors.password = "Modified value";
-        //   // }
-        //   // if (values.fullname) {
-        //   //   errors.fullname = "Modified value";
-        //   // }
-        //   // if (values.email) {
-        //   //   errors.email = "Modified value";
-        //   // } else if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-        //   //   errors.email = "Please enter a valid email address";
-        //   // }
-        //   // if (values.date) {
-        //   //   errors.date = "Modified value";
-        //   // }
-        //   // if (values.phone) {
-        //   //   errors.phone = "Modified value";
-        //   // }
+        validate={(values) => {
+          let errors = {};
+          if (!values.user) {
+            errors.user = "Please enter a user";
+          }
+          if (!values.password) {
+            errors.password = "Please enter a password";
+          }
+          if (!values.fullname) {
+            errors.fullname = "Please enter your full name";
+          }
+          if (!values.email) {
+            errors.email = "Please enter your email address";
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
+            errors.email = "Please enter a valid email address";
+          }
+          if (!values.date) {
+            errors.date = "Please enter your date of birth";
+          }
+          if (!values.phone) {
+            errors.phone = "Please enter your phone phone";
+          }
 
-        //   return errors;
-        // }}
+          return errors;
+        }}
         image={image}
         onSubmit={onSubmit}
       >
@@ -234,7 +265,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
                   <TextInput
                     style={styles.input}
                     value={values.user}
-                    placeholder={dataUserdb[0].user}
+                    placeholder="user"
                     onChangeText={handleChange("user")}
                     onBlur={handleBlur("user")}
                   />
@@ -247,66 +278,66 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
                   <TextInput
                     style={styles.input}
                     value={values.password}
-                    placeholder="••••••••••"
+                    placeholder="Password"
                     secureTextEntry
                     onChangeText={handleChange("password")}
                     onBlur={handleBlur("password")}
                   />
-                  {/* {errors.password && touched.password && (
+                  {errors.password && touched.password && (
                     <Text style={styles.error}>{errors.password}</Text>
-                  )} */}
+                  )}
                 </View>
 
                 <View>
                   <TextInput
                     style={styles.input}
                     value={values.fullname}
-                    placeholder={dataUserdb[0].fullname}
+                    placeholder="Full Name"
                     onChangeText={handleChange("fullname")}
                     onBlur={handleBlur("fullname")}
                   />
-                  {/* {errors.fullname && touched.fullname && (
+                  {errors.fullname && touched.fullname && (
                     <Text style={styles.error}>{errors.fullname}</Text>
-                  )} */}
+                  )}
                 </View>
 
                 <View>
                   <TextInput
                     style={styles.input}
                     value={values.email}
-                    placeholder={dataUserdb[0].email}
+                    placeholder="Email"
                     onChangeText={handleChange("email")}
                     onBlur={handleBlur("email")}
                   />
-                  {/* {errors.email && touched.email && (
+                  {errors.email && touched.email && (
                     <Text style={styles.error}>{errors.email}</Text>
-                  )} */}
+                  )}
                 </View>
 
                 <View>
                   <TextInput
                     style={styles.input}
                     value={values.date}
-                    placeholder={convertirFecha(dataUserdb[0].date)}
+                    placeholder="Date of Birth"
                     onChangeText={handleChange("date")}
                     onBlur={handleBlur("date")}
                   />
-                  {/* {errors.date && touched.date && (
+                  {errors.date && touched.date && (
                     <Text style={styles.error}>{errors.date}</Text>
-                  )} */}
+                  )}
                 </View>
 
                 <View>
                   <TextInput
                     style={styles.input}
                     value={values.phone}
-                    placeholder={dataUserdb[0].phone}
+                    placeholder="Phone"
                     onChangeText={handleChange("phone")}
                     onBlur={handleBlur("phone")}
                   />
-                  {/* {errors.phone && touched.phone && (
+                  {errors.phone && touched.phone && (
                     <Text style={styles.error}>{errors.phone}</Text>
-                  )} */}
+                  )}
                 </View>
 
                 <View style={styles.boxcontainercheckbox}>
@@ -359,6 +390,7 @@ const styles = StyleSheet.create({
     backgroundColor: color_azul,
     width: "100%",
   },
+
 
   container: {
     marginTop: 0,
@@ -424,7 +456,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: -15,
     fontSize: 14,
-    color: color_celeste,
+    color: "red",
     fontWeight: "bold",
   },
   buttonText: {
@@ -464,3 +496,4 @@ const styles = StyleSheet.create({
     margin: 8,
   },
 });
+

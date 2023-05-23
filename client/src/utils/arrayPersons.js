@@ -44,4 +44,13 @@ export const persons = [
     password: "4321",
     admin: "true"
   },
+  {
+    name: "Leandro Brangi",
+    user: "Leandro",
+    image:
+    "https://asset.cloudinary.com/deamondhero/69ed95600900b12861a4bfb4a463b9ff",
+    id: "784",
+    password: "123456",
+    admin: "true"
+  },
 ];

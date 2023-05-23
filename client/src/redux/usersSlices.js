@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  dataUser: [],
+  dataUser: {},
   allUsers: [],
   gamesUser: [],
   usrMsgErr: "",

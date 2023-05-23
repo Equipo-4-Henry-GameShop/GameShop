@@ -100,7 +100,7 @@ return (
                                     // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
                     })   
-          },
+          }, 
         
         ]}
         renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
