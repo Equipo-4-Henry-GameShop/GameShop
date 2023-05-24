@@ -5,7 +5,10 @@
   import { useEffect } from 'react'
   import React, { useState } from 'react';
 
-  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre } from "../../../redux/videogamesActions"
+  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre, 
+  
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS, filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatform 
+  } from "../../../redux/videogamesActions"
 
   import {createNativeStackNavigator} from '@react-navigation/native-stack';
   import CardHome from './CardHome';
@@ -107,7 +110,7 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
 
 
 
-// console.log(Genres)
+console.log(Genres)
 
     const handleChangeModal = ()=>{
       setView(!view);
@@ -118,11 +121,11 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
       console.log(filterType)
       if (filterType === 'AtoZ') {
     
-        dispatch(filterByAtoZ())
+        dispatch(filterByAtoZDOS())
     
       }else{
       
-        dispatch(filterByZtoA())
+        dispatch(filterByZtoADOS())
     
       }
     };
@@ -133,11 +136,11 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
       console.log(filterType)
       if (filterType === 'ratingASC') {
     
-        dispatch(filterRatingAsc())
+        dispatch(filterByRatingAscDOS())
     
       }else{
       
-        dispatch(filterRatingDesc())
+        dispatch(filterByRatingDescDOS())
     
       }
     }
@@ -146,11 +149,11 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
       console.log(filterType)
       if (filterType === 'priceASC') {
     
-        dispatch(filterPriceAsc())
+        dispatch(filterByPriceAscDOS())
     
       }else{
       
-        dispatch(filterPriceDesc())
+        dispatch(filterByPriceDescDOS())
     
       }
     }
@@ -158,9 +161,9 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
     const handleFilterGenre= (data)=>{
       dispatch(filterByGenre(data));
     }
-    // const hanlderCleanFilter = ()=>{
-    //   dispatch(getAllVideogames())
-    // }
+    const handlerFilterByPlatform = (data)=>{
+      dispatch(filterByPlatform(data))
+    }
 
     const NextPage=()=>{
       if(maximo===pagina){
@@ -268,6 +271,7 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
                           onChange={item => {
                             // setValue(item.value);
                             setIsFocus(false);
+                            handlerFilterByPlatform(item.value)
                             
                           }}
                           
@@ -360,7 +364,7 @@ const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
                         onChange={item => {
                           // setValue(item.value);
                           setIsFocus(false);
-                          // handleFilterGenre(item.value);
+                           handleFilterGenre(item.value);
                         }}
                         
                       />

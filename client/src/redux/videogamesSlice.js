@@ -178,26 +178,41 @@ export const videogamesSlice= createSlice({
             state.platformState=action.payload
 
         },
+
+
+        FilterByPlatformDOS:(state,action)=>{
+            // const filtered =
+            // typeof state.filteredVideoGames !== "string"
+            //     ? state.filteredVideoGames.filter((game) =>
+            //         game.platforms.toLowerCase().includes(action.payload)
+            //     )
+            //     : [];
+            // state.filteredVideoGames = filtered;
+            // state.platformState=action.payload
+
+        },
+
         AllGenresVideoGame:(state,action)=>{
             state.allGenres=action.payload
         },
         FilterByGenre:(state,action)=>{
+            const filtered=[]
+            for(const i of state.filteredVideoGames){
+              if(i['genre'].includes(action.payload)){
+                filtered.push(i)
+              }
+            }
+            console.log(filtered)
 
-            const filtered = typeof state.filteredVideoGames !== "string"
-            ? state.filteredVideoGames.filter((game) =>
-                game.genres.includes(action.payload)
-            )
-            : [];
-
-            state.filteredVideoGames = filtered;
-            state.FilterGenre=action.payload
-        }
+      state.filteredVideoGames = filtered
+    //   state.filterGenre = action.payload;  
+     }
     }
 })
 
 export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,setErrorMsg,
               setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
-              FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame,
+              FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame, FilterByGenre,
             
               FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS
             }=videogamesSlice.actions
