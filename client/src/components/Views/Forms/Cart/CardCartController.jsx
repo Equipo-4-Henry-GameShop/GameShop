@@ -135,9 +135,9 @@ export const removeItem = async (key) => {
     try {
       let allKeys = await AsyncStorage.getAllKeys();
       allKeys = await AsyncStorage.getAllKeys();
-      console.log("Todas las claves:", allKeys);
+      // console.log("Todas las claves:", allKeys);
       const filteredKeys = allKeys.filter((el) => el.substring(0,4)=== 'cart');
-      console.log("Claves filtradas:", filteredKeys);
+      console.log("Claves filtradas Carrito:", filteredKeys);
       let keysCount = filteredKeys.length;
       //  console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
       //  console.log("Cantidad DESDE FX filteredKeysT:", filteredKeys.length);

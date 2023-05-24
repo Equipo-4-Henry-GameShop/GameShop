@@ -71,6 +71,7 @@ import { Login } from "./src/components/Views/Login/Login";
 const Drawer = createDrawerNavigator();
 //esta linea debo de llamar en cada componente
 import Pasarella from './src/components/Views/Forms/Cart/Pasarella';
+import { StripeProvider } from "@stripe/stripe-react-native";
 export default function App() {
   // axios.defaults.baseURL = "https://gameshopback-pf-ek5y.onrender.com/"
   axios.defaults.baseURL = "https://gameshop-production-e844.up.railway.app/";
@@ -79,6 +80,7 @@ export default function App() {
     <>
       <LocalizationProvider>
         <ThemeProvider>
+        <StripeProvider publishableKey="pk_test_51N7eXtIEe9GBUqtLHqAuwlTor3giWSzd60ooicGwoYQysemKeOM288y3908V2pTq2KCwBkYotvhMnRRPQ2WStRLZ00SfULJJhC"/>
           <Provider store={store}>
             <NavigationContainer>
               <Drawer.Navigator
