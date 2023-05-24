@@ -5,9 +5,9 @@
   import { useEffect } from 'react'
   import React, { useState } from 'react';
 
-  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre, 
+  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre,filterByPlatform, 
   
-    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS, filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatform 
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS, filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatformDOS
   } from "../../../redux/videogamesActions"
 
   import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -162,7 +162,7 @@ console.log(Genres)
       dispatch(filterByGenre(data));
     }
     const handlerFilterByPlatform = (data)=>{
-      dispatch(filterByPlatform(data))
+      dispatch(filterByPlatformDOS(data))
     }
 
     const NextPage=()=>{

@@ -181,24 +181,22 @@ export const videogamesSlice= createSlice({
 
 
         FilterByPlatformDOS:(state,action)=>{
-            // const filtered =
-            // typeof state.filteredVideoGames !== "string"
-            //     ? state.filteredVideoGames.filter((game) =>
-            //         game.platforms.toLowerCase().includes(action.payload)
-            //     )
-            //     : [];
-            // state.filteredVideoGames = filtered;
-            // state.platformState=action.payload
+        //   console.log('My action', state.filteredVideoGames)
             const filtered=[]
             for(const i of state.filteredVideoGames){
-              if(i['platforms'].includes(action.payload)){
+
+            i['platforms'].forEach(element => {
+                if(element.toLowerCase().includes(action.payload.toLowerCase())){
                 filtered.push(i)
-              }
             }
-            console.log(filtered)
+            });
+            
+            }
+
+            
 
       state.filteredVideoGames = filtered
-
+            
         },
 
         AllGenresVideoGame:(state,action)=>{
@@ -212,7 +210,7 @@ export const videogamesSlice= createSlice({
               }
             }
             console.log(filtered)
-
+            console.log(state.filteredVideoGames)
       state.filteredVideoGames = filtered
     //   state.filterGenre = action.payload;  
      }
