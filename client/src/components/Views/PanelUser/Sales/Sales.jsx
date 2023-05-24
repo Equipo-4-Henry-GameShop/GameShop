@@ -14,12 +14,13 @@ import {
   color_blanco,
   color_negro,
 } from "../../../../constants/Colors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSales } from "../../../../redux/salesActions";
-import CardDataPanel from "../../../helpers/CardDataPanel";
-import {persons} from "../../../../utils/arrayPersons"
+import CardDataBuy from "../../../helpers/CardDataBuy";
+import { persons } from "../../../../utils/arrayPersons";
 import ExcelGenerator from "../../../helpers/ExcelGenerate";
+import { getvideoGames } from "../../../../redux/videogamesActions";
 
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
@@ -27,21 +28,32 @@ import ExcelGenerator from "../../../helpers/ExcelGenerate";
 export const Sales = (props) => {
   const dispatch = useDispatch();
 
-
-  // const allSales = useSelector((state) => state.salesState);
-
-  const allSales = persons;
+  const allSales = useSelector((state) => state.salesState.allSales);
 
   const allgames = useSelector((state) => state.videogamesState);
-
-  console.log(allSales);
-
-  console.log(allgames);
 
   useEffect(() => {
     dispatch(getAllSales());
   }, []);
+  useEffect(() => {
+    dispatch(getvideoGames());
+  }, []);
 
+  console.log(allSales.allSales);
+
+  console.log(allgames);
+
+  const [aprobed, setAprobed] = useState();
+
+
+  const [noAprobed, setNoAprobed] = useState();
+
+  if (!allSales.length) {
+  return (
+    <View>
+      <Text>Loading...</Text>
+    </View>
+    );}else{
   return (
     <View style={styles.container}>
       <Text>Sales History</Text>
@@ -50,18 +62,24 @@ export const Sales = (props) => {
       </View>
 
       <View>
-        <TouchableOpacity>
-          <CardDataPanel 
-          name={allSales.name}
-          />
-        </TouchableOpacity>
+        <View>
+          {
+            allSales.map((s) => {
+              console.log(s)
+              return (
+                <View key={s.id}>
+                  <TouchableOpacity>
+                    <CardDataBuy id={s.id} user={s.user.fullname} image={s.image} Quabtity={s.items.reduce((sum, item) => sum + item.quantity, 0)} date={s.date}/>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+        </View>
       </View>
 
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ExcelGenerator  fileName="archivo" />
+        <ExcelGenerator fileName="archivo" />
       </View>
-
-
 
       {/* <View style={styles.buttonContainer}>
         <TouchableOpacity
@@ -73,6 +91,7 @@ export const Sales = (props) => {
       </View> */}
     </View>
   );
+}
 };
 
 const styles = StyleSheet.create({

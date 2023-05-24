@@ -119,23 +119,33 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
     };
 
     console.log(`Antes del try ${userData}`);
+    const objupdatedUser = {};
 
+    // Verifica cada propiedad y agrega solo las que no sean nulas
+    if (userData.user) objupdatedUser.user = userData.user;
+    if (userData.fullname) objupdatedUser.fullname = userData.fullname;
+    if (userData.password) objupdatedUser.password = userData.password;
+    if (userData.userAdmin) objupdatedUser.userAdmin = userData.userAdmin;
+    if (userData.email) objupdatedUser.email = userData.email;
+    if (userData.date) objupdatedUser.date = userData.date;
+    if (userData.image) objupdatedUser.image = userData.image;
+    if (userData.phone) objupdatedUser.phone = userData.phone;
+    if (userData.tac) objupdatedUser.tac = userData.tac;
+    if (userData.newsLetter) objupdatedUser.newsLetter = userData.newsLetter;
+    objupdatedUser.id= dataUserdb[0].id 
+
+
+    console.log(objupdatedUser)
     try {
       console.log(`Después del try ${userData}`);
+      console.log(objupdatedUser)
 
-      updateUser(dataUserdb[0].id,{
-        user: userData.user,
-        password: userData.password,
-        fullname: userData.fullname,
-        email: userData.email,
-        date: userData.date,
-        phone: userData.phone,
-        tac: userData.tac,
-        newsLetter: userData.newsLetter,
-        id: dataUserdb[0].id,
-        userAdmin: userData.userAdmin,
-        image: userData.image,
-      });
+
+      updateUser(objupdatedUser);
+
+
+
+
       console.log(`Respuesta del servidor:`, response.data);
 
       Alert.alert("Data update!", "", [
@@ -145,7 +155,8 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
         },
       ]);
     } catch (error) {
-      console.log("Error en el backend:", error);
+
+      console.log(`Error en el backend:, ${error},data enviada  ${objupdatedUser}`);
       Alert.alert("Auch...Something went wrong");
     }
   };

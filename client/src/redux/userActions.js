@@ -9,6 +9,8 @@ import {
   setUserLogging,
 } from "./usersSlices";
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export const getUserByID = (id) => {
     return async (dispatch) => {
@@ -72,32 +74,52 @@ export const getUserByID = (id) => {
     };
   };
 
-  export const updateUser = async (id, newData) => {
+
+
+  export const updateUser = async (newData) => {
     const oldData = { ...newData };
     try {
       const response = await axios.put(
-        `https://gameshop-production-e844.up.railway.app/user/update/${id}`,
+        'https://gameshop-production-e844.up.railway.app/user/update',
         newData
       );
   
       const changedFields = [];
+      console.log(response);
       for (const key in newData) {
         if (oldData[key] !== response.data[key]) {
           changedFields.push(key);
         }
       }
   
-      // Aquí se comparan los cambios
-      let message = "Was modified: ";
-      for (const field of changedFields) {
-        message += `${field}: ${oldData[field]} -> ${response.data[field]}, `;
-      }
-      message = message.slice(0, -2); // Eliminar la coma y el espacio al final
+      if (changedFields.length > 0) {
+        // Obtén los datos existentes del AsyncStorage
+        const storedData = await AsyncStorage.getItem('loggedGameShop');
+        if (storedData !== null) {
+          const parsedData = JSON.parse(storedData);
+          const updatedData = { ...parsedData };
   
-      Alert.alert("Changes made:", message);
-    } catch (err) {
+          console.log(changedFields)
+          // Actualiza las propiedades modificadas en el AsyncStorage
+          for (const field of changedFields) {
+            updatedData[field] = response.data[field];
+          }
+
+          let message = "Was modified: ";
+          for (const field of changedFields) {
+            message += `${field}: ${oldData[field]} -> ${response.data[field]}, `;
+          }
+          message = message.slice(0, -2); // Eliminar la coma y el espacio al final
+  
+          // Guarda los datos actualizados en el AsyncStorage
+          await AsyncStorage.setItem('loggedGameShop', JSON.stringify(updatedData));
+
+          Alert.alert(message)
+        }
+      }
+    } catch (error) {
       Alert.alert("Something went wrong", "error updating data");
       console.log("error updating data", err);
     }
   };
-//  export const setUserLogg()
+

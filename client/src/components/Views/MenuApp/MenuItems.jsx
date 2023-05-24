@@ -61,7 +61,7 @@ const MenuItems=({navigation})=>{
                   style={styles.imgmenu}
                   />
                   {
-                    isLogged ? 
+                   logginUser.image && isLogged ? 
                     <Image 
                       source={{uri:logginUser.image}}
                       
@@ -76,7 +76,7 @@ const MenuItems=({navigation})=>{
             </View>
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
-                    {isLogged ? `Bienvenido ${logginUser.name}` : StringsLanguaje.MsgUserNoRegister}
+                    {logginUser.name && isLogged ? `Bienvenido ${logginUser.name}` : StringsLanguaje.MsgUserNoRegister}
                     
                   </Text>
                   {!isLogged && (
