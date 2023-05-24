@@ -13,7 +13,7 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
-
+import {getItemAsyncStorage} from '../../Forms/Cart/CardCartController'
 
 const Cart = ({navigation}) => {
     const dispatch=useDispatch()
@@ -24,6 +24,12 @@ const Cart = ({navigation}) => {
     //linea para setear el lenguaje /obtener palabras de lenguaje
     const {  StringsDark,isDarkMode} = useContext(ThemeContext);
     const {StringsLanguaje ,locale}= useContext(LocalizationContext)
+    
+    const [isLogged, setIsLogged]=useState(false)
+    const [logginUser, setLoggingUser] = useState("");
+    const isLoggedGlobal =useSelector((state)=>state.usersState.isLogged)
+
+
     let acumulador = 0;
 
     useEffect(()=>{
@@ -41,7 +47,12 @@ const Cart = ({navigation}) => {
            getAllItems();
         }, [cartG])
       );
-
+useFocusEffect(
+        React.useCallback(() => {
+         getUserStorage()
+        },[isLoggedGlobal] )
+       //  [cartG]
+    );
   useEffect(() => {
     // console.log("entre una vez");
      removeItem('EXPO_CONSTANTS_INSTALLATION_ID');
@@ -78,23 +89,64 @@ const Cart = ({navigation}) => {
     );
   };
 
-  
+  const getUserStorage = async () => {
+    try {
+      const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
+      // console.log("variable LoggedUserJSON menu ITEMS->",LoggedUserJSON)
+      if(LoggedUserJSON !=='vacio'){
+      setLoggingUser(LoggedUserJSON);
+        setIsLogged(true) 
+        // console.log("Usuario Cargado correctamente menu ITEMS name->", logginUser.fullname);
+      }else {
+      setLoggingUser('vacio')
+        setIsLogged(false) 
+      }
+    } catch (error) {
+      console.log("Error al obtener la clave de  loggedGameShop:", error);
+    }
+  };
   const handlePress = () => {
     cleanCart();
     dispatch(updateCart());
   }; 
+
   const handlePasarellaPress = () => {
-    navigation.navigate('Pasarella');
+    const proceedWithPurchase = () => {
+      if (isLogged) {
+        navigation.navigate('Pasarella');
+      } else {
+        alert("Es necesario Regisrar inicio de Sesión")
+        navigation.navigate('Login');
+      }
+    };
+  
+    Alert.alert(
+      'Proceder con la compra',
+      '',
+      [
+        {
+          text: StringsLanguaje.optCancel,
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'OK',
+          onPress: proceedWithPurchase,
+        },
+      ],
+      { cancelable: false }
+    );
   };
+
+
   const getAllItems = async () => {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      console.log("esto obtengo en CART todas las llaves", keys)
+      // console.log("esto obtengo en CART todas las llaves", keys)
       const filterKeys= keys.filter(el=>el.substring(0,4)==='cart')
       // console.log("cantidade Filtrada",filterKeys)
       const items = await AsyncStorage.multiGet(filterKeys);
       // console.log("cantidade de llaves", keys)
-        // console.log("cantidade de items", items)
      const result = items.map(([key, value]) => {
           let parsedValue;
             try {
@@ -115,7 +167,7 @@ const Cart = ({navigation}) => {
   
 
   if (Carrito.length < 1) {
-     console.log("ya entre aqui pero x no sale nada->")
+    
     return (
       <View style={[styles.emptyCartContainer,{backgroundColor:StringsDark.btnPagar}]}>
         <Text style={[styles.emptyCart,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.emptycar}</Text>
@@ -127,12 +179,15 @@ const Cart = ({navigation}) => {
   return (
     <ScrollView style={[styles.cartContainer,{backgroundColor:StringsDark.tabInactive}]}>
       <View>
+      <Text style={[styles.cartSubTitle,{color:StringsDark.text}]}>
+                    {isLogged ? `${logginUser.fullname}` : StringsLanguaje.CartValidate}    
+                  </Text>
         <Text style={[styles.cartTitle,{color:StringsDark.text}]}>{StringsLanguaje.youtCart}</Text>
       </View>
       <View style={{backgroundColor:StringsDark.bktitle}}>
         {
             Carrito.map((el) => {
-                console.log("keyyy", el.key);
+                // console.log("keyyy", el.key);
                 return (  <CardCard key={el.key} llave={el.key} item={el.value}/> )
         })
         }
@@ -205,6 +260,12 @@ const styles = StyleSheet.create({
     },
     cartTitle: {
       fontSize: 22,
+      fontWeight: "bold",
+      marginHorizontal: 20,
+      marginVertical: 10,
+    },
+    cartSubTitle: {
+      fontSize: 16,
       fontWeight: "bold",
       marginHorizontal: 20,
       marginVertical: 10,
