@@ -17,34 +17,6 @@ import { ThemeContext } from '../../Theme/ThemeProvider';
 //linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import { useContext} from 'react';
-<<<<<<< HEAD
-import {
-  color_azul,
-  color_blanco,
-  color_gris,
-  color_negro,
-} from "../../Theme/stringsColors";
-import { persons } from "../../../utils/arrayPersons";
-import { Formik } from "formik";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { logService } from "../../../services/ServiceLogin";
-
-
-export const Login = ({ navigation }) => {
-  const {StringsDark,isDarkMode} = useContext(ThemeContext);
-  const {StringsLanguaje ,locale}= useContext(LocalizationContext)
-
-
-  useEffect(() => {
-    const LoggedUserJSON = window.localStorage.getItem("loggedGameShop");
-    if (LoggedUserJSON) {
-      const user = JSON.parse(LoggedUserJSON);
-      setUser(user);
-      logService.setToken(user.token);
-    }
-  }, []);
-=======
 // import {
 //   color_azul,
 //   color_blanco,
@@ -65,39 +37,10 @@ export const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const {StringsDark,isDarkMode} = useContext(ThemeContext);
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   const [token, setToken] = useState();
 
   const [session, setSession] = useState(null);
   const [user, setUser] = useState("");
-<<<<<<< HEAD
-  const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState(false);
-
-  const handdleLogin = async (values) => {
-    setUser(values.user);
-    setPassword(values.password);
-    try {
-      const user = await logService({
-        user,
-        password,
-      });
-
-      window.localStorage.setItem("loggedGameShop", JSON.stringify(user));
-
-      setSession(session);
-      setUser("");
-      setPassword("");
-    } catch (error) {
-      setErrorMsg(true);
-      setTimeout(() => {
-        setErrorMsg(false);
-      }, 5000);
-
-      console.log(error);
-    }
-  };
-=======
   const [logginUser, setLoggingUser] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState(false);
@@ -182,7 +125,6 @@ export const Login = ({ navigation }) => {
     // }
   };
 
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   return (
@@ -196,16 +138,10 @@ export const Login = ({ navigation }) => {
 
         if (!val.user) {
           errors.user = "Enter Username";
-<<<<<<< HEAD
-        } else if (!persons.some((e) => e.user.includes(val.user))) {
-          errors.user = "Username invalid";
-        }
-=======
         } 
         // else if (!persons.some((e) => e.user.includes(val.user))) {
         //   errors.user = "Username invalid";
         // }
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 
         if (!val.password) {
           errors.password = "Enter password";
@@ -215,11 +151,7 @@ export const Login = ({ navigation }) => {
         return errors;
       }}
       onSubmit ={handdleLogin}
-<<<<<<< HEAD
-      >
-=======
     >
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
       {({
         handleChange,
         handleBlur,
@@ -231,72 +163,13 @@ export const Login = ({ navigation }) => {
         onSubmit,
       }) => {
         return (
-<<<<<<< HEAD
-          <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
-=======
            <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
             <View style={[styles.header,{backgroundColor:StringsDark.backgroundContainer}]}>
               <Image
                 style={styles.mario}
                 source={require("../../../assets/gameShop-white-mario.png")}
               ></Image>
             </View>
-<<<<<<< HEAD
-            <View style={styles.containerLogin}>
-              <View>
-                <TextInput
-                  placeholder="Username"
-                  value={values.user}
-                  onChangeText={handleChange("user")}
-                  onBlur={handleBlur("user")}
-                  style={styles.input}
-                />
-                {errors.user && touched.user && (
-                  <Text style={styles.error}>{errors.user}</Text>
-                )}
-              </View>
-              <View>
-                <TextInput
-                  placeholder="Password"
-                  value={values.password}
-                  onChangeText={handleChange("password")}
-                  secureTextEntry={true}
-                  onBlur={handleBlur("password")}
-                  style={styles.input}
-                />
-                {/* <TouchableOpacity title={isPasswordVisible ? 'Hide Password' : 'Show Password'} onPress={() => setIsPasswordVisible(!isPasswordVisible)} /> */}
-                {errors.password && touched.password && (
-                  <Text style={styles.error}>{errors.password}</Text>
-                )}
-              </View>
-              <TouchableOpacity style={styles.miniButton} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>{StringsLanguaje.Login}</Text>
-              </TouchableOpacity>
-              {errorMsg && <Text>Incorrect user or password</Text>}
-              <TouchableOpacity
-                style={styles.miniButton}
-                onPress={() =>
-                  navigation.navigate("CreateUser", { name: "CreateUser" })
-                }
-              >
-                <Text style={styles.buttonText}>Register</Text>
-              </TouchableOpacity>
-              <View>
-                <Text>or</Text>
-              </View>
-              <View>
-                <Text>-------- Sign up with --------</Text>
-              </View>
-              <TouchableOpacity style={styles.buttonGoogle}>
-                <Image
-                  style={styles.imageGoogle}
-                  source={require("../../../assets/singinwhitgoogle.png")}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-=======
             <View style={[styles.containerLogin,{backgroundColor:StringsDark.tabInactive},{forecolor:StringsDark.bordercolor}]}>
               {logginUser ==='vacio' &&(
                     <View>
@@ -381,7 +254,6 @@ export const Login = ({ navigation }) => {
               )}
                         </View>
                 </View>
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
         );
       }}
     </Formik>
@@ -396,17 +268,12 @@ const styles = StyleSheet.create({
     // backgroundColor: color_azul,
     width: "100%",
   },
-<<<<<<< HEAD
-=======
  
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   mario: {
     margin: 10,
     height: 70,
     width: 310,
   },
-<<<<<<< HEAD
-=======
   perfil: {
      margin: 10,
     height: 150,
@@ -414,7 +281,6 @@ const styles = StyleSheet.create({
     borderRadius:100,
     
   },
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   container: {
     // backgroundColor: color_azul,
     height: "100%",
@@ -430,21 +296,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
     height: "85%",
-<<<<<<< HEAD
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
-    alignItems: "center",
-
-    padding: 10,
-  },
-=======
     // borderColor: color_negro,
     // backgroundColor: 'verde',
     alignItems: "center",
     padding: 10,
   },
   
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   title: {
     margin: 24,
     fontSize: 24,
@@ -456,11 +313,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 50,
     borderWidth: 2,
-<<<<<<< HEAD
-    borderColor: color_azul,
-=======
     // borderColor: color_azul,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     paddingHorizontal: 70,
     marginLeft: "2%",
     marginRight: "2%",
@@ -477,9 +330,6 @@ const styles = StyleSheet.create({
     height: "10%",
     width: "50%",
     padding: 0,
-<<<<<<< HEAD
-    backgroundColor: color_azul,
-=======
     // backgroundColor: color_azul,
     borderRadius: 8,
   },
@@ -492,7 +342,6 @@ const styles = StyleSheet.create({
     width: "50%",
     padding: 0,
     //  backgroundColor: color_azul,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     borderRadius: 8,
   },
   error: {
@@ -507,11 +356,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-<<<<<<< HEAD
-    color: color_blanco,
-=======
     // color: color_blanco,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   },
   buttonGoogle: {
     marginTop: "10%",
@@ -520,17 +365,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     borderRadius: 20,
-<<<<<<< HEAD
-=======
     // color:'red'
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   },
   imageGoogle: {
     height: 40,
     width: 250,
   },
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18

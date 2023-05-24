@@ -22,16 +22,6 @@ import {
 } from "../../../../constants/Colors";
 import axios from "axios";
 
-<<<<<<< HEAD
-const CreateUser = ({ navigation }) => {
-  const [acceptTac, setAcceptTac] = useState(false);
-  const [receibenewsLetter, setReceivenewsLetter] = useState(false);
-
-  const [image, setImage] = useState(
-    "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
-  );
-
-=======
 //Import Dark Mode:
 import { LocalizationContext } from "../../../Languaje/LocalizationContext";
 import { useContext } from "react";
@@ -63,7 +53,6 @@ const CreateUser = ({ navigation }) => {
     "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
   );
 
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -72,8 +61,6 @@ const CreateUser = ({ navigation }) => {
       aspect: [4, 4],
       quality: 0.5,
     });
-<<<<<<< HEAD
-=======
 
     console.log(result);
 
@@ -143,7 +130,6 @@ const CreateUser = ({ navigation }) => {
       Alert.alert("Auch...Something went wrong");
     }
   };
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 
     console.log(result);
 
@@ -300,16 +286,6 @@ const CreateUser = ({ navigation }) => {
   return (
     <ScrollView>
       <View
-<<<<<<< HEAD
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: color_azul,
-        }}
-      >
-        <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
-=======
         style={[
           styles.bgCont,
           { backgroundColor: StringsDark.backgroundContainer}
@@ -320,7 +296,6 @@ const CreateUser = ({ navigation }) => {
           style={[styles.ImageButton, { backgroundColor: StringsDark.tabInactive }]}
         >
           {/* {backgroundColor:StringsDark.letraverde} */}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
           <Image
             source={{ uri: `${image}` }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
@@ -374,14 +349,6 @@ const CreateUser = ({ navigation }) => {
           touched,
           image,
         }) => (
-<<<<<<< HEAD
-          <View>
-            <View style={styles.container}>
-              <View style={styles.containerLogin}>
-                <View>
-                  <TextInput
-                    style={styles.input}
-=======
           <View style={[{ backgroundColor: StringsDark.backgroundContainer}]}>
             <View style={[styles.container,
               { backgroundColor: StringsDark.backgroundColor }]}>
@@ -392,7 +359,6 @@ const CreateUser = ({ navigation }) => {
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.user}
                     placeholder="user"
                     onChangeText={handleChange("user")}
@@ -405,14 +371,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-<<<<<<< HEAD
-                    style={styles.input}
-=======
                     style={[
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.password}
                     placeholder="Password"
                     secureTextEntry
@@ -426,14 +388,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-<<<<<<< HEAD
-                    style={styles.input}
-=======
                     style={[
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.fullname}
                     placeholder="Full Name"
                     onChangeText={handleChange("fullname")}
@@ -446,14 +404,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-<<<<<<< HEAD
-                    style={styles.input}
-=======
                     style={[
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.email}
                     placeholder="Email"
                     onChangeText={handleChange("email")}
@@ -466,14 +420,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-<<<<<<< HEAD
-                    style={styles.input}
-=======
                     style={[
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.date}
                     placeholder="Date of Birth"
                     onChangeText={handleChange("date")}
@@ -486,14 +436,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-<<<<<<< HEAD
-                    style={styles.input}
-=======
                     style={[
                       styles.input,
                       { backgroundColor: StringsDark.titblanco },
                     ]}
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                     value={values.phone}
                     placeholder="Phone"
                     onChangeText={handleChange("phone")}
@@ -507,13 +453,6 @@ const CreateUser = ({ navigation }) => {
                 <View style={styles.boxcontainercheckbox}>
                   <View style={styles.checkboxSection}>
                     <Checkbox
-<<<<<<< HEAD
-                      style={styles.checkbox}
-                      value={acceptTac}
-                      onValueChange={setAcceptTac}
-                    />
-                    <Text style={styles.checkboxParagraph}>
-=======
                       style={[
                         styles.checkbox,
                         { backgroundColor: StringsDark.bordercolor },
@@ -527,20 +466,12 @@ const CreateUser = ({ navigation }) => {
                         { backgroundColor: StringsDark.bordercolor },
                       ]}
                     >
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                       I accept the Terms and Conditions
                     </Text>
                   </View>
 
                   <View style={styles.checkboxSection}>
                     <Checkbox
-<<<<<<< HEAD
-                      style={styles.checkbox}
-                      value={receibenewsLetter}
-                      onValueChange={setReceivenewsLetter}
-                    />
-                    <Text style={styles.checkboxParagraph}>
-=======
                       style={[
                         styles.checkbox,
                         { backgroundColor: StringsDark.bordercolor },
@@ -554,7 +485,6 @@ const CreateUser = ({ navigation }) => {
                         { backgroundColor: StringsDark.bordercolor },
                       ]}
                     >
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                       I want to receive the newsLetter
                     </Text>
                   </View>
@@ -563,12 +493,6 @@ const CreateUser = ({ navigation }) => {
 
               <View style={styles.submitContainer}>
                 <TouchableOpacity
-<<<<<<< HEAD
-                  style={styles.miniButton}
-                  onPress={handleSubmit}
-                >
-                  <Text style={styles.buttonText}>Submit</Text>
-=======
                   style={[
                     styles.miniButton,
                     { backgroundColor: StringsDark.bordercolor },
@@ -583,7 +507,6 @@ const CreateUser = ({ navigation }) => {
                   >
                     Submit
                   </Text>
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                 </TouchableOpacity>
               </View>
             </View>
@@ -600,12 +523,6 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
-<<<<<<< HEAD
-    backgroundColor: color_azul,
-    width: "100%",
-  },
-
-=======
     // backgroundColor: color_azul,
     width: "100%",
   },
@@ -617,7 +534,6 @@ const styles = StyleSheet.create({
     // backgroundColor: color_azul,
   },
 
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   mario: {
     margin: 10,
     height: 70,
@@ -626,11 +542,7 @@ const styles = StyleSheet.create({
 
   container: {
     marginTop: 0,
-<<<<<<< HEAD
-    backgroundColor: color_azul,
-=======
     // backgroundColor: color_azul,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     height: "120%",
     alignItems: "center",
     alignContent: "center",
@@ -643,13 +555,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
 
-<<<<<<< HEAD
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
-=======
     // borderColor: color_negro,
     // backgroundColor: color_blanco,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     padding: 10,
   },
 
@@ -657,21 +564,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 35,
     borderWidth: 2,
-<<<<<<< HEAD
-    borderColor: color_azul,
-    paddingHorizontal: 70,
-    marginLeft: "2%",
-    marginRight: "2%",
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
-=======
     // borderColor: color_azul,
     paddingHorizontal: 70,
     marginLeft: "2%",
     marginRight: "2%",
     // borderColor: "#ddd",
     // backgroundColor: "#fff",
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     marginBottom: 15,
     borderRadius: 8,
   },
@@ -687,11 +585,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     padding: 0,
-<<<<<<< HEAD
-    backgroundColor: color_blanco,
-=======
     // backgroundColor: color_blanco,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     borderRadius: 125,
   },
   miniButton: {
@@ -703,11 +597,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: "50%",
     padding: 0,
-<<<<<<< HEAD
-    backgroundColor: color_azul,
-=======
     // backgroundColor: color_azul,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     borderRadius: 8,
   },
   error: {
@@ -722,11 +612,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-<<<<<<< HEAD
-    color: color_blanco,
-=======
     // color: color_blanco,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   },
   buttonGoogle: {
     marginTop: "10%",
@@ -751,11 +637,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxParagraph: {
-<<<<<<< HEAD
-    color: color_negro,
-=======
     // color: color_negro,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
     fontSize: 12,
   },
   checkbox: {

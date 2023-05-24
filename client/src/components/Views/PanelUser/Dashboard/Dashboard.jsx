@@ -138,8 +138,6 @@ export const Dashboard = ({navigation, route}) => {
         </TouchableOpacity>
       </View>
 
-<<<<<<< HEAD
-=======
       <View style={styles.buttonContainer}>
         <TouchableOpacity  style={styles.button}
           onPress={() =>
@@ -152,7 +150,6 @@ export const Dashboard = ({navigation, route}) => {
         </TouchableOpacity>
       </View>
 
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
       </View>
     
   );
