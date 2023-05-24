@@ -131,16 +131,16 @@ export const removeItem = async (key) => {
   };
   
   export const getKeysCount = async () => {
-    console.log("tb debo contar solo las claves CART")
+    // console.log("tb debo contar solo las claves CART")
     try {
       let allKeys = await AsyncStorage.getAllKeys();
       allKeys = await AsyncStorage.getAllKeys();
-      console.log("todas las clave",allKeys)
-      const filteredKeys = allKeys.filter((el) => el !== 'loggedGameShop')
-      console.log("valor claves actualizado",allKeys)
-      //  console.log(allKeys)
-      let keysCount = allKeys.length;
-      // console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      console.log("Todas las claves:", allKeys);
+      const filteredKeys = allKeys.filter((el) => el.substring(0,4)=== 'cart');
+      console.log("Claves filtradas:", filteredKeys);
+      let keysCount = filteredKeys.length;
+      //  console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      //  console.log("Cantidad DESDE FX filteredKeysT:", filteredKeys.length);
       return keysCount;
     } catch (error) {
       console.log("Error al obtener las claves de AsyncStorage???:", error);
@@ -159,7 +159,7 @@ export const removeItem = async (key) => {
       if(currentValue!=null){
             try {
               parsedValue = JSON.parse(currentValue);
-              console.log("viendo q se parsea,",parsedValue);
+              // console.log("viendo q se parsea,",parsedValue);
             } catch (error) {
               console.log(`Error al analizar el valor para la clave ${key}:`, error);
               parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
@@ -181,7 +181,7 @@ export const removeItem = async (key) => {
               await AsyncStorage.setItem(key, objString);
               // Kawait AsyncStorage.setItem('item2', objString);
               // console.log("llave agregada",objString)
-              alert('el item ha sido agregado')
+              console.log('Usuario Logeado correctamente')
          
       } catch (error) {
         console.log("error al guardar objeto", error);

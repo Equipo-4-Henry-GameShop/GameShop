@@ -26,13 +26,15 @@ import { useContext} from 'react';
 import { persons } from "../../../utils/arrayPersons";
 import { Formik } from "formik";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { logService } from "../../../services/ServiceLogin";
 import {getItemAsyncStorage,InsertUserAsynStorage,removeItem} from '../Forms/Cart/CardCartController'
 import { useFocusEffect } from '@react-navigation/native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import {setUserLogging} from '../../../redux/usersSlices'
+import { useDispatch } from "react-redux";
 export const Login = ({ navigation }) => {
 
+  const dispatch = useDispatch();
   const {StringsDark,isDarkMode} = useContext(ThemeContext);
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
   const [token, setToken] = useState();
@@ -53,6 +55,7 @@ export const Login = ({ navigation }) => {
     })
 
   }, [isDarkMode,locale]);
+  
   useEffect(() => {
    
     getUserStorage();
@@ -62,21 +65,28 @@ export const Login = ({ navigation }) => {
     try {
       const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
       console.log("variable LoggedUserJSON->",LoggedUserJSON)
-      if(LoggedUserJSON){
+      if(LoggedUserJSON !=='vacio'){
       setLoggingUser(LoggedUserJSON);
         setIsLogged(true) 
+        // dispatch(setUserLogging(true))
         console.log("Usuario Cargado correctamente", logginUser);
       }else {
       setLoggingUser('vacio')
+        setIsLogged(false) 
+        // dispatch(setUserLogging(false))
       }
     } catch (error) {
       console.log("Error al obtener la clave de  loggedGameShop:", error);
     }
   };
   
-  console.log("estado loginuser--->",(logginUser))
+  //console.log("estado loginuser--->",(logginUser))
   
-
+  const handdleLogout =()=>{
+    removeItem("loggedGameShop")
+    dispatch(setUserLogging(false))
+    setIsLogged(false) 
+  }
   const handdleLogin = async (values) => {
     // console.log("values recibido en hanndler", values)
     setUser(values.user);
@@ -94,7 +104,10 @@ export const Login = ({ navigation }) => {
         console.log("Usuario Logeado con Exito")
         
         InsertUserAsynStorage("loggedGameShop",JSON.stringify(userCredencials));
-        setIsLogged(false) 
+        // setIsLogged(false)
+        console.log("valor de islogged",isLogged)
+        dispatch(setUserLogging(true))
+        setIsLogged(true) 
         setUser("");
         setPassword("");
         console.log()
@@ -129,9 +142,10 @@ export const Login = ({ navigation }) => {
 
         if (!val.user) {
           errors.user = "Enter Username";
-        } else if (!persons.some((e) => e.user.includes(val.user))) {
-          errors.user = "Username invalid";
-        }
+        } 
+        // else if (!persons.some((e) => e.user.includes(val.user))) {
+        //   errors.user = "Username invalid";
+        // }
 
         if (!val.password) {
           errors.password = "Enter password";
@@ -164,7 +178,7 @@ export const Login = ({ navigation }) => {
               {logginUser ==='vacio' &&(
                     <View>
                       <TextInput
-                        placeholder="Username"
+                        placeholder={StringsLanguaje.userName}
                         value={values.user}
                         onChangeText={handleChange("user")}
                         onBlur={handleBlur("user")}
@@ -236,8 +250,7 @@ export const Login = ({ navigation }) => {
                               source={{uri:logginUser.image}}
                             >
                         </Image>
-                        <TouchableOpacity onPress={()=>{removeItem("loggedGameShop")
-                                                           setIsLogged(false)  }} 
+                        <TouchableOpacity onPress={()=>{ handdleLogout()}} 
                                           style={[styles.miniButtonLogout,{backgroundColor:StringsDark.backgroundTittle}]} > 
                           <Text style={[styles.buttonText,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.Logout}</Text>
                         </TouchableOpacity>

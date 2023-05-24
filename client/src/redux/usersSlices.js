@@ -6,7 +6,7 @@ const initialState = {
   allUsers: [],
   gamesUser: [],
   usrMsgErr: "",
-
+  isLogged:'false'
 
 };
 export const UsersSlice = createSlice({
@@ -30,10 +30,14 @@ export const UsersSlice = createSlice({
     },
     usrMsgErr: (state,action) =>{
         state.dataUser = action.payload 
-    }
+    },
+    setUserLogging:(state,{payload})=>{
+      console.log("quee sta llegado??", payload)
+      state.isLogged = payload
+    },
 
 
   },
 });
-export const { getUsrByID, getUsrByName, getAllUsr, updateUsr, gamesUsr , usrMsgErr } = UsersSlice.actions;
+export const { getUsrByID, getUsrByName, getAllUsr, updateUsr, gamesUsr , usrMsgErr ,setUserLogging} = UsersSlice.actions;
 export default UsersSlice.reducer;

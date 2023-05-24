@@ -48,7 +48,8 @@ export const strings = {
     MSGAlertItemAdd: 'Item has been added',
     addItemCar: 'Add to cart',
     Sign_inWith: 'Sign in with',
-    or: 'Or'
+    or: 'Or',
+    userName:'User Name',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -98,7 +99,8 @@ export const strings = {
     MSGAlertItemAdd: 'Ítem ha sido agregado',
     addItemCar: 'Añadir a la Cesta',
     Sign_inWith: 'Registrate con',    
-    or: 'O'
+    or: 'O',
+    userName:'Nombre de Usuario',
   }
 };
 

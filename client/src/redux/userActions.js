@@ -6,6 +6,7 @@ import {
   gamesUsr,
   updateUsr,
   usrMsgErr,
+  setUserLogging,
 } from "./usersSlices";
 import axios from "axios";
 
@@ -99,4 +100,4 @@ export const getUserByID = (id) => {
       console.log("error updating data", err);
     }
   };
-
+//  export const setUserLogg()
