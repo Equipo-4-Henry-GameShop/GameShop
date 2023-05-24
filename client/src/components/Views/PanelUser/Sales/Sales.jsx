@@ -30,22 +30,13 @@ export const Sales = ({ navigation }, props) => {
 
   const allSales = useSelector((state) => state.salesState.allSales);
 
-  const allgames = useSelector((state) => state.videogamesState);
+
 
   useEffect(() => {
     dispatch(getAllSales());
   }, []);
-  useEffect(() => {
-    dispatch(getvideoGames());
-  }, []);
 
   console.log(allSales.allSales);
-
-  console.log(allgames);
-
-  const [aprobed, setAprobed] = useState();
-
-  const [noAprobed, setNoAprobed] = useState();
 
   const imageDefault =
     "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360";
@@ -56,7 +47,7 @@ export const Sales = ({ navigation }, props) => {
         <Text>Loading...</Text>
       </View>
     );
-  } else {
+  } 
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -108,18 +99,18 @@ export const Sales = ({ navigation }, props) => {
             <ExcelGenerator fileName="archivo" />
           </View>
 
-          {/* <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => console.log("Aqui se descarga excel")}
         >
           <Text style={styles.buttonText}>Descargar</Text>
         </TouchableOpacity>
-      </View> */}
+      </View>
         </View>
       </ScrollView>
     );
-  }
+  
 };
 
 const styles = StyleSheet.create({

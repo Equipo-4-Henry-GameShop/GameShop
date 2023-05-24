@@ -163,7 +163,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
   };
 
 
-  if (!dataUserdb.length)
+if (!dataUserdb.length)
     return (
       <View>
         <Text>Loading...</Text>

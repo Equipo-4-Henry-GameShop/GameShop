@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Image,
@@ -9,25 +10,41 @@ import {
   ScrollView,
 } from "react-native";
 import CardDataPanel from "../../../helpers/CardDataPanel";
-
-import {
-  color_azul,
-  color_blanco,
-  color_negro,
-} from "../../../../constants/Colors";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUsers } from "../../../../redux/userActions";
+import { color_azul, color_blanco, color_negro } from "../../../../constants/Colors";
 import { persons } from "../../../../utils/arrayPersons";
 
-////Acá podemos pasar como props los datos del usuarios para que este
-////componente sea netamente visual y el codigo quede mas prolijo
+export const UserList = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.usersState.allUsers);
 
-export const UserList = ({navigation,route}) => {
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, []);
+
+  console.log(allUsers);
+
+  const imageDefault = "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360";
+
+  if (!allUsers.length) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("UserDetail", {})}>
-        {persons.map((p) => {
-          return <CardDataPanel image={p.image} name={p.name} id={p.id} />;
-        })}
-      </TouchableOpacity>
+      {allUsers.map((user) => (
+        <TouchableOpacity
+          key={user.id}
+          onPress={() => navigation.navigate("UserDetail", { id: user.id })}
+        >
+          <CardDataPanel image={user.image || imageDefault} name={user.name} id={user.id} />
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
