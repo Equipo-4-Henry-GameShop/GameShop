@@ -189,6 +189,15 @@ export const videogamesSlice= createSlice({
             //     : [];
             // state.filteredVideoGames = filtered;
             // state.platformState=action.payload
+            const filtered=[]
+            for(const i of state.filteredVideoGames){
+              if(i['platforms'].includes(action.payload)){
+                filtered.push(i)
+              }
+            }
+            console.log(filtered)
+
+      state.filteredVideoGames = filtered
 
         },
 
@@ -198,7 +207,7 @@ export const videogamesSlice= createSlice({
         FilterByGenre:(state,action)=>{
             const filtered=[]
             for(const i of state.filteredVideoGames){
-              if(i['genre'].includes(action.payload)){
+              if(i['genre']?.includes(action.payload)){
                 filtered.push(i)
               }
             }
@@ -214,6 +223,6 @@ export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage
               setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
               FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame, FilterByGenre,
             
-              FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS
+              FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByPlatformDOS
             }=videogamesSlice.actions
 export default videogamesSlice.reducer

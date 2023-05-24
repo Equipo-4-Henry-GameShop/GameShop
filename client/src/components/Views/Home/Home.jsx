@@ -103,7 +103,7 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
 //   handlerFilterPriceg(ordPrice)
 // };
 
-const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
+const Genres =vGames.allGenres?.length && vGames.allGenres?.map(e=>({
   label: e.name, 
   value: e.name
 }))
@@ -399,7 +399,7 @@ console.log(Genres)
             {
               title: `${StringsLanguaje.Page}  ${pagina} ${StringsLanguaje.of} ${maximo}` ,
             
-              data : vGames.filteredVideoGames.slice(
+              data : vGames.filteredVideoGames?.slice(
                         (pagina-1)*porPagina,
                         (pagina-1)*porPagina+porPagina)
                       .map(el=>{
