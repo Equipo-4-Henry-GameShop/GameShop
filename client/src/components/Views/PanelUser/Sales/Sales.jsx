@@ -72,9 +72,7 @@ export const Sales = ({ navigation }, props) => {
                       <CardDataBuy
                         id={s.id}
                         user={s.user.fullname}
-                        games={s.items.map((g) =>
-                          g.videogameName.concat(".  ")
-                        )}
+                        games={s.items.length}
                         image={!s.user.image ? imageDefault : s.user.image}
                         items={s.items.reduce(
                           (sum, item) => sum + item.quantity,
@@ -85,6 +83,8 @@ export const Sales = ({ navigation }, props) => {
                           (sum, item) => sum + item.unitPrice * item.quantity,
                           0
                         )}
+                        approved={s.salesStatus
+                        }
                       />
                     </View>
                   </TouchableOpacity>

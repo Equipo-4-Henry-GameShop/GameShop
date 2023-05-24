@@ -42,7 +42,7 @@ export const UserList = ({ navigation, route }) => {
           key={user.id}
           onPress={() => navigation.navigate("UserDetail", { id: user.id })}
         >
-          <CardDataPanel image={user.image || imageDefault} name={user.name} id={user.id} />
+          <CardDataPanel fullname={user.fullname} image={user.image || imageDefault} name={user.user} id={user.id} email={user.email} />
         </TouchableOpacity>
       ))}
     </View>
