@@ -150,30 +150,30 @@ export const removeItem = async (key) => {
   
   // Obtener item en AsyncStorage
   export const getItemAsyncStorage = async (key) => {
-
+    // console.log("esta llave busco", key);
     try {
-      // let currentValue = await AsyncStorage.getItem(llaveUser);
-      currentValue = await AsyncStorage.getItem(key);
-      // console.log("danole al try",currentValue)
+      const currentValue = await AsyncStorage.getItem(key);
+      // console.log("danole al try", currentValue);
       let parsedValue;
-      if(currentValue!=null){
-            try {
-              parsedValue = JSON.parse(currentValue);
-              // console.log("viendo q se parsea,",parsedValue);
-            } catch (error) {
-              console.log(`Error al analizar el valor para la clave ${key}:`, error);
-              parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
-            }
-        
-        return parsedValue; // Devuelve el valor actual, incluso si es null
-     
-     }else
-     return 'vacio'
+      if (currentValue != null) {
+        try {
+          parsedValue = JSON.parse(currentValue);
+        } catch (error) {
+          console.log(`Error al analizar el valor para la clave ${key}:`, error);
+          parsedValue = null;
+        }
+  
+        return parsedValue;
+      } else {
+        // Llave no encontrada
+        return 'vacio'; // Devuelve una cadena vacía como valor predeterminado
+      }
     } catch (error) {
-      console.log('Error al obtener el item -->:', error);
-        return null; // Devuelve null en caso de error
+      console.log('Error al obtener item en AsyncStorage:', error);
+      return null;
     }
   };
+  
 
 
     export const  InsertUserAsynStorage= async (key,objString) => {

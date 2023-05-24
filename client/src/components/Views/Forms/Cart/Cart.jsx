@@ -89,10 +89,11 @@ const Cart = ({navigation}) => {
   const getAllItems = async () => {
     try {
       const keys = await AsyncStorage.getAllKeys();
+      console.log("esto obtengo en CART todas las llaves", keys)
       const filterKeys= keys.filter(el=>el.substring(0,4)==='cart')
       // console.log("cantidade Filtrada",filterKeys)
       const items = await AsyncStorage.multiGet(filterKeys);
-      //  console.log("cantidade de llaves", keys)
+      // console.log("cantidade de llaves", keys)
         // console.log("cantidade de items", items)
      const result = items.map(([key, value]) => {
           let parsedValue;

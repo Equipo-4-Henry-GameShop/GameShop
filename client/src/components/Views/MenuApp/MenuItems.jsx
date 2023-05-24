@@ -54,15 +54,16 @@ const MenuItems=({navigation})=>{
     return(
       <DrawerContentScrollView style={{backgroundColor:StringsDark.bktitle}}>
           <View style={{backgroundColor:StringsDark.cabmenu}}>
-  
-            <View style={styles.cabeceraimg}>
+   
+             <View style={styles.cabeceraimg}>
                   <Image 
                   source={require('../../../assets/gameshop.png')}
+                  
                   style={styles.imgmenu}
-                  />
+                  /> 
                   {
                    logginUser.image && isLogged ? 
-                    <Image 
+                       <Image 
                       source={{uri:logginUser.image}}
                       
                       style={styles.icon}
@@ -73,7 +74,7 @@ const MenuItems=({navigation})=>{
                       />
                   }
                 
-            </View>
+            </View> 
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
