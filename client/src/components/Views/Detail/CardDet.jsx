@@ -46,7 +46,6 @@ const Card = (videogame) => {
       const key= 'cart'+videogame.videogame.key
       // console.log("generado clave cart",key)
       // console.log("objeto      ñ",objeto)
-      //  console.log("objeto String",objString)  
       
     return (
       <View  style={[styles.container, {backgroundColor:StringsDark.bkCard}]}>

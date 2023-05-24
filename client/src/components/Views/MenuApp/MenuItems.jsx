@@ -6,12 +6,22 @@ import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigatio
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import { ThemeContext } from '../../Theme/ThemeProvider';
 
+<<<<<<< HEAD
 import React from 'react';
 import { ChangeButtonContext } from '../../Theme/ChangeContextButton';
+=======
+import  React,{useEffect,useState, useContext} from 'react';
+import { ChangeButtonContext } from '../../Theme/ChangeContextButton';
+import {getItemAsyncStorage,InsertUserAsynStorage,removeItem} from '../Forms/Cart/CardCartController'
+
+import { useFocusEffect } from '@react-navigation/native';
+import { useDispatch ,useSelector} from "react-redux";
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 
 const MenuItems=({navigation})=>{
 
   //esta linea debo de llamar en cada componente 
+<<<<<<< HEAD
   const { StringsDark,isDarkMode} = React.useContext(ThemeContext);
   const {StringsLanguaje,locale }= React.useContext(LocalizationContext)
   
@@ -20,17 +30,70 @@ const MenuItems=({navigation})=>{
           <View style={{backgroundColor:StringsDark.cabmenu}}>
   
             <View style={styles.cabeceraimg}>
+=======
+  const { StringsDark,isDarkMode} = useContext(ThemeContext);
+  const {StringsLanguaje,locale }= useContext(LocalizationContext)
+  const [isLogged, setIsLogged]=useState(false)
+  const [logginUser, setLoggingUser] = useState("");
+  const isLoggedGlobal =useSelector((state)=>state.usersState.isLogged)
+  // console.log("valor de isLoggedGlobal ",isLoggedGlobal)
+  useEffect(() => {
+   
+    getUserStorage();
+  }, []);
+
+  useFocusEffect(
+     React.useCallback(() => {
+      getUserStorage()
+     },[isLoggedGlobal] )
+    //  [cartG]
+  );
+
+  const getUserStorage = async () => {
+    try {
+      const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
+      // console.log("variable LoggedUserJSON menu ITEMS->",LoggedUserJSON)
+      if(LoggedUserJSON !=='vacio'){
+      setLoggingUser(LoggedUserJSON);
+        setIsLogged(true) 
+        // console.log("Usuario Cargado correctamente menu ITEMS name->", logginUser.fullname);
+      }else {
+      setLoggingUser('vacio')
+        setIsLogged(false) 
+      }
+    } catch (error) {
+      console.log("Error al obtener la clave de  loggedGameShop:", error);
+    }
+  };
+// console.log("esta logeado menu ITEMS", logginUser.image)
+    return(
+      <DrawerContentScrollView style={{backgroundColor:StringsDark.bktitle}}>
+          <View style={{backgroundColor:StringsDark.cabmenu}}>
+   
+             <View style={styles.cabeceraimg}>
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                   <Image 
                   source={require('../../../assets/gameshop.png')}
+                  
                   style={styles.imgmenu}
-                  />
-                  <Image 
-                  source={require('../../../assets/Unknown.jpg')}
-                  style={styles.icon}
-                  />
-            </View>
+                  /> 
+                  {
+                   logginUser.image && isLogged ? 
+                       <Image 
+                      source={{uri:logginUser.image}}
+                      
+                      style={styles.icon}
+                      /> :
+                      <Image 
+                      source={require('../../../assets/Unknown.jpg')}
+                      style={styles.icon}
+                      />
+                  }
+                
+            </View> 
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
+<<<<<<< HEAD
                     {StringsLanguaje.MsgUserNoRegister}
                   </Text>
                   <TouchableOpacity onPress={()=> navigation.navigate('CreateUser')}>
@@ -40,12 +103,24 @@ const MenuItems=({navigation})=>{
                         {StringsLanguaje.Login}
                       </Text>
                   </TouchableOpacity>
+=======
+                    {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
+                  </Text>
+                  {!isLogged && (
+                    <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
+                        <Text style={[styles.btnIngresa,
+                          {backgroundColor:StringsDark.bktitle,
+                          color:StringsDark.bkContesp}]}>
+                          {StringsLanguaje.Login}
+                        </Text>
+                    </TouchableOpacity>
+                  )}
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
             </View>
             <View style={[styles.separator,{borderColor:StringsDark.text}]}>
   
           </View>
         </View>
-          
           <MenuBottonItem
             nombre= {StringsLanguaje.Landing}
             onPress={()=> navigation.navigate('Landing')}
@@ -66,7 +141,11 @@ const MenuItems=({navigation})=>{
               onPress={()=> navigation.navigate('VideoGameList')}
               icon='pricetags'
             />
+
+
+
              <MenuButtonSubItem
+<<<<<<< HEAD
               nombre= {StringsLanguaje.Security}
               onPress={()=> navigation.navigate('Security')}
               icon='finger-print'
@@ -77,6 +156,8 @@ const MenuItems=({navigation})=>{
               icon='mic-circle'
             />
              <MenuButtonSubItem
+=======
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
               nombre= {StringsLanguaje.MyPosts}
               onPress={()=> navigation.navigate('MyPosts')}
               icon='clipboard'
@@ -93,12 +174,22 @@ const MenuItems=({navigation})=>{
                onPress={()=> navigation.navigate('HomeScreen')}
             /> */}
             <MenuButtonSubItem
+<<<<<<< HEAD
               nombre= {StringsLanguaje.Sign_in}
+=======
+              nombre= {StringsLanguaje.Register}
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
               onPress={()=> navigation.navigate('CreateUser')}
+              icon="clipboard-outline"
             />
+<<<<<<< HEAD
                       <MenuButtonSubItem
+=======
+            <MenuButtonSubItem
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
               nombre= {StringsLanguaje.Login}
               onPress={()=> navigation.navigate('Login')}
+              icon="log-in-outline"
             />
 
 
@@ -128,8 +219,8 @@ const MenuItems=({navigation})=>{
     },
     icon: {
       marginLeft:70,
-      width: 40,
-      height: 40,
+      width: 50,
+      height: 50,
       // alignContent: 'flex-end',
       // alignItems: '',
       resizeMode:'contain',

@@ -75,7 +75,6 @@ export const amountSub = async (key, newValue) => {
               parsedValue.amount = newValue-1; // Aquí puedes realizar las modificaciones necesarias en el valor
               // Convertir el objeto modificado a una cadena de texto
               const updatedValue = JSON.stringify(parsedValue);
-        
               // Guardar la cadena de texto actualizada en AsyncStorage
               await AsyncStorage.setItem(key, updatedValue);
               console.log('Item modificado exitosamente');
@@ -84,6 +83,7 @@ export const amountSub = async (key, newValue) => {
           console.log('No se encontró un item para la clave especificada');
         }
       } catch (error) {
+        
         console.log('Error al modificar el item:', error);
       }
     };
@@ -102,6 +102,7 @@ export const removeItem = async (key) => {
 
   //limpiar carrito
   export const cleanCart = async () => {
+    console.log("nota debo controlar q solo se borren los cart")
     try {
       await AsyncStorage.clear();
       console.log('Elementos eliminados exitosamente');
@@ -130,18 +131,60 @@ export const removeItem = async (key) => {
   };
   
   export const getKeysCount = async () => {
+    // console.log("tb debo contar solo las claves CART")
     try {
       let allKeys = await AsyncStorage.getAllKeys();
-      
       allKeys = await AsyncStorage.getAllKeys();
-      //  console.log(allKeys)
-      let keysCount = allKeys.length;
-      // console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      console.log("Todas las claves:", allKeys);
+      const filteredKeys = allKeys.filter((el) => el.substring(0,4)=== 'cart');
+      console.log("Claves filtradas:", filteredKeys);
+      let keysCount = filteredKeys.length;
+      //  console.log("Cantidad DESDE FX GET KEYS COUNT:", keysCount);
+      //  console.log("Cantidad DESDE FX filteredKeysT:", filteredKeys.length);
       return keysCount;
     } catch (error) {
-      console.log("Error al obtener las claves de AsyncStorage:", error);
+      console.log("Error al obtener las claves de AsyncStorage???:", error);
       throw error; // Opcional: relanza el error para manejarlo en otro lugar si es necesario
     }
   };
   
+  // Obtener item en AsyncStorage
+  export const getItemAsyncStorage = async (key) => {
+    // console.log("esta llave busco", key);
+    try {
+      const currentValue = await AsyncStorage.getItem(key);
+      // console.log("danole al try", currentValue);
+      let parsedValue;
+      if (currentValue != null) {
+        try {
+          parsedValue = JSON.parse(currentValue);
+        } catch (error) {
+          console.log(`Error al analizar el valor para la clave ${key}:`, error);
+          parsedValue = null;
+        }
   
+        return parsedValue;
+      } else {
+        // Llave no encontrada
+        return 'vacio'; // Devuelve una cadena vacía como valor predeterminado
+      }
+    } catch (error) {
+      console.log('Error al obtener item en AsyncStorage:', error);
+      return null;
+    }
+  };
+  
+
+
+    export const  InsertUserAsynStorage= async (key,objString) => {
+      try {           
+              await AsyncStorage.setItem(key, objString);
+              // Kawait AsyncStorage.setItem('item2', objString);
+              // console.log("llave agregada",objString)
+              console.log('Usuario Logeado correctamente')
+         
+      } catch (error) {
+        console.log("error al guardar objeto", error);
+      }
+  
+    }

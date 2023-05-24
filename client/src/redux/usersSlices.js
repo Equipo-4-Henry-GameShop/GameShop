@@ -1,23 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const initialState= {
-    name:"",
-    username:"",
-    email:""
-}
+const initialState = {
+  dataUser: {},
+  allUsers: [],
+  gamesUser: [],
+  usrMsgErr: "",
+  isLogged:'false'
+
+};
 export const UsersSlice = createSlice({
-    name: "users",
-    initialState,
-    reducers:{
-        addUser : (state,action)=>{
-            
-            const {name,username,email}= action.payload;
+  name: "users",
+  initialState,
+  reducers: {
+    getUsrByID: (state, action) => {
+      state.dataUser = action.payload;
+    },
+    getUsrByName: (state, action) => {
+        state.dataUser = action.payload;
+      },
+    getAllUsr: (state, action) => {
+      state.allUsers = action.payload;
+    },
+    updateUsr: (state, action) =>{
+        state.dataUser = action.payload
+    },
+    gamesUsr: (state,action) =>{
+        state.dataUser = action.payload 
+    },
+    usrMsgErr: (state,action) =>{
+        state.dataUser = action.payload 
+    },
+    setUserLogging:(state,{payload})=>{
+      console.log("quee sta llegado??", payload)
+      state.isLogged = payload
+    },
 
-            state.name=name;
-            state.username=username;
-            state.email=username;
-        }
-    }
-})
-export const {addUser}= UsersSlice.actions
-export default UsersSlice.reducer
+
+  },
+});
+export const { getUsrByID, getUsrByName, getAllUsr, updateUsr, gamesUsr , usrMsgErr ,setUserLogging} = UsersSlice.actions;
+export default UsersSlice.reducer;

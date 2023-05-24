@@ -138,6 +138,21 @@ export const Dashboard = ({navigation, route}) => {
         </TouchableOpacity>
       </View>
 
+<<<<<<< HEAD
+=======
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity  style={styles.button}
+          onPress={() =>
+            navigation.navigate("Metrics", { name: "Metrics" })
+          }
+        >
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Metrics</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+>>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
       </View>
     
   );

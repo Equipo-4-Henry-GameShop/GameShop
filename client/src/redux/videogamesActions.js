@@ -7,12 +7,12 @@ let estado=0
 export const  getvideoGames = () =>(dispatch)=>{
   
 
-//  dispatch(getAllVideogames(videogames))
+  dispatch(getAllVideogames(videogames))
 
    
-    axios("https://gameshopback-pf-ek5y.onrender.com/games")
-    .then(res => dispatch(getAllVideogames(res.data)))
-    .catch(e=>console.log("error en la ruta" ,e))
+    // axios("https://gameshopback-pf-ek5y.onrender.com/games")
+    // .then(res => dispatch(getAllVideogames(res.data)))
+    // .catch(e=>console.log("error en la ruta" ,e))
 }
 
 export const getvGamebyName =(query)=> (dispatch=>{

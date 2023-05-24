@@ -36,7 +36,7 @@ export const strings = {
         txtClaro:color_crema,
         cabmenu:color_crema,
         btnPagar: color_celeste,
-        
+        nuevacombinacion: color_negro_grafito,
         
       },
     dark: {
@@ -61,6 +61,6 @@ export const strings = {
         txtClaro:color_negro_grafito,
         cabmenu:color_negro_ligero,
         btnPagar: color_crema,
-        
+        nuevacombinacion: color_blanco,
       },
 };

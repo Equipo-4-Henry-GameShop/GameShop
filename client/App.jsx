@@ -54,7 +54,8 @@ import {
   VideoGameList,
   UserList,
   CreateItem,
-  MyShoppings
+  MyShoppings,
+  UserDetail
 } from "./src/components/Views/PanelUser/routesPanelUser";
 
 import Landing from "./src/components/Views/Landing";
@@ -356,6 +357,22 @@ export default function App() {
                   component={Pasarella}
                   options={{
                     title: "Pasarellade Pagos",
+                    headerStyle: {
+                      backgroundColor: color_azul,
+                    },
+                    headerTintColor: color_blanco,
+                    headerTitleStyle: {
+                      fontWeight: "bold",
+                      fontSize: 25,
+                    },
+                  }}
+                />
+
+<Drawer.Screen
+                  name="UserDetail"
+                  component={UserDetail}
+                  options={{
+                    title: "UserDetail",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },

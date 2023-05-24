@@ -20,22 +20,14 @@ import { persons } from "../../../../utils/arrayPersons";
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
 
-
-
-
-export const UserList = () => {
-
+export const UserList = ({navigation,route}) => {
   return (
     <View>
-      {persons.map((p)=>{
-        return(
-        <CardDataPanel
-        image={p.image}
-        name={p.name}
-        id={p.id}
-        />)
-
-      })}
+      <TouchableOpacity onPress={() => navigation.navigate("UserDetail", {})}>
+        {persons.map((p) => {
+          return <CardDataPanel image={p.image} name={p.name} id={p.id} />;
+        })}
+      </TouchableOpacity>
     </View>
-
-)};
+  );
+};

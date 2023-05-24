@@ -4,10 +4,10 @@ export const strings = {
     Welcome: 'Welcome',
     Acces: 'Acces',
     Enter:'Enter',
-    User_Panel: 'User Panel',
+    Dashboard: 'Dashboard',
     Security: 'Security',
     Logout: 'Logout',
-    Sign_in: 'Sign In',
+    Register: 'Register',
     Login: 'Login',
     Home: 'Home',
     Page: 'Page',
@@ -46,16 +46,19 @@ export const strings = {
     MsgAlertAmountMax:'Sorry, the maximum number of purchases per title is 3.',
     MsgAlertItemAmountAdd: 'One unit has been added to the current item',
     MSGAlertItemAdd: 'Item has been added',
-    addItemCar: 'Add to cart'
+    addItemCar: 'Add to cart',
+    Sign_inWith: 'Sign in with',
+    or: 'Or',
+    userName:'User Name',
   },
   es: {
     Welcome: 'Bienvenido',
     Acces: 'Acceder',
     Enter:'Ingresar',
-    User_Panel: 'Panel de Usuario',
+    Dashboard: 'Panel de Usuario',
     Security: 'Securidad',
-    Logout: 'Salir',
-    Sign_in: 'Registrate',
+    Logout: 'Cerrar la sesión',
+    Register: 'Registrate',
     Login: 'Iniciar Sesión',
     Home: 'Inicio',
     Page: 'Pagina',
@@ -95,7 +98,9 @@ export const strings = {
     MsgAlertItemAmountAdd: 'Se adiciono una unidad al item actual',
     MSGAlertItemAdd: 'Ítem ha sido agregado',
     addItemCar: 'Añadir a la Cesta',
-    
+    Sign_inWith: 'Registrate con',    
+    or: 'O',
+    userName:'Nombre de Usuario',
   }
 };
 
