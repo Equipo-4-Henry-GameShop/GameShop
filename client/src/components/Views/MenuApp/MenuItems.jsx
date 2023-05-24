@@ -41,7 +41,7 @@ const MenuItems=({navigation})=>{
       if(LoggedUserJSON !=='vacio'){
       setLoggingUser(LoggedUserJSON);
         setIsLogged(true) 
-        console.log("Usuario Cargado correctamente menu ITEMS name->", logginUser.name);
+        // console.log("Usuario Cargado correctamente menu ITEMS name->", logginUser.fullname);
       }else {
       setLoggingUser('vacio')
         setIsLogged(false) 
@@ -76,7 +76,7 @@ const MenuItems=({navigation})=>{
             </View>
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
-                    {logginUser.name && isLogged ? `Bienvenido ${logginUser.name}` : StringsLanguaje.MsgUserNoRegister}
+                    {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}
                     
                   </Text>
                   {!isLogged && (

@@ -64,7 +64,7 @@ export const Login = ({ navigation }) => {
   const getUserStorage = async () => {
     try {
       const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
-      console.log("variable LoggedUserJSON->",LoggedUserJSON)
+      // console.log("variable LoggedUserJSON->",LoggedUserJSON)
       if(LoggedUserJSON !=='vacio'){
       setLoggingUser(LoggedUserJSON);
         setIsLogged(true) 
@@ -93,40 +93,37 @@ export const Login = ({ navigation }) => {
     setPassword(values.password);
     // console.log("que hay en estado user", values.user)
     // console.log("que hay en estado password", values.password)
-    try {
+    // try {
       const userCredencials = await logService({
         user: values.user, // Utiliza values.user en lugar de user
         password: values.password, // Utiliza values.password en lugar de password
       });
-      console.log("data recibida del backHardCode",userCredencials)
-      if (typeof(userCredencials)!=="undefined"){
-        
-        console.log("Usuario Logeado con Exito")
-        
+      // console.log("data recibida del backHardCode",userCredencials)
+      if (userCredencials!==null){
+        // "Error de autenticación"
+        // console.log("que llega de LOG SERVICE->",userCredencials)
+        if(userCredencials.id!==undefined){
+
         InsertUserAsynStorage("loggedGameShop",JSON.stringify(userCredencials));
-        // setIsLogged(false)
-        console.log("valor de islogged",isLogged)
         dispatch(setUserLogging(true))
         setIsLogged(true) 
         setUser("");
         setPassword("");
-        console.log()
         navigation.navigate("HomeScreen")
       }else {
-     
             console.log("no encontrado")
-            alert("Password No Coincide")
+            alert("Password Incorrecto")
             return
       }
     } 
-    catch (error) {
-      setErrorMsg(true);
-      setTimeout(() => {
-        setErrorMsg(false);
-      }, 5000);
+    // catch (error) {
+    //   setErrorMsg(true);
+    //   setTimeout(() => {
+    //     setErrorMsg(false);
+    //   }, 5000);
 
-      console.log("aqui se rompio algo !!!!!",error);
-    }
+    //   console.log("rompio en handle Logging !!!!!",error);
+    // }
   };
 
 
@@ -244,7 +241,7 @@ export const Login = ({ navigation }) => {
               {logginUser !=='vacio' && (  
                 <View style={styles.containerLogin}> 
                     <Text style={[{fontSize:45},{color:StringsDark.text}]}>{StringsLanguaje.Welcome}</Text>
-                    <Text style={[{fontSize:20}, {fontWeight:'bold'},{color:StringsDark.text}]}>{logginUser.name}</Text> 
+                    <Text style={[{fontSize:20}, {fontWeight:'bold'},{color:StringsDark.text}]}>{logginUser.fullname}</Text> 
                         <Image 
                               style={styles.perfil}
                               source={{uri:logginUser.image}}
