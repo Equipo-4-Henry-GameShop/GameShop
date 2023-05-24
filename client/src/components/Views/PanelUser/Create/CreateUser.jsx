@@ -22,23 +22,29 @@ import {
 } from "../../../../constants/Colors";
 import axios from "axios";
 
+//Import Dark Mode:
 import { LocalizationContext } from "../../../Languaje/LocalizationContext";
 import { useContext } from "react";
 import { ThemeContext } from "../../../Theme/ThemeProvider";
+//Import Dark Mode:
+
 
 const CreateUser = ({ navigation }) => {
-  // Dark Mode
+
+//Const Dark Mode:
   const { StringsDark, isDarkMode } = useContext(ThemeContext);
   const { StringsLanguaje, locale } = useContext(LocalizationContext);
-
+//UseEffect Dark Mode:
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: `${StringsLanguaje.Login}`,
+      headerTitle: `${StringsLanguaje.Register}`,
       headerStyle: {
         backgroundColor: StringsDark.backgroundContainer,
       },
     });
   }, [isDarkMode, locale]);
+//Dark Mode:
+
 
   const [acceptTac, setAcceptTac] = useState(false);
   const [receibenewsLetter, setReceivenewsLetter] = useState(false);
