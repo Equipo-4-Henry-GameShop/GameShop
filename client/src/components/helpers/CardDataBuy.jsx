@@ -22,11 +22,13 @@ const CardDataBuy = (props) => {
       <TouchableOpacity style={styles.buttonContainer} onPress={props.goToDetail}>
         <Image style={styles.image} source={{ uri: props.image }}/>
         <View >
-          <Text style={styles.text}>{props.name}</Text>
           <Text style={styles.text}>Id buy: {props.id}</Text>
+          <Text style={styles.text}>Games {props.games}</Text>
+          <Text style={styles.text}>items: {props.items}</Text>
           <Text style={styles.text}>user: {props.user}</Text>
-          <Text style={styles.text}>Quabtity: {props.Quabtity}</Text>
           <Text style={styles.text}>date: {props.date}</Text>
+          <Text style={styles.text}>Total$ {props.price}</Text>
+
         </View>
       </TouchableOpacity>
     </View>

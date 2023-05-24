@@ -12,6 +12,7 @@ import CreateItem from "./Create/CrateItem";
 import { MyShoppings } from "./MyShoppings/MyShoppings";
 import MyBezierLineChart from "./Metrics/LineChart";
 import MyBarChart from "./Metrics/BarChart"
+import { UserDetail } from "../Detail/UserDetail";
 
 export {
   Dashboard,
@@ -28,4 +29,5 @@ export {
   MyVotes,
   MyBezierLineChart,
   MyBarChart,
+  UserDetail,
 };

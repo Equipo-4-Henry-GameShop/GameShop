@@ -1,18 +1,5 @@
 export const validate = (val) => {
 
-  const {StringsDark,isDarkMode} = useContext(ThemeContext);
-  const {StringsLanguaje ,locale}= useContext(LocalizationContext)
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerTitle: `${StringsLanguaje.Login}`,
-      headerStyle: {
-        backgroundColor: StringsDark.backgroundContainer,
-      },
-    })
-  }, [isDarkMode,locale]);
-
-
   const errors = {};
 
   if (val.name === "") {

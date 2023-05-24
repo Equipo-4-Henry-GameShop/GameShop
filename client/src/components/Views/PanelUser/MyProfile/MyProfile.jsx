@@ -24,6 +24,7 @@ import axios from "axios";
 import { getUserByName, updateUser } from "../../../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { color_celeste } from "../../../Theme/stringsColors";
+import { convertirFecha } from "../../../helpers/InvertDate";
 
 export const MyProfile = ({ navigation }) => {
   const [acceptTac, setAcceptTac] = useState(true);
@@ -161,13 +162,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
     }
   };
 
-  function convertirFecha(fecha) {
-    const fechaObjeto = new Date(fecha);
-    const dia = fechaObjeto.getDate().toString().padStart(2, "0");
-    const mes = (fechaObjeto.getMonth() + 1).toString().padStart(2, "0");
-    const anio = fechaObjeto.getFullYear().toString();
-    return `${dia}-${mes}-${anio}`;
-  }
+
   if (!dataUserdb.length)
     return (
       <View>
