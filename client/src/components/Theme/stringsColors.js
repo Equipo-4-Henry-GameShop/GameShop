@@ -37,6 +37,8 @@ export const strings = {
         cabmenu:color_crema,
         btnPagar: color_celeste,
         nuevacombinacion: color_negro_grafito,
+        //agregue nueva combinacion para botones estilo 'Cancelar'
+        newCancelBot: color_rojoNeon,
         
       },
     dark: {
@@ -62,5 +64,7 @@ export const strings = {
         cabmenu:color_negro_ligero,
         btnPagar: color_crema,
         nuevacombinacion: color_blanco,
+        //agregue nueva combinacion para botones estilo 'Cancelar'
+        newCancelBot: color_rojoNeon,
       },
 };
