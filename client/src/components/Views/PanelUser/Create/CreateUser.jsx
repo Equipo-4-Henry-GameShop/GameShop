@@ -22,7 +22,24 @@ import {
 } from "../../../../constants/Colors";
 import axios from "axios";
 
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import { useContext } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+
 const CreateUser = ({ navigation }) => {
+  // Dark Mode
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.Login}`,
+      headerStyle: {
+        backgroundColor: StringsDark.backgroundContainer,
+      },
+    });
+  }, [isDarkMode, locale]);
+
   const [acceptTac, setAcceptTac] = useState(false);
   const [receibenewsLetter, setReceivenewsLetter] = useState(false);
 
@@ -96,17 +113,12 @@ const CreateUser = ({ navigation }) => {
       );
       console.log(`Respuesta del servidor:`, response.data);
 
-      Alert.alert(
-        'User Created!',
-        '',
-        [
-          {
-            text: 'Go to login',
-            onPress: () => navigation.navigate('Login', { name: 'Login' }),
-          },
-        ]
-      );
-            
+      Alert.alert("User Created!", "", [
+        {
+          text: "Go to login",
+          onPress: () => navigation.navigate("Login", { name: "Login" }),
+        },
+      ]);
     } catch (error) {
       console.log("Error en el backend:", error);
       Alert.alert("Auch...Something went wrong");
@@ -194,14 +206,16 @@ const CreateUser = ({ navigation }) => {
   return (
     <ScrollView>
       <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: color_azul,
-        }}
+        style={[
+          styles.bgCont,
+          { backgroundColor: StringsDark.backgroundContainer}
+        ]}
       >
-        <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
+        <TouchableOpacity
+          onPress={pickImage}
+          style={[styles.ImageButton, { backgroundColor: StringsDark.tabInactive }]}
+        >
+          {/* {backgroundColor:StringsDark.letraverde} */}
           <Image
             source={{ uri: `${image}` }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
@@ -255,12 +269,16 @@ const CreateUser = ({ navigation }) => {
           touched,
           image,
         }) => (
-          <View>
-            <View style={styles.container}>
-              <View style={styles.containerLogin}>
+          <View style={[{ backgroundColor: StringsDark.backgroundContainer}]}>
+            <View style={[styles.container,
+              { backgroundColor: StringsDark.backgroundColor }]}>
+              <View style={[styles.containerLogin,{ backgroundColor: StringsDark.tabInactive}]}>
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.user}
                     placeholder="user"
                     onChangeText={handleChange("user")}
@@ -273,7 +291,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.password}
                     placeholder="Password"
                     secureTextEntry
@@ -287,7 +308,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.fullname}
                     placeholder="Full Name"
                     onChangeText={handleChange("fullname")}
@@ -300,7 +324,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.email}
                     placeholder="Email"
                     onChangeText={handleChange("email")}
@@ -313,7 +340,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.date}
                     placeholder="Date of Birth"
                     onChangeText={handleChange("date")}
@@ -326,7 +356,10 @@ const CreateUser = ({ navigation }) => {
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.phone}
                     placeholder="Phone"
                     onChangeText={handleChange("phone")}
@@ -340,22 +373,38 @@ const CreateUser = ({ navigation }) => {
                 <View style={styles.boxcontainercheckbox}>
                   <View style={styles.checkboxSection}>
                     <Checkbox
-                      style={styles.checkbox}
+                      style={[
+                        styles.checkbox,
+                        { backgroundColor: StringsDark.bordercolor },
+                      ]}
                       value={acceptTac}
                       onValueChange={setAcceptTac}
                     />
-                    <Text style={styles.checkboxParagraph}>
+                    <Text
+                      style={[
+                        styles.checkboxParagraph,
+                        { backgroundColor: StringsDark.bordercolor },
+                      ]}
+                    >
                       I accept the Terms and Conditions
                     </Text>
                   </View>
 
                   <View style={styles.checkboxSection}>
                     <Checkbox
-                      style={styles.checkbox}
+                      style={[
+                        styles.checkbox,
+                        { backgroundColor: StringsDark.bordercolor },
+                      ]}
                       value={receibenewsLetter}
                       onValueChange={setReceivenewsLetter}
                     />
-                    <Text style={styles.checkboxParagraph}>
+                    <Text
+                      style={[
+                        styles.checkboxParagraph,
+                        { backgroundColor: StringsDark.bordercolor },
+                      ]}
+                    >
                       I want to receive the newsLetter
                     </Text>
                   </View>
@@ -364,10 +413,20 @@ const CreateUser = ({ navigation }) => {
 
               <View style={styles.submitContainer}>
                 <TouchableOpacity
-                  style={styles.miniButton}
+                  style={[
+                    styles.miniButton,
+                    { backgroundColor: StringsDark.bordercolor },
+                  ]}
                   onPress={handleSubmit}
                 >
-                  <Text style={styles.buttonText}>Submit</Text>
+                  <Text
+                    style={[
+                      styles.buttonText,
+                      { backgroundColor: StringsDark.bordercolor },
+                    ]}
+                  >
+                    Submit
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -384,8 +443,15 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     width: "100%",
+  },
+
+  bgCont: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: color_azul,
   },
 
   mario: {
@@ -396,7 +462,7 @@ const styles = StyleSheet.create({
 
   container: {
     marginTop: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     height: "120%",
     alignItems: "center",
     alignContent: "center",
@@ -409,8 +475,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
 
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
+    // borderColor: color_negro,
+    // backgroundColor: color_blanco,
     padding: 10,
   },
 
@@ -418,12 +484,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 35,
     borderWidth: 2,
-    borderColor: color_azul,
+    // borderColor: color_azul,
     paddingHorizontal: 70,
     marginLeft: "2%",
     marginRight: "2%",
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
+    // borderColor: "#ddd",
+    // backgroundColor: "#fff",
     marginBottom: 15,
     borderRadius: 8,
   },
@@ -439,7 +505,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     padding: 0,
-    backgroundColor: color_blanco,
+    // backgroundColor: color_blanco,
     borderRadius: 125,
   },
   miniButton: {
@@ -451,7 +517,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: "50%",
     padding: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     borderRadius: 8,
   },
   error: {
@@ -466,7 +532,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-    color: color_blanco,
+    // color: color_blanco,
   },
   buttonGoogle: {
     marginTop: "10%",
@@ -491,7 +557,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxParagraph: {
-    color: color_negro,
+    // color: color_negro,
     fontSize: 12,
   },
   checkbox: {
