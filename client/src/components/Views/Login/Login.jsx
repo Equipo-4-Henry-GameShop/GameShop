@@ -81,7 +81,6 @@ export const Login = ({ navigation }) => {
   };
   
   //console.log("estado loginuser--->",(logginUser))
-  
   const handdleLogout =()=>{
     removeItem("loggedGameShop")
     dispatch(setUserLogging(false))

@@ -5,7 +5,6 @@ const baseURL = "https://gameshop-production-e844.up.railway.app/login"
 
 export const logService = async credentials => {
   const { user, password } = credentials;
-
   const objCred = {
     user: credentials.user,
     password: credentials.password
