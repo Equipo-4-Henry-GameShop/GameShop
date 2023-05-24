@@ -1,5 +1,8 @@
 import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,setErrorMsg,
-    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre} from "./videogamesSlice";
+    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre, 
+    
+    
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS } from "./videogamesSlice";
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
 
@@ -87,17 +90,17 @@ export const updateVgames=(data)=>{
 }
 
 
-export const filterByAtoZ=()=>(dispatch)=>{
-    fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/asc')
-        .then((res)=>res.json())
-        .then((data)=>dispatch(FilterAtoZ(data)))
-}
+// export const filterByAtoZ=()=>(dispatch)=>{
+//     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/asc')
+//         .then((res)=>res.json())
+//         .then((data)=>dispatch(FilterAtoZ(data)))
+// }
 
-export const filterByZtoA=()=>(dispatch)=>{
-    fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/desc')
-        .then((res)=>res.json())
-        .then((data)=>dispatch(FilterZtoA(data)))
-}
+// export const filterByZtoA=()=>(dispatch)=>{
+//     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/desc')
+//         .then((res)=>res.json())
+//         .then((data)=>dispatch(FilterZtoA(data)))
+// }
 
 export const filterRatingAsc=()=>(dispatch)=>{
     fetch('https://gameshopback-pf-ek5y.onrender.com/games/order/ratmin')
@@ -136,9 +139,56 @@ export const GetallGenres=()=>(dispatch)=>{
         
 }
 
+export const filterByPlatformDOS=(data)=>{
+    return function(dispatch){
+        dispatch(FilterByPlatformDOS(data))
+    }
+}
 
 export const filterByGenre=(data)=>{
     return function(dispatch){
         dispatch(FilterByGenre(data))
+    }
+}
+
+
+
+export const filterByAtoZDOS=(data)=>{
+    return function(dispatch){
+        dispatch(FilterByAtoZDos(data))
+    }
+}
+
+export const filterByZtoADOS=(data)=>{
+    return function(dispatch){
+        dispatch(FilterByZtoADOS(data))
+    }
+}
+
+export const filterByRatingAscDOS=()=>{
+    return function(dispatch){
+        dispatch(FilterByRatingAscDOS())
+    }
+}
+
+
+export const filterByRatingDescDOS=()=>{
+    return function(dispatch){
+        dispatch(FilterByRatingDescDOS())
+    }
+}
+
+
+
+export const filterByPriceAscDOS=()=>{
+    return function(dispatch){
+        dispatch(FilterByPriceAscDOS())
+    }
+}
+
+
+export const filterByPriceDescDOS=()=>{
+    return function(dispatch){
+        dispatch(FilterByPriceDescDOS())
     }
 }

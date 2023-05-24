@@ -5,7 +5,10 @@
   import { useEffect } from 'react'
   import React, { useState } from 'react';
 
-  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre } from "../../../redux/videogamesActions"
+  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre, 
+  
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS, filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatform 
+  } from "../../../redux/videogamesActions"
 
   import {createNativeStackNavigator} from '@react-navigation/native-stack';
   import CardHome from './CardHome';
@@ -100,14 +103,14 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
 //   handlerFilterPriceg(ordPrice)
 // };
 
-// const Genres = allGenres?.foreach(e=>({
-//   label: e.name, 
-//   value: e.name
-// }))
+const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
+  label: e.name, 
+  value: e.name
+}))
 
 
 
-console.log(vGames.allGenres)
+console.log(Genres)
 
     const handleChangeModal = ()=>{
       setView(!view);
@@ -118,11 +121,11 @@ console.log(vGames.allGenres)
       console.log(filterType)
       if (filterType === 'AtoZ') {
     
-        dispatch(filterByAtoZ())
+        dispatch(filterByAtoZDOS())
     
       }else{
       
-        dispatch(filterByZtoA())
+        dispatch(filterByZtoADOS())
     
       }
     };
@@ -133,11 +136,11 @@ console.log(vGames.allGenres)
       console.log(filterType)
       if (filterType === 'ratingASC') {
     
-        dispatch(filterRatingAsc())
+        dispatch(filterByRatingAscDOS())
     
       }else{
       
-        dispatch(filterRatingDesc())
+        dispatch(filterByRatingDescDOS())
     
       }
     }
@@ -146,11 +149,11 @@ console.log(vGames.allGenres)
       console.log(filterType)
       if (filterType === 'priceASC') {
     
-        dispatch(filterPriceAsc())
+        dispatch(filterByPriceAscDOS())
     
       }else{
       
-        dispatch(filterPriceDesc())
+        dispatch(filterByPriceDescDOS())
     
       }
     }
@@ -158,9 +161,9 @@ console.log(vGames.allGenres)
     const handleFilterGenre= (data)=>{
       dispatch(filterByGenre(data));
     }
-    // const hanlderCleanFilter = ()=>{
-    //   dispatch(getAllVideogames())
-    // }
+    const handlerFilterByPlatform = (data)=>{
+      dispatch(filterByPlatform(data))
+    }
 
     const NextPage=()=>{
       if(maximo===pagina){
@@ -216,7 +219,7 @@ console.log(vGames.allGenres)
               >
                 <View
                   style={{
-                    height:'48%',
+                    height:'70%',
                     width:'90%',
                     borderRadius:25,
                     borderBottomEndRadius:200,
@@ -225,7 +228,7 @@ console.log(vGames.allGenres)
                 >
                   <View
                     style={{
-                      height: 45,
+                      height: 40,
                       width: '100%',
                       flexDirection: 'row',
                       justifyContent: 'flex-end',
@@ -268,6 +271,7 @@ console.log(vGames.allGenres)
                           onChange={item => {
                             // setValue(item.value);
                             setIsFocus(false);
+                            handlerFilterByPlatform(item.value)
                             
                           }}
                           
@@ -360,11 +364,11 @@ console.log(vGames.allGenres)
                         onChange={item => {
                           // setValue(item.value);
                           setIsFocus(false);
-                          // handleFilterGenre(item.value);
+                           handleFilterGenre(item.value);
                         }}
                         
                       />
-                      <TouchableOpacity
+                      {/* <TouchableOpacity
                           onPress={hanlderCleanFilter}
                           style={{
                             backgroundColor: '5856D6',
@@ -374,7 +378,7 @@ console.log(vGames.allGenres)
                           }}
                         >
                           <Text style={{ color: '#FFFFFF' }}>Clean Filter</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                       
                     </View>
                 </View>

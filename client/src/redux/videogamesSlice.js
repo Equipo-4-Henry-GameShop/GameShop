@@ -67,6 +67,7 @@ export const videogamesSlice= createSlice({
         setErrorMsg:(state,action)=>{
             state.msgerror= action.payload
         },
+        //========================FILTRO PRICE SOLO CON RUTA ============================
 
         FilterByPriceDesc:(state,action)=>{
             
@@ -80,6 +81,26 @@ export const videogamesSlice= createSlice({
 
             
         },
+
+        //=========================================================================
+        //================================FILTRO COMBINADO PRICE=========================================
+
+
+        FilterByPriceDescDOS:(state,action)=>{
+            
+            state.filteredVideoGames =[...state.filteredVideoGames].sort((a, b) => b.price - a.price)
+            state.orderPrice=action.payload
+        },
+        FilterByPriceAscDOS:(state,action)=>{
+            
+            [...state.filteredVideoGames].sort((a, b) => a.price - b.price)
+            state.filteredVideoGames =
+
+            state.orderPrice=action.payload
+
+            
+        },
+        //========================FILTRO RATING SOLO CON RUTA ============================
         FilterByRatingDesc:(state,action)=>{
             
             state.filteredVideoGames = action.payload;
@@ -91,6 +112,33 @@ export const videogamesSlice= createSlice({
             state.orderRating=action.payload
 
         },
+
+        //===============================================================
+        //======================FILTRO RATING COMBINADO SIN ruta==================
+        FilterByRatingDescDOS:(state,action)=>{
+            if(action.payload === 'rating-asc'){
+            
+            state.filteredVideoGames = [...state.filteredVideoGames].sort(
+                (a, b) => a.rating - b.rating
+        )
+            }
+            // state.orderRating=action.payload
+        },
+        FilterByRatingAscDOS:(state,action)=>{
+            if(action.payload === 'rating-asc'){
+            state.filteredVideoGames = [...state.filteredVideoGames].sort(
+                (a, b) => b.rating - a.rating
+            )
+            // state.orderRating=action.payload
+        }
+
+        },
+
+        //===============================================================
+        
+
+        //========================FILTRO ABC SOLO CON RUTA ============================
+
         FilterZtoA:(state,action)=>{
 
             
@@ -103,30 +151,69 @@ export const videogamesSlice= createSlice({
             state.orderABC=action.payload
 
         },
+        //===================================================
+
+        //========================FILTRO ABC HACIENDO USO DEL PISADO============================
+
+        FilterByAtoZDos:(state,action)=>{
+          
+            
+            state.filteredVideoGames = [...state.filteredVideoGames].sort((a, b) =>
+            a.name.localeCompare(b.name)
+        )
+            state.orderABC=action.payload
+        },
+
+        FilterByZtoADOS:(state,action)=>{
+           
+            state.filteredVideoGames = [...state.filteredVideoGames].sort((a, b) => b.name.localeCompare(a.name))
+            state.orderABC=action.payload
+        },
+
+        //===================================================
+
         FilterBYPlataform:(state,action)=>{
             
             state.filteredVideoGames = action.payload;
             state.platformState=action.payload
 
         },
+
+
+        FilterByPlatformDOS:(state,action)=>{
+            // const filtered =
+            // typeof state.filteredVideoGames !== "string"
+            //     ? state.filteredVideoGames.filter((game) =>
+            //         game.platforms.toLowerCase().includes(action.payload)
+            //     )
+            //     : [];
+            // state.filteredVideoGames = filtered;
+            // state.platformState=action.payload
+
+        },
+
         AllGenresVideoGame:(state,action)=>{
             state.allGenres=action.payload
         },
         FilterByGenre:(state,action)=>{
+            const filtered=[]
+            for(const i of state.filteredVideoGames){
+              if(i['genre'].includes(action.payload)){
+                filtered.push(i)
+              }
+            }
+            console.log(filtered)
 
-            const filtered = typeof state.filteredVideoGames !== "string"
-            ? state.filteredVideoGames.filter((game) =>
-                game.genres.includes(action.payload)
-            )
-            : [];
-
-            state.filteredVideoGames = filtered;
-            state.FilterGenre=action.payload
-        }
+      state.filteredVideoGames = filtered
+    //   state.filterGenre = action.payload;  
+     }
     }
 })
 
 export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage,setFlaPrev,setErrorMsg,
               setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
-              FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame}=videogamesSlice.actions
+              FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame, FilterByGenre,
+            
+              FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS
+            }=videogamesSlice.actions
 export default videogamesSlice.reducer
