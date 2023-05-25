@@ -7,10 +7,7 @@ import {
   Button,
   SectionList,
   ScrollView,
-<<<<<<< HEAD
-=======
   SafeAreaView,
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 } from "react-native";
 import CardDataPanel from "../../../helpers/CardDataPanel";
 
@@ -21,28 +18,6 @@ import {
 } from "../../../../constants/Colors";
 import { persons } from "../../../../utils/arrayPersons";
 
-<<<<<<< HEAD
-////Acá podemos pasar como props los datos del usuarios para que este 
-////componente sea netamente visual y el codigo quede mas prolijo
-
-
-
-export const Metrics= (route) => {
-  return (
-    <View>
-      {persons.map((p)=>{
-        return(
-        <CardDataPanel
-        image={p.image}
-        name={p.name}
-        id={p.id}
-        />)
-
-      })}
-    </View>
-
-)};
-=======
 import MyBezierLineChart from "./LineChart";
 import MyBarChart from "./BarChart";
 
@@ -73,4 +48,3 @@ const styles = StyleSheet.create({
     marginLeft: -15,
   },
 });
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18

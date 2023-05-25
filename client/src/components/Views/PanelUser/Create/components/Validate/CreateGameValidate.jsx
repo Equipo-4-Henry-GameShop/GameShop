@@ -1,8 +1,4 @@
 export const validate = (val) => {
-<<<<<<< HEAD
-=======
-
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
   const errors = {};
 
   if (val.name === "") {

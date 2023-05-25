@@ -88,13 +88,13 @@ export const videogamesSlice= createSlice({
 
         FilterByPriceDescDOS:(state,action)=>{
             
-            state.filteredVideoGames =[...state.filteredVideoGames].sort((a, b) => b.price - a.price)
+            state.filteredVideoGames =state.filteredVideoGames.sort((a, b) => b.price - a.price)
             state.orderPrice=action.payload
         },
         FilterByPriceAscDOS:(state,action)=>{
             
-            [...state.filteredVideoGames].sort((a, b) => a.price - b.price)
-            state.filteredVideoGames =
+           
+            state.filteredVideoGames =state.filteredVideoGames.sort((a, b) => a.price - b.price)
 
             state.orderPrice=action.payload
 
@@ -116,21 +116,27 @@ export const videogamesSlice= createSlice({
         //===============================================================
         //======================FILTRO RATING COMBINADO SIN ruta==================
         FilterByRatingDescDOS:(state,action)=>{
-            if(action.payload === 'rating-asc'){
+          const Filtered =  state.videoGames.sort(
+            (a, b) => a.rating - b.rating
+    )
+            console.log(Filtered)
             
-            state.filteredVideoGames = [...state.filteredVideoGames].sort(
-                (a, b) => a.rating - b.rating
-        )
-            }
+            state.filteredVideoGames =Filtered
+            
             // state.orderRating=action.payload
         },
         FilterByRatingAscDOS:(state,action)=>{
-            if(action.payload === 'rating-asc'){
-            state.filteredVideoGames = [...state.filteredVideoGames].sort(
+            const Filtered = state.videoGames.sort(
                 (a, b) => b.rating - a.rating
             )
+           
+            console.log(Filtered)
+            
+            
+            
+            state.filteredVideoGames = Filtered
             // state.orderRating=action.payload
-        }
+        
 
         },
 
@@ -157,16 +163,19 @@ export const videogamesSlice= createSlice({
 
         FilterByAtoZDos:(state,action)=>{
           
-            
-            state.filteredVideoGames = [...state.filteredVideoGames].sort((a, b) =>
+            const Filtered=state.videoGames.sort((a, b) =>
             a.name.localeCompare(b.name)
         )
+            
+            state.filteredVideoGames = Filtered
+        
             state.orderABC=action.payload
         },
 
         FilterByZtoADOS:(state,action)=>{
-           
-            state.filteredVideoGames = [...state.filteredVideoGames].sort((a, b) => b.name.localeCompare(a.name))
+            const Filtered=state.videoGames.sort((a, b) => b.name.localeCompare(a.name))
+        
+            state.filteredVideoGames = Filtered
             state.orderABC=action.payload
         },
 
@@ -181,15 +190,25 @@ export const videogamesSlice= createSlice({
 
 
         FilterByPlatformDOS:(state,action)=>{
-            // const filtered =
-            // typeof state.filteredVideoGames !== "string"
-            //     ? state.filteredVideoGames.filter((game) =>
-            //         game.platforms.toLowerCase().includes(action.payload)
-            //     )
-            //     : [];
-            // state.filteredVideoGames = filtered;
-            // state.platformState=action.payload
+        //   console.log('My action', state.filteredVideoGames)
+            const filtered=[]
+            for(const i of state.videoGames){
 
+            i['platforms'].forEach(element => {
+                if(element.toLowerCase().includes(action.payload.toLowerCase())){
+                filtered.push(i)
+            }
+        });
+        
+    }
+    console.log(filtered)
+
+            state.filteredVideoGames = filtered
+
+            // console.log(state.filteredVideoGames)
+            
+
+            
         },
 
         AllGenresVideoGame:(state,action)=>{
@@ -198,15 +217,18 @@ export const videogamesSlice= createSlice({
         FilterByGenre:(state,action)=>{
             const filtered=[]
             for(const i of state.filteredVideoGames){
-              if(i['genre'].includes(action.payload)){
+              if(i['genre']?.includes(action.payload)){
                 filtered.push(i)
               }
             }
-            console.log(filtered)
-
+            // console.log(filtered)
+            // console.log(state.filteredVideoGames)
       state.filteredVideoGames = filtered
     //   state.filterGenre = action.payload;  
-     }
+     },
+     EmptyFilteredvideogames:(state,action)=>{
+        state.filteredVideoGames=[];
+    },
     }
 })
 
@@ -214,6 +236,6 @@ export const {getAllVideogames,getVideogamebyId,addUser,setNextPage,setFirstPage
               setPrevPage,setMaxPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,
               FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ, FilterBYPlataform,AllGenresVideoGame, FilterByGenre,
             
-              FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS
+              FilterByAtoZDos, FilterByZtoADOS, FilterByRatingDescDOS, FilterByRatingAscDOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByPlatformDOS, EmptyFilteredvideogames
             }=videogamesSlice.actions
 export default videogamesSlice.reducer

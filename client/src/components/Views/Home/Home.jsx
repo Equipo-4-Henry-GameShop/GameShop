@@ -5,9 +5,9 @@
   import { useEffect } from 'react'
   import React, { useState } from 'react';
 
-  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre, 
+  import {getvideoGames, setNxtPage,setPrvPage, getvGamebyName, set1rsPage,setPrvVideogame,filterByAtoZ,filterByZtoA,filterRatingAsc, filterRatingDesc, filterPriceAsc,filterPriceDesc, GetallGenres, filterByGenre,filterByPlatform, 
   
-    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS, filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatform 
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS,   filterByAtoZDOS, filterByZtoADOS, filterByRatingAscDOS, filterByRatingDescDOS, filterByPriceAscDOS, filterByPriceDescDOS, filterByPlatformDOS, emptyFilteredvideogames
   } from "../../../redux/videogamesActions"
 
   import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -47,7 +47,7 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
   ];
   const ordenRAting = [
     { label: 'Mayor a Menor Rating', value: 'ratingDESC' },
-    { label: 'Menor a Mayor Precio', value: 'ratingASC' },
+    { label: 'Menor a Mayor Rating', value: 'ratingASC' },
     
   ];
   const ordenPrice = [
@@ -64,7 +64,7 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
     const pagina=vGames.pagina
     const porPagina= vGames.porPagina
     const maximo=Math.ceil(vGames.videoGames.length/porPagina)
-
+    const [reload, setReload]=useState(false)
 
   // ===============modal filter state=========
   const [view, setView] = useState(false)
@@ -87,7 +87,7 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
       //  console.log("entro al 2do home??")
       dispatch(getvideoGames()) ;
       dispatch(GetallGenres())
-    },[])
+    },[reload])
     
     
 //==================== FILTER SET SELECT==================
@@ -103,7 +103,7 @@ import { getAllVideogames } from '../../../redux/videogamesSlice';
 //   handlerFilterPriceg(ordPrice)
 // };
 
-const Genres =vGames.allGenres.length && vGames.allGenres?.map(e=>({
+const Genres =vGames.allGenres?.length && vGames.allGenres?.map(e=>({
   label: e.name, 
   value: e.name
 }))
@@ -123,10 +123,13 @@ console.log(Genres)
     
         dispatch(filterByAtoZDOS())
     
-      }else{
+      }else if('ZtoA'){
       
         dispatch(filterByZtoADOS())
     
+      }else{
+        setReload(!reload)
+        setIsFocus(!isFocus)
       }
     };
 
@@ -138,10 +141,14 @@ console.log(Genres)
     
         dispatch(filterByRatingAscDOS())
     
-      }else{
+      }else if('ratingDESC'){
       
         dispatch(filterByRatingDescDOS())
     
+      }else{
+        setReload(!reload)
+        setIsFocus(!isFocus)
+
       }
     }
 
@@ -159,10 +166,20 @@ console.log(Genres)
     }
 
     const handleFilterGenre= (data)=>{
+      if(data){
       dispatch(filterByGenre(data));
+    }else{
+      setReload(!reload)
+        setIsFocus(!isFocus)
+    }
     }
     const handlerFilterByPlatform = (data)=>{
-      dispatch(filterByPlatform(data))
+      if(data){
+      dispatch(filterByPlatformDOS(data))
+      }else{
+        setReload(!reload)
+          setIsFocus(!isFocus)
+      }
     }
 
     const NextPage=()=>{
@@ -178,6 +195,12 @@ console.log(Genres)
           return
         }
         dispatch(setPrvPage())
+    }
+
+    const handlerCleaner = ()=>{
+      console.log(reload)
+      dispatch(emptyFilteredvideogames())
+      setReload(!reload)
     }
   
 
@@ -235,7 +258,7 @@ console.log(Genres)
                       alignItems: 'flex-end',
                       paddingHorizontal:10,
                   
-
+                      
                     }}
                   >   
                   <TouchableOpacity
@@ -243,7 +266,34 @@ console.log(Genres)
                   >
                       <MaterialCommunityIcons name='close-circle-outline' color={color_blanco} size={30} />
                   </TouchableOpacity>
+                    
                   </View>
+                      <View
+                        style={{
+                          height: 20,
+                          width: '15%',
+                          justifyContent: 'flex-end',
+                          position: 'absolute',
+                          top: 18,
+                          left: 10,
+                        }}
+                      >
+                        <TouchableOpacity onPress={() => handlerCleaner()}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ marginRight: 5, color:'#FFFF' }}>CLEAR</Text>
+                            <MaterialCommunityIcons
+                              name='md-reload'
+                              color={color_blanco}
+                              size={20}
+                              style={styles.botonplus}
+                            />
+                          </View>
+                        </TouchableOpacity>
+                      </View>
+
+
+
+
                   <View style={styles.containerDos}>
                     <View
                       style={{
@@ -317,7 +367,7 @@ console.log(Genres)
                         onBlur={() => setIsFocus(false)}
                         onChange={item => {
                           // setValue(item.value);
-                          setIsFocus(false);
+                          // setIsFocus(false);
                           handlerFilterRating(item.value)
                         }}
                         
@@ -340,7 +390,7 @@ console.log(Genres)
                         onBlur={() => setIsFocus(false)}
                         onChange={item => {
                           // setValue(item.value);
-                          setIsFocus(false);
+                          // setIsFocus(false);
                           handlerFilterPriceg(item.value);
                         }}
                         
@@ -363,7 +413,7 @@ console.log(Genres)
                         onBlur={() => setIsFocus(false)}
                         onChange={item => {
                           // setValue(item.value);
-                          setIsFocus(false);
+                          // setIsFocus(false);
                            handleFilterGenre(item.value);
                         }}
                         
@@ -399,7 +449,7 @@ console.log(Genres)
             {
               title: `${StringsLanguaje.Page}  ${pagina} ${StringsLanguaje.of} ${maximo}` ,
             
-              data : vGames.filteredVideoGames.slice(
+              data : vGames.filteredVideoGames?.slice(
                         (pagina-1)*porPagina,
                         (pagina-1)*porPagina+porPagina)
                       .map(el=>{
@@ -600,6 +650,7 @@ console.log(Genres)
       right:2,
     },
     fab:{
+      
       backgroundColor: '#5856D6',
       width:45,
       height:45,
@@ -608,7 +659,8 @@ console.log(Genres)
     },
 
     botonplus:{
-      alignSelf:'center'
+      alignSelf:'center',
+      
     },
 
 
