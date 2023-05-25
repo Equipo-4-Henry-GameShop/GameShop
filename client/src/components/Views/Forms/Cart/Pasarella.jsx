@@ -1,18 +1,27 @@
 import React, { useState, useRef } from "react";
 import { View, Text, StyleSheet, TextInput, Button, Alert, Image } from "react-native";
 import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
+import { removeItem,cleanCart } from "./CardCartController";
+import { useDispatch } from "react-redux";
+// import { navigate } from "@react-navigation/routers/lib/typescript/src/CommonActions";
 
-const Pasarella = ({navigation}) => {
+const Pasarella = ({ route }) => {
+  const dispatch=useDispatch()
+  const { Cart ,tot,userid} = route.params;
 
+  // console.log("Esto me llega de props totl:", userid);
   const cardFieldRef = useRef(null);
   //Data
-  const items = [{ videogameId: 3498, videogameName: "Grand Theft Auto V", unitPrice: 20, quantity: 2 }, { videogameId: 4200, videogameName: "Portal 2", unitPrice: 20, quantity: 5 }];
+  // const items = [{ videogameId: 3498, videogameName: "Grand Theft Auto V", unitPrice: 20, quantity: 2 }, 
+  //                { videogameId: 4200, videogameName: "Portal 2", unitPrice: 20, quantity: 5 }];
+  // console.log("--->>")
+  // console.log("llega",tot.toFixed(2))
   var datos = {
-    items: items,
-    amount: 10000,
-    userId: 945,
+    items: Cart,
+    amount: (tot.toFixed(2)*100),
+    userId: userid,
   };
-
+  // console.log("ese",(datos.amount))
   const [cardDetails, setCardDetails] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
 
@@ -48,7 +57,7 @@ const Pasarella = ({navigation}) => {
               paymentId: paymentIntent.id,
               amount: datos.amount,
               items: itemsFormat,
-              userId: 945
+              userId: userid
             }),
             headers: {
               "Content-Type": "application/json",
@@ -61,6 +70,9 @@ const Pasarella = ({navigation}) => {
             console.log("Entro a pago exitoso")
             alert("Payment Successful");
             console.log("Payment successful ", paymentIntent.status);
+            // dispatch(cleanCart())
+            // navigation.navigate('HomeScreen');
+            
           } else {
             alert("It was not possible to complete the purchase, the payment has been refunded.")
           }
