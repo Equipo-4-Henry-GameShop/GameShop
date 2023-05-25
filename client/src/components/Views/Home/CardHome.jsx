@@ -67,10 +67,6 @@ export default function CardHome(data) {
                   <View style={styles.viewEstrellas}>
                   {starArr}
                   </View>
-<<<<<<< HEAD
-                  
-=======
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
                 <Text style={[styles.h3,  {color:StringsDark.text}]}>
                    { size(data.data.informacion) >0 
                         ? `${data.data.informacion.substr(0,60)} ...`
@@ -96,10 +92,6 @@ export default function CardHome(data) {
   )
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fd8b5ee77740599ebabb3baae45ae89e70b43c18
 const styles = StyleSheet.create({
   container: {
     flexDirection:'row',
