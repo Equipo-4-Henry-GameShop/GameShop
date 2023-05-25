@@ -2,7 +2,7 @@ import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,setErrorMsg
     setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre, 
     
     
-    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS,FilterByPlatformDOS } from "./videogamesSlice";
+    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS,FilterByPlatformDOS, EmptyFilteredvideogames } from "./videogamesSlice";
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
 
@@ -190,5 +190,13 @@ export const filterByPriceAscDOS=()=>{
 export const filterByPriceDescDOS=()=>{
     return function(dispatch){
         dispatch(FilterByPriceDescDOS())
+    }
+}
+
+
+
+export const emptyFilteredvideogames=()=>{
+    return function(dispatch){
+        dispatch(EmptyFilteredvideogames())
     }
 }
