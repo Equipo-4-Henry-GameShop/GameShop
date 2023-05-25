@@ -6,7 +6,6 @@ const initialState={
     videoGame:[],
     msgerror:"NULL",
     flag_prev:false,
-    videoGame:[],
 
     filteredVideoGames: [],
     allGenres: [],
@@ -18,7 +17,7 @@ const initialState={
     FilterGenre:"",
     platformState: "",
 
-
+    vGameId:[],
     pagina:1,
     porPagina:12,
     input:1,
@@ -41,7 +40,7 @@ export const videogamesSlice= createSlice({
             state.videoGames_Prev= action.payload;
         },
         getVideogamebyId: (state,action)=>{
-            state.videoGame=action.payload
+            state.vGameId=action.payload
         },
         setNextPage: (state,action)=>{
             state.pagina=state.pagina +1 

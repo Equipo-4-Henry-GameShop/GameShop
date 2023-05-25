@@ -15,10 +15,11 @@ import {
   color_negro,
 } from "../../constants/Colors";
 
-const CardDataPanel = (props) => {
+const CardDataPanel = (props,{navigation}) => {
+  console.log(props.redirection)
   return (
     <View key={props.id} style={styles.container}>
-      <TouchableOpacity style={styles.buttonContainer}>
+      <TouchableOpacity style={styles.buttonContainer}  onPress={props.redirection}>
         <Image style={styles.image} source={{ uri: props.image }} />
         <View>
           <Text style={styles.text}>{props.fullname}</Text>

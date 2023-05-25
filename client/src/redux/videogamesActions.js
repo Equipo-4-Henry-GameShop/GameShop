@@ -1,8 +1,7 @@
 import {getAllVideogames, addUser,setNextPage,setPrevPage,setMaxPage,setErrorMsg,
-    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre, 
-    
-    
-    FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS,FilterByPlatformDOS, EmptyFilteredvideogames } from "./videogamesSlice";
+    setFlaPrev,setFirstPage,getVideogamesbyName,setPrevVideoGame,updateVideogames,FilterByPriceDesc,FilterByPriceAsc,FilterByRatingDesc,FilterByRatingAsc,FilterZtoA,FilterAtoZ,FilterBYPlataform,AllGenresVideoGame,FilterByGenre, getVideogamebyId,FilterByAtoZDos, FilterByZtoADOS, FilterByPriceDescDOS, FilterByPriceAscDOS, FilterByRatingDescDOS, FilterByRatingAscDOS,FilterByPlatformDOS, EmptyFilteredvideogames } from "./videogamesSlice";
+
+
 import axios from "axios";
 import {videogames} from '../utils/dataVideojuegos'
 
@@ -88,6 +87,7 @@ export const updateVgames=(data)=>{
         dispatch(updateVideogames(data))
     }
 }
+
 
 
 // export const filterByAtoZ=()=>(dispatch)=>{
@@ -200,3 +200,25 @@ export const emptyFilteredvideogames=()=>{
         dispatch(EmptyFilteredvideogames())
     }
 }
+
+export const getVGameByID = (id) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(
+          `https://gameshop-production-e844.up.railway.app/games/${id}`
+        );
+  
+        const dataVg = response.data;
+  
+        if (dataVg) {
+          dispatch(getVideogamebyId(dataVg)); // Asegúrate de importar y definir esta acción correctamente
+        } else {
+          dispatch(setErrorMsg("No game registration")); // Asegúrate de importar y definir esta acción correctamente
+        }
+      } catch (err) {
+        console.log(`Error: ${err}`);
+        dispatch(setErrorMsg(err)); // Asegúrate de importar y definir esta acción correctamente
+      }
+    };
+  };
+
