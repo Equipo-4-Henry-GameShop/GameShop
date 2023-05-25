@@ -498,4 +498,33 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // backgroundColor: color_azul,
   },
+  buttonGoogle: {
+    marginTop: "10%",
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    width: "100%",
+    borderRadius: 20,
+  },
+  imageGoogle: {
+    height: 40,
+    width: 250,
+  },
+
+  boxcontainercheckbox: {
+    flex: 1,
+    alignItems: "center",
+  },
+
+  checkboxSection: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  checkboxParagraph: {
+    color: color_negro,
+    fontSize: 12,
+  },
+  checkbox: {
+    margin: 8,
+  },
 });
