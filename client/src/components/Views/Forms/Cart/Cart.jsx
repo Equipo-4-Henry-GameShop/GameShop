@@ -14,6 +14,7 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
 import {getItemAsyncStorage} from '../../Forms/Cart/CardCartController'
+// import { electron } from 'webpack';
 
 const Cart = ({navigation}) => {
     const dispatch=useDispatch()
@@ -109,11 +110,18 @@ useFocusEffect(
     cleanCart();
     dispatch(updateCart());
   }; 
-
+// console.log("logginUser",Carrito)
   const handlePasarellaPress = () => {
     const proceedWithPurchase = () => {
       if (isLogged) {
-        navigation.navigate('Pasarella');
+        const itemsCart=Carrito.map(el=>{
+          return { videogameId:   el.value.id, 
+                   videogameName: el.value.title,
+                   unitPrice: el.value.price,
+                   quantity:  el.value.amount.toFixed(2)}
+        })
+        // const items = [{ videogameId: 3498, videogameName: "Grand Theft Auto V", unitPrice: 20, quantity: 2 }] 
+        navigation.navigate('Pasarella', { Cart: itemsCart, tot:total ,userid:logginUser.id});
       } else {
         alert("Es necesario Regisrar inicio de Sesión")
         navigation.navigate('Login');
