@@ -21,7 +21,7 @@ import { validate } from "./components/Validate/CreateGameValidate";
 import { SelectList } from "react-native-dropdown-select-list";
 
 import { allGenres, allPlatforms, allTags } from "./components/dataFilteredgames";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import {
   color_azul,
   color_blanco,
@@ -33,6 +33,10 @@ import {
 
 import axios from "axios";
 
+//Dark Mode:
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+//Dark Mode:
 
 const CreateVideogame = ({navigation, route}) => {
   const [image, setImage] = useState([]);
@@ -45,6 +49,11 @@ const CreateVideogame = ({navigation, route}) => {
   const [inputFocusedPrice, setInputFocusedPrice] = useState(true);
   const [inputFocusedrequeriments_en, setInputFocusedrequeriments_en] = useState(true);
   const [validateSubmit, setValidateSubmit] = useState(true);
+
+//Dark Mode:  
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
+//Dark Mode:
 
   const [stackData, setStackData] = useState({
     platforms: allPlatforms,
@@ -69,6 +78,18 @@ const CreateVideogame = ({navigation, route}) => {
   // console.log(allgenre)
 
   console.log(newVideoGame);
+
+//Dark Mode:
+  useEffect(() =>{
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.CreateVideogame,"Create Videogame"}`,
+      headerStyle: 
+      {
+        backgroundColor: StringsDark.backgroundContainer, 
+      },
+    });
+  }, [isDarkMode, locale]);
+//Dark Mode:
 
   useEffect(() => {
     validate(newVideoGame);
@@ -392,10 +413,14 @@ const CreateVideogame = ({navigation, route}) => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.containerLogin}>
-          <View>
-            <Text style={styles.title}>Title </Text>
+      <View style={[
+          styles.bgCont,
+          { backgroundColor: StringsDark.backgroundContainer}
+        ]}/>
+      <View style={[styles.container,{ backgroundColor: StringsDark.bktitle}]}>
+        <View style={[styles.containerLogin, { backgroundColor: StringsDark.bordercolor}]}>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.nordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Title </Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Game name"
@@ -409,8 +434,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
                   
-          <View>
-            <Text style={styles.title}>Price</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Price</Text>
             <TextInput
               style={styles.input}
               placeholder="$999.99"
@@ -423,8 +448,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={styles.containerInput}>
-            <Text style={styles.title}>Description</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Description</Text>
             <TextInput
               style={[styles.inputStyle2, inputStyle]}
               placeholder="Paste_description"
@@ -438,8 +463,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={styles.containerInput}>
-            <Text style={styles.title}>System requeriments_enuirements</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>System requeriments_enuirements</Text>
             <TextInput
               style={[styles.inputStyle2, inputStyleVar]}
               placeholder="Paste_requeriments"
@@ -453,8 +478,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View>
-            <Text style={styles.title}>Release Date </Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Release Date </Text>
             <TextInput
               style={styles.input}
               placeholder="dd-mm-yyyy"
@@ -468,8 +493,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View>
-            <Text style={styles.title}>Video game cover</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Video game cover</Text>
 
             <View
               style={{
@@ -478,8 +503,8 @@ const CreateVideogame = ({navigation, route}) => {
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity onPress={pickImage} style={styles.miniButton}>
-                <Text style={styles.buttonText}>Load from gallery</Text>
+              <TouchableOpacity onPress={pickImage} style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+                <Text style={[styles.buttonText,{ backgroundColor: StringsDark.titblanco}]}>Load from gallery</Text>
               </TouchableOpacity>
               {validateNvg.image !== "" && !validateSubmit && (
                 <Text style={styles.error}>{validateNvg.image}</Text>
@@ -499,21 +524,15 @@ const CreateVideogame = ({navigation, route}) => {
             </View>
           </View>
 
-          <View>
-            <Text style={styles.title}>Load screenShots</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Load screenShots</Text>
 
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <View style={[styles.viewContx1,{ backgroundColor: StringsDark.bordercolor}]}>
               <TouchableOpacity
                 onPress={pickImageScreen}
-                style={styles.miniButton}
+                style={[styles.miniButton,{ backgroundColor: StringsDark.titblanco}]}
               >
-                <Text style={styles.buttonText}>Load from gallery</Text>
+                <Text style={[styles.buttonText,{ backgroundColor: StringsDark.titblanco}]}>Load from gallery</Text>
               </TouchableOpacity>
               {validateNvg.screenShots !== "" && !validateSubmit && (
                 <Text style={styles.error}>{validateNvg.screenShots}</Text>
@@ -535,8 +554,8 @@ const CreateVideogame = ({navigation, route}) => {
                 })}
             </View>
           </View>
-          <View style={styles.select}>
-            <Text style={styles.title}>Add Genre</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add Genre</Text>
             <View>
               <SelectList
                 data={stackData.genre}
@@ -557,8 +576,8 @@ const CreateVideogame = ({navigation, route}) => {
               <Text style={styles.error}>{validateNvg.genre}</Text>
             )}
           </View>
-          <View style={styles.select}>
-            <Text style={styles.title}>Add platforms</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add platforms</Text>
             <View>
               <SelectList
                 data={stackData.platforms}
@@ -580,8 +599,8 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={styles.select}>
-            <Text style={styles.title}>Add Tags</Text>
+          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
+            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add Tags</Text>
             <View>
               <SelectList
                 placeholder="Add tag"
@@ -603,15 +622,15 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
           <View></View>
-          <View style={styles.submit}>
+          <View style={[styles.submit,{ backgroundColor: StringsDark.bordercolor}]}>
             <TouchableOpacity
-              style={styles.miniButtonSubmit}
+              style={[styles.miniButtonSubmit,{ backgroundColor: StringsDark.letraverde}]}
               onPress={() => Submit()}
             >
-              <Text style={styles.buttonTextSubmit}>Create Publication</Text>
+              <Text style={[styles.buttonTextSubmit,{ backgroundColor: StringsDark.letraverde}]}>Create Publication</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.miniButtonCancel}
+              style={[styles.miniButtonCancel,{ backgroundColor: StringsDark.newCancelBot}]}
               onPress={() => CancelSubmit()}
             >
               <Text style={styles.buttonTextSubmit}>Cancel Publication</Text>
@@ -625,7 +644,7 @@ const CreateVideogame = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     height: "100%",
     alignItems: "center",
     alignContent: "center",
@@ -638,8 +657,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
     height: "100%",
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
+    // borderColor: color_negro,
+    // backgroundColor: color_blanco,
     padding: 10,
   },
 
@@ -665,12 +684,12 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
-    backgroundColor: color_blanco,
+    // backgroundColor: color_blanco,
     borderRadius: 8,
-    borderBottomColor: color_gris,
-    borderBottomWidth: 4,
-    borderRightWidth: 4,
-    borderColor: color_gris,
+    // borderBottomColor: color_gris,
+    borderBottomWidth: 1,
+    borderRightWidth: 2,
+    // borderColor: color_gris,
     borderWidth:1
   },
   buttonText: {
@@ -678,7 +697,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-    color: color_negro,
+    // color: color_negro,
   },
   miniButtonSubmit: {
     marginTop: 5,
@@ -689,7 +708,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     borderRadius: 8,
   },
   miniButtonCancel: {
@@ -701,7 +720,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
-    backgroundColor: color_rojoClaro,
+    // backgroundColor: color_rojoClaro,
     borderRadius: 8,
   },
   buttonTextSubmit: {
@@ -709,12 +728,12 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-    color: color_blanco,
+    // color: color_blanco,
   },
   error: {
     margin: 8,
     fontSize: 14,
-    color: "red",
+    // color: "red",
     fontWeight: "bold",
   },
   input: {
@@ -724,10 +743,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 50,
     borderWidth: 2,
-    borderColor: color_azul,
+    // borderColor: color_azul,
     marginHorizontal:"auto",
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
+    // borderColor: "#ddd",
+    // backgroundColor: "#fff",
     marginBottom: 15,
     borderRadius: 8,
   },
@@ -759,13 +778,27 @@ const styles = StyleSheet.create({
     fontSize: 16, 
     textAlign: "center",
     borderWidth: 2,
-    borderColor: color_azul,
+    // borderColor: color_azul,
     marginHorizontal:"auto",
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
+    // borderColor: "#ddd",
+    // backgroundColor: "#fff",
     marginBottom: 15,
     borderRadius: 8,
-  }
+  },
+
+  viewContx1: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+  },
+
+  bgCont: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: color_azul,
+  },
+
 });
 
 export default CreateVideogame;

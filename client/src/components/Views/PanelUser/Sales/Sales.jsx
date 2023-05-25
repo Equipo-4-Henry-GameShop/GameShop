@@ -30,22 +30,13 @@ export const Sales = ({ navigation }, props) => {
 
   const allSales = useSelector((state) => state.salesState.allSales);
 
-  const allgames = useSelector((state) => state.videogamesState);
+
 
   useEffect(() => {
     dispatch(getAllSales());
   }, []);
-  useEffect(() => {
-    dispatch(getvideoGames());
-  }, []);
 
   console.log(allSales.allSales);
-
-  console.log(allgames);
-
-  const [aprobed, setAprobed] = useState();
-
-  const [noAprobed, setNoAprobed] = useState();
 
   const imageDefault =
     "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360";
@@ -53,10 +44,13 @@ export const Sales = ({ navigation }, props) => {
   if (!allSales.length) {
     return (
       <View>
-        <Text>Loading...</Text>
+        <Text style={{textAlign:"center"}}>No sales recorded</Text>
+        <Image source={{uri: "https://static.vecteezy.com/system/resources/previews/010/736/664/original/broken-piggy-bank-icon-eps-10-free-vector.jpg"}} style={{width:500, height:300, alignItems:"center", alignContent:"center", justifyContent:"center"}}/>
       </View>
     );
-  } else {
+  } 
+
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -74,16 +68,13 @@ export const Sales = ({ navigation }, props) => {
                 return (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate("UserDetail", { id: s.user.id })
-                    }
-                  >
+                      navigation.navigate("UserDetail", { id: s.user.id })}>
+                    {/* //En esta linea tengo que mostrar la venta seleccionada */}
                     <View key={s.id}>
                       <CardDataBuy
                         id={s.id}
                         user={s.user.fullname}
-                        games={s.items.map((g) =>
-                          g.videogameName.concat(".  ")
-                        )}
+                        games={s.items.length}
                         image={!s.user.image ? imageDefault : s.user.image}
                         items={s.items.reduce(
                           (sum, item) => sum + item.quantity,
@@ -94,6 +85,8 @@ export const Sales = ({ navigation }, props) => {
                           (sum, item) => sum + item.unitPrice * item.quantity,
                           0
                         )}
+                        approved={s.salesStatus
+                        }
                       />
                     </View>
                   </TouchableOpacity>
@@ -108,18 +101,18 @@ export const Sales = ({ navigation }, props) => {
             <ExcelGenerator fileName="archivo" />
           </View>
 
-          {/* <View style={styles.buttonContainer}>
+          <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => console.log("Aqui se descarga excel")}
         >
           <Text style={styles.buttonText}>Descargar</Text>
         </TouchableOpacity>
-      </View> */}
+      </View>
         </View>
       </ScrollView>
     );
-  }
+  
 };
 
 const styles = StyleSheet.create({
@@ -129,6 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 50,
   },
+
   buttonContainer: {
     width: "90%",
     marginVertical: 10,

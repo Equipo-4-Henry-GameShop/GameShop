@@ -1,14 +1,14 @@
 import { View, Text,Image ,TouchableOpacity,StyleSheet} from 'react-native'
 import MenuButtonSubItem from './MenuButtonSubItem';
 import MenuBottonItem from './MenuButton'
-import { DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerContentScrollView, } from '@react-navigation/drawer';
 
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
 import { ThemeContext } from '../../Theme/ThemeProvider';
 
 import  React,{useEffect,useState, useContext} from 'react';
 import { ChangeButtonContext } from '../../Theme/ChangeContextButton';
-import {getItemAsyncStorage,InsertUserAsynStorage,removeItem} from '../Forms/Cart/CardCartController'
+import {getItemAsyncStorage} from '../Forms/Cart/CardCartController'
 
 import { useFocusEffect } from '@react-navigation/native';
 import { useDispatch ,useSelector} from "react-redux";
@@ -16,8 +16,8 @@ import { useDispatch ,useSelector} from "react-redux";
 const MenuItems=({navigation})=>{
 
   //esta linea debo de llamar en cada componente 
-  const { StringsDark,isDarkMode} = useContext(ThemeContext);
-  const {StringsLanguaje,locale }= useContext(LocalizationContext)
+  const { StringsDark} = useContext(ThemeContext);
+  const {StringsLanguaje }= useContext(LocalizationContext)
   const [isLogged, setIsLogged]=useState(false)
   const [logginUser, setLoggingUser] = useState("");
   const isLoggedGlobal =useSelector((state)=>state.usersState.isLogged)
@@ -109,8 +109,13 @@ const MenuItems=({navigation})=>{
             icon='person'
           />
            <MenuButtonSubItem
-              nombre= {StringsLanguaje.MyVideogames}
+              nombre= {StringsLanguaje.GameList}
               onPress={()=> navigation.navigate('VideoGameList')}
+              icon='pricetags'
+            />
+           <MenuButtonSubItem
+              nombre= {StringsLanguaje.MyVideogames}
+              onPress={()=> navigation.navigate('MyVideogames')}
               icon='pricetags'
             />
 

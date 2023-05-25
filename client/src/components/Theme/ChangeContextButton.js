@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
   switchContainer: {
     position:'absolute',
-    marginLeft: 150,
+    marginLeft: 160,
     flexDirection:'row',
     width: 55,
     height: 27,

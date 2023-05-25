@@ -1,3 +1,4 @@
+import React from "react";
 import {
   StyleSheet,
   Image,
@@ -28,7 +29,7 @@ const CardDataBuy = (props) => {
           <Text style={styles.text}>user: {props.user}</Text>
           <Text style={styles.text}>date: {props.date}</Text>
           <Text style={styles.text}>Total$ {props.price}</Text>
-
+          <Text style={styles.text}>Status: {props.approved}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -48,6 +49,18 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor:color_blanco,
     borderRadius: 20,
+  },
+  miniButton: {
+    marginTop: 15,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    marginBottom: "8%",
+    height: 60,
+    width: "50%",
+    padding: 0,
+    backgroundColor: color_azul,
+    borderRadius: 8,
   },
   image: {
     width: 70,

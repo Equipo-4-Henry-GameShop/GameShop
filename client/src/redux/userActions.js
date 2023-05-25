@@ -54,25 +54,26 @@ export const getUserByID = (id) => {
     };
   };
 
-  export const getAllUsers = async () => {
-    return async (dispatch) => {
-      try {
-        const data = await axios.get(
-          `https://gameshop-production-e844.up.railway.app/user`
-        );
-  
-        const dataUsers = data.data;
-  
-        dataUsers
-          ? dispatch(getAllUsr(dataUsers))
-          : dispatch(usrMsgErr("No user registration"));
-      } catch (err) {
-        console.log(`Error: ${err}`);
-  
-        dispatch(usrMsgErr(err));
+export const getAllUsers = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://gameshop-production-e844.up.railway.app/user`
+      );
+
+      const dataUsers = response.data;
+
+      if (dataUsers) {
+        dispatch(getAllUsr(dataUsers));
+      } else {
+        dispatch(usrMsgErr("No user registration"));
       }
-    };
+    } catch (error) {
+      console.log(`Error: ${error}`);
+      dispatch(usrMsgErr(error));
+    }
   };
+};
 
 
 

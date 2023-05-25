@@ -6,9 +6,12 @@ import { getUserByID } from "../../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, View, Text } from "react-native";
 
-export const UserDetail = (props,{navigation}) => {
+export const UserDetail = (props) => {
   const dataUser = useSelector((state) => state.usersState.dataUser);
   const dispatch = useDispatch();
+
+//esto hace referencia a una compra especifica seleccionada de la lista
+//de ventas
 
   useEffect(() => {
     dispatch(getUserByID(props.route.params.id));
@@ -31,7 +34,7 @@ export const UserDetail = (props,{navigation}) => {
         email={dataUser.email}
         date={dataUser.date}
         phone={dataUser.phone}
-        shoppings={() => navigation.navigate("SalesUser", { id: dataUser.id })}
+        shoppings={dataUser.date}
       />
     </View>
   );

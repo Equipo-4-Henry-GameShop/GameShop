@@ -50,6 +50,8 @@ export const strings = {
     Sign_inWith: 'Sign in with',
     or: 'Or',
     userName:'User Name',
+    CartValidate:'Attention, you must log in to proceed with the purchase.',
+    GameList:'Game List'
   },
   es: {
     Welcome: 'Bienvenido',
@@ -76,7 +78,7 @@ export const strings = {
     Number: 'Número',
     Price: 'Precio',
     Checkout : 'Pago',
-    MsgUserNoRegister: 'Usuario no registrado acceda a su cuenta',
+    MsgUserNoRegister: 'Attention, you must log in to proceed with the purchase.',
     Search: 'Buscar',
     Information: 'Informacion',
     Ranking: 'Clasificación',
@@ -101,6 +103,8 @@ export const strings = {
     Sign_inWith: 'Registrate con',    
     or: 'O',
     userName:'Nombre de Usuario',
+    CartValidate:'Atencion, debe iniciar sesión para proceder con compra.',
+    GameList:'Lista de Videojuegos'
   }
 };
 

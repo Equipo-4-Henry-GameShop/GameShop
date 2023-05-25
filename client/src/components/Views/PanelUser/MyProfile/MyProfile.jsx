@@ -26,6 +26,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { color_celeste } from "../../../Theme/stringsColors";
 import { convertirFecha } from "../../../helpers/InvertDate";
 
+
+//Dark Mode:
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import { useContext } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+//Dark Mode:
+
+
 export const MyProfile = ({ navigation }) => {
   const [acceptTac, setAcceptTac] = useState(true);
   const [receibenewsLetter, setReceivenewsLetter] = useState(true);
@@ -59,13 +67,29 @@ export const MyProfile = ({ navigation }) => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    getDataFromAsyncStorage();
+  }, []);
+
+  //Dark Mode:
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
+
+  useEffect(() =>{
+    navigation.setOptions({
+      headerTitle:`${StringsLanguaje.MyProfile, 'My Profile'}`,
+      headerStyle:{backgroundColor: StringsDark.backgroundContainer,
+      },
+    });
+  }, [isDarkMode, locale]);
+  //Dark Mode:
   
   // const loadimage = ()=>{
   //   setImage(dataUserdb[0].image)
   // }
-  useEffect(() => {
-    getDataFromAsyncStorage();
-  }, []);
+
+  
 
 
 
@@ -163,7 +187,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
   };
 
 
-  if (!dataUserdb.length)
+if (!dataUserdb.length)
     return (
       <View>
         <Text>Loading...</Text>
@@ -172,14 +196,12 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
   return (
     <ScrollView>
       <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: color_azul,
-        }}
+        style={[
+          styles.bgCont,
+          { backgroundColor: StringsDark.newCombo}
+        ]}
       >
-        <TouchableOpacity onPress={pickImage} style={styles.ImageButton}>
+        <TouchableOpacity onPress={pickImage} style={[styles.ImageButton,{ backgroundColor: StringsDark.bkCard}]}>
           <Image
             source={{ uri: image }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
@@ -234,11 +256,11 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
           image,
         }) => (
           <View>
-            <View style={styles.container}>
-              <View style={styles.containerLogin}>
+            <View style={[styles.container,{ backgroundColor: StringsDark.bktitle}]}>
+              <View style={[styles.containerLogin,{ backgroundColor: StringsDark.bkCard}]}>
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.user}
                     placeholder={dataUserdb[0].user}
                     onChangeText={handleChange("user")}
@@ -251,7 +273,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.password}
                     placeholder="••••••••••"
                     secureTextEntry
@@ -265,7 +287,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.fullname}
                     placeholder={dataUserdb[0].fullname}
                     onChangeText={handleChange("fullname")}
@@ -278,7 +300,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.email}
                     placeholder={dataUserdb[0].email}
                     onChangeText={handleChange("email")}
@@ -291,7 +313,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.date}
                     placeholder={convertirFecha(dataUserdb[0].date)}
                     onChangeText={handleChange("date")}
@@ -304,7 +326,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
                 <View>
                   <TextInput
-                    style={styles.input}
+                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
                     value={values.phone}
                     placeholder={dataUserdb[0].phone}
                     onChangeText={handleChange("phone")}
@@ -322,7 +344,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
                       value={acceptTac}
                       onValueChange={setAcceptTac}
                     />
-                    <Text style={styles.checkboxParagraph}>
+                    <Text style={[styles.checkboxParagraph,{ backgroundColor: StringsDark.titblanco}]}>
                       I accept the Terms and Conditions
                     </Text>
                   </View>
@@ -333,7 +355,7 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
                       value={receibenewsLetter}
                       onValueChange={setReceivenewsLetter}
                     />
-                    <Text style={styles.checkboxParagraph}>
+                    <Text style={[styles.checkboxParagraph,{ backgroundColor: StringsDark.titblanco}]}>
                       I want to receive the newsLetter
                     </Text>
                   </View>
@@ -342,10 +364,10 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
 
               <View style={styles.submitContainer}>
                 <TouchableOpacity
-                  style={styles.miniButton}
+                  style={[styles.miniButton,{ backgroundColor: StringsDark.letraverde}]}
                   onPress={handleSubmit}
                 >
-                  <Text style={styles.buttonText}>Submit</Text>
+                  <Text style={[styles.buttonText,{ backgroundColor: StringsDark.letraverde}]}>Submit</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -362,13 +384,13 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     width: "100%",
   },
 
   container: {
     marginTop: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     height: "120%",
     alignItems: "center",
     alignContent: "center",
@@ -381,8 +403,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
     width: 320,
 
-    borderColor: color_negro,
-    backgroundColor: color_blanco,
+    // borderColor: color_negro,
+    // backgroundColor: color_blanco,
     padding: 10,
   },
 
@@ -390,12 +412,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     height: 35,
     borderWidth: 2,
-    borderColor: color_azul,
+    // borderColor: color_azul,
     paddingHorizontal: 70,
     marginLeft: "2%",
     marginRight: "2%",
-    borderColor: "#ddd",
-    backgroundColor: "#fff",
+    // borderColor: "#ddd",
+    // backgroundColor: "#fff",
     marginBottom: 15,
     borderRadius: 8,
   },
@@ -411,7 +433,7 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     padding: 0,
-    backgroundColor: color_blanco,
+    // backgroundColor: color_blanco,
     borderRadius: 125,
   },
   miniButton: {
@@ -423,14 +445,14 @@ const styles = StyleSheet.create({
     height: 60,
     width: "50%",
     padding: 0,
-    backgroundColor: color_azul,
+    // backgroundColor: color_azul,
     borderRadius: 8,
   },
   error: {
     textAlign: "center",
     marginTop: -15,
     fontSize: 14,
-    color: color_celeste,
+    // color: color_celeste,
     fontWeight: "bold",
   },
   buttonText: {
@@ -438,7 +460,7 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 15,
     fontWeight: "bold",
-    color: color_blanco,
+    // color: color_blanco,
   },
   buttonGoogle: {
     marginTop: "10%",
@@ -463,10 +485,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxParagraph: {
-    color: color_negro,
+    // color: color_negro,
     fontSize: 12,
   },
   checkbox: {
     margin: 8,
+  },
+
+  bgCont: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: color_azul,
   },
 });

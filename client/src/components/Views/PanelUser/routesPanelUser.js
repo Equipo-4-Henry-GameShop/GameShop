@@ -13,6 +13,8 @@ import { MyShoppings } from "./MyShoppings/MyShoppings";
 import MyBezierLineChart from "./Metrics/LineChart";
 import MyBarChart from "./Metrics/BarChart"
 import { UserDetail } from "../Detail/UserDetail";
+import { SalesUser } from "./Sales/AllSalesuser";
+
 
 export {
   Dashboard,
@@ -30,4 +32,5 @@ export {
   MyBezierLineChart,
   MyBarChart,
   UserDetail,
+  SalesUser
 };

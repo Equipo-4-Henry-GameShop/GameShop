@@ -288,14 +288,13 @@ const CreateUser = ({ navigation }) => {
       <View
         style={[
           styles.bgCont,
-          { backgroundColor: StringsDark.backgroundContainer}
+          { backgroundColor: StringsDark.newCombo}
         ]}
       >
         <TouchableOpacity
           onPress={pickImage}
-          style={[styles.ImageButton, { backgroundColor: StringsDark.tabInactive }]}
+          style={[styles.ImageButton, { backgroundColor: StringsDark.bkCard }]}
         >
-          {/* {backgroundColor:StringsDark.letraverde} */}
           <Image
             source={{ uri: `${image}` }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
@@ -349,7 +348,7 @@ const CreateUser = ({ navigation }) => {
           touched,
           image,
         }) => (
-          <View style={[{ backgroundColor: StringsDark.backgroundContainer}]}>
+          <View style={[{ backgroundColor: StringsDark.bktitle}]}>
             <View style={[styles.container,
               { backgroundColor: StringsDark.backgroundColor }]}>
               <View style={[styles.containerLogin,{ backgroundColor: StringsDark.tabInactive}]}>
@@ -463,7 +462,7 @@ const CreateUser = ({ navigation }) => {
                     <Text
                       style={[
                         styles.checkboxParagraph,
-                        { backgroundColor: StringsDark.bordercolor },
+                        { backgroundColor: StringsDark.titblanco },
                       ]}
                     >
                       I accept the Terms and Conditions
@@ -482,7 +481,7 @@ const CreateUser = ({ navigation }) => {
                     <Text
                       style={[
                         styles.checkboxParagraph,
-                        { backgroundColor: StringsDark.bordercolor },
+                        { backgroundColor: StringsDark.titblanco },
                       ]}
                     >
                       I want to receive the newsLetter
@@ -495,14 +494,14 @@ const CreateUser = ({ navigation }) => {
                 <TouchableOpacity
                   style={[
                     styles.miniButton,
-                    { backgroundColor: StringsDark.bordercolor },
+                    { backgroundColor: StringsDark.letraverde },
                   ]}
                   onPress={handleSubmit}
                 >
                   <Text
                     style={[
                       styles.buttonText,
-                      { backgroundColor: StringsDark.bordercolor },
+                      { backgroundColor: StringsDark.letraverde },
                     ]}
                   >
                     Submit
