@@ -185,7 +185,7 @@ export const videogamesSlice= createSlice({
             const filtered=[]
             for(const i of state.filteredVideoGames){
 
-            i['platforms'].forEach(element => {
+            i['platforms']?.forEach(element => {
                 if(element.toLowerCase().includes(action.payload.toLowerCase())){
                 filtered.push(i)
             }
@@ -195,7 +195,7 @@ export const videogamesSlice= createSlice({
 
             
 
-      state.filteredVideoGames = filtered
+      state.filteredVideoGames = filtered.length > 0 ? filtered : "No games"
             
         },
 
@@ -211,7 +211,7 @@ export const videogamesSlice= createSlice({
             }
             console.log(filtered)
             console.log(state.filteredVideoGames)
-      state.filteredVideoGames = filtered
+      state.filteredVideoGames = filtered.length > 0 ? filtered : "No games"
     //   state.filterGenre = action.payload;  
      }
     }
