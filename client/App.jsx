@@ -55,7 +55,8 @@ import {
   UserList,
   CreateItem,
   MyShoppings,
-  UserDetail
+  UserDetail,
+  SalesUser
 } from "./src/components/Views/PanelUser/routesPanelUser";
 
 import Landing from "./src/components/Views/Landing";
@@ -386,6 +387,21 @@ export default function App() {
                   }}
                 />
 
+<Drawer.Screen
+                  name="SalesUser"
+                  component={SalesUser}
+                  options={{
+                    title: "Sales User",
+                    headerStyle: {
+                      backgroundColor: color_azul,
+                    },
+                    headerTintColor: color_blanco,
+                    headerTitleStyle: {
+                      fontWeight: "bold",
+                      fontSize: 25,
+                    },
+                  }}
+                />
 
               </Drawer.Navigator>
             </NavigationContainer>

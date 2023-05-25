@@ -109,8 +109,13 @@ const MenuItems=({navigation})=>{
             icon='person'
           />
            <MenuButtonSubItem
-              nombre= {StringsLanguaje.MyVideogames}
+              nombre= {StringsLanguaje.GameList}
               onPress={()=> navigation.navigate('VideoGameList')}
+              icon='pricetags'
+            />
+           <MenuButtonSubItem
+              nombre= {StringsLanguaje.MyVideogames}
+              onPress={()=> navigation.navigate('MyVideogames')}
               icon='pricetags'
             />
 

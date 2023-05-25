@@ -23,7 +23,7 @@ export const CardUserDetail = (props) => {
 //   });
 // }, [isDarkMode, locale]);
 // //Dark Mode:
-
+console.log(props)
   return (
     <View style={styles.container}>
       <View style={styles.containerLogin}>
@@ -49,7 +49,7 @@ export const CardUserDetail = (props) => {
           <Text>Phone: {props.phone}</Text>
         </View>
         <View>
-          <TouchableOpacity onPress={props.shoppings} style={styles.miniButton}>
+          <TouchableOpacity onPress={props.shoppings}>
             <Text>Shopping history</Text>
           </TouchableOpacity>
         </View>

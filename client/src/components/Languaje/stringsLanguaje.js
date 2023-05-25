@@ -51,6 +51,7 @@ export const strings = {
     or: 'Or',
     userName:'User Name',
     CartValidate:'Attention, you must log in to proceed with the purchase.',
+    GameList:'Game List'
   },
   es: {
     Welcome: 'Bienvenido',
@@ -103,6 +104,7 @@ export const strings = {
     or: 'O',
     userName:'Nombre de Usuario',
     CartValidate:'Atencion, debe iniciar sesión para proceder con compra.',
+    GameList:'Lista de Videojuegos'
   }
 };
 

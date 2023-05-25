@@ -44,10 +44,13 @@ export const Sales = ({ navigation }, props) => {
   if (!allSales.length) {
     return (
       <View>
-        <Text>Loading...</Text>
+        <Text style={{textAlign:"center"}}>No sales recorded</Text>
+        <Image source={{uri: "https://static.vecteezy.com/system/resources/previews/010/736/664/original/broken-piggy-bank-icon-eps-10-free-vector.jpg"}} style={{width:500, height:300, alignItems:"center", alignContent:"center", justifyContent:"center"}}/>
       </View>
     );
   } 
+
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -65,9 +68,8 @@ export const Sales = ({ navigation }, props) => {
                 return (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate("UserDetail", { id: s.user.id })
-                    }
-                  >
+                      navigation.navigate("UserDetail", { id: s.user.id })}>
+                    {/* //En esta linea tengo que mostrar la venta seleccionada */}
                     <View key={s.id}>
                       <CardDataBuy
                         id={s.id}
@@ -120,6 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     top: 50,
   },
+
   buttonContainer: {
     width: "90%",
     marginVertical: 10,
