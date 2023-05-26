@@ -28,6 +28,7 @@ import {
   color_azul_oscuro,
   color_celeste,
   color_gris,
+  color_negro_grafito,
 } from "../../../Theme/stringsColors";
 //Dark Mode:
 
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderWidth: 2,
     borderRadius: 8,
-    borderColor: color_azul_oscuro,
+    // borderColor: color_negro_grafito,
     // backgroundColor: color_azul,
     justifyContent: "center",
     alignItems: "center",
