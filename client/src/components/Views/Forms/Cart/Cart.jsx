@@ -183,8 +183,9 @@ useFocusEffect(
     });
   };
   
-  
-
+console.log("Usuario actual ----->",logginUser.id)  
+console.log("carrito actual ----->",Carrito)
+console.log("Total actual ----->",total)
   if (Carrito.length < 1) {
     
     return (

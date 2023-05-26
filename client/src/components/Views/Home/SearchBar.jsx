@@ -6,7 +6,7 @@ import React from 'react'
 import { ThemeContext } from '../../Theme/ThemeProvider';
 import {useDispatch, useSelector} from "react-redux"
 import { useState} from 'react'
-import {  getvGamebyName, set1rsPage,setPrvVideogame,updateVgames} from "../../../redux/videogamesActions"
+import {  getvGamebyName, set1rsPage,setPrvVideogame,updateVgames,setflgPrev} from "../../../redux/videogamesActions"
 import { color_negro,color_blanco, color_negro_grafito ,color_azul, color_rojo, color_verdeNeon, color_gris} from '../../../constants/Colors';
 
 const SearchBar = (props) => {
@@ -16,15 +16,16 @@ const SearchBar = (props) => {
    
       const onChangeSearch = (query) => {
     //   console.log("caracter en home", query)
-        if (props.flag_prev==='false') {
     
-          dispatch(setPrvVideogame(vGames.videoGames))
-          dispatch(setFlaPrev(true))
-        }
+        // if (props.flag_prev ===false) {
+          
+        //   dispatch(setPrvVideogame(props.prev_videogames)) //????
+        //   dispatch(setflgPrev(true))
+        // }
         setSearchQuery(query);
         dispatch(getvGamebyName(query))
         dispatch(set1rsPage())
-      
+        
       }
       
       const onCloseSearch = () => {

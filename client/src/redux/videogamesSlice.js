@@ -31,7 +31,7 @@ export const videogamesSlice= createSlice({
             // console.log("lo q llega a reducer",action.payload)
 
             state.videoGames= action.payload;
-            state.filteredVideoGames = action.payload;
+           
         },
         getVideogamesbyName: (state,action)=>{
             state.videoGames= action.payload;
@@ -41,6 +41,7 @@ export const videogamesSlice= createSlice({
         },
         getVideogamebyId: (state,action)=>{
             state.vGameId=action.payload
+            state.videoGame=action.payload
         },
         setNextPage: (state,action)=>{
             state.pagina=state.pagina +1 
@@ -70,12 +71,12 @@ export const videogamesSlice= createSlice({
 
         FilterByPriceDesc:(state,action)=>{
             
-            state.filteredVideoGames = action.payload;
+            state.videoGames = action.payload;
             state.orderPrice=action.payload
         },
         FilterByPriceAsc:(state,action)=>{
             
-            state.filteredVideoGames = action.payload;
+            state.videoGames = action.payload;
             state.orderPrice=action.payload
 
             
@@ -87,13 +88,13 @@ export const videogamesSlice= createSlice({
 
         FilterByPriceDescDOS:(state,action)=>{
             
-            state.filteredVideoGames =state.filteredVideoGames.sort((a, b) => b.price - a.price)
+            state.videoGames =state.videoGames.sort((a, b) => b.price - a.price)
             state.orderPrice=action.payload
         },
         FilterByPriceAscDOS:(state,action)=>{
             
            
-            state.filteredVideoGames =state.filteredVideoGames.sort((a, b) => a.price - b.price)
+            state.videoGames =state.videoGames.sort((a, b) => a.price - b.price)
 
             state.orderPrice=action.payload
 
@@ -102,12 +103,12 @@ export const videogamesSlice= createSlice({
         //========================FILTRO RATING SOLO CON RUTA ============================
         FilterByRatingDesc:(state,action)=>{
             
-            state.filteredVideoGames = action.payload;
+           state.videoGames = action.payload;
             state.orderRating=action.payload
         },
         FilterByRatingAsc:(state,action)=>{
             
-            state.filteredVideoGames = action.payload;
+           state.videoGames = action.payload;
             state.orderRating=action.payload
 
         },
@@ -120,7 +121,7 @@ export const videogamesSlice= createSlice({
     )
             console.log(Filtered)
             
-            state.filteredVideoGames =Filtered
+           state.videoGames =Filtered
             
             // state.orderRating=action.payload
         },
@@ -133,7 +134,7 @@ export const videogamesSlice= createSlice({
             
             
             
-            state.filteredVideoGames = Filtered
+           state.videoGames = Filtered
             // state.orderRating=action.payload
         
 
@@ -200,9 +201,10 @@ export const videogamesSlice= createSlice({
         });
         
     }
-    console.log(filtered)
+    const filteredWithoutDuplicates = [...new Set(filtered)];
 
-            state.filteredVideoGames = filtered
+            
+     state.videoGames = filteredWithoutDuplicates
 
             // console.log(state.filteredVideoGames)
             
@@ -215,18 +217,22 @@ export const videogamesSlice= createSlice({
         },
         FilterByGenre:(state,action)=>{
             const filtered=[]
-            for(const i of state.filteredVideoGames){
+            for(const i of state.videoGames){
               if(i['genre']?.includes(action.payload)){
                 filtered.push(i)
               }
             }
             // console.log(filtered)
             // console.log(state.filteredVideoGames)
-      state.filteredVideoGames = filtered
+
+            const filteredWithoutDuplicates = [...new Set(filtered)];
+
+            
+     state.videoGames = filteredWithoutDuplicates
     //   state.filterGenre = action.payload;  
      },
      EmptyFilteredvideogames:(state,action)=>{
-        state.filteredVideoGames=[];
+       state.videoGames=[];
     },
     }
 })

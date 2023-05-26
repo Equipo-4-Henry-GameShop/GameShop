@@ -19,7 +19,7 @@ export const videogames=[
 			"Action",
 			"Adventure"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
 			"https://media.rawg.io/media/screenshots/a7c/a7c43871a54bed6573a6a429451564ef.jpg",
 			"https://media.rawg.io/media/screenshots/cf4/cf4367daf6a1e33684bf19adb02d16d6.jpg",
@@ -78,14 +78,14 @@ export const videogames=[
 			"Adventure",
 			"RPG"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg",
 			"https://media.rawg.io/media/screenshots/1ac/1ac19f31974314855ad7be266adeb500.jpg",
 			"https://media.rawg.io/media/screenshots/6a0/6a08afca95261a2fe221ea9e01d28762.jpg",
 			"https://media.rawg.io/media/screenshots/cdd/cdd31b6b4a687425a87b5ce231ac89d7.jpg",
 			"https://media.rawg.io/media/screenshots/862/862397b153221a625922d3bb66337834.jpg",
 			"https://media.rawg.io/media/screenshots/166/166787c442a45f52f4f230c33fd7d605.jpg",
-			"https://media.rawg.io/media/screenshots/f63/f6373ee614046d81503d63f167181803.jpg"
+			"https://media.rawg.io/media/screenShots/f63/f6373ee614046d81503d63f167181803.jpg"
 		],
 		"tiendas": [
 			"GOG",
@@ -137,7 +137,7 @@ export const videogames=[
 			"Shooter",
 			"Puzzle"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
 			"https://media.rawg.io/media/screenshots/221/221a03c11e5ff9f765d62f60d4b4cbf5.jpg",
 			"https://media.rawg.io/media/screenshots/173/1737ff43c14f40294011a209b1012875.jpg",
@@ -200,7 +200,7 @@ export const videogames=[
 			"Action",
 			"Adventure"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/021/021c4e21a1824d2526f925eff6324653.jpg",
 			"https://media.rawg.io/media/screenshots/4f9/4f9d5efdecfb63cb99f1baa4c0ceb3bf.jpg",
 			"https://media.rawg.io/media/screenshots/80f/80f373082b2a74da3f9c3fe2b877dcd0.jpg",
@@ -254,7 +254,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/736/73619bd336c894d6941d926bfd563946.jpg",
 			"https://media.rawg.io/media/screenshots/ff1/ff16661bb15f7969b44f6c4118870e44.jpg",
 			"https://media.rawg.io/media/screenshots/41b/41bb769d247412eac3336dec934aed72.jpg",
@@ -316,7 +316,7 @@ export const videogames=[
 			"Adventure",
 			"Puzzle"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/7fa/7fa0b586293c5861ee32490e953a4996.jpg",
 			"https://media.rawg.io/media/screenshots/99e/99e94bd55eb75fa6e75c3dcbb1a570b2.jpg",
 			"https://media.rawg.io/media/screenshots/2f0/2f0297a46934d9fa914c626902b1ce20.jpg",
@@ -371,7 +371,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/d58/d588947d4286e7b5e0e12e1bea7d9844.jpg",
 			"https://media.rawg.io/media/screenshots/4c0/4c043fd1a5ff78900483f2e82580fea0.jpg",
 			"https://media.rawg.io/media/screenshots/c90/c9071628c238fbc20b366e2413dd8b4a.jpg",
@@ -433,7 +433,7 @@ export const videogames=[
 			"Action",
 			"RPG"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
 			"https://media.rawg.io/media/screenshots/3bd/3bd2710bd1ffb6664fdea7b83afd067e.jpg",
 			"https://media.rawg.io/media/screenshots/d4e/d4e9b13f54748584ccbd6f998094dade.jpg",
@@ -15026,7 +15026,7 @@ export const videogames=[
 		"genre": [
 			"RPG"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/64e/64e4fc48c5d977188e8c47287f2a2cef.jpg",
 			"https://media.rawg.io/media/screenshots/9ff/9fffec352b3364ee383f93566307f50e.jpg",
 			"https://media.rawg.io/media/screenshots/5fe/5fe981d528b743c2570d4aa241398c54.jpg",
@@ -15060,7 +15060,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/8a7/8a75028028592f9323d1e6e86668bb91.jpg",
 			"https://media.rawg.io/media/screenshots/4dc/4dc215a049c5fea3193ced9ec5068eec.jpg",
 			"https://media.rawg.io/media/screenshots/bbc/bbcd424e9f3c1d58906cc4185369dd12.jpg",
@@ -15116,7 +15116,7 @@ export const videogames=[
 			"Shooter",
 			"Adventure"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/2fe/2feec1ba840f467a2280061b9e665c6e.jpg",
 			"https://media.rawg.io/media/screenshots/88a/88acd346ca7a8c99a4c0fa434f92f74b.jpg",
 			"https://media.rawg.io/media/screenshots/008/0088f8b1aa4ba9f8901b70870f10379e.jpg",
@@ -15172,7 +15172,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/90f/90fd5e569bc4c4a666c588a732124908.jpg",
 			"https://media.rawg.io/media/screenshots/df9/df9deb424a11fddffd45d4ecd538e935.jpg",
 			"https://media.rawg.io/media/screenshots/2b7/2b7d8654f13967ea8188f4a95f104c45.jpg",
@@ -15227,7 +15227,7 @@ export const videogames=[
 			"RPG",
 			"Fighting"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/fbb/fbbd9fe21317bde9134114e2b1306069.jpg",
 			"https://media.rawg.io/media/screenshots/442/4424b87c6bb46c627938d6c233af5db1.jpg",
 			"https://media.rawg.io/media/screenshots/13f/13f3adafaf9e598837d78a1694a6c537.jpg",
@@ -15273,7 +15273,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/6fd/6fd971ffa72faa1758960d25ef6196bc.jpg",
 			"https://media.rawg.io/media/screenshots/69f/69f55950ca3dd483cff0e2c74726a520.jpg",
 			"https://media.rawg.io/media/screenshots/3a1/3a1ffe1d81286a0fa40899e070a128b0.jpg",
@@ -15318,7 +15318,7 @@ export const videogames=[
 			"Action",
 			"Shooter"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/da1/da15524e850ee9791b32973b748e08d5.jpg",
 			"https://media.rawg.io/media/screenshots/8a1/8a1f2cdaaaf8aa19441d890858d01d70.jpg",
 			"https://media.rawg.io/media/screenshots/afe/afe6afc104621713ea0c8c5c5dc17149.jpg",
@@ -15379,7 +15379,7 @@ export const videogames=[
 			"Indie",
 			"Puzzle"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/d03/d030347839f74454afcd1008248b08ae.jpg",
 			"https://media.rawg.io/media/screenshots/44b/44bb511be323062b35e64dac6bc4dda0.jpg",
 			"https://media.rawg.io/media/screenshots/c18/c1840fcf75ad14bcaffc5c10a2d929f3.jpg",
@@ -15433,7 +15433,7 @@ export const videogames=[
 			"Strategy",
 			"Indie"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/screenshots/65c/65c9c15e274705b5fe343e424ce76ec8.jpg",
 			"https://media.rawg.io/media/screenshots/f9a/f9a3a2e2a3a21300e44d093612f5b6f1.jpg",
 			"https://media.rawg.io/media/screenshots/da4/da48ac6e582836d15473a7f56b1d407a.jpg",
@@ -15493,7 +15493,7 @@ export const videogames=[
 			"Puzzle",
 			"Platformer"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/cd3/cd3c9c7d3e95cb1608fd6250f1b90b7a.jpg",
 			"https://media.rawg.io/media/screenshots/6c9/6c9d036518f78895ddf552d2cb7421d6.jpg",
 			"https://media.rawg.io/media/screenshots/444/44480d0f02c17e41dd1d9b58affad214.jpg",
@@ -15545,7 +15545,7 @@ export const videogames=[
 		"genre": [
 			"Action"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/bff/bff7d82316cddea9541261a045ba008a.jpg",
 			"https://media.rawg.io/media/screenshots/005/0052befe44787cb5965fd60c7f2313e2.jpg",
 			"https://media.rawg.io/media/screenshots/a0a/a0ab09b638835040a682d756c1f41a7c.jpg",
@@ -15599,7 +15599,7 @@ export const videogames=[
 			"Adventure",
 			"RPG"
 		],
-		"screenshots": [
+		"screenShots": [
 			"https://media.rawg.io/media/games/516/516c6bfe36ddb498d860f68927448a75.jpg",
 			"https://media.rawg.io/media/screenshots/5ba/5ba82469736858815346b86f1b47f84b.jpg",
 			"https://media.rawg.io/media/screenshots/cbd/cbd99b773894d091f8218f5c6d97c0dd.jpg",

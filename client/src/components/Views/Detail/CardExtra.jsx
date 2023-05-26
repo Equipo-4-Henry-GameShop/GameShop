@@ -26,7 +26,7 @@ const CardExtra = (videogame) => {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={[styles.cardContainer, { backgroundColor: StringsDark.bkCard }]}>
           { Req.length>0 && (
-              <Text style={[styles.reqtitle, { color: StringsDark.nuevacombinacion }]}>
+              <Text style={[styles.reqtitle, { color: StringsDark.txtClaro }]}>
               {StringsLanguaje.Minimum_requirements}
               </Text>
           )}
