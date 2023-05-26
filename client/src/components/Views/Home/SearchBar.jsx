@@ -16,7 +16,6 @@ const SearchBar = (props) => {
    
       const onChangeSearch = (query) => {
     //   console.log("caracter en home", query)
-    
         // if (props.flag_prev ===false) {
           
         //   dispatch(setPrvVideogame(props.prev_videogames)) //????
