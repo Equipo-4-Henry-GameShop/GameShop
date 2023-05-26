@@ -200,3 +200,25 @@ export const emptyFilteredvideogames=()=>{
         dispatch(EmptyFilteredvideogames())
     }
 }
+
+export const getVGameByID = (id) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(
+          `https://gameshop-production-e844.up.railway.app/games/${id}`
+        );
+  
+        const dataVg = response.data;
+  
+        if (dataVg) {
+          dispatch(getVideogamebyId(dataVg)); // Asegúrate de importar y definir esta acción correctamente
+        } else {
+          dispatch(setErrorMsg("No game registration")); // Asegúrate de importar y definir esta acción correctamente
+        }
+      } catch (err) {
+        console.log(`Error: ${err}`);
+        dispatch(setErrorMsg(err)); // Asegúrate de importar y definir esta acción correctamente
+      }
+    };
+  };
+
