@@ -1,6 +1,6 @@
 import React from "react";
 import { BarChart } from "react-native-chart-kit";
-import { Dimensions } from "react-native";
+import { Dimensions, View ,StyleSheet} from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -41,15 +41,30 @@ const options = {
 
 const MyBarChart = () => {
   return (
-    <BarChart
+    <View style={styles.container}>
+      <BarChart
       data={data}
       width={screenWidth}
       height={300}
       yAxisLabel=""
       chartConfig={options.chartConfig}
       verticalLabelRotation={20}
-    />
+      />
+    </View>
+    
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    
+    flex: 2,
+    flexDirection:"column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    padding: 10,
+    left: 10,
+  },
+});
 export default MyBarChart;
