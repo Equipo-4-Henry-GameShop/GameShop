@@ -19,7 +19,8 @@ const CardExtra = (videogame) => {
     a: { color: 'blue', textDecorationLine: 'underline', },
     li:{color: `${StringsDark.reqmintxt}`},
     ul:{color: `${StringsDark.reqmintxt}`},
-    // Agrega aquí los estilos personalizados para otras etiquetas HTML que necesites
+
+    
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>

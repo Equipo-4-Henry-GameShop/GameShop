@@ -73,7 +73,6 @@ const Card = (videogame) => {
               
             ]}
             renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
-            
                   <View>        
                       <Text style={[styles.text, {color:StringsDark.bkContesp}]}>
                               {item.informacion}

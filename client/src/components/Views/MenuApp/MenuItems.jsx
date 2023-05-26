@@ -143,7 +143,6 @@ const MenuItems=({navigation})=>{
               icon="log-in-outline"
             />
 
-
             <ChangeButtonContext name={StringsLanguaje.DarkMode} tipo={"theme"}/>
             <ChangeButtonContext name={StringsLanguaje.Languaje} tipo={"Languaje"}/>
       </DrawerContentScrollView>

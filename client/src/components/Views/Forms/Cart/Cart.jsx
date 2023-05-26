@@ -245,7 +245,6 @@ const styles = StyleSheet.create({
       justifyContent: "space-between",
       flexDirection: "row",
       padding: 20,
-    
       borderTopWidth: 1,
     },
     cartTotalPrice:{

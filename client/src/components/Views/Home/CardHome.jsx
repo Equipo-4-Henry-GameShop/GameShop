@@ -60,7 +60,8 @@ export default function CardHome(data) {
                                   PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
                                   /> 
                                   : <Image source={require('../../../assets/Unknown.jpg')} /> 
-                                }
+                  }
+                  
                                 </View>
               </TouchableOpacity>
                 

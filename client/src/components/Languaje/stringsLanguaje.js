@@ -78,7 +78,7 @@ export const strings = {
     Number: 'Número',
     Price: 'Precio',
     Checkout : 'Pago',
-    MsgUserNoRegister: 'Attention, you must log in to proceed with the purchase.',
+    MsgUserNoRegister: 'Usuario no registrado acceder a su cuenta',
     Search: 'Buscar',
     Information: 'Informacion',
     Ranking: 'Clasificación',

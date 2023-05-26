@@ -29,6 +29,7 @@ const Pasarella = ({ navigation, route }) => {
     })
 },[isDarkMode,locale])
 
+
   if (isNaN(tot)) {
   console.log("tot no es un número válido");
 } else {
