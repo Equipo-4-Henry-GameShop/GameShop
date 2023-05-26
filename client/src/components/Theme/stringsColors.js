@@ -1,12 +1,10 @@
-
-
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
-export const color_crema= '#2A62B6'; //Azul claro
+export const color_crema= '#FF8800'; //Azul claro
 export const color_negro= '#000000';
 export const color_naranja='#FF5419';
 export const color_naranja_claro= '#f4511e';
-export const color_verdeNeon='#2A62B6'; //Azul claro
+export const color_verdeNeon='#14FC2B'; //Azul claro
 export const color_rojoNeon='#E94E4E';
 export const color_blanco='#FFFFFF';
 export const color_gris='#D9D9D9';
@@ -51,8 +49,13 @@ export const strings = {
     bttColor: color_azul,
     newBtt: color_celeste,
     borderCol: color_azul_oscuro,
+<<<<<<< HEAD
     bottoncito: color_azul,
     bottoncito2: color_azul,
+=======
+
+    reqmintxt:color_negro_ligero,
+>>>>>>> 1c3c0589b467067963f5b884787e8259e26fa483
   },
   dark: {
     text: color_blanco,
@@ -83,8 +86,13 @@ export const strings = {
     bgWhite: color_negro_grafito,
     bttColor: color_negro_grafito,
     newBtt: color_negro_grafito,
+<<<<<<< HEAD
     borderCol: color_negro_grafito,
     bottoncito: color_blanco,
     bottoncito2: color_gris,
+=======
+    borderCol: color_azul_oscuro,
+    reqmintxt:color_celeste
+>>>>>>> 1c3c0589b467067963f5b884787e8259e26fa483
   },
 };

@@ -15,6 +15,7 @@ export const color_azul='#4528F4';
 // export const color_azul='#6C1FB8'; morado
 export const color_negro_grafito ='#1b1e23';
 export const color_negro_ligero='#7d7f7d';
+export const color_celeste='#1ec6ff';
 export default {
   light: {
     text: '#000',
