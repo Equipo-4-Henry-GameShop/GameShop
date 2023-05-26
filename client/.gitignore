@@ -167,20 +167,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Ignore GameShop directory
-GameShop/
-
-# Ignore specific files in the client/.expo/web/cache/development/babel-loader directory
-client/.expo/web/cache/development/babel-loader/0035aee9c1ba5daac005a58f3d0c48d0d3a49431cfb559844e87e1861773486e.json
-client/.expo/web/cache/development/babel-loader/0d966302a3b409bb00e399ceb670dd36bc4fd0b2defb235bfd76268017fa0d03.json
-client/.expo/web/cache/development/babel-loader/43ae5489e77a3e1849dd5b9ea3df445ee317d2bf623997c9a5db1fbd127261db.json
-client/.expo/web/cache/development/babel-loader/5e7551c485cfd52f6a455e1c24b3eab534499e7e630deebdc20b9f97f549e6fd.json
-client/.expo/web/cache/development/babel-loader/7ba19aa3ee3ce7362be416f1d812782aa324e822f1a4d00fc3350701fc65
-client/.expo/web/cache/development/babel-loader/7ba19aa3ee3ce7362be416f1d812782aa324e822f1a4d00fc3350701fc65ff0d.json
-client/.expo/web/cache/development/babel-loader/b5f95a2c652fbc2b2fb34b7abe3abac1c09bbc2600762541804aeb31a23ea072.json
-client/.expo/web/cache/development/babel-loader/cc5155c881c22915c52fc23b9ec96d1a2c4581b1bcec6986e0a7880eca11de6c.json
-client/.expo/web/cache/development/babel-loader/d6e21904f2607804710ae566a6f93a34d503c86d5734dce3e2e091421f113775.json
-client/.expo/web/cache/development/babel-loader/e8cf6aac19a125750debe14e953554cfd5a40aa4eee410c761a8224b0cc81905.json
 
 
 

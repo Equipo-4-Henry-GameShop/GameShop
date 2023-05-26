@@ -1,6 +1,6 @@
 
 import { LineChart } from "react-native-chart-kit";
-import { Dimensions, View } from "react-native";
+import { Dimensions, View, StyleSheet } from "react-native";
 import { useEffect } from 'react'
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
@@ -81,11 +81,11 @@ const amounts = Sales.allSales.map(transaction => transaction.amount);
 
 
   return (
-    <View>
+    <View style={styles.container}>
     <LineChart
-        data={data}
-        width={300}
-        height={220}
+        data={midata}
+        width={400}
+        height={700}
         chartConfig={{
           backgroundColor: '#ffffff',
           backgroundGradientFrom: '#ffffff',
@@ -95,13 +95,25 @@ const amounts = Sales.allSales.map(transaction => transaction.amount);
           style: {
             borderRadius: 16,
           },
+          
         }}
         bezier
-        xLabelsOffset={-10}
+        
+        withInnerLines={true} // Mostrar las líneas internas del gráfico
+        withOuterLines={true} // Mostrar las líneas externas del gráfico
+        verticalLabelRotation={90}
+        
+        
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+   
+  },
+});
 
 export default MyBezierLineChart;
 

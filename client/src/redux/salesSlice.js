@@ -15,7 +15,7 @@ export const UsersSlice = createSlice({
       state.dataSale = action.payload;
     },
     getAllSls: (state, action) => {
-      // console.log("SAALEEEEEEES DESDE SLICE", action.payload)
+      console.log("SAALEEEEEEES DESDE SLICE", action.payload)
       state.allSales = action.payload;
     },
     getAllSlsUser: (state, action) => {

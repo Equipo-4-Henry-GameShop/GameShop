@@ -7,7 +7,12 @@ export const getAllSales = () => (dispatch)=>{
   
   dispatch(getAllSls(apiSales))
   
-  
+  // fetch("ttps://gameshop-production-e844.up.railway.app/sales")
+  //   .then((res) =>res.json())
+  //   .then((data)=> dispatch(getAllSls(data)))
+  //   .catch((error)=> console.log("ERRROOOOR AL TRAER VENTAS", error))
+
+
   // axios("https://gameshop-production-e844.up.railway.app/sales")
   //   .then(res=>dispatch(getAllSls(res.data)))
   //   .catch(e=>console.log("ERRROOOOR AL TRAER VENTAS", e))

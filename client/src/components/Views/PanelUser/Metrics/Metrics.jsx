@@ -21,6 +21,7 @@ import { persons } from "../../../../utils/arrayPersons";
 
 import MyBezierLineChart from "./LineChart";
 import MyBarChart from "./BarChart";
+import MyPieChart from "./PieChart";
 import { Dropdown } from 'react-native-element-dropdown'
 import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
@@ -38,19 +39,19 @@ const plataformas = [
   
 ];
 
-const ordenAlfabetico = [
-  { label: 'A -- Z', value: 'AtoZ' },
-  { label: 'Z -- A ', value: 'ZtoA' },
+const CantHomMuj = [
+  { label: 'Cantidad de Hombres y Mujeres', value: 'CantHomMuj' },
+  
   
 ];
-const ordenRAting = [
-  { label: 'Mayor a Menor Rating', value: 'ratingDESC' },
-  { label: 'Menor a Mayor Rating', value: 'ratingASC' },
+const VideGameVsCantCompras = [
+  { label: 'VideoGames vs Cant de Compras', value: 'VdgVSCantCompras' },
+  
   
 ];
-const ordenPrice = [
-  { label: 'Mayor a Menor Precio', value: 'priceDESC' },
-  { label: 'Menor a Mayor Precio ', value: 'priceASC' },
+const userCantCompras = [
+  { label: 'Usuarios vs Cantidad de Compras', value: 'UsersVsCantCompras' },
+  
   
 ];
 
@@ -59,14 +60,27 @@ export const Metrics = (route) => {
   const [view, setView] = useState(false)
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState(null);
-
+  const [chart,setChar]=useState('VdgVSCantCompras')
+  
 
 const handleChangeModal = ()=>{
   setView(!view);
   console.log(view)
 }
+let contest;
+const hanldeChangeShowChart = (data)=>{
+    setChar(data)
+}
+
+const handlerCleaner = ()=>{
+  setIsFocus(true)
+ setChar('VdgVSCantCompras')
+
+}
   return (
     <SafeAreaView style={{ flex: 1 }}>
+       <ScrollView contentContainerStyle={{ alignItems: 'center' }} horizontal={true} >
+       <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
       <View>
 
       <TouchableOpacity
@@ -96,7 +110,7 @@ const handleChangeModal = ()=>{
               >
                 <View
                   style={{
-                    height:'70%',
+                    height:'50%',
                     width:'90%',
                     borderRadius:25,
                     borderBottomEndRadius:200,
@@ -162,12 +176,12 @@ const handleChangeModal = ()=>{
                           selectedTextStyle={styles.selectedTextStyle}
                           inputSearchStyle={styles.inputSearchStyle}
                           iconStyle={styles.iconStyle}
-                          data={plataformas}
+                          data={userCantCompras}
                           search
                           maxHeight={300}
                           labelField="label"
                           valueField="value"
-                          placeholder={!isFocus ? 'Category' : '...'}
+                          placeholder={!isFocus ? 'Users' : '...'}
                           searchPlaceholder="Search..."
                           value={value}
                           onFocus={() => setIsFocus(true)}
@@ -175,7 +189,7 @@ const handleChangeModal = ()=>{
                           onChange={item => {
                             // setValue(item.value);
                             setIsFocus(false);
-                            handlerFilterByPlatform(item.value)
+                            hanldeChangeShowChart(item.value)
                             
                           }}
                           
@@ -186,12 +200,12 @@ const handleChangeModal = ()=>{
                         selectedTextStyle={styles.selectedTextStyle}
                         inputSearchStyle={styles.inputSearchStyle}
                         iconStyle={styles.iconStyle}
-                        data={ordenAlfabetico}
+                        data={VideGameVsCantCompras}
                         search
                         maxHeight={300}
                         labelField="label"
                         valueField="value"
-                        placeholder={!isFocus ? 'Order ABC' : '...'}
+                        placeholder={!isFocus ? 'VideoGames' : '...'}
                         searchPlaceholder="Search..."
                         value={value}
                         onFocus={() => setIsFocus(true)}
@@ -199,56 +213,34 @@ const handleChangeModal = ()=>{
                         onChange={item => {
                           // setValue(item.value);
                           setIsFocus(false);
-                          handlerFilterAbc(item.value);
+                          hanldeChangeShowChart(item.value);
                         }}
                         
                       />
                       <Dropdown
-                        style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        inputSearchStyle={styles.inputSearchStyle}
-                        iconStyle={styles.iconStyle}
-                        data={ordenRAting}
-                        search
-                        maxHeight={300}
-                        labelField="label"
-                        valueField="value"
-                        placeholder={!isFocus ? 'Rating' : '...'}
-                        searchPlaceholder="Search..."
-                        value={value}
-                        onFocus={() => setIsFocus(true)}
-                        onBlur={() => setIsFocus(false)}
-                        onChange={item => {
-                          // setValue(item.value);
-                          // setIsFocus(false);
-                          handlerFilterRating(item.value)
-                        }}
-                        
-                      />
-                      <Dropdown
-                        style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-                        placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        inputSearchStyle={styles.inputSearchStyle}
-                        iconStyle={styles.iconStyle}
-                        data={ordenPrice}
-                        search
-                        maxHeight={300}
-                        labelField="label"
-                        valueField="value"
-                        placeholder={!isFocus ? 'Price' : '...'}
-                        searchPlaceholder="Search..."
-                        value={value}
-                        onFocus={() => setIsFocus(true)}
-                        onBlur={() => setIsFocus(false)}
-                        onChange={item => {
-                          // setValue(item.value);
-                          // setIsFocus(false);
-                          handlerFilterPriceg(item.value);
-                        }}
-                        
-                      />
+                          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                          placeholderStyle={styles.placeholderStyle}
+                          selectedTextStyle={styles.selectedTextStyle}
+                          inputSearchStyle={styles.inputSearchStyle}
+                          iconStyle={styles.iconStyle}
+                          data={CantHomMuj}
+                          search
+                          maxHeight={300}
+                          labelField="label"
+                          valueField="value"
+                          placeholder={!isFocus ? 'Genre' : '...'}
+                          searchPlaceholder="Search..."
+                          value={value}
+                          onFocus={() => setIsFocus(true)}
+                          onBlur={() => setIsFocus(false)}
+                          onChange={item => {
+                            // setValue(item.value);
+                            setIsFocus(false);
+                            hanldeChangeShowChart(item.value)
+                            
+                          }}
+                          
+                        />
                       
                       {/* <TouchableOpacity
                           onPress={hanlderCleanFilter}
@@ -269,24 +261,50 @@ const handleChangeModal = ()=>{
 
           </View>
         </Modal>
-        <Text>Bezier Line Chart</Text>
-        <MyBezierLineChart style={styles.container} />
+        {chart === 'VdgVSCantCompras' && (
+              <View style={styles.container}>
+                <Text style={styles.title}>VideoGames vs Cant de Compras</Text>
+                <MyBezierLineChart />
+              </View>
+            )}
+            {chart === 'UsersVsCantCompras' && (
+              <View style={styles.container}>
+                <Text style={styles.title}>Usuarios vs Cantidad de Compras</Text>
+                <MyBarChart />
+              </View>
+            )}
+            {chart === 'CantHomMuj' && (
+              <View style={styles.container}>
+                <Text style={styles.title}>Cantidad de Hombres y Mujeres</Text>
+                <MyPieChart />
+              </View>
+            )}
+      
+      
 
-        <Text>Bar Chart</Text>
-        <MyBarChart />
+
+
+
       </View>
+  </ScrollView>
+  </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    padding: 10,
-    marginLeft: -15,
+    
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding:20,
+    
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+    borderColor:'#533484'
   },
 Container: {
     justifyContent: 'space-between',
