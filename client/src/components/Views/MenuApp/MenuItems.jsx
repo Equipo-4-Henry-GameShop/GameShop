@@ -77,12 +77,8 @@ const MenuItems=({navigation})=>{
             </View> 
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
-                    {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
-
-                    {/* {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister} */}
-
+                    {isLogged ? `Bienvenido ${logginUser.name}` : StringsLanguaje.MsgUserNoRegister}
                     
-
                   </Text>
                   {!isLogged && (
                     <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
