@@ -51,7 +51,6 @@ export const strings = {
     or: 'Or',
     userName:'User Name',
     CartValidate:'Attention, you must log in to proceed with the purchase.',
-<<<<<<< HEAD
     GameList:'Game List',
     MyProfile: 'My Profile',
     MyShoppings: 'My Shoppings',
@@ -62,9 +61,7 @@ export const strings = {
     CreateVideogame: 'Create Videogames',
     PublishItem: 'Publish Items',
     Metrics: 'Metrics',
-=======
     Pasarella: 'Payment Gateway',
->>>>>>> 6bcc208434241124c87e1449223f2d1cb9f2b70d
   },
   es: {
     Welcome: 'Bienvenido',
@@ -117,7 +114,6 @@ export const strings = {
     or: 'O',
     userName:'Nombre de Usuario',
     CartValidate:'Atencion, debe iniciar sesión para proceder con compra.',
-<<<<<<< HEAD
     GameList:'Lista de Videojuegos',
     MyProfile: 'Mi Perfil',
     MyShoppings: 'Mis Compras',
@@ -128,10 +124,8 @@ export const strings = {
     CreateVideogame: 'Crear Videojuego',
     PublishItem: 'Items Publicados',
     Metrics: 'Estadisticas',
-=======
     Pasarella: 'Pasarela de Pago',
     GameList:'Lista de Videojuegos'
->>>>>>> 6bcc208434241124c87e1449223f2d1cb9f2b70d
   }
 };
 
