@@ -10,7 +10,6 @@ import {
   ScrollView,
 } from "react-native";
 
-
 import {
   color_azul,
   color_blanco,
@@ -19,168 +18,211 @@ import {
 import { wrap } from "lodash";
 import { color } from "react-native-elements/dist/helpers";
 
+//Dark Mode:
+import { useState } from "react";
+import { useContext } from "react";
+import { useEffect } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import {
+  color_azul_oscuro,
+  color_celeste,
+  color_gris,
+} from "../../../Theme/stringsColors";
+//Dark Mode:
+
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
 
+export const Dashboard = ({ navigation, route }) => {
+  //Dark Mode:
+  // const [ modoOscuro, setModoOscuro ] = useState(false);
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
 
-export const Dashboard = ({navigation, route}) => {
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.Dashboard}`,
+      headerStyle: { backgroundColor: StringsDark.backgroundContainer },
+    });
+  }, [isDarkMode, locale]);
+  //Dark Mode:
+
   return (
-    <View style={styles.container}>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
+    <View
+      style={[styles.container, { backgroundColor: StringsDark.bordercolor }]}
+    >
+      <View
+        style={[
+          styles.buttonContainer,
+          { backgroundColor: StringsDark.bordercolor },
+        ]}
+      >
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
-            navigation.navigate("MyProfile", { name: "MyProfile" })
+            navigation.navigate("MyProfile", { name: "My Profile" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>My Profile</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.MyProfile}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
-
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}
-          onPress={() =>
-            navigation.navigate("MyPosts", { name: "My posts" })
-          }
+      <View
+        style={[
+          styles.buttonContainer,
+          { backgroundColor: StringsDark.bordercolor },
+        ]}
+      >
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+          onPress={() => navigation.navigate("MyPosts", { name: "My posts" })}
         >
-          <View >
-            <Text style={styles.buttonText}>My Posts</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.MyPosts}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
-
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
             navigation.navigate("MyShoppings", { name: "My shoppings" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>My shoppings</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.MyShoppings}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}
-          onPress={() =>
-            navigation.navigate("MyVotes", { name: "My votes" })
-          }
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+          onPress={() => navigation.navigate("MyVotes", { name: "My votes" })}
         >
-          <View >
-            <Text style={styles.buttonText}>My votes</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.MyVotes}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
             navigation.navigate("VideoGameList", { name: "VideoGame List" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>VideoGame list</Text>
+          <View>
+            <Text style={styles.buttonText}>
+              {StringsLanguaje.VideogamesList}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
-          onPress={() =>
-            navigation.navigate("UserList", { name: "User list" })
-          }
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+          onPress={() => navigation.navigate("UserList", { name: "User list" })}
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>User list</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.UserList}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
-          onPress={() =>
-            navigation.navigate("Sales", { name: "Sales" })
-          }
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+          onPress={() => navigation.navigate("Sales", { name: "Sales" })}
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Sales</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.Sales}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
-
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
             navigation.navigate("CreateVideogame", { name: "Create Videogame" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Create Videogame</Text>
+          <View>
+            <Text style={styles.buttonText}>
+              {StringsLanguaje.CreateVideogame}
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
-      
+
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
             navigation.navigate("CreateItem", { name: "Create Item" })
           }
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Publish item</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.PublishItem}</Text>
           </View>
         </TouchableOpacity>
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity  style={styles.button}
-          onPress={() =>
-            navigation.navigate("Metrics", { name: "Metrics" })
-          }
+        <TouchableOpacity
+          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+          onPress={() => navigation.navigate("Metrics", { name: "Metrics" })}
         >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Metrics</Text>
+          <View>
+            <Text style={styles.buttonText}>{StringsLanguaje.Metrics}</Text>
           </View>
         </TouchableOpacity>
       </View>
-
-      </View>
-    
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {
+    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: color_azul,
+    width: "100%",
+  },
+
   container: {
     flex: 1,
-    width:"auto",
+    width: "auto",
     alignItems: "center",
-    top:50,
+    // top: 50,
   },
   buttonContainer: {
-    width:"90%",
+    width: "80%",
     marginVertical: 10,
-    alignItems: "center"
+    alignItems: "center",
   },
   button: {
     width: "100%",
-
+    borderWidth: 2,
     borderRadius: 8,
-    backgroundColor: color_azul,
+    borderColor: color_azul_oscuro,
+    // backgroundColor: color_azul,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   buttonText: {
     textAlign: "center",
     padding: 10,
     fontSize: 10,
     fontWeight: "bold",
-    color: color_blanco
-  }
+    color: color_blanco,
+  },
 });
-
