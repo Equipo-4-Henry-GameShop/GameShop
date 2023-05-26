@@ -1,6 +1,11 @@
-import React from "react";
+
 import { LineChart } from "react-native-chart-kit";
-import { Dimensions } from "react-native";
+import { Dimensions, View, StyleSheet } from "react-native";
+import { useEffect } from 'react'
+import React, { useState } from 'react';
+import {useDispatch, useSelector} from "react-redux"
+
+import {getAllSales} from "../../../../redux/salesActions"
 
 const ventas = [0, 56, 20, 36, 80];
 const videogames = [
@@ -40,20 +45,69 @@ const misoptions = {
 };
 
 const MyBezierLineChart = () => {
+const dispatch = useDispatch()
+const Sales = useSelector((state)=>state.salesState)
+
+useEffect(()=>{
+  dispatch(getAllSales())
+},[])
+
+
+console.log("MIIIIIIIII SALE", Sales.allSales)
+const amounts = Sales.allSales.map(transaction => transaction.amount);
+  const labels = Sales.allSales.map(transaction => {
+    const date = new Date(transaction.date);
+    const month = date.toLocaleString('default', { month: 'short' });
+    return month;
+  });
+
+  console.log("MIIIIII AMOUNT",amounts)
+  console.log("MIIIIII LABEL",labels)
+
+  // Datos para el gráfico
+  const data = {
+    labels,
+    datasets: [
+      {
+        data: amounts,
+      },
+    ],
+  };
+
+  // ===============modal filter state=========
+  
+
+
+
+
   return (
+    <View style={styles.container}>
     <LineChart
-      data={midata}
-      margin-left={- 15}
-      width={Dimensions.get("window").width - 16}
-      height={300}
-      yAxisLabel={''}
-      yAxisInterval={1}
-      chartConfig={misoptions.chartConfig}
-      verticalLabelRotation={20}
-      bezier
-    />
+        data={data}
+        width={300}
+        height={220}
+        chartConfig={{
+          backgroundColor: '#ffffff',
+          backgroundGradientFrom: '#ffffff',
+          backgroundGradientTo: '#ffffff',
+          decimalPlaces: 0,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        bezier
+        xLabelsOffset={-10}
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginBottom: 150,
+  },
+});
 
 export default MyBezierLineChart;
 
