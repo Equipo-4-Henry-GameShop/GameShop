@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     padding: 1,
   },
     separador:{
-    margin:7,
+    margin:12,
     flexDirection:'row',
     
   },

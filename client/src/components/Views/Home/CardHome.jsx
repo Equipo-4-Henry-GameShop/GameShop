@@ -20,7 +20,7 @@ export default function CardHome(data) {
   const {StringsLanguaje ,locale}= useContext(LocalizationContext)
 
   function estrellitas(index) {
-    return <Image source={require('../../../assets/star.png')} key={index} style={{width: 15, height: 15, }}/>
+    return <Image source={require('../../../assets/star.png')} key={index} style={{width: 13, height: 13, }}/>
   }  
   
   //con esta fraccion de codigo redondeo el valor de rating y creo n estrellas de dibujo
@@ -47,19 +47,23 @@ export default function CardHome(data) {
   // console.log("generado clave cart",key)
 
   return (
-    
-    <View style={[styles.container, {backgroundColor:StringsDark.bkCard}]}> 
+    // <View style={styles.container}> 
+ <View style={[styles.container, {backgroundColor:StringsDark.bkCard, shadowColor:StringsDark.text}]}>  
+            
             <View style={styles.viewImageContainer}>
               <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}>
+                  <View>
+
                   { data.data.img ? <Image 
                                   source={data.data.img} 
                                   style={styles.image}
                                   PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
                                   /> 
                                   : <Image source={require('../../../assets/Unknown.jpg')} /> 
-                  }
-                
+                                }
+                                </View>
               </TouchableOpacity>
+                
             </View>
             <View style={styles.viewInforContainer}>
         <TouchableOpacity onPress={() => data.navigation.navigate('Detail', {videogame: data.data   })}> 
@@ -95,45 +99,52 @@ export default function CardHome(data) {
 
 const styles = StyleSheet.create({
   container: {
+    padding: 3,
     flexDirection:'row',
-    justifyContent:'space-between',
-    width: '100%',   
-    marginBottom: 4,
-    marginTop:4 ,
-    paddingBottom: 2,
-    paddingTop: 2,
-    borderRadius:5,
-    backgroundColor:'yellow',
+    justifyContent:'space-around',
+    width: '93%',   
+    marginHorizontal: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+    // shadowColor: 'black',
+    shadowOpacity: 0.23,
+    shadowOffset: { width: 1, height: 2 },
+    shadowRadius: 10,
+    elevation: 3,
   },
 
   viewImageContainer: {
     alignItems: 'center',
     // flex:1
-     width: '46%',
-      height: '100%',
+     width: '45%',
+      // height: '100%',
     // marginRight: 10 , 
-    marginLeft:1,
+    marginLeft:5,
     // backgroundColor:'blue'
 
   },
   viewInforContainer: {
 
     //  marginLeft: 1,
-    width: '54%',
-    height:'100%',
+    width: '50%',
+    // height:'100%',
     // alignContent:'center',
-    alignItems:'center'
+    alignItems:'center',
     // margin:2,
+    // backgroundColor:'orange'
   },
 
   image: {
-    marginTop:5,
-    width: 150,
-    height: 160,
+    marginTop:10,
+    marginBottom:10,
+    // marginLeft: -10,
+    width: 120,
+    height: 140,
     borderRadius:8,   
     // alignSelf:'center',
     alignContent:'center',
     resizeMode: 'cover',
+    // backgroundColor:'green'
   },
   AddCartContainer:{
     alignContent:'center',
@@ -143,37 +154,51 @@ const styles = StyleSheet.create({
     // textAlign:'center'
   },
   addItemCar:{
-    margin:2,
-    marginLeft:10,
+    margin:7,
+    // marginLeft:10,
     textAlign:'center',
     fontWeight: '700',
-    fontSize:15,
-
+    fontSize:12,
+    width:105,
+    // backgroundColor:'white'
   },
   viewEstrellas: {
-    flexDirection : 'row'
+    flexDirection : 'row',
+    alignSelf:'center',
+    height: 12,
+    // backgroundColor:'green'
   },
  
 
   h2: {
-    fontSize:20 ,
+    fontSize:15 ,
+    alignContent:'center',
+    alignItems:'center',
     textAlign:'center',
+    verticalAlign:'middle',
     fontWeight: 'bold',
+    height: 37,
+    // backgroundColor:'red',
+    // width:'50%',
   },
 
   h3:{
-    fontSize: 15,
+    fontSize: 12,
+    height:45,
     // textAlign:'center',
-    
+    // backgroundColor:'green'
   },
   Precio :{
-    paddingTop:1,
-    paddingBottom:3,
-    fontSize: 23,
+    // paddingTop:1,
+    // paddingBottom:1,
+    fontSize: 20,
     textAlign:'center',
+    // verticalAlign:'middle',
     fontWeight: 'bold',
-    alignItems: 'center',
-    alignContent: 'center'
+    // alignItems: 'center',
+    // alignContent: 'center'
+    //  backgroundColor:'cyan',
+    height:25
   },
 
   

@@ -102,14 +102,28 @@ export const removeItem = async (key) => {
 
   //limpiar carrito
   export const cleanCart = async () => {
-    console.log("nota debo controlar q solo se borren los cart")
+    // console.log("Nota: Debo controlar que solo se borren las claves del carrito");
     try {
-      await AsyncStorage.clear();
-      console.log('Elementos eliminados exitosamente');
+      let allKeys = await AsyncStorage.getAllKeys();
+      const filteredKeys = allKeys.filter((el) => el.substring(0, 4) === "cart");
+      console.log("Claves filtradas del carrito:", filteredKeys);
+      await Promise.all(
+        filteredKeys.map(async (el) => {
+          try {
+            await removeItem(el);
+          } catch (error) {
+            console.log("Error al eliminar la clave:", error);
+          }
+        })
+      );
     } catch (error) {
-      console.log('Error al eliminar los elementos:', error);
+      console.log("Error al obtener las claves de AsyncStorage:", error);
+      throw error;
     }
   };
+  
+  
+  
   
   export const AlertItem = (fx) => {
     Alert.alert(

@@ -55,7 +55,7 @@ useFocusEffect(
        //  [cartG]
     );
   useEffect(() => {
-    // console.log("entre una vez");
+     console.log("entre una vez------------------->");
      removeItem('EXPO_CONSTANTS_INSTALLATION_ID');
      getAllItems();
   }, []);
@@ -63,12 +63,15 @@ useFocusEffect(
   useEffect(() => {
     // console.log("entro xq me llama Carrito")
     Carrito.forEach((el) => {
-      const calculos = Number(el.value.price) * Number(el.value.amount);
-      acumulador += calculos;
+      if (el && el.value && el.value.price) {
+        const calculos = Number(el.value.price) * Number(el.value.amount);
+        acumulador += calculos;
+      }
     });
-
+  
     setTotal(acumulador);
   }, [Carrito]);
+  
   
   const AlertItem = () => {
     Alert.alert(
@@ -106,10 +109,11 @@ useFocusEffect(
       console.log("Error al obtener la clave de  loggedGameShop:", error);
     }
   };
-  const handlePress = () => {
-    cleanCart();
-    dispatch(updateCart());
-  }; 
+  const handlePress = async () => {
+    await cleanCart();
+    setCarrito([]); // Actualiza el estado de Carrito para que esté vacío
+    dispatch(updateCart())
+  };
 // console.log("logginUser",Carrito)
   const handlePasarellaPress = () => {
     const proceedWithPurchase = () => {
@@ -147,31 +151,38 @@ useFocusEffect(
   };
 
 
-  const getAllItems = async () => {
-    try {
-      const keys = await AsyncStorage.getAllKeys();
-      // console.log("esto obtengo en CART todas las llaves", keys)
-      const filterKeys= keys.filter(el=>el.substring(0,4)==='cart')
-      // console.log("cantidade Filtrada",filterKeys)
-      const items = await AsyncStorage.multiGet(filterKeys);
-      // console.log("cantidade de llaves", keys)
-     const result = items.map(([key, value]) => {
+  const getAllItems = () => {
+    AsyncStorage.getAllKeys((error, keys) => {
+      if (error) {
+        console.log('Error al obtener las claves de AsyncStorage:', error);
+        return;
+      }
+  
+      const filteredKeys = keys.filter((el) => el.substring(0, 4) === 'cart');
+      console.log('Claves filtradas del carrito:', filteredKeys);
+  
+      AsyncStorage.multiGet(filteredKeys, (error, items) => {
+        if (error) {
+          console.log('Error al obtener los elementos de AsyncStorage:', error);
+          return;
+        }
+  
+        const result = items.map(([key, value]) => {
           let parsedValue;
-            try {
-              parsedValue = JSON.parse(value);
-            } catch (error) {
-              console.log(`Error al analizar el valor para la clave ${key}:`, error);
-              parsedValue = null; // O puedes manejar el error de otra manera según tus necesidades
-            }
-          return { key, value: parsedValue };
+          try {
+            parsedValue = JSON.parse(value);
+          } catch (error) {
+            console.log(`Error al analizar el valor para la clave ${key}:`, error);
+            parsedValue = null;
           }
-      );
-    // //   console.log("get ALL estado de carrito", result);
-       setCarrito(result);
-    } catch (error) {
-      console.log(`Error al obtener los elementos: ---Z:`, error);
-    }
+          return { key, value: parsedValue };
+        });
+  
+        setCarrito(result);
+      });
+    });
   };
+  
   
 
   if (Carrito.length < 1) {
@@ -179,7 +190,11 @@ useFocusEffect(
     return (
       <View style={[styles.emptyCartContainer,{backgroundColor:StringsDark.btnPagar}]}>
         <Text style={[styles.emptyCart,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.emptycar}</Text>
-       
+          
+      <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')} style={[styles.clearCart,{backgroundColor:StringsDark.txtClaro}]}>
+        <Text style={[styles.clearCartText,{color:StringsDark.text}]}>{StringsLanguaje.Home}</Text>
+      </TouchableOpacity>
+
       </View>
     );
   }

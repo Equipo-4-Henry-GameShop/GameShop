@@ -40,6 +40,17 @@ export const strings = {
         //agregue nueva combinacion para botones estilo 'Cancelar'
         newCancelBot: color_rojoNeon,
         
+        
+
+
+
+
+
+
+
+
+
+        reqmintxt:color_negro_ligero,
       },
     dark: {
         text: color_blanco,
@@ -66,5 +77,16 @@ export const strings = {
         nuevacombinacion: color_blanco,
         //agregue nueva combinacion para botones estilo 'Cancelar'
         newCancelBot: color_rojoNeon,
+        
+
+
+
+
+
+
+
+
+
+        reqmintxt:color_celeste,
       },
 };

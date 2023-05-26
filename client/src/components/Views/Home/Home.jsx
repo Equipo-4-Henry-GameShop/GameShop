@@ -87,7 +87,7 @@ return (
                                     nombre:el.name ,
                                     fecLan: el.releaseDate ? el.releaseDate : '2020-10-10',
                                     // screnshoots: el.screnshoots,
-                                    screenshoots:el.screenshots,
+                                    screenshoots:el.screenShots,
                                     informacion: el.description ? el.description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat metus eget maximus scelerisque. Vivamus tempor eleifend nulla in placerat. Sed sollicitudin a odio a viverra. Morbi sagittis consequat erat at malesuada. Ut a ultrices risus. Suspendisse consectetur lectus elementum libero auctor venenatis. Ut semper arcu eu efficitur efficitur. Maecenas gravida mauris a porttitor congue. Suspendisse et neque eget quam blandit vehicula. Praesent interdum elementum lorem eget scelerisque. Nam vitae condimentum ipsum. Sed interdum eros dui, sit amet faucibus elit maximus at. Aenean eu posuere elit. In vitae diam at neque feugiat pharetra in sit amet nunc.',
                                     // informacion: el.description,
                                     rating: el.rating,
@@ -96,7 +96,7 @@ return (
                                     etiquetas: el.etiquetas,
                                     plataformas: el.platforms,
                                     precio: el.price ? el.price: '20.55',
-                                    requerimientos: el.requeriments_en ? el.requeriments_en :' aqui falta data'
+                                    requerimientos: el.requeriments_en ? el.requeriments_en :' No Existe Informacion sobre Requermientos'
                                     // requerimientos:el.requeriments_en ? el.requeriments_en.map(el=>el.minimum): 'Sin informacion'
                                   })
                     })   
@@ -229,20 +229,22 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   Navback:{
-    width: '6%',
-      // backgroundColor: color_crema,
+    marginLeft: 10,
+    width: '7%',
+    // backgroundColor: 'red',
   },
   List:{
-    width: '89%',
+    width: '75%',
     height: '100%',
-    // backgroundColor: color_azul,
+    // backgroundColor: 'blue',
     alignContent: 'center',
      alignItems: 'center',
 
   },
   NavNext:{
-    width: '6%',
-    // backgroundColor: color_neon,
+    marginRight:10,
+    width: '7%',
+    // backgroundColor: 'green',
   },
   cabecera:{
     alignContent: 'center',

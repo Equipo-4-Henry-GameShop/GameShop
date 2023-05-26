@@ -1,27 +1,48 @@
-import React, { useState, useRef } from "react";
+
 import { View, Text, StyleSheet, TextInput, Button, Alert, Image } from "react-native";
 import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
-import { removeItem,cleanCart } from "./CardCartController";
+import { removeItem,cleanCart} from "./CardCartController";
 import { useDispatch } from "react-redux";
-// import { navigate } from "@react-navigation/routers/lib/typescript/src/CommonActions";
+import { updateCart } from '../../../../redux/cartSlice';
+//linea para llamar a modo DARK
+import { ThemeContext } from '../../../Theme/ThemeProvider';
+//linea para modificar el contexto de localizacion para el lenaguje
+import { LocalizationContext } from '../../../Languaje/LocalizationContext';
+import React, { useEffect, useState ,useContext,useRef} from 'react';
 
-const Pasarella = ({ route }) => {
+const Pasarella = ({ navigation, route }) => {
+
   const dispatch=useDispatch()
+  const {  StringsDark,isDarkMode} = useContext(ThemeContext);
+  const {StringsLanguaje ,locale}= useContext(LocalizationContext)
   const { Cart ,tot,userid} = route.params;
 
-  // console.log("Esto me llega de props totl:", userid);
   const cardFieldRef = useRef(null);
-  //Data
-  // const items = [{ videogameId: 3498, videogameName: "Grand Theft Auto V", unitPrice: 20, quantity: 2 }, 
-  //                { videogameId: 4200, videogameName: "Portal 2", unitPrice: 20, quantity: 5 }];
-  // console.log("--->>")
-  // console.log("llega",tot.toFixed(2))
+
+  useEffect(()=>{
+    // console.log("esta entrando ?")
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.Pasarella}`,
+      headerStyle: {
+        backgroundColor: StringsDark.backgroundContainer,
+      },
+    })
+},[isDarkMode,locale])
+
+  if (isNaN(tot)) {
+  console.log("tot no es un número válido");
+} else {
+  // Convertir tot a un número válido con dos decimales
+  const amountfx = (Number(tot) * 100).toFixed(0);
+  console.log("amountfx",amountfx);
   var datos = {
     items: Cart,
-    amount: (tot.toFixed(2)*100),
+    amount: amountfx,
     userId: userid,
   };
-  // console.log("ese",(datos.amount))
+  
+  // console.log("Datos:", datos.amount);
+}
   const [cardDetails, setCardDetails] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
 
@@ -70,8 +91,9 @@ const Pasarella = ({ route }) => {
             console.log("Entro a pago exitoso")
             alert("Payment Successful");
             console.log("Payment successful ", paymentIntent.status);
-            // dispatch(cleanCart())
-            // navigation.navigate('HomeScreen');
+            cleanCart();
+            dispatch(updateCart());
+            navigation.navigate('HomeScreen');
             
           } else {
             alert("It was not possible to complete the purchase, the payment has been refunded.")
@@ -93,7 +115,7 @@ const Pasarella = ({ route }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container,{backgroundColor:StringsDark.backgroundContainer}]}>
       <View >
         <Image
           style={styles.mario}
@@ -106,13 +128,14 @@ const Pasarella = ({ route }) => {
         placeholder={{
           number: "4242 4242 4242 4242",
         }}
-        cardStyle={styles.card}
+        
+        cardStyle={[styles.card,{backgroundColor:StringsDark.txtprice}]}
         style={styles.cardContainer}
         onCardChange={cardDetails => {
           setCardDetails(cardDetails);
         }}
       />
-      <Button onPress={subscribe} title="Pay" disabled={loading} />
+      <Button onPress={subscribe} title={StringsLanguaje.chkOut} disabled={loading} />
     </View>
   );
 };
@@ -122,6 +145,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     margin: 20,
+    borderRadius:8
   },
   input: {
     backgroundColor: "#efefefef",
@@ -131,13 +155,23 @@ const styles = StyleSheet.create({
     height: 50,
     padding: 10,
   },
+  mario:{
+    width: '90%',
+    alignSelf:'center',
+    resizeMode:'contain'
+  },
   card: {
-    backgroundColor: "#efefefef",
+    // backgroundColor: "green",
   },
   cardContainer: {
     height: 100,
     marginVertical: 30,
   },
+  botonPago:{
+    fontSize:45,
+    fontWeight:'bold'
+  }
+  ,
 });
 
 export default Pasarella;
