@@ -12,7 +12,10 @@ import { ThemeContext } from '../../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../../Languaje/LocalizationContext';
 
  const CartItems = (props) => {
-      
+  if (!props.item) {
+    console.log("No hay Items del carrito");
+    return null; // O muestra un mensaje de error, devuelve un componente vacío, o realiza alguna otra acción en caso de que el item sea nulo.
+  }
     const {id,img,price,amount,title}=props.item
     const cartKEy= props.llave
     

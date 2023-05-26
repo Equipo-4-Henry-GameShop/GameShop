@@ -1,111 +1,132 @@
-import { StyleSheet ,Image, Text, View, Button,SectionList} from 'react-native';
-import { WebView } from 'react-native-webview';
+import React from 'react';  
+import { View, Text, ScrollView, StyleSheet,FlatList, SectionList } from 'react-native';
+
+import { HTMLView } from 'react-native-render-html';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
-
-//linea para llamar a modo DARK
 import { ThemeContext } from '../../Theme/ThemeProvider';
-//linea para modificar el contexto de localizacion para el lenaguje
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
-import React from 'react';
-
+import { useWindowDimensions } from 'react-native';
 
 const CardExtra = (videogame) => {
+  const windowWidth = useWindowDimensions().width;
+  const { StringsDark } = React.useContext(ThemeContext);
+  const { StringsLanguaje } = React.useContext(LocalizationContext);
+  // console.log("extra requerimientos", videogame.videogame);
+  let Req = videogame.videogame.requerimientos;
+  const tagsStyles = {
+    p: { color: 'red', fontSize: 16 ,},
+    strong: { fontWeight: 'bold' ,color:`${StringsDark.text}`},
+    a: { color: 'blue', textDecorationLine: 'underline', },
+    li:{color: `${StringsDark.reqmintxt}`},
+    ul:{color: `${StringsDark.reqmintxt}`},
 
-  const { StringsDark} = React.useContext(ThemeContext);
-  const {StringsLanguaje }= React.useContext(LocalizationContext)
-    // console.log("extra requerimientos", videogame.videogame.requerimientos)
-    // let data=Object.entries(videogame.videogame.requerimientos)
-    // console.log("data-->",videogame.videogame.requerimientos[0].minimum);
-    return (
- 
-        <View  style={[styles.container,{backgroundColor:StringsDark.bkCard}]}>
-          <Text style={[styles.reqtitle, {color:StringsDark.txtprice}]}> {StringsLanguaje.Minimum_requirements}</Text>
-        {/* <WebView style={styles.req} >{videogame.videogame.requerimientos[0].minimum}</WebView> */}
-
-         <SectionList
-        // <SectionList 
-        sections={[
-
-          // {
-          //   title: 'Requisitos', 
-          //   data: data
-          // },
-          {
-            title: StringsLanguaje.Genres, 
-            data: videogame.videogame.generos.map( (el)=> {
-                      return (  {
-                         key: `${el}`,      nombre:el,
-                        }
-                      )})
-          },
-          {
-            title: StringsLanguaje.Plataformas, 
-            data: videogame.videogame.plataformas.map( (el)=> {
-                     return (  {
-                        key: `${el}`,      nombre:el,
-                     }
-                    )})
-          },
-           
-          
-         
-        ]}
-        renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
-          <>
-              <View>
-                <Text style={[styles.text,{color:StringsDark.text}]}>
-                    <MaterialCommunityIcons name="pricetag-outline"  /> 
-                    {item.nombre}</Text>
-                 {/* { item.img ? <Image source={item.img} style={styles.image}/> 
-                        : <Image source={require('../../assets/Unknown.jpg')} /> 
-                }   */}
-              </View>
-              </>
-              }
-        renderSectionHeader={({section}) => <Text style={[styles.title,{color: StringsDark.txtClaro}]}>{section.title}</Text>}//aqui puedo cambiar la cabecera de grupo
-              // keyExtractor={(item, index) => index}
-        />
-        </View> 
-        );
-  };
-  const styles = StyleSheet.create({
-    container: {
-  
-      flex: 1,
-      justifyContent: 'space-between',
-      // backgroundColor: color_gris,
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
-    },
     
-    title: {
-      // color: color_rojoNeon,
-      fontSize: 25,
-      fontWeight:'700',
-      alignItems: 'center',
-      alignContent: 'center',
-      
-      fontWeight: '800'
-    },
-    text: {
-      // color: color_azul,
-      fontSize: 18,
-      marginTop: 8,
-      fontWeight: '800'
-      },
+  };
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={[styles.cardContainer, { backgroundColor: StringsDark.bkCard }]}>
+          { Req.length>0 && (
+              <Text style={[styles.reqtitle, { color: StringsDark.nuevacombinacion }]}>
+              {StringsLanguaje.Minimum_requirements}
+              </Text>
+          )}
+         { Req.length>0 && (
+          <View>
+            {Req.map((item, index) => (
+              <View key={index} style={styles.htmlContainer}>
+                <HTML source={{ html: item.minimum }} contentWidth={windowWidth} tagsStyles={tagsStyles}/>
+                <HTML source={{ html: item.recommended }} contentWidth={windowWidth} tagsStyles={tagsStyles}/>
+                
+              </View>
+            ))}
+          </View>
+            )
+          }
+        <View>
+          {videogame.videogame.plataformas.length>0 && ( 
+            <Text style={[styles.title, { color: StringsDark.txtClaro }]}>
+            {StringsLanguaje.Plataformas}
+            </Text> 
+          )}
+          {videogame.videogame.plataformas.length>0 && ( videogame.videogame.plataformas.map((item, index) => (
+              <View>
+              <Text style={[styles.text, { color: StringsDark.text }]}>
+                <MaterialCommunityIcons name="pricetag-outline" />
+                {item}
+              </Text>
+            </View>
+            )))
+          }
+          {videogame.videogame.generos.length>0 && (
+            <Text style={[styles.title, { color: StringsDark.txtClaro }]}>
+              {StringsLanguaje.Genres}
+            </Text> 
+          )}
+          {videogame.videogame.generos.length>0 && (videogame.videogame.generos.map((item, index) => (
+            <View>
+            <Text style={[styles.text, { color: StringsDark.text }]}>
+              <MaterialCommunityIcons name="pricetag-outline" />
+              {item}
+            </Text>
+          </View>
+          ))
+          )
+        }
+        </View>
+        
+      </View>
+    </ScrollView>
+  );
+};
 
-    reqtitle:{
-      fontSize: 25,
-      fontWeight:'bold',
-      alignItems: 'center',
-      alignContent: 'center',
-      textAlign: 'center',
-      fontWeight: 'bold'
-    },
-    req:{
-        fontSize:20,
-    },
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cardContainer: {
+    margin:40,
+    // marginLeft:50,
+    // marginRight: 50,
+    // flex: 1,
+    // justifyContent: 'space-between',
+    // alignItems: 'center',
+    width: '90%',
+    borderRadius:8,
+
+  },
+  title: {
+    marginLeft:15,
+    fontSize: 25,
+    fontWeight: '700',
+    textAlign:'left',
+    fontWeight: '800',
+  },
+  text: {
+    marginLeft:15,
+    fontSize: 18,
+    marginTop: 8,
+    fontWeight: '800',
+  },
+  reqtitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  req: {
+    fontSize: 20,
+  },
+  htmlContainer:{
+    color:'white',
+    marginLeft:10,
+  },
+
+ 
+
    
   });
   

@@ -77,7 +77,11 @@ const MenuItems=({navigation})=>{
             </View> 
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
+
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
+
+                    
+
                   </Text>
                   {!isLogged && (
                     <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
@@ -147,7 +151,6 @@ const MenuItems=({navigation})=>{
               onPress={()=> navigation.navigate('Login')}
               icon="log-in-outline"
             />
-
 
             <ChangeButtonContext name={StringsLanguaje.DarkMode} tipo={"theme"}/>
             <ChangeButtonContext name={StringsLanguaje.Languaje} tipo={"Languaje"}/>

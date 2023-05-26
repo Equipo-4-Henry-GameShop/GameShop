@@ -20,8 +20,9 @@ const Card = (videogame) => {
         // console.log("entro una estreilla");
         return <Image source={require('../../../assets/star.png')} 
                       key={index} style={{width: 25, height: 25}}
-                      PlaceholderContent={<ActivityIndicator color={StringsDark.text}/>}
-                      />
+                      PlaceholderContent={<ActivityIndicator color={StringsDark.bkContesp} size={"large"}/>}
+                                  /> 
+                 
     }  
    
     //con esta fraccion de codigo redondeo el valor de rating y creo n estrellas de dibujo
@@ -72,7 +73,6 @@ const Card = (videogame) => {
               
             ]}
             renderItem={({item}) => //renderizo todos los datos q llegan al arreglo no puedo cambiar nombre de item
-            
                   <View>        
                       <Text style={[styles.text, {color:StringsDark.bkContesp}]}>
                               {item.informacion}
@@ -80,7 +80,7 @@ const Card = (videogame) => {
                       <View style={styles.imageContenedor}>
                               <Image source={item.img} 
                                       style={[styles.image,{borderColor : StringsDark.bordercolor}]}
-                        //  PlaceholderContent={<ActivityIndicator color={color_azul}/>}
+                                      PlaceholderContent={<ActivityIndicator color={'red'}/>}
                               /> 
                       </View>
                           <Text style={[styles.Ranktitle,{color:StringsDark.txtprice}]}> {StringsLanguaje.Ranking}: 

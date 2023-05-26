@@ -16,6 +16,7 @@ export const color_negro_grafito = "#1b1e23";
 export const color_negro_ligero = "#7d7f7d";
 export const color_celeste = "#1ec6ff";
 export const strings = {
+<<<<<<< HEAD
   light: {
     text: color_negro,
     backgroundContainer: color_azul,
@@ -78,3 +79,82 @@ export const strings = {
     borderCol: color_azul_oscuro,
   },
 };
+=======
+    light: {
+        text: color_negro,
+        backgroundContainer: color_azul,
+        backgroundTittle:color_azul,
+        bordercolor: color_blanco,
+        tint: color_gris,
+        srchBartxt: color_blanco,
+        bktitle: color_blanco,
+        bkContesp: color_azul,
+        bkCard: color_blanco,
+        txtprice: color_rojoNeon,
+        titblanco: color_blanco,
+        focllene:color_negro,
+        tabActive: color_gris ,
+        tabInactive: color_blanco ,
+        botFlot: color_rojoNeon,
+        fondonegro: color_negro,
+        letraverde: color_verdeNeon,
+        txtClaro:color_crema,
+        cabmenu:color_crema,
+        btnPagar: color_celeste,
+        nuevacombinacion: color_negro_grafito,
+        //agregue nueva combinacion para botones estilo 'Cancelar'
+        newCancelBot: color_rojoNeon,
+        newCombo: color_azul,
+        
+        
+
+
+
+
+
+
+
+
+
+        reqmintxt:color_negro_ligero,
+      },
+    dark: {
+        text: color_blanco,
+        backgroundContainer: color_negro,
+        backgroundTittle:color_negro,
+        bordercolor: color_gris,
+        tint: color_blanco,
+        srchBartxt: color_gris,
+        bktitle: color_negro_grafito,
+        bkContesp: color_blanco,
+        bkCard: color_negro_ligero,
+        txtprice: color_crema,
+        titblanco: color_blanco,
+        focllene:color_negro_ligero,
+        tabActive: color_negro ,
+        tabInactive: color_negro_ligero ,
+
+        botFlot: color_negro_grafito,
+        fondonegro: color_negro_grafito,
+        letraverde: color_verdeNeon,
+        txtClaro:color_negro_grafito,
+        cabmenu:color_negro_ligero,
+        btnPagar: color_crema,
+        nuevacombinacion: color_blanco,
+        //agregue nueva combinacion para botones estilo 'Cancelar'
+        newCancelBot: color_rojoNeon,
+        
+
+
+
+
+
+
+
+
+
+        reqmintxt:color_celeste,
+        newCombo: color_negro_grafito,
+      },
+};
+>>>>>>> 6bcc208434241124c87e1449223f2d1cb9f2b70d

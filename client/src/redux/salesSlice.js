@@ -4,7 +4,7 @@ import axios from "axios";
 const initialState = {
   dataSale: [],
   allSales: [],
-  allSlsUsr: [],
+  allSlsUsr: "",
   salesMsgErr: "",
 };
 export const UsersSlice = createSlice({
@@ -21,9 +21,9 @@ export const UsersSlice = createSlice({
       state.allSlsUsr = action.payload;
     },
     slsMsgErr: (state, action) => {
-      state.slsMsgErr = action.payload;
+      state.salesMsgErr = action.payload;
     },
   },
 });
-export const { getDataSl, getAllSls, slsMsgErr } = UsersSlice.actions;
+export const { getDataSl, getAllSls, slsMsgErr, getAllSlsUser } = UsersSlice.actions;
 export default UsersSlice.reducer;

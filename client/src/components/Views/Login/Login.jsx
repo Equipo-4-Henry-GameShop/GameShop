@@ -202,7 +202,6 @@ export const Login = ({ navigation }) => {
                   </View>
                 )}
                   {errorMsg && <Text>Incorrect user or password</Text>}
-               
                {logginUser ==='vacio' && ( 
                     <TouchableOpacity style={[styles.miniButton,{backgroundColor:StringsDark.backgroundTittle}]} onPress={handleSubmit}>
                     <Text style={[styles.buttonText,{color:StringsDark.srchBartxt}]}>{StringsLanguaje.Login}</Text>
