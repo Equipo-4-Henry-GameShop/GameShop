@@ -13,6 +13,9 @@ import { Formik } from "formik";
 import Checkbox from "expo-checkbox";
 import { uploadImageAsync } from "../../../helpers/uploadImage";
 import * as ImagePicker from "expo-image-picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { convertirFecha } from "../../../helpers/InvertDate";
+
 
 import {
   color_azul,
@@ -26,15 +29,15 @@ import axios from "axios";
 import { LocalizationContext } from "../../../Languaje/LocalizationContext";
 import { useContext } from "react";
 import { ThemeContext } from "../../../Theme/ThemeProvider";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
+
 //Import Dark Mode:
 
-
 const CreateUser = ({ navigation }) => {
-
-//Const Dark Mode:
+  //Const Dark Mode:
   const { StringsDark, isDarkMode } = useContext(ThemeContext);
   const { StringsLanguaje, locale } = useContext(LocalizationContext);
-//UseEffect Dark Mode:
+  //UseEffect Dark Mode:
   useEffect(() => {
     navigation.setOptions({
       headerTitle: `${StringsLanguaje.Register}`,
@@ -43,16 +46,21 @@ const CreateUser = ({ navigation }) => {
       },
     });
   }, [isDarkMode, locale]);
-//Dark Mode:
+  //Dark Mode:
 
-
+  const [date, setDate] = useState(new Date());
+  const [showPicker, setShowPicker] = useState(false);
   const [acceptTac, setAcceptTac] = useState(false);
   const [receibenewsLetter, setReceivenewsLetter] = useState(false);
-
   const [image, setImage] = useState(
     "https://img.freepik.com/iconos-gratis/usuario_318-644324.jpg?w=360"
   );
 
+  useEffect(()=>{
+    convertirFecha()
+  },[date])
+
+  console.log(date);
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -94,6 +102,7 @@ const CreateUser = ({ navigation }) => {
       id: 1 + Math.floor(Math.random() * 999),
       userAdmin: true,
       image: image,
+      date:date,
     };
 
     console.log(`Antes del try ${userData}`);
@@ -131,15 +140,21 @@ const CreateUser = ({ navigation }) => {
     }
   };
 
+  const handleDateChange = (event, selectedDate) => {
+    setShowPicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
+  };
+
+  const showDatePicker = () => {
+    setShowPicker(true);
+  };
+
 
   return (
     <ScrollView>
-      <View
-        style={[
-          styles.bgCont,
-          { backgroundColor: StringsDark.newCombo}
-        ]}
-      >
+      <View style={[styles.bgCont, { backgroundColor: StringsDark.newCombo }]}>
         <TouchableOpacity
           onPress={pickImage}
           style={[styles.ImageButton, { backgroundColor: StringsDark.bkCard }]}
@@ -157,7 +172,6 @@ const CreateUser = ({ navigation }) => {
           password: "",
           fullname: "",
           email: "",
-          date: "",
           phone: "",
         }}
         validate={(values) => {
@@ -176,9 +190,7 @@ const CreateUser = ({ navigation }) => {
           } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
             errors.email = "Please enter a valid email address";
           }
-          if (!values.date) {
-            errors.date = "Please enter your date of birth";
-          }
+
           if (!values.phone) {
             errors.phone = "Please enter your phone phone";
           }
@@ -197,10 +209,19 @@ const CreateUser = ({ navigation }) => {
           touched,
           image,
         }) => (
-          <View style={[{ backgroundColor: StringsDark.bktitle}]}>
-            <View style={[styles.container,
-              { backgroundColor: StringsDark.backgroundColor }]}>
-              <View style={[styles.containerLogin,{ backgroundColor: StringsDark.tabInactive}]}>
+          <View style={[{ backgroundColor: StringsDark.bktitle }]}>
+            <View
+              style={[
+                styles.container,
+                { backgroundColor: StringsDark.backgroundColor },
+              ]}
+            >
+              <View
+                style={[
+                  styles.containerLogin,
+                  { backgroundColor: StringsDark.tabInactive },
+                ]}
+              >
                 <View>
                   <TextInput
                     style={[
@@ -267,19 +288,31 @@ const CreateUser = ({ navigation }) => {
                 </View>
 
                 <View>
-                  <TextInput
-                    style={[
-                      styles.input,
-                      { backgroundColor: StringsDark.titblanco },
-                    ]}
-                    value={values.date}
-                    placeholder="Date of Birth"
-                    onChangeText={handleChange("date")}
-                    onBlur={handleBlur("date")}
-                  />
-                  {errors.date && touched.date && (
-                    <Text style={styles.error}>{errors.date}</Text>
-                  )}
+                  <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1 }}>
+                      <TouchableOpacity
+                        onPress={showDatePicker}
+                        style={[
+                          styles.dateButton,
+                          
+                        ]}
+                      >   
+                      <Text style={styles.buttonTextDate}>{!date ? "Intesert date of birth ": convertirFecha((date))}</Text>
+                      </TouchableOpacity>
+                      {showPicker && (
+                       <DateTimePicker
+                          value={date}
+                          onChange={handleDateChange}
+                          mode="date"
+                          display="spinner"
+                          textColor="red"
+                          style={{ flex: 1 }}
+                        />
+ 
+                        ) 
+                      }
+                    </View>
+                  </View>
                 </View>
 
                 <View>
@@ -447,6 +480,28 @@ const styles = StyleSheet.create({
     padding: 0,
     // backgroundColor: color_azul,
     borderRadius: 8,
+  },
+  dateButton: {
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor:color_blanco ,
+    borderColor: color_negro,
+    borderWidth:2,
+    marginBottom: "5%",
+    marginTop:-2,
+    height: 45,
+    width: "100%",
+    padding: 0,
+    // backgroundColor: color_azul,
+    borderRadius: 8,
+  },
+  buttonTextDate: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "gray",
   },
   error: {
     textAlign: "center",

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react'
 
 import { BarChart } from "react-native-chart-kit";
-import { Dimensions, View ,StyleSheet} from "react-native";
+import { Dimensions, View ,StyleSheet,ScrollView} from "react-native";
 import {useDispatch, useSelector} from "react-redux"
 
 import {getAllSales} from "../../../../redux/salesActions"
@@ -90,9 +90,10 @@ const MyBarChart = () => {
   // Extraer los datos del JSON y agregarlos al objeto "data"
   jsonData.usuarios.forEach((usuario) => {
     barChartData.labels.push(usuario.nombre);
-    barChartData.datasets[0].data.push(usuario.items.length);
+    barChartData.datasets[0].data.push(usuario.items);
   });
   const chartConfig = {
+   
     backgroundColor: '#ffffff',
     backgroundGradientFrom: '#ffffff',
     backgroundGradientTo: '#ffffff',
@@ -101,23 +102,26 @@ const MyBarChart = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <BarChart
-        data={data}
-        width={300}
-        height={200}
-        chartConfig={chartConfig}
-        verticalLabelRotation={90} // Ajustar el ángulo de rotación de las etiquetas
-        showValuesOnTopOfBars // Mostrar los valores encima de las barras
-      />
-    </View>
+    
+      <View style={styles.container}>
+        <BarChart
+          data={barChartData}
+          width={400}
+          height={750}
+          chartConfig={chartConfig}
+          verticalLabelRotation={90}
+          showValuesOnTopOfBars
+          
+        />
+      </View>
+   
     
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+   
   },
 });
 export default MyBarChart;

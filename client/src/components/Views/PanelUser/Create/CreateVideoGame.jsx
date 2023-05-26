@@ -11,7 +11,6 @@ import {
   Alert,
 } from "react-native";
 
-
 import * as ImagePicker from "expo-image-picker";
 
 import { uploadImageAsync } from "../../../helpers/uploadImage";
@@ -20,7 +19,13 @@ import { validate } from "./components/Validate/CreateGameValidate";
 
 import { SelectList } from "react-native-dropdown-select-list";
 
-import { allGenres, allPlatforms, allTags } from "./components/dataFilteredgames";
+import { convertirFecha } from "../../../helpers/InvertDate";
+
+import {
+  allGenres,
+  allPlatforms,
+  allTags,
+} from "./components/dataFilteredgames";
 import { useState, useRef, useEffect, useContext } from "react";
 import {
   color_azul,
@@ -38,22 +43,25 @@ import { LocalizationContext } from "../../../Languaje/LocalizationContext";
 import { ThemeContext } from "../../../Theme/ThemeProvider";
 //Dark Mode:
 
-const CreateVideogame = ({navigation, route}) => {
+const CreateVideogame = ({ navigation, route }) => {
   const [image, setImage] = useState([]);
 
   const [imageScreen, setImageScreen] = useState([]);
 
+  const [date, setDate] = useState(new Date());
   const [inputFocusedName, setInputFocusedName] = useState(true);
   const [inputFocusedDesc, setInputFocusedDesc] = useState(true);
   const [inputFocusedDate, setInputFocusedDate] = useState(true);
   const [inputFocusedPrice, setInputFocusedPrice] = useState(true);
-  const [inputFocusedrequeriments_en, setInputFocusedrequeriments_en] = useState(true);
+  const [inputFocusedrequeriments_en, setInputFocusedrequeriments_en] =
+    useState(true);
   const [validateSubmit, setValidateSubmit] = useState(true);
+  const [showPicker, setShowPicker] = useState(false);
 
-//Dark Mode:  
+  //Dark Mode:
   const { StringsDark, isDarkMode } = useContext(ThemeContext);
   const { StringsLanguaje, locale } = useContext(LocalizationContext);
-//Dark Mode:
+  //Dark Mode:
 
   const [stackData, setStackData] = useState({
     platforms: allPlatforms,
@@ -71,7 +79,7 @@ const CreateVideogame = ({navigation, route}) => {
     genre: [],
     tags: [],
     price: "",
-    requeriments_en: ""
+    requeriments_en: "",
   });
 
   // console.log(allplatformss)
@@ -79,17 +87,16 @@ const CreateVideogame = ({navigation, route}) => {
 
   console.log(newVideoGame);
 
-//Dark Mode:
-  useEffect(() =>{
+  //Dark Mode:
+  useEffect(() => {
     navigation.setOptions({
-      headerTitle: `${StringsLanguaje.CreateVideogame,"Create Videogame"}`,
-      headerStyle: 
-      {
-        backgroundColor: StringsDark.backgroundContainer, 
+      headerTitle: `${(StringsLanguaje.CreateVideogame, "Create Videogame")}`,
+      headerStyle: {
+        backgroundColor: StringsDark.backgroundContainer,
       },
     });
   }, [isDarkMode, locale]);
-//Dark Mode:
+  //Dark Mode:
 
   useEffect(() => {
     validate(newVideoGame);
@@ -98,6 +105,10 @@ const CreateVideogame = ({navigation, route}) => {
   const validateNvg = validate(newVideoGame);
 
   console.log(validateNvg.name);
+
+  const showDatePicker = () => {
+    setShowPicker(true);
+  };
 
   ///////
 
@@ -116,12 +127,18 @@ const CreateVideogame = ({navigation, route}) => {
     }));
   };
 
-  
   const handleTextChange2 = (text) => {
     setNewVideoGame((prevVideoGame) => ({
       ...prevVideoGame,
       description: text,
     }));
+  };
+
+  const handleDateChange = (event, selectedDate) => {
+    setShowPicker(false);
+    if (selectedDate) {
+      setDate(selectedDate);
+    }
   };
 
   const Submit = async () => {
@@ -130,7 +147,7 @@ const CreateVideogame = ({navigation, route}) => {
       if (
         newVideoGame.name === "" ||
         newVideoGame.description === "" ||
-        newVideoGame.releaseDate === "" ||
+        date === "" ||
         !newVideoGame.platforms.length ||
         !newVideoGame.tags.length ||
         !newVideoGame.genre.length ||
@@ -147,7 +164,7 @@ const CreateVideogame = ({navigation, route}) => {
             id: newVideoGame.id,
             name: newVideoGame.name,
             description: newVideoGame.description,
-            releaseDate: newVideoGame.releaseDate,
+            releaseDate: date,
             image: newVideoGame.image,
             screenShots: newVideoGame.screenShots,
             platforms: newVideoGame.platforms,
@@ -157,73 +174,75 @@ const CreateVideogame = ({navigation, route}) => {
             requeriments_en: newVideoGame.requeriments_en,
           }
         );
-        Alert.alert(
-          "Publication Create!","",
-          [
-            {
-              onPress: () =>
-                setNewVideoGame({
-                  id: 1 + Math.floor(Math.random() * 999),
-                  name: "",
-                  description: "",
-                  releaseDate: "",
-                  image: "",
-                  screenShots: [],
-                  platforms: [],
-                  genre: [],
-                  tags: [],
-                  price: "",
-                  requeriments_en: "",
-                }),
-                text: "Continue loading games",
-            },
-            { text: "Back to dashboard" , onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })},
-          ]
-        );
-  
+        Alert.alert("Publication Create!", "", [
+          {
+            onPress: () =>
+              setNewVideoGame({
+                id: 1 + Math.floor(Math.random() * 999),
+                name: "",
+                description: "",
+                releaseDate: date,
+                image: "",
+                screenShots: [],
+                platforms: [],
+                genre: [],
+                tags: [],
+                price: "",
+                requeriments_en: "",
+              }),
+            text: "Continue loading games",
+          },
+          {
+            text: "Back to dashboard",
+            onPress: () =>
+              navigation.navigate("Dashboard", { name: "Dashboard" }),
+          },
+        ]);
+
         console.log("Respuesta del servidor:", res.data);
       }
     } catch (error) {
-      Alert.alert(
-        "Auch...Something went wrong","")
+      Alert.alert("Auch...Something went wrong", "");
       console.log("Error en el backend:", error);
     }
   };
 
-
   const CancelSubmit = () => {
     Alert.alert(
-      'Cancel Publication',
-      'You are about to cancel your publication',
+      "Cancel Publication",
+      "You are about to cancel your publication",
       [
         {
-          text: 'Cancel',
+          text: "Cancel",
           onPress: () =>
             Alert.alert(
-              'Return to Dashboard',
-              'Are you sure you want to return to Dashboard?',
+              "Return to Dashboard",
+              "Are you sure you want to return to Dashboard?",
               [
-                { text: 'Yes', onPress: () => navigation.navigate("Dashboard", { name: "Dashboard" })   },
-                { text: 'No', onPress: () => console.log('No pressed') },
+                {
+                  text: "Yes",
+                  onPress: () =>
+                    navigation.navigate("Dashboard", { name: "Dashboard" }),
+                },
+                { text: "No", onPress: () => console.log("No pressed") },
               ]
             ),
-          style: 'cancel',
+          style: "cancel",
         },
         {
-          text: 'Continue edit',
-          onPress: () => console.log('Continue edit pressed'),
+          text: "Continue edit",
+          onPress: () => console.log("Continue edit pressed"),
         },
       ],
       {
         cancelable: true,
         onDismiss: () =>
           Alert.alert(
-            'This alert was dismissed by tapping outside of the alert dialog.'
+            "This alert was dismissed by tapping outside of the alert dialog."
           ),
       }
     );
   };
-
 
   ///////
 
@@ -329,7 +348,7 @@ const CreateVideogame = ({navigation, route}) => {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsMultipleSelection: false,
       allowsEditing: true,
-      aspect: [4,4],
+      aspect: [4, 4],
       quality: 1,
     });
 
@@ -360,10 +379,10 @@ const CreateVideogame = ({navigation, route}) => {
     }
   };
 
-
   const deleteImage = () => {
     setNewVideoGame((newVideoGame) => ({
-      ...newVideoGame, image: ""
+      ...newVideoGame,
+      image: "",
     }));
   };
 
@@ -379,7 +398,7 @@ const CreateVideogame = ({navigation, route}) => {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsMultipleSelection: true,
       allowsEditing: false,
-      aspect: [ 4 , 3],
+      aspect: [4, 3],
       quality: 0.8,
     });
 
@@ -413,14 +432,32 @@ const CreateVideogame = ({navigation, route}) => {
 
   return (
     <ScrollView>
-      <View style={[
+      <View
+        style={[
           styles.bgCont,
-          { backgroundColor: StringsDark.backgroundContainer}
-        ]}/>
-      <View style={[styles.container,{ backgroundColor: StringsDark.bktitle}]}>
-        <View style={[styles.containerLogin, { backgroundColor: StringsDark.bordercolor}]}>
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.nordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Title </Text>
+          { backgroundColor: StringsDark.backgroundContainer },
+        ]}
+      />
+      <View
+        style={[styles.container, { backgroundColor: StringsDark.bktitle }]}
+      >
+        <View
+          style={[
+            styles.containerLogin,
+            { backgroundColor: StringsDark.bordercolor },
+          ]}
+        >
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.nordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Title{" "}
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="Enter Game name"
@@ -433,9 +470,18 @@ const CreateVideogame = ({navigation, route}) => {
               <Text style={styles.error}>{validateNvg.name}</Text>
             )}
           </View>
-                  
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Price</Text>
+
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Price
+            </Text>
             <TextInput
               style={styles.input}
               placeholder="$999.99"
@@ -448,8 +494,17 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Description</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Description
+            </Text>
             <TextInput
               style={[styles.inputStyle2, inputStyle]}
               placeholder="Paste_description"
@@ -463,8 +518,17 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>System requeriments_enuirements</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              System requeriments_enuirements
+            </Text>
             <TextInput
               style={[styles.inputStyle2, inputStyleVar]}
               placeholder="Paste_requeriments"
@@ -473,28 +537,69 @@ const CreateVideogame = ({navigation, route}) => {
               onChangeText={handleTextChange}
               multiline
             />
-            {validateNvg.requeriments_en !== "" && !inputFocusedrequeriments_en && (
-              <Text style={styles.error}>{validateNvg.requeriments_en}</Text>
-            )}
+            {validateNvg.requeriments_en !== "" &&
+              !inputFocusedrequeriments_en && (
+                <Text style={styles.error}>{validateNvg.requeriments_en}</Text>
+              )}
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Release Date </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="dd-mm-yyyy"
-              value={newVideoGame.releaseDate}
-              onBlur={() => setInputFocusedDate(false)}
-              keyboardType="numeric"
-              onChangeText={(text) => handleInputChange("releaseDate", text)}
-            />
+
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Release Date{" "}
+            </Text>
+            <View>
+
+              <View >
+                <TouchableOpacity
+                  onPress={showDatePicker}
+                  style={[styles.dateButton]}
+                >
+                  <Text style={styles.buttonTextDate}>
+                    {!date ? "Intesert date of birth " : convertirFecha(date)}
+                  </Text>
+                </TouchableOpacity>
+                {showPicker && (
+                  <DateTimePicker
+                    value={date}
+                    onChange={handleDateChange}
+                    mode="date"
+                    display="spinner"
+                    textColor="red"
+                    style={{ flex: 1 }}
+                  />
+                )}
+              </View>
+              {validateNvg.releaseDate !== "" && !inputFocusedDate && (
+              <Text style={styles.error}>{validateNvg.releaseDate}</Text>
+            )}
+            </View>
+
+
+
             {validateNvg.releaseDate !== "" && !inputFocusedDate && (
               <Text style={styles.error}>{validateNvg.releaseDate}</Text>
             )}
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Video game cover</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Video game cover
+            </Text>
 
             <View
               style={{
@@ -503,16 +608,31 @@ const CreateVideogame = ({navigation, route}) => {
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity onPress={pickImage} style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-                <Text style={[styles.buttonText,{ backgroundColor: StringsDark.titblanco}]}>Load from gallery</Text>
+              <TouchableOpacity
+                onPress={pickImage}
+                style={[
+                  styles.miniButton,
+                  
+                ]}
+              >
+                <Text
+                  style={[
+                    styles.buttonText,
+                    ,
+                  ]}
+                >
+                  Load from gallery
+                </Text>
               </TouchableOpacity>
               {validateNvg.image !== "" && !validateSubmit && (
                 <Text style={styles.error}>{validateNvg.image}</Text>
               )}
               {console.log(`5454--------------${newVideoGame.image}`)}
-              {newVideoGame.image && 
+              {newVideoGame.image && (
                 <View>
-                  <TouchableOpacity onPress={() => deleteImage(newVideoGame.image)}>
+                  <TouchableOpacity
+                    onPress={() => deleteImage(newVideoGame.image)}
+                  >
                     <Image
                       key={newVideoGame.image}
                       source={{ uri: `${newVideoGame.image}` }}
@@ -520,19 +640,42 @@ const CreateVideogame = ({navigation, route}) => {
                     />
                   </TouchableOpacity>
                 </View>
-              }
+              )}
             </View>
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Load screenShots</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Load screenShots
+            </Text>
 
-            <View style={[styles.viewContx1,{ backgroundColor: StringsDark.bordercolor}]}>
+            <View
+              style={[
+                styles.viewContx1,
+                { backgroundColor: StringsDark.bordercolor },
+              ]}
+            >
               <TouchableOpacity
                 onPress={pickImageScreen}
-                style={[styles.miniButton,{ backgroundColor: StringsDark.titblanco}]}
+                style={[
+                  styles.miniButton,
+                ]}
               >
-                <Text style={[styles.buttonText,{ backgroundColor: StringsDark.titblanco}]}>Load from gallery</Text>
+                <Text
+                  style={[
+                    styles.buttonText,
+                    ,
+                  ]}
+                >
+                  Load from gallery
+                </Text>
               </TouchableOpacity>
               {validateNvg.screenShots !== "" && !validateSubmit && (
                 <Text style={styles.error}>{validateNvg.screenShots}</Text>
@@ -554,8 +697,17 @@ const CreateVideogame = ({navigation, route}) => {
                 })}
             </View>
           </View>
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add Genre</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Add Genre
+            </Text>
             <View>
               <SelectList
                 data={stackData.genre}
@@ -576,8 +728,17 @@ const CreateVideogame = ({navigation, route}) => {
               <Text style={styles.error}>{validateNvg.genre}</Text>
             )}
           </View>
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add platforms</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Add platforms
+            </Text>
             <View>
               <SelectList
                 data={stackData.platforms}
@@ -599,8 +760,17 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
 
-          <View style={[styles.containerInput,{ backgroundColor: StringsDark.bordercolor}]}>
-            <Text style={[styles.title,{ backgroundColor: StringsDark.titblanco}]}>Add Tags</Text>
+          <View
+            style={[
+              styles.containerInput,
+              { backgroundColor: StringsDark.bordercolor },
+            ]}
+          >
+            <Text
+              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+            >
+              Add Tags
+            </Text>
             <View>
               <SelectList
                 placeholder="Add tag"
@@ -622,15 +792,32 @@ const CreateVideogame = ({navigation, route}) => {
             )}
           </View>
           <View></View>
-          <View style={[styles.submit,{ backgroundColor: StringsDark.bordercolor}]}>
+          <View
+            style={[
+              styles.submit
+            ]}
+          >
             <TouchableOpacity
-              style={[styles.miniButtonSubmit,{ backgroundColor: StringsDark.letraverde}]}
+              style={[
+                styles.miniButtonSubmit,
+                { backgroundColor: StringsDark.letraverde },
+              ]}
               onPress={() => Submit()}
             >
-              <Text style={[styles.buttonTextSubmit,{ backgroundColor: StringsDark.letraverde}]}>Create Publication</Text>
+              <Text
+                style={[
+                  styles.buttonTextSubmit,
+                  { backgroundColor: StringsDark.letraverde },
+                ]}
+              >
+                Create Publication
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.miniButtonCancel,{ backgroundColor: StringsDark.newCancelBot}]}
+              style={[
+                styles.miniButtonCancel,
+                { backgroundColor: StringsDark.newCancelBot },
+              ]}
               onPress={() => CancelSubmit()}
             >
               <Text style={styles.buttonTextSubmit}>Cancel Publication</Text>
@@ -661,7 +848,28 @@ const styles = StyleSheet.create({
     // backgroundColor: color_blanco,
     padding: 10,
   },
-
+  dateButton: {
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor:color_blanco ,
+    borderColor: color_negro,
+    borderWidth:2,
+    marginBottom: "5%",
+    marginTop:-2,
+    height: 45,
+    width: 300,
+    padding: 0,
+    // backgroundColor: color_azul,
+    borderRadius: 8,
+  },
+  buttonTextDate: {
+    textAlign: "center",
+    padding: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "gray",
+  },
   title: {
     margin: 24,
     fontSize: 19,
@@ -684,13 +892,13 @@ const styles = StyleSheet.create({
     height: 60,
     width: "70%",
     padding: 0,
-    // backgroundColor: color_blanco,
+    backgroundColor: color_azul,
     borderRadius: 8,
     // borderBottomColor: color_gris,
     borderBottomWidth: 1,
     borderRightWidth: 2,
     // borderColor: color_gris,
-    borderWidth:1
+    borderWidth: 1,
   },
   buttonText: {
     textAlign: "center",
@@ -737,14 +945,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   input: {
-    width: '100%',
+    width: "100%",
     padding: 10,
-    fontSize: 16, 
+    fontSize: 16,
     textAlign: "center",
     height: 50,
     borderWidth: 2,
     // borderColor: color_azul,
-    marginHorizontal:"auto",
+    marginHorizontal: "auto",
     // borderColor: "#ddd",
     // backgroundColor: "#fff",
     marginBottom: 15,
@@ -767,19 +975,19 @@ const styles = StyleSheet.create({
 
   containerInput: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     padding: 10,
   },
 
-  inputStyle2 : {
-    width: '100%',
+  inputStyle2: {
+    width: "100%",
     padding: 10,
-    fontSize: 16, 
+    fontSize: 16,
     textAlign: "center",
     borderWidth: 2,
     // borderColor: color_azul,
-    marginHorizontal:"auto",
+    marginHorizontal: "auto",
     // borderColor: "#ddd",
     // backgroundColor: "#fff",
     marginBottom: 15,
@@ -787,9 +995,9 @@ const styles = StyleSheet.create({
   },
 
   viewContx1: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   bgCont: {
@@ -798,7 +1006,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // backgroundColor: color_azul,
   },
-
 });
 
 export default CreateVideogame;

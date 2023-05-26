@@ -1,7 +1,7 @@
 import React from 'react';  
 import { View, Text, ScrollView, StyleSheet,FlatList, SectionList } from 'react-native';
 
-import { HTMLView } from 'react-native-render-html';
+import HTML from 'react-native-render-html';
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 import { ThemeContext } from '../../Theme/ThemeProvider';
 import { LocalizationContext } from '../../Languaje/LocalizationContext';
