@@ -77,18 +77,11 @@ const MenuItems=({navigation})=>{
             </View> 
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                    {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}
+
                     
->>>>>>> Stashed changes
+
                   </Text>
                   {!isLogged && (
                     <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
