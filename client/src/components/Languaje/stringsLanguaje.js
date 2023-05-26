@@ -105,6 +105,7 @@ export const strings = {
     userName:'Nombre de Usuario',
     CartValidate:'Atencion, debe iniciar sesión para proceder con compra.',
     Pasarella: 'Pasarela de Pago',
+    GameList:'Lista de Videojuegos'
   }
 };
 

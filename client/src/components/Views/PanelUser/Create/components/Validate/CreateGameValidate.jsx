@@ -1,5 +1,4 @@
 export const validate = (val) => {
-
   const errors = {};
 
   if (val.name === "") {

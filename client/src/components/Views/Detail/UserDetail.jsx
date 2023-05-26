@@ -1,4 +1,3 @@
-
 import React from "react";
 
 import { useEffect } from "react";
@@ -7,7 +6,7 @@ import { getUserByID } from "../../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { StyleSheet, View, Text } from "react-native";
 
-export const UserDetail = (props) => {
+export const UserDetail = (props,{navigation}) => {
   const dataUser = useSelector((state) => state.usersState.dataUser);
   const dispatch = useDispatch();
 
@@ -32,7 +31,7 @@ export const UserDetail = (props) => {
         email={dataUser.email}
         date={dataUser.date}
         phone={dataUser.phone}
-        shoppings={dataUser.date}
+        shoppings={() => navigation.navigate("SalesUser", { id: dataUser.id })}
       />
     </View>
   );

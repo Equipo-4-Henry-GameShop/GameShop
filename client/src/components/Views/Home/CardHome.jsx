@@ -97,7 +97,6 @@ export default function CardHome(data) {
   )
 }
 
-
 const styles = StyleSheet.create({
   container: {
     padding: 3,
