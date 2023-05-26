@@ -33,13 +33,25 @@ import {
 
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
+import { useFocusEffect } from '@react-navigation/native';
+import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import {getItemAsyncStorage} from '../../Forms/Cart/CardCartController'
 
 export const Dashboard = ({ navigation, route }) => {
   //Dark Mode:
   // const [ modoOscuro, setModoOscuro ] = useState(false);
   const { StringsDark, isDarkMode } = useContext(ThemeContext);
   const { StringsLanguaje, locale } = useContext(LocalizationContext);
-
+  const [isLogged, setIsLogged]=useState(false)
+  const [logginUser, setLoggingUser] = useState("");
+  const isLoggedGlobal =useSelector((state)=>state.usersState.isLogged)
+  useFocusEffect(
+    React.useCallback(() => {
+     getUserStorage()
+    },[isLoggedGlobal] )
+   //  [cartG]
+);
   useEffect(() => {
     navigation.setOptions({
       headerTitle: `${StringsLanguaje.Dashboard}`,
@@ -47,17 +59,38 @@ export const Dashboard = ({ navigation, route }) => {
     });
   }, [isDarkMode, locale]);
   //Dark Mode:
-
+ const getUserStorage = async () => {
+    try {
+      const LoggedUserJSON = await getItemAsyncStorage("loggedGameShop");
+      // console.log("variable LoggedUserJSON menu ITEMS->",LoggedUserJSON)
+      if(LoggedUserJSON !=='vacio'){
+      setLoggingUser(LoggedUserJSON);
+        setIsLogged(true) 
+        // console.log("Usuario Cargado correctamente menu ITEMS name->", logginUser.fullname);
+      }else {
+      setLoggingUser('vacio')
+        setIsLogged(false) 
+      }
+    } catch (error) {
+      console.log("Error al obtener la clave de  loggedGameShop:", error);
+    }
+  };
   return (
     <View
       style={[styles.container, { backgroundColor: StringsDark.bordercolor }]}
     >
+      
+          <Text style={[styles.cartTitle,{color:StringsDark.txtprice}]}>
+                    {isLogged &&  logginUser.userAdmin &&( StringsLanguaje.Admin)}    
+         </Text>
+         <Text style={[styles.cartSubTitle,{color:StringsDark.borderCol}]}>
+                    {isLogged && ( `${logginUser.fullname}`) }    
+         </Text>
+
       <View
-        style={[
-          styles.buttonContainer,
-          { backgroundColor: StringsDark.bordercolor },
-        ]}
+        style={[ styles.buttonContainer,{ backgroundColor: StringsDark.bordercolor },]}
       >
+
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
@@ -70,7 +103,7 @@ export const Dashboard = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
 
-      <View
+      {/* <View
         style={[
           styles.buttonContainer,
           { backgroundColor: StringsDark.bordercolor },
@@ -84,8 +117,8 @@ export const Dashboard = ({ navigation, route }) => {
             <Text style={styles.buttonText}>{StringsLanguaje.MyPosts}</Text>
           </View>
         </TouchableOpacity>
-      </View>
-
+      </View> */}
+    { logginUser.userAdmin===false &&(     
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
@@ -98,18 +131,18 @@ export const Dashboard = ({ navigation, route }) => {
           </View>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.buttonContainer}>
+    )}
+      {/* <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() => navigation.navigate("MyVotes", { name: "My votes" })}
-        >
+        > 
           <View>
             <Text style={styles.buttonText}>{StringsLanguaje.MyVotes}</Text>
           </View>
         </TouchableOpacity>
-      </View>
-
+      </View> */}
+    { logginUser.userAdmin &&(     
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
@@ -124,7 +157,8 @@ export const Dashboard = ({ navigation, route }) => {
           </View>
         </TouchableOpacity>
       </View>
-
+    )}
+    { logginUser.userAdmin &&( 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
@@ -134,19 +168,22 @@ export const Dashboard = ({ navigation, route }) => {
             <Text style={styles.buttonText}>{StringsLanguaje.UserList}</Text>
           </View>
         </TouchableOpacity>
+          
       </View>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
-          onPress={() => navigation.navigate("Sales", { name: "Sales" })}
-        >
-          <View>
-            <Text style={styles.buttonText}>{StringsLanguaje.Sales}</Text>
+    )}
+    { logginUser.userAdmin &&( 
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
+              onPress={() => navigation.navigate("Sales", { name: "Sales" })}
+            >
+              <View>
+                <Text style={styles.buttonText}>{StringsLanguaje.Sales}</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
-      </View>
-
+    )}
+    { logginUser.userAdmin &&( 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
@@ -161,8 +198,8 @@ export const Dashboard = ({ navigation, route }) => {
           </View>
         </TouchableOpacity>
       </View>
-
-      <View style={styles.buttonContainer}>
+    )}
+      {/* <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
           onPress={() =>
@@ -173,8 +210,8 @@ export const Dashboard = ({ navigation, route }) => {
             <Text style={styles.buttonText}>{StringsLanguaje.PublishItem}</Text>
           </View>
         </TouchableOpacity>
-      </View>
-
+      </View> */}
+{ logginUser.userAdmin &&( 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: StringsDark.bttColor }]}
@@ -185,6 +222,7 @@ export const Dashboard = ({ navigation, route }) => {
           </View>
         </TouchableOpacity>
       </View>
+)}
     </View>
   );
 };
@@ -199,6 +237,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
+    padding:20,
     flex: 1,
     width: "auto",
     alignItems: "center",
@@ -221,8 +260,20 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: "center",
     padding: 10,
-    fontSize: 10,
+    fontSize: 15,
     fontWeight: "bold",
     color: color_blanco,
+  },
+  cartSubTitle: {
+    fontSize: 15,
+    fontWeight: "bold",
+    marginHorizontal: 20,
+    marginVertical: 10,
+  },
+  cartTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginHorizontal: 20,
+    marginVertical: 10,
   },
 });

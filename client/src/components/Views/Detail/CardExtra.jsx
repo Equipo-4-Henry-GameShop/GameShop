@@ -30,15 +30,15 @@ const CardExtra = (videogame) => {
               {StringsLanguaje.Minimum_requirements}
               </Text>
           )}
+          
          { Req.length>0 && (
           <View>
-            {Req.map((item, index) => (
+           {Req.map((item, index) => (
               <View key={index} style={styles.htmlContainer}>
-                <HTML source={{ html: item.minimum }} contentWidth={windowWidth} tagsStyles={tagsStyles}/>
-                <HTML source={{ html: item.recommended }} contentWidth={windowWidth} tagsStyles={tagsStyles}/>
-                
+                <HTML source={{ html: item.minimum }} contentWidth={windowWidth} tagsStyles={tagsStyles} />
+                <HTML source={{ html: item.recommended }} contentWidth={windowWidth} tagsStyles={tagsStyles} />
               </View>
-            ))}
+              ))}
           </View>
             )
           }
@@ -50,7 +50,7 @@ const CardExtra = (videogame) => {
           )}
           {videogame.videogame.plataformas.length>0 && ( videogame.videogame.plataformas.map((item, index) => (
               <View>
-              <Text style={[styles.text, { color: StringsDark.text }]}>
+              <Text  key={index}style={[styles.text, { color: StringsDark.text }]}>
                 <MaterialCommunityIcons name="pricetag-outline" />
                 {item}
               </Text>
@@ -64,7 +64,7 @@ const CardExtra = (videogame) => {
           )}
           {videogame.videogame.generos.length>0 && (videogame.videogame.generos.map((item, index) => (
             <View>
-            <Text style={[styles.text, { color: StringsDark.text }]}>
+            <Text  key={index} style={[styles.text, { color: StringsDark.text }]}>
               <MaterialCommunityIcons name="pricetag-outline" />
               {item}
             </Text>

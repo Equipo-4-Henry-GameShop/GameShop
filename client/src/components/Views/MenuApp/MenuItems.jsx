@@ -108,29 +108,35 @@ const MenuItems=({navigation})=>{
             onPress={()=> navigation.navigate('HomeScreen')}
             icon='home'
           />
-         <MenuBottonItem
-            nombre= {StringsLanguaje.Dashboard}
-            onPress={()=> navigation.navigate('Dashboard')}
-            icon='person'
-          />
-           <MenuButtonSubItem
-              nombre= {StringsLanguaje.GameList}
-              onPress={()=> navigation.navigate('VideoGameList')}
-              icon='pricetags'
-            />
-           <MenuButtonSubItem
-              nombre= {StringsLanguaje.MyVideogames}
-              onPress={()=> navigation.navigate('MyVideogames')}
-              icon='pricetags'
-            />
+           {isLogged && (
+              <MenuBottonItem
+                nombre= {StringsLanguaje.Dashboard}
+                onPress={()=> navigation.navigate('Dashboard')}
+                icon='person'
+              />
+          )}
+           {isLogged && (
+              <MenuButtonSubItem
+                  nombre= {StringsLanguaje.GameList}
+                  onPress={()=> navigation.navigate('VideoGameList')}
+                  icon='pricetags'
+                />
+           )}  
+             {isLogged && (
+              <MenuButtonSubItem
+                  nombre= {StringsLanguaje.MyVideogames}
+                  onPress={()=> navigation.navigate('MyVideogames')}
+                  icon='pricetags'
+                />
+             )} 
 
-
-
-             <MenuButtonSubItem
-              nombre= {StringsLanguaje.MyPosts}
-              onPress={()=> navigation.navigate('MyPosts')}
-              icon='clipboard'
-            />
+            {isLogged && (
+              <MenuButtonSubItem
+                nombre= {StringsLanguaje.MyPosts}
+                onPress={()=> navigation.navigate('MyPosts')}
+                icon='clipboard'
+              />
+            )}
                <MenuButtonSubItem
               nombre= {StringsLanguaje.Shopping_Car}
               onPress={()=> navigation.navigate('Carrito')}

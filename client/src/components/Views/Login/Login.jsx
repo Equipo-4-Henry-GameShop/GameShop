@@ -69,7 +69,7 @@ export const Login = ({ navigation }) => {
       setLoggingUser(LoggedUserJSON);
         setIsLogged(true) 
         // dispatch(setUserLogging(true))
-        console.log("Usuario Cargado correctamente", logginUser);
+        console.log("Usuario Cargado correctamente");
       }else {
       setLoggingUser('vacio')
         setIsLogged(false) 
@@ -83,6 +83,8 @@ export const Login = ({ navigation }) => {
   //console.log("estado loginuser--->",(logginUser))
   const handdleLogout =()=>{
     removeItem("loggedGameShop")
+    setUser("")
+    setPassword("")
     dispatch(setUserLogging(false))
     setIsLogged(false) 
   }

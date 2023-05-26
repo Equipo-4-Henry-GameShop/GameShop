@@ -62,6 +62,9 @@ export const strings = {
     PublishItem: 'Publish Items',
     Metrics: 'Metrics',
     Pasarella: 'Payment Gateway',
+    Admin: 'Administrator User',
+    create:'Create',
+    cancel:'Cancel',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -125,7 +128,10 @@ export const strings = {
     PublishItem: 'Items Publicados',
     Metrics: 'Estadisticas',
     Pasarella: 'Pasarela de Pago',
-    GameList:'Lista de Videojuegos'
+    GameList:'Lista de Videojuegos',
+    Admin: 'Usuario Administrador',
+    create:'Crear',
+    cancel:'Cancelar',
   }
 };
 

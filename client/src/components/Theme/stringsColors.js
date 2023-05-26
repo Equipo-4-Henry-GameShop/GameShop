@@ -51,6 +51,7 @@ export const strings = {
     borderCol: color_azul_oscuro,
 
     reqmintxt:color_negro_ligero,
+    
   },
   dark: {
     text: color_blanco,
@@ -82,6 +83,7 @@ export const strings = {
     bttColor: color_negro_grafito,
     newBtt: color_negro_grafito,
     borderCol: color_azul_oscuro,
-    reqmintxt:color_celeste
+    reqmintxt:color_celeste,
+    
   },
 };

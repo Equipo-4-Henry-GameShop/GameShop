@@ -454,7 +454,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title,]}
             >
               Title{" "}
             </Text>
@@ -478,7 +478,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title,]}
             >
               Price
             </Text>
@@ -501,7 +501,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Description
             </Text>
@@ -525,7 +525,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               System requeriments_enuirements
             </Text>
@@ -551,7 +551,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Release Date{" "}
             </Text>
@@ -596,7 +596,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title,]}
             >
               Video game cover
             </Text>
@@ -610,16 +610,10 @@ const CreateVideogame = ({ navigation, route }) => {
             >
               <TouchableOpacity
                 onPress={pickImage}
-                style={[
-                  styles.miniButton,
-                  
-                ]}
+                style={[styles.miniButton, {backgroundColor:StringsDark.bttColor}]}
               >
                 <Text
-                  style={[
-                    styles.buttonText,
-                    ,
-                  ]}
+                  style={[styles.buttonText,{color:StringsDark.titblanco}]}
                 >
                   Load from gallery
                 </Text>
@@ -645,13 +639,11 @@ const CreateVideogame = ({ navigation, route }) => {
           </View>
 
           <View
-            style={[
-              styles.containerInput,
-              { backgroundColor: StringsDark.bordercolor },
+            style={[styles.containerInput, { backgroundColor: StringsDark.bordercolor },
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Load screenShots
             </Text>
@@ -664,15 +656,10 @@ const CreateVideogame = ({ navigation, route }) => {
             >
               <TouchableOpacity
                 onPress={pickImageScreen}
-                style={[
-                  styles.miniButton,
-                ]}
+                style={[styles.miniButton, {backgroundColor:StringsDark.bttColor}]}
               >
                 <Text
-                  style={[
-                    styles.buttonText,
-                    ,
-                  ]}
+                  style={[styles.buttonText, {color:StringsDark.titblanco}]}
                 >
                   Load from gallery
                 </Text>
@@ -704,7 +691,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Add Genre
             </Text>
@@ -735,7 +722,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Add platforms
             </Text>
@@ -767,7 +754,7 @@ const CreateVideogame = ({ navigation, route }) => {
             ]}
           >
             <Text
-              style={[styles.title, { backgroundColor: StringsDark.titblanco }]}
+              style={[styles.title, ]}
             >
               Add Tags
             </Text>
@@ -800,27 +787,26 @@ const CreateVideogame = ({ navigation, route }) => {
             <TouchableOpacity
               style={[
                 styles.miniButtonSubmit,
-                { backgroundColor: StringsDark.letraverde },
+                {backgroundColor:StringsDark.txtClaro},
               ]}
               onPress={() => Submit()}
             >
               <Text
                 style={[
-                  styles.buttonTextSubmit,
-                  { backgroundColor: StringsDark.letraverde },
-                ]}
+                  styles.buttonTextSubmit,{color:StringsDark.text}]}
               >
-                Create Publication
+                {StringsLanguaje.create}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[
                 styles.miniButtonCancel,
-                { backgroundColor: StringsDark.newCancelBot },
+                { backgroundColor:StringsDark.btnPagar },
               ]}
               onPress={() => CancelSubmit()}
             >
-              <Text style={styles.buttonTextSubmit}>Cancel Publication</Text>
+              <Text style={[styles.buttonTextSubmit,{color:StringsDark.text}]}>
+                {StringsLanguaje.cancel}</Text>
             </TouchableOpacity>
           </View>
         </View>
