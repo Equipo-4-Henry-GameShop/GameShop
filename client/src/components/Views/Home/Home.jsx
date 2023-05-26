@@ -450,7 +450,7 @@ return (
           {
             title: `${StringsLanguaje.Page}  ${pagina} ${StringsLanguaje.of} ${maximo}` ,
           
-            data : vGames.videoGames?.slice(
+            data : vGames.videoGames.slice(
                       (pagina-1)*porPagina,
                       (pagina-1)*porPagina+porPagina)
                     .map(el=>{
@@ -604,11 +604,12 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   Navback:{
-    width: '6%',
+    width: '7%',
+    marginLeft:15,
       // backgroundColor: color_crema,
   },
   List:{
-    width: '89%',
+    width: '80%',
     height: '100%',
     // backgroundColor: color_azul,
     alignContent: 'center',
@@ -616,7 +617,8 @@ const styles = StyleSheet.create({
 
   },
   NavNext:{
-    width: '6%',
+    width: '7%',
+    marginRight:15,
     // backgroundColor: color_neon,
   },
   cabecera:{
