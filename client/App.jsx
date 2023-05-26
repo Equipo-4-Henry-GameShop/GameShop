@@ -56,7 +56,8 @@ import {
   CreateItem,
   MyShoppings,
   UserDetail,
-  SalesUser
+  SalesUser,
+  MyVideogames,
 } from "./src/components/Views/PanelUser/routesPanelUser";
 
 import Landing from "./src/components/Views/Landing";
@@ -392,6 +393,22 @@ export default function App() {
                   component={SalesUser}
                   options={{
                     title: "Sales User",
+                    headerStyle: {
+                      backgroundColor: color_azul,
+                    },
+                    headerTintColor: color_blanco,
+                    headerTitleStyle: {
+                      fontWeight: "bold",
+                      fontSize: 25,
+                    },
+                  }}
+                />
+
+<Drawer.Screen
+                  name="MyVideogames"
+                  component={MyVideogames}
+                  options={{
+                    title: "My Videogames",
                     headerStyle: {
                       backgroundColor: color_azul,
                     },
