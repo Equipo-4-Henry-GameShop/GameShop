@@ -80,6 +80,7 @@ const MenuItems=({navigation})=>{
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
 
                     {/* {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister} */}
+
                     
 
                   </Text>

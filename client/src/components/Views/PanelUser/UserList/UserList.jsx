@@ -35,7 +35,7 @@ export const UserList = ({ navigation, route }) => {
     return (
       <View>
         <Text>Loading...</Text>
-        <Image source={{url : "https://media.tenor.com/sHqEVx12ZVkAAAAM/mario-super.gif"}} style={{width:500, height:300, alignItems:"center", alignContent:"center", justifyContent:"center"}}/>
+        <Image source={{uri : "https://media.tenor.com/sHqEVx12ZVkAAAAM/mario-super.gif"}} style={{width:500, height:300, alignItems:"center", alignContent:"center", justifyContent:"center"}}/>
       </View>
     );
   }

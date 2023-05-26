@@ -26,13 +26,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { color_celeste } from "../../../Theme/stringsColors";
 import { convertirFecha } from "../../../helpers/InvertDate";
 
-
 //Dark Mode:
 import { LocalizationContext } from "../../../Languaje/LocalizationContext";
 import { useContext } from "react";
 import { ThemeContext } from "../../../Theme/ThemeProvider";
 //Dark Mode:
-
 
 export const MyProfile = ({ navigation }) => {
   const [acceptTac, setAcceptTac] = useState(true);
@@ -76,29 +74,26 @@ export const MyProfile = ({ navigation }) => {
   const { StringsDark, isDarkMode } = useContext(ThemeContext);
   const { StringsLanguaje, locale } = useContext(LocalizationContext);
 
-  useEffect(() =>{
+  useEffect(() => {
     navigation.setOptions({
-      headerTitle:`${StringsLanguaje.MyProfile, 'My Profile'}`,
-      headerStyle:{backgroundColor: StringsDark.backgroundContainer,
-      },
+      headerTitle: `${StringsLanguaje.MyProfile}`,
+      headerStyle: { backgroundColor: StringsDark.backgroundContainer },
     });
   }, [isDarkMode, locale]);
   //Dark Mode:
-  
+
   // const loadimage = ()=>{
   //   setImage(dataUserdb[0].image)
   // }
 
-  
-
-
-
   console.log(dataUserdb);
 
-const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/81763793-persona-usuario-icono-de-ilustraci%C3%B3n-de-amigo-vectror-aislado-sobre-fondo-gris.jpg'
+  const imageUser =
+    "https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/81763793-persona-usuario-icono-de-ilustraci%C3%B3n-de-amigo-vectror-aislado-sobre-fondo-gris.jpg";
 
-  const [image, setImage] = useState(!dataUserdb.length ? imageUser : dataUserdb[0].image);
-
+  const [image, setImage] = useState(
+    !dataUserdb.length ? imageUser : dataUserdb[0].image
+  );
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -157,19 +152,14 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
     if (userData.phone) objupdatedUser.phone = userData.phone;
     if (userData.tac) objupdatedUser.tac = userData.tac;
     if (userData.newsLetter) objupdatedUser.newsLetter = userData.newsLetter;
-    objupdatedUser.id= dataUserdb[0].id 
+    objupdatedUser.id = dataUserdb[0].id;
 
-
-    console.log(objupdatedUser)
+    console.log(objupdatedUser);
     try {
       console.log(`Después del try ${userData}`);
-      console.log(objupdatedUser)
-
+      console.log(objupdatedUser);
 
       updateUser(objupdatedUser);
-
-
-
 
       console.log(`Respuesta del servidor:`, response.data);
 
@@ -180,14 +170,14 @@ const imageUser = 'https://us.123rf.com/450wm/nuwaba/nuwaba1707/nuwaba170700076/
         },
       ]);
     } catch (error) {
-
-      console.log(`Error en el backend:, ${error},data enviada  ${objupdatedUser}`);
+      console.log(
+        `Error en el backend:, ${error},data enviada  ${objupdatedUser}`
+      );
       Alert.alert("Auch...Something went wrong");
     }
   };
 
-
-if (!dataUserdb.length)
+  if (!dataUserdb.length)
     return (
       <View>
         <Text>Loading...</Text>
@@ -195,13 +185,11 @@ if (!dataUserdb.length)
     );
   return (
     <ScrollView>
-      <View
-        style={[
-          styles.bgCont,
-          { backgroundColor: StringsDark.newCombo}
-        ]}
-      >
-        <TouchableOpacity onPress={pickImage} style={[styles.ImageButton,{ backgroundColor: StringsDark.bkCard}]}>
+      <View style={[styles.bgCont, { backgroundColor: StringsDark.newCombo }]}>
+        <TouchableOpacity
+          onPress={pickImage}
+          style={[styles.ImageButton, { backgroundColor: StringsDark.bkCard }]}
+        >
           <Image
             source={{ uri: image }}
             style={{ borderRadius: 100, margin: 5, width: 200, height: 200 }}
@@ -256,11 +244,24 @@ if (!dataUserdb.length)
           image,
         }) => (
           <View>
-            <View style={[styles.container,{ backgroundColor: StringsDark.bktitle}]}>
-              <View style={[styles.containerLogin,{ backgroundColor: StringsDark.bkCard}]}>
+            <View
+              style={[
+                styles.container,
+                { backgroundColor: StringsDark.bktitle },
+              ]}
+            >
+              <View
+                style={[
+                  styles.containerLogin,
+                  { backgroundColor: StringsDark.bkCard },
+                ]}
+              >
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.user}
                     placeholder={dataUserdb[0].user}
                     onChangeText={handleChange("user")}
@@ -273,7 +274,10 @@ if (!dataUserdb.length)
 
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.password}
                     placeholder="••••••••••"
                     secureTextEntry
@@ -287,7 +291,10 @@ if (!dataUserdb.length)
 
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.fullname}
                     placeholder={dataUserdb[0].fullname}
                     onChangeText={handleChange("fullname")}
@@ -300,7 +307,10 @@ if (!dataUserdb.length)
 
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.email}
                     placeholder={dataUserdb[0].email}
                     onChangeText={handleChange("email")}
@@ -313,7 +323,10 @@ if (!dataUserdb.length)
 
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.date}
                     placeholder={convertirFecha(dataUserdb[0].date)}
                     onChangeText={handleChange("date")}
@@ -326,7 +339,10 @@ if (!dataUserdb.length)
 
                 <View>
                   <TextInput
-                    style={[styles.input,{ backgroundColor: StringsDark.titblanco}]}
+                    style={[
+                      styles.input,
+                      { backgroundColor: StringsDark.titblanco },
+                    ]}
                     value={values.phone}
                     placeholder={dataUserdb[0].phone}
                     onChangeText={handleChange("phone")}
@@ -344,7 +360,12 @@ if (!dataUserdb.length)
                       value={acceptTac}
                       onValueChange={setAcceptTac}
                     />
-                    <Text style={[styles.checkboxParagraph,{ backgroundColor: StringsDark.titblanco}]}>
+                    <Text
+                      style={[
+                        styles.checkboxParagraph,
+                        { backgroundColor: StringsDark.titblanco },
+                      ]}
+                    >
                       I accept the Terms and Conditions
                     </Text>
                   </View>
@@ -355,7 +376,12 @@ if (!dataUserdb.length)
                       value={receibenewsLetter}
                       onValueChange={setReceivenewsLetter}
                     />
-                    <Text style={[styles.checkboxParagraph,{ backgroundColor: StringsDark.titblanco}]}>
+                    <Text
+                      style={[
+                        styles.checkboxParagraph,
+                        { backgroundColor: StringsDark.titblanco },
+                      ]}
+                    >
                       I want to receive the newsLetter
                     </Text>
                   </View>
@@ -364,10 +390,20 @@ if (!dataUserdb.length)
 
               <View style={styles.submitContainer}>
                 <TouchableOpacity
-                  style={[styles.miniButton,{ backgroundColor: StringsDark.letraverde}]}
+                  style={[
+                    styles.miniButton,
+                    { backgroundColor: StringsDark.letraverde },
+                  ]}
                   onPress={handleSubmit}
                 >
-                  <Text style={[styles.buttonText,{ backgroundColor: StringsDark.letraverde}]}>Submit</Text>
+                  <Text
+                    style={[
+                      styles.buttonText,
+                      { backgroundColor: StringsDark.letraverde },
+                    ]}
+                  >
+                    Submit
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
