@@ -13,17 +13,10 @@ export const logService = async credentials => {
   };
 
   try {
-    const response = await axios.post(
-      "https://gameshop-production-e844.up.railway.app/login",
-      objCred
-    );
+    const response = await axios.post("https://gameshop-production-e844.up.railway.app/login", objCred);
     const data = response.data;
     // console.log("respuesta", data);
-    if (!data) {
-      Alert.alert('Credentials invalid', 'User or Password incorrect' );
-    } else {
-      return data;
-    }
+    return data;
   } catch (error) {
     console.log("Error en consulta Axios", error);
     return null;
