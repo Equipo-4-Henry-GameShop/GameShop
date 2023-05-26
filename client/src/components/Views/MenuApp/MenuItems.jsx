@@ -78,8 +78,14 @@ const MenuItems=({navigation})=>{
             <View style={styles.cabeceraText}>
                   <Text style={[styles.textoUsr,{color:StringsDark.bktitle}]}>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}    
 =======
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
                     {isLogged ? `Bienvenido ${logginUser.fullname}` : StringsLanguaje.MsgUserNoRegister}
                     
 >>>>>>> Stashed changes
