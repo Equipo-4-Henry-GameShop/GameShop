@@ -49,13 +49,8 @@ export const strings = {
     bttColor: color_azul,
     newBtt: color_celeste,
     borderCol: color_azul_oscuro,
-<<<<<<< HEAD
     bottoncito: color_azul,
     bottoncito2: color_azul,
-=======
-
-    reqmintxt:color_negro_ligero,
->>>>>>> 1c3c0589b467067963f5b884787e8259e26fa483
   },
   dark: {
     text: color_blanco,
@@ -86,13 +81,8 @@ export const strings = {
     bgWhite: color_negro_grafito,
     bttColor: color_negro_grafito,
     newBtt: color_negro_grafito,
-<<<<<<< HEAD
     borderCol: color_negro_grafito,
     bottoncito: color_blanco,
     bottoncito2: color_gris,
-=======
-    borderCol: color_azul_oscuro,
-    reqmintxt:color_celeste
->>>>>>> 1c3c0589b467067963f5b884787e8259e26fa483
   },
 };

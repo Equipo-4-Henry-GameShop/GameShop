@@ -22,10 +22,36 @@ import {
   import ExcelGenerator from "../../../helpers/ExcelGenerate";
   import { getvideoGames } from "../../../../redux/videogamesActions";
   
+  //Dark Mode:
+import { useContext } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import {
+  color_azul_oscuro,
+  color_celeste,
+  color_gris,
+} from "../../../Theme/stringsColors";
+//Dark Mode:
+
   ////Acá podemos pasar como props los datos del usuarios para que este
   ////componente sea netamente visual y el codigo quede mas prolijo
   
   export const SalesUser = ({ navigation }, props) => {
+
+
+          //Dark Mode:
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.allSalesUser}`,
+      headerStyle: { backgroundColor: StringsDark.backgroundContainer },
+    });
+  }, [isDarkMode, locale]);
+  //Dark Mode:
+
+
     const dispatch = useDispatch();
   
     const allSales = useSelector((state) => state.salesState.allSlsUsr);
@@ -53,7 +79,7 @@ import {
   
       return (
         <ScrollView>
-          <View style={styles.container}>
+          <View style={[styles.container,{ backgroundColor: StringsDark.bordercolor }]}>
             <Text>Sales History</Text>
             <View style={styles.buttonContainer}>
               <Text>Lista de ventas</Text>
@@ -117,6 +143,9 @@ import {
   };
   
   const styles = StyleSheet.create({
+    forDarkMode:{
+
+    },
     container: {
       flex: 1,
       width: "auto",

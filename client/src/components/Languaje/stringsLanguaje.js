@@ -75,6 +75,14 @@ export const strings = {
     addTags:'Add Tags',
     createPublication:'Create Publication',
     cancelPub:'Cancel Publication',
+    MyShoppings:'My Shoppings',
+    MyPosts: 'My Posts',
+    MyVotes:'My Votes',
+    VideoGameList:'Videogames List',
+    UserList:'User List',
+    sales: 'Sales',
+    allSalesUser:'All Sales User',
+
   },
   es: {
     Welcome: 'Bienvenido',
@@ -152,7 +160,13 @@ export const strings = {
     addTags:'Añadir Etiquetas',
     createPublication:'Crear Publicacion',
     cancelPub:'Cancelar Publicacion',
-
+    MyShoppings: 'Mis Compras',
+    MyPosts:'Mis Posteos',
+    MyVotes:'Mis Votos',
+    VideoGameList:'Lista de Videojuegos',
+    UserList:'Lista de Usuarios',
+    sales: 'Ventas',
+    allSalesUser:' Ventas del Usuario',
   }
 };
 

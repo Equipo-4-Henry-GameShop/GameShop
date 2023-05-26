@@ -50,7 +50,8 @@ export const MyPosts = ({navigation, route}) => {
   //Dark Mode:
 
   return (
-    <View style={[styles.container, { backgroundColor: StringsDark.bordercolor }]}>
+    <View style={[styles.container, 
+    { backgroundColor: StringsDark.bordercolor }]}>
       {Items.map((p)=>{
         return(
         <CardDataPanel
