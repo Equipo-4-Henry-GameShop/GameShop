@@ -1,22 +1,5 @@
-<<<<<<< Updated upstream
-const tintColorLight = "#2f95dc";
-const tintColorDark = "#fff";
-export const color_crema = "#FF8800";
-export const color_negro = "#000000";
-export const color_naranja = "#FF5419";
-export const color_naranja_claro = "#f4511e";
-export const color_verdeNeon = "#14FC2B";
-export const color_rojoNeon = "#ff2301";
-export const color_blanco = "#FFFFFF";
-export const color_gris = "#D9D9D9";
-export const color_neon = "#E630D3";
-export const color_rojo = "red";
-export const color_azul = "#4528F4";
-export const color_azul_oscuro= "#14008c";
-export const color_negro_grafito = "#1b1e23";
-export const color_negro_ligero = "#7d7f7d";
-export const color_celeste = "#1ec6ff";
-=======
+
+
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
 export const color_crema= '#2A62B6'; //Azul claro
@@ -33,8 +16,10 @@ export const color_azul='#4528F4';
 export const color_negro_grafito ='#1b1e23';
 export const color_negro_ligero='#7d7f7d';
 export const color_celeste='#1ec6ff';
+export const color_azul_oscuro= "#14008c";
 export const color_azulOscuro='#1F00E0'
->>>>>>> Stashed changes
+
+
 export const strings = {
 //HEAD
   light: {
