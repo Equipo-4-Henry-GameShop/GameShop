@@ -3,7 +3,7 @@
     "name": "GameShopLocal",
     "slug": "GameShopLocal",
     "description": "Esta App esta orientada a un E-Comerce para VidegoJuegos",
-    "version": "1.0.0",
+    "version": "12.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
