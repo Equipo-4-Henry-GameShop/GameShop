@@ -21,10 +21,39 @@ import {
   ////Acá podemos pasar como props los datos del usuarios para que este
   ////componente sea netamente visual y el codigo quede mas prolijo
   
-  export const MyVotes = () => {
+  //Dark Mode:
+import { useEffect } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import {
+  color_azul_oscuro,
+  color_celeste,
+  color_gris,
+} from "../../../Theme/stringsColors";
+//Dark Mode:
+
+
+  export const MyVotes = ({navigation}) => {
+
+
+      //Dark Mode:
+  const { StringsDark, isDarkMode } = useContext(ThemeContext);
+  const { StringsLanguaje, locale } = useContext(LocalizationContext);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: `${StringsLanguaje.MyVotes}`,
+      headerStyle: { backgroundColor: StringsDark.backgroundContainer },
+    });
+  }, [isDarkMode, locale]);
+  //Dark Mode:
+
+
     return (
       <ScrollView>
-        <View>
+        <View style={[styles.forDarkMode, 
+    { backgroundColor: StringsDark.bordercolor }]}>
           {videogames.slice(0,10).map((p) => {
             return <CardDataPanel image={p.image} name={p.name} id={p.id} />;
           })}
@@ -34,6 +63,9 @@ import {
   };
   
   const styles = StyleSheet.create({
+    forDarkMode:{
+
+    },
     container: {
       flex: 1,
       alignItems: "center",

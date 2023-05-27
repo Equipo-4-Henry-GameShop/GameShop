@@ -49,9 +49,8 @@ export const strings = {
     bttColor: color_azul,
     newBtt: color_celeste,
     borderCol: color_azul_oscuro,
-
-    reqmintxt:color_negro_ligero,
-    
+    bottoncito: color_azul,
+    bottoncito2: color_azul,
   },
   dark: {
     text: color_blanco,
@@ -82,8 +81,8 @@ export const strings = {
     bgWhite: color_negro_grafito,
     bttColor: color_negro_grafito,
     newBtt: color_negro_grafito,
-    borderCol: color_azul_oscuro,
-    reqmintxt:color_celeste,
-    
+    borderCol: color_negro_grafito,
+    bottoncito: color_blanco,
+    bottoncito2: color_gris,
   },
 };

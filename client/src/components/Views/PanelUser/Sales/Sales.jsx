@@ -22,10 +22,39 @@ import { persons } from "../../../../utils/arrayPersons";
 import ExcelGenerator from "../../../helpers/ExcelGenerate";
 import { getvideoGames } from "../../../../redux/videogamesActions";
 
+//Dark Mode:
+
+import { useContext } from "react";
+import { ThemeContext } from "../../../Theme/ThemeProvider";
+import { LocalizationContext } from "../../../Languaje/LocalizationContext";
+import {
+  color_azul_oscuro,
+  color_celeste,
+  color_gris,
+} from "../../../Theme/stringsColors";
+//Dark Mode:
+
+
 ////Acá podemos pasar como props los datos del usuarios para que este
 ////componente sea netamente visual y el codigo quede mas prolijo
 
 export const Sales = ({ navigation }, props) => {
+
+
+  
+      //Dark Mode:
+      const { StringsDark, isDarkMode } = useContext(ThemeContext);
+      const { StringsLanguaje, locale } = useContext(LocalizationContext);
+    
+      useEffect(() => {
+        navigation.setOptions({
+          headerTitle: `${StringsLanguaje.sales}`,
+          headerStyle: { backgroundColor: StringsDark.backgroundContainer },
+        });
+      }, [isDarkMode, locale]);
+      //Dark Mode:
+
+
   const dispatch = useDispatch();
 
   const allSales = useSelector((state) => state.salesState.allSales);
@@ -53,7 +82,7 @@ export const Sales = ({ navigation }, props) => {
 
     return (
       <ScrollView>
-        <View style={styles.container}>
+        <View style={[styles.container,{ backgroundColor: StringsDark.bordercolor }]}>
           <Text>Sales History</Text>
           <View style={styles.buttonContainer}>
             <Text>Lista de ventas</Text>
@@ -101,12 +130,12 @@ export const Sales = ({ navigation }, props) => {
             <ExcelGenerator fileName="archivo" />
           </View>
 
-          <View style={styles.buttonContainer}>
+          <View style={[styles.buttonContainer,{ backgroundColor: StringsDark.backgroundContainer }]}>
         <TouchableOpacity
-          style={styles.button}
+          style={[styles.button,{ backgroundColor: StringsDark.backgroundContainer }]}
           onPress={() => console.log("Aqui se descarga excel")}
         >
-          <Text style={styles.buttonText}>Descargar</Text>
+          <Text style={[styles.buttonText,{ backgroundColor: StringsDark.backgroundContainer }]}>Descargar</Text>
         </TouchableOpacity>
       </View>
         </View>
@@ -116,11 +145,14 @@ export const Sales = ({ navigation }, props) => {
 };
 
 const styles = StyleSheet.create({
+  forDarkMode:{
+
+  },
   container: {
     flex: 1,
     width: "auto",
     alignItems: "center",
-    top: 50,
+    top: 0,
   },
 
   buttonContainer: {
