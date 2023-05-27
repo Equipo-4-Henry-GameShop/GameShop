@@ -51,6 +51,7 @@ export const strings = {
     borderCol: color_azul_oscuro,
     bottoncito: color_azul,
     bottoncito2: color_azul,
+    reqmintxt:color_negro_ligero,
   },
   dark: {
     text: color_blanco,
@@ -84,5 +85,6 @@ export const strings = {
     borderCol: color_negro_grafito,
     bottoncito: color_blanco,
     bottoncito2: color_gris,
+    reqmintxt:color_celeste,
   },
 };

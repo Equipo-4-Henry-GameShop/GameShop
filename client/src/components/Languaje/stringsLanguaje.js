@@ -82,7 +82,9 @@ export const strings = {
     UserList:'User List',
     sales: 'Sales',
     allSalesUser:'All Sales User',
-
+    Admin: 'Administrator User',
+    create:'Create',
+    cancel:'Cancel',
   },
   es: {
     Welcome: 'Bienvenido',
@@ -167,6 +169,9 @@ export const strings = {
     UserList:'Lista de Usuarios',
     sales: 'Ventas',
     allSalesUser:' Ventas del Usuario',
+    Admin: 'Usuario Administrador',
+    create:'Crear',
+    cancel:'Cancelar',
   }
 };
 
